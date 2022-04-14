@@ -107,8 +107,8 @@ jobs:
     #  uses: csexton/debugger-action/debugger-action@master
      # if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
 
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@v1.0.0
+    #- name: SSH connection to Actions
+     # uses: P3TERX/ssh2actions@v1.0.0
       #if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -144,7 +144,10 @@ jobs:
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
-
+        
+    - name: SSH connection for upload compiled firmware
+      uses: csexton/debugger-action@master
+      
     - name: Organize files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
@@ -153,7 +156,9 @@ jobs:
         rm -rf packages
         echo "::set-env name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
+  
 
+      
     - name: Upload firmware directory
       uses: actions/upload-artifact@master
       if: steps.organize.outputs.status == 'success' && !cancelled()
