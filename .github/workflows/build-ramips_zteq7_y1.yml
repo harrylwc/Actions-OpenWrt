@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 #
-name: Build OpenWrt
+name: Build ramips zteq7 coowifi
 
 on:
   repository_dispatch:
