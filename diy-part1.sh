@@ -13,4 +13,5 @@
 
 # Add a feed source
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
-ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/package/lean /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/
+#ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/package/lean /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/
+cd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package && ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/package/lean .
