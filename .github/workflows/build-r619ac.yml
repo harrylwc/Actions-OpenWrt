@@ -94,6 +94,10 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+    
+    - name: Run kernel_menuconfig 
+      run: cd openwrt && make V=s -j4 kernel_menuconfig
+   
    # - name: Start SSH via tmate
     #  uses: P3TERX/ssh2actions@main
       
