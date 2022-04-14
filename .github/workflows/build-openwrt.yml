@@ -24,6 +24,7 @@ on:
 
 env:
   REPO_URL: https://github.com/x-wrt/x-wrt
+  REPO_URL1: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -64,8 +65,8 @@ jobs:
         df -hT $PWD
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-        git clone https://github.com/coolsnowwolf/lede
-
+        git clone git clone --depth 1 $REPO_URL -b $REPO_BRANCH lede
+        ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
         
     - name: Load custom feeds
       run: |
