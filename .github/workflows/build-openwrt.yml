@@ -64,7 +64,11 @@ jobs:
         df -hT $PWD
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-
+        git clone https://github.com/coolsnowwolf/lede
+        cd lede && ./scripts/feeds update -a
+        cd lede && ./scripts/feeds install -a
+        ln -s lede/package/lean/ openwrt/package/
+        
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
