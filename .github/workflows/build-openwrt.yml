@@ -85,10 +85,16 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
-    - name: SSH connection to Actions
-      uses: csexton/debugger-action/debugger-action@master
-      if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
+    - 
+      name: Setup Debug Session
+      uses: csexton/debugger-action@master
+    #- uses: actions/checkout@v1
+    #- name: Setup tmate session
+    #  uses: mxschmitt/action-tmate@v1
+      
+   # - name: SSH connection to Actions
+    #  uses: csexton/debugger-action/debugger-action@master
+     # if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
 
     - name: Download package
       id: package
