@@ -146,6 +146,8 @@ jobs:
         path: openwrt/bin
         
     - name: SSH connection for upload compiled firmware
+     # uses: P3TERX/ssh2actions@v1.0.0
+     # name: Setup Debug Session
       uses: csexton/debugger-action@master
       
     - name: Organize files
