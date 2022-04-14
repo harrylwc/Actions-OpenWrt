@@ -15,3 +15,7 @@ rm -r feeds/packages/multimedia/tvheadend
 tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/tvheadend.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/feeds/packages/multimedia/
 tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/rtl8821.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package/
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/config.ipq4019 /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/target/linux/ipq40xx/
+#url=
+#rsync -Pav --delete -e "rsh -p 412 " /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/bin/ root@url:/mnt/x-wrt/bin
+#rsync -Pav --delete -e "rsh -p 412 " /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/.config root@url:/mnt/x-wrt/.config                           
+#rsync -Pav --delete -e "rsh -p 412 " /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/config* root@url:/mnt/x-wrt/   
