@@ -20,3 +20,98 @@ index 40ce67fd01..a1f2e32032 100644
  
  	# Maximum number of concurrent requests.
  	# If this number is exceeded, further requests are
+  
+diff --git a/package/firmware/wireless-regdb/patches/600-custom-change-txpower-and-dfs.patch b/package/firmware/wireless-regdb/patches/600-custom-change-txpower-and-dfs.patch
+index 23f231a9e4..990199f71c 100644
+--- a/package/firmware/wireless-regdb/patches/600-custom-change-txpower-and-dfs.patch
++++ b/package/firmware/wireless-regdb/patches/600-custom-change-txpower-and-dfs.patch
+@@ -1,32 +1,57 @@
+---- a/db.txt
+-+++ b/db.txt
+-@@ -347,9 +347,9 @@ country CL: DFS-JP
++--- a/db.txt	2022-04-12 10:32:55.587417971 +0800
+++++ b/db.txt	2022-04-12 10:56:21.460188953 +0800
++
++@@ -347,15 +347,10 @@
+  	(5735 - 5835 @ 80), (20)
+  
+  country CN: DFS-FCC
+ -	(2402 - 2482 @ 40), (20)
+ -	(5170 - 5250 @ 80), (23), AUTO-BW
+ -	(5250 - 5330 @ 80), (23), DFS, AUTO-BW
+-+	(2402 - 2482 @ 40), (30)
+-+	(5170 - 5250 @ 80), (30), AUTO-BW
+-+	(5250 - 5330 @ 80), (30), AUTO-BW
+- 	(5735 - 5835 @ 80), (30)
++-	(5735 - 5835 @ 80), (30)
+++	(2400 - 2483.5 @ 40), (30)
+++	(5150 - 5350 @ 160), (30)
+  	# 60 GHz band channels 1,4: 28dBm, channels 2,3: 44dBm
+  	# ref: http://www.miit.gov.cn/n11293472/n11505629/n11506593/n11960250/n11960606/n11960700/n12330791.files/n12330790.pdf
+-@@ -1580,13 +1580,13 @@ country UG: DFS-FCC
++-	(57240 - 59400 @ 2160), (28)
++-	(59400 - 63720 @ 2160), (44)
++-	(63720 - 65880 @ 2160), (28)
++ 
++ country CO: DFS-FCC
++ 	(2402 - 2482 @ 40), (20)
++@@ -677,11 +672,8 @@
++ 	(5735 - 5835 @ 80), (30)
++ 
++ country HK: DFS-ETSI
++-	(2402 - 2482 @ 40), (20)
++-	(5170 - 5250 @ 80), (17), AUTO-BW
++-	(5250 - 5330 @ 80), (24), DFS, AUTO-BW
++-	(5490 - 5710 @ 160), (24), DFS
++-	(5735 - 5835 @ 80), (30)
+++	(2402 - 2483 @ 40), (30)
+++	(5140 - 5860 @ 160), (30)
++ 
++ country HN: DFS-FCC
++ 	(2402 - 2482 @ 40), (20)
++@@ -1582,19 +1574,8 @@
++ # set out in 47 CFR § 15.205. TODO: reenable and specify a safe TX power here.
+  country US: DFS-FCC
+  	(2400 - 2472 @ 40), (30)
+- 	# 5.15 ~ 5.25 GHz: 30 dBm for master mode, 23 dBm for clients
++-	# 5.15 ~ 5.25 GHz: 30 dBm for master mode, 23 dBm for clients
+ -	(5150 - 5250 @ 80), (23), AUTO-BW
+ -	(5250 - 5350 @ 80), (23), DFS, AUTO-BW
+-+	(5150 - 5250 @ 80), (30), AUTO-BW
+-+	(5250 - 5350 @ 80), (30), AUTO-BW
+- 	# This range ends at 5725 MHz, but channel 144 extends to 5730 MHz.
+- 	# Since 5725 ~ 5730 MHz belongs to the next range which has looser
+- 	# requirements, we can extend the range by 5 MHz to make the kernel
+- 	# happy and be able to use channel 144.
++-	# This range ends at 5725 MHz, but channel 144 extends to 5730 MHz.
++-	# Since 5725 ~ 5730 MHz belongs to the next range which has looser
++-	# requirements, we can extend the range by 5 MHz to make the kernel
++-	# happy and be able to use channel 144.
+ -	(5470 - 5730 @ 160), (23), DFS
+-+	(5470 - 5730 @ 160), (30)
+- 	(5730 - 5850 @ 80), (30)
+- 	# 60g band
+- 	# reference: section IV-D https://docs.fcc.gov/public/attachments/FCC-16-89A1.pdf
++-	(5730 - 5850 @ 80), (30)
++-	# 60g band
++-	# reference: section IV-D https://docs.fcc.gov/public/attachments/FCC-16-89A1.pdf
++-	# channels 1-6 EIRP=40dBm(43dBm peak)
++-	(57240 - 71000 @ 2160), (40)
+++	(5150 - 5350 @ 160), (30)
+++	(5470 - 5850 @ 160), (30)
++ 
++ country UY: DFS-FCC
++ 	(2402 - 2482 @ 40), (20)
+diff --git a/package/kernel/mac80211/files/lib/wifi/mac80211.sh b/package/kernel/mac80211/files/lib/wifi/mac80211.sh
+index 6aa46b0c74..6f20f74c46 100644
+--- a/package/kernel/mac80211/files/lib/wifi/mac80211.sh
++++ b/package/kernel/mac80211/files/lib/wifi/mac80211.sh
+@@ -174,7 +174,7 @@ detect_mac80211() {
+ 			set wireless.radio${devidx}.channel=${channel}
+ 			set wireless.radio${devidx}.band=${mode_band}
+ 			set wireless.radio${devidx}.htmode=$htmode
+-			set wireless.radio${devidx}.disabled=1
++			set wireless.radio${devidx}.disabled=0
+ 
+ 			set wireless.default_radio${devidx}=wifi-iface
+ 			set wireless.default_radio${devidx}.device=radio${devidx}
