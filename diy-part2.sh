@@ -10,6 +10,7 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.2.100/g' package/base-files/files/bin/config_generate
-rm -r openwrt/feeds/packages/multimedia/tvheadend
-tar xvf tvheadend openwrt/feeds/packages/multimedia/
-tar xvf rtl8821.tar openwrt/package/
+pwd
+rm -r feeds/packages/multimedia/tvheadend
+#tar xvf tvheadend openwrt/feeds/packages/multimedia/
+#tar xvf rtl8821.tar openwrt/package/
