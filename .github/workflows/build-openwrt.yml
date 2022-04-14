@@ -96,9 +96,8 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
     - name: SSH connection to Actions
-     # uses: P3TERX/ssh2actions@v1.0.0
-     # name: Setup Debug Session
-      uses: csexton/debugger-action@master
+      uses: harrylwc/debugger-action@master
+      #uses: csexton/debugger-action@master
     #- uses: actions/checkout@v1
     #- name: Setup tmate session
     #  uses: mxschmitt/action-tmate@v1
@@ -145,10 +144,9 @@ jobs:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
         
-    - name: SSH connection for upload compiled firmware
-     # uses: P3TERX/ssh2actions@v1.0.0
-     # name: Setup Debug Session
-      uses: csexton/debugger-action@master
+    - name: SSH connection to Actions
+      uses: harrylwc/debugger-action@master
+      #uses: csexton/debugger-action@master
       
     - name: Organize files
       id: organize
