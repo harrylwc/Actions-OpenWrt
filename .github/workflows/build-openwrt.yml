@@ -67,7 +67,7 @@ jobs:
         git clone https://github.com/coolsnowwolf/lede
         cd lede && ./scripts/feeds update -a
         cd lede && ./scripts/feeds install -a
-        ln -s lede/package/lean/ openwrt/package/
+        #cd lede/package/ && ln -s lean openwrt/package/
         
     - name: Load custom feeds
       run: |
