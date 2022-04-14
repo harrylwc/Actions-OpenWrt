@@ -98,15 +98,11 @@ jobs:
     - name: Run kernel_menuconfig 
       run: cd openwrt && make V=s -j4 kernel_menuconfig
       
-    #- name: Start SSH via tmate
-     # uses: P3TERX/ssh2actions@main
-      #uses: csexton/debugger-action@master
-    #- uses: actions/checkout@v1
-    #- name: Setup tmate session
-    #  uses: mxschmitt/action-tmate@v1
-      
     - name: SSH connection to Actions
-      uses: csexton/debugger-action/debugger-action@master
+      uses: harrylwc/debugger-action@master
+      
+    #- name: SSH connection to Actions
+     # uses: csexton/debugger-action/debugger-action@master
      # if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
 
     #- name: SSH connection to Actions
