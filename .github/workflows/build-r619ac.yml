@@ -94,11 +94,11 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-    - name: Start SSH via tmate
-      uses: P3TERX/ssh2actions@main
+   # - name: Start SSH via tmate
+    #  uses: P3TERX/ssh2actions@main
       
-    #- name: SSH connection to Actions
-     # uses: harrylwc/debugger-action@master
+    - name: SSH connection to Actions
+      uses: harrylwc/debugger-action@master
       #uses: csexton/debugger-action@master
     #- uses: actions/checkout@v1
     #- name: Setup tmate session
@@ -146,11 +146,11 @@ jobs:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
         
-    #- name: SSH connection to Actions
-     # uses: harrylwc/debugger-action@master
+    - name: SSH connection to Actions
+      uses: harrylwc/debugger-action@master
       #uses: csexton/debugger-action@master
-    - name: Start SSH via tmate
-      uses: P3TERX/ssh2actions@main
+    #- name: Start SSH via tmate
+    #  uses: P3TERX/ssh2actions@main
       
     - name: Organize files
       id: organize
