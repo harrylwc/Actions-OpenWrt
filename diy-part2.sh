@@ -12,5 +12,6 @@
 #sed -i 's/192.168.1.1/192.168.2.100/g' package/base-files/files/bin/config_generate
 cd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt
 rm -r feeds/packages/multimedia/tvheadend
-#tar xvf tvheadend openwrt/feeds/packages/multimedia/
-#tar xvf rtl8821.tar openwrt/package/
+cd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/
+tar xvf tvheadend.tar openwrt/feeds/packages/multimedia/
+tar xvf rtl8821.tar openwrt/package/
