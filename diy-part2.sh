@@ -12,9 +12,9 @@
 #sed -i 's/192.168.1.1/192.168.2.100/g' package/base-files/files/bin/config_generate
 cd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt
 rm -r feeds/packages/multimedia/tvheadend
-rm -r /workdir/lede/package/lean/mt/drivers/
 tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/tvheadend.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/feeds/packages/multimedia/
 tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/rtl8821.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package/
+rm -r /workdir/lede/package/lean/mt/drivers/
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/config.ipq4019 /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/target/linux/ipq40xx/
 #url=
 #rsync -Pav --delete -e "rsh -p 412 " /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/bin/ root@url:/mnt/x-wrt/bin
