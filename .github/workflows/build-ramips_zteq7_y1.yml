@@ -95,8 +95,7 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
-    - name: Run kernel_menuconfig 
-      run: cd openwrt && make V=s -j4 kernel_menuconfig
+  
       
     - name: SSH connection to Actions
       uses: harrylwc/debugger-action@master
