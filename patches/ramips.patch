@@ -121,7 +121,7 @@ index 1830998..eb0c621 100644
  	xiaomi,miwifi-mini)
  		ucidef_add_switch "switch0" \
 -			"0:lan:2" "1:lan:1" "4:wan" "6@eth0"
-+			"1:lan:1" "2:lan:2" "3:lan:3" "4:lan:4" "0:wan" "6@eth0"	
++			"1:lan:1" "2:lan:2" "3:lan:3" "4:lan:4" "0:wan" "6@eth0"
  		;;
  	lenovo,newifi-y1s)
  		ucidef_add_switch "switch0" \
