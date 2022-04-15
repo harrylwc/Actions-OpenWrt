@@ -3346,7 +3346,7 @@ CONFIG_PACKAGE_kmod-dvb-usb=m
 # CONFIG_PACKAGE_kmod-dvb-usb-az6027 is not set
 # CONFIG_PACKAGE_kmod-dvb-usb-ce6230 is not set
 CONFIG_PACKAGE_kmod-dvb-usb-cxusb=m
-# CONFIG_PACKAGE_kmod-dvb-usb-dib0700 is not set
+CONFIG_PACKAGE_kmod-dvb-usb-dib0700=m
 # CONFIG_PACKAGE_kmod-dvb-usb-dibusb-common is not set
 # CONFIG_PACKAGE_kmod-dvb-usb-dibusb-mb is not set
 # CONFIG_PACKAGE_kmod-dvb-usb-dibusb-mc is not set
