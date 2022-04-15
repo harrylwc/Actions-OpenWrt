@@ -67,7 +67,7 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         git clone --depth 1 $REPO_URL1 -b $REPO_BRANCH lede
         ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
-  
+        cd openwrt/package && git clone https://github.com/harrylwc/openwrt-dvb
         
     - name: Load custom feeds
       run: |
@@ -96,13 +96,13 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
-      timeout-minutes: 250
-   # - name: SSH connection to Actions
-    #  uses: harrylwc/debugger-action@master
+    #- name: Setup tmate session
+     # uses: mxschmitt/action-tmate@v3
+     # timeout-minutes: 250
     #- name: SSH connection to Actions
-     # uses: P3TERX/ssh2actions@main
+     # uses: harrylwc/debugger-action@master
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@main
       
     #- name: SSH connection to Actions
      # uses: csexton/debugger-action/debugger-action@master
@@ -150,9 +150,12 @@ jobs:
     #- name: SSH connection to Actions
      # uses: P3TERX/ssh2actions@main
     
-    - name: Setup tmate session
-      uses: mxschmitt/action-tmate@v3
-      timeout-minutes: 250
+    #- name: Setup tmate session
+     # uses: mxschmitt/action-tmate@v3
+      #timeout-minutes: 250
+    
+    - name: SSH connection  for upload firmware
+      uses: P3TERX/ssh2actions@main
       
     - name: Organize files
       id: organize
