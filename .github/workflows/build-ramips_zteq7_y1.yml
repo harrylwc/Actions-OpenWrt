@@ -80,7 +80,7 @@ jobs:
       run: cd openwrt && ./scripts/feeds update -a
 
     - name: Install feeds
-      run: cd openwrt && ./scripts/feeds install -a
+      run: cd openwrt && ./scripts/feeds install -a -f
         
     - name: Update feeds coolsnowwolf
       run: cd lede && ./scripts/feeds update -a
