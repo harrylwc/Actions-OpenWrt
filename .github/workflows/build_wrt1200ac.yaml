@@ -95,14 +95,16 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-    
+        
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@main
     #- name: Setup tmate session
      # uses: mxschmitt/action-tmate@v3
      # timeout-minutes: 250
     #- name: SSH connection to Actions
      # uses: harrylwc/debugger-action@master
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@main
+   # - name: SSH connection to Actions
+    #  uses: P3TERX/ssh2actions@main
       
     #- name: SSH connection to Actions
      # uses: csexton/debugger-action/debugger-action@master
