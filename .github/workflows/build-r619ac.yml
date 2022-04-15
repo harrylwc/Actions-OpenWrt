@@ -149,7 +149,7 @@ jobs:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
         
-    - name: SSH connection to Actions
+    - name: SSH connection for upload firmware
       uses: harrylwc/debugger-action@master
       #uses: csexton/debugger-action@master
     #- name: Start SSH via tmate
