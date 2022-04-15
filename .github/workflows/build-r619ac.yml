@@ -67,7 +67,11 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         git clone --depth 1 $REPO_URL1 -b $REPO_BRANCH lede
         ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
-        
+    
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v3
+      timeout-minutes: 250
+    
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
