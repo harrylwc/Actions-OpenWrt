@@ -132,8 +132,8 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        #make -j$(nproc) || make -j1 || make -j1 V=s
-        make V=s -i
+        make -j$(nproc) V=s|| make -j1 || make -j1 V=s
+        #make V=s -i
         echo "::set-output name=status::success"
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "::addPath name=DEVICE_NAME::_$(cat DEVICE_NAME)"
@@ -169,9 +169,8 @@ jobs:
       run: |
         cd openwrt  
         mkdir bin/drivers && cp `find build_dir/target*/linux*/linux-*/ -name *.ko` bin/drivers/      
-       # cd bin/targets/*/*
-       # rm -rf packages
-
+        #cd bin/targets/*/*
+        #rm -rf packages
         echo "::addPath name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
   
