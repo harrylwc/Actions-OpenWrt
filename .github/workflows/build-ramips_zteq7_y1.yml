@@ -166,8 +166,8 @@ jobs:
       run: |
         cd openwrt  
         mkdir bin/drivers && cp `find build_dir/target*/linux*/linux-*/ -name *.ko` bin/drivers/      
-        cd bin/targets/*/*
-        rm -rf packages
+        #cd bin/targets/*/*
+        #rm -rf packages
         echo "::addPath name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
 
