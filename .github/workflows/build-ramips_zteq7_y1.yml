@@ -69,6 +69,7 @@ jobs:
         ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
         cd openwrt/package && git clone https://github.com/harrylwc/openwrt-dvb
         
+        
     - name: Load custom feeds
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
@@ -128,7 +129,7 @@ jobs:
         cd openwrt
         echo -e "$(nproc) thread compile"
         #make -j$(nproc) || make -j1 || make -j1 V=s
-        make V=s 
+        make V=s -i
         echo "::set-output name=status::success"
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "::set-env name=DEVICE_NAME::_$(cat DEVICE_NAME)"
@@ -145,11 +146,11 @@ jobs:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
         
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@main        
     #- name: SSH connection to Actions
      # uses: harrylwc/debugger-action@master
       #uses: csexton/debugger-action@master
-    #- name: SSH connection to Actions
-     # uses: P3TERX/ssh2actions@main
     
     #- name: Setup tmate session
      # uses: mxschmitt/action-tmate@v3
