@@ -92,13 +92,14 @@ jobs:
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
+          [ -e dvb_driver.txt ] && cat dvb_driver.txt>> openwrt/target/linux/ramips/mt7620/config-5.10
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
-    #- name: SSH connection to Actions
-     # uses: P3TERX/ssh2actions@main
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@main
      # timeout-minutes: 250
     #- name: SSH connection to Actions
      # uses: harrylwc/debugger-action@master
