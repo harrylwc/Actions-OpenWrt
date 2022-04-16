@@ -96,8 +96,8 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@main
+  #  - name: SSH connection to Actions
+    #  uses: P3TERX/ssh2actions@main
    # - name: Setup tmate session
     #  uses: mxschmitt/action-tmate@v3      
     #- name: SSH connection to Actions
@@ -169,8 +169,8 @@ jobs:
       run: |
         cd openwrt  
         mkdir bin/drivers && cp `find build_dir/target*/linux*/linux-*/ -name *.ko` bin/drivers/      
-        cd bin/targets/*/*
-        rm -rf packages
+       # cd bin/targets/*/*
+       # rm -rf packages
 
         echo "::addPath name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
