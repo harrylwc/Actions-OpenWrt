@@ -146,8 +146,8 @@ jobs:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: openwrt/bin
         
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@main        
+    #- name: SSH connection to Actions
+     # uses: P3TERX/ssh2actions@main        
     #- name: SSH connection to Actions
      # uses: harrylwc/debugger-action@master
       #uses: csexton/debugger-action@master
