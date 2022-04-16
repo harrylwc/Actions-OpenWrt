@@ -67,7 +67,7 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         git clone --depth 1 $REPO_URL1 -b $REPO_BRANCH lede
         ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
-        cd openwrt/package && git clone https://github.com/harrylwc/openwrt-dvb
+        #cd openwrt/package && git clone https://github.com/harrylwc/openwrt-dvb
  
     - name: Load custom feeds
       run: |
@@ -90,13 +90,14 @@ jobs:
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
+        [ -e dvb_driver.txt ] && cat dvb_driver.txt>> openwrt/target/linux/ipq40xx/config-5.10
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
-    #- name: SSH connection to Actions
-     # uses: P3TERX/ssh2actions@main
+    - name: SSH connection to Actions
+      uses: P3TERX/ssh2actions@main
    # - name: Setup tmate session
     #  uses: mxschmitt/action-tmate@v3      
     #- name: SSH connection to Actions
