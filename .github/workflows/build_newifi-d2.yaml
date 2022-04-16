@@ -102,8 +102,8 @@ jobs:
      # timeout-minutes: 250
     #- name: SSH connection to Actions
      # uses: harrylwc/debugger-action@master
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@main
+    #- name: SSH connection to Actions
+     # uses: P3TERX/ssh2actions@main
       
     #- name: SSH connection to Actions
      # uses: csexton/debugger-action/debugger-action@master
