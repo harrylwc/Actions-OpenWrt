@@ -2879,25 +2879,6 @@ CONFIG_ZABBIX_POSTGRESQL=y
 # end of Development
 
 #
-# DVB devices
-#
-
-#
-# Multistandard
-#
-# CONFIG_PACKAGE_tt-ct-4650-ci is not set
-# end of Multistandard
-
-#
-# Terrestrial (DVB-T/T2)
-#
-# CONFIG_PACKAGE_generic-as102 is not set
-# CONFIG_PACKAGE_generic-dib0700 is not set
-# CONFIG_PACKAGE_generic-it9135 is not set
-# end of Terrestrial (DVB-T/T2)
-# end of DVB devices
-
-#
 # Extra packages
 #
 # CONFIG_PACKAGE_automount is not set
@@ -2923,7 +2904,6 @@ CONFIG_PACKAGE_nginx-util=m
 # CONFIG_PACKAGE_aircard-pcmcia-firmware is not set
 # CONFIG_PACKAGE_amdgpu-firmware is not set
 # CONFIG_PACKAGE_ar3k-firmware is not set
-# CONFIG_PACKAGE_as102-firmware is not set
 # CONFIG_PACKAGE_ath10k-board-qca4019 is not set
 # CONFIG_PACKAGE_ath10k-board-qca9377 is not set
 # CONFIG_PACKAGE_ath10k-board-qca9887 is not set
@@ -2972,7 +2952,6 @@ CONFIG_PACKAGE_nginx-util=m
 # CONFIG_PACKAGE_brcmfmac-firmware-usb is not set
 # CONFIG_PACKAGE_brcmsmac-firmware is not set
 # CONFIG_PACKAGE_carl9170-firmware is not set
-# CONFIG_PACKAGE_cx24120-firmware is not set
 # CONFIG_PACKAGE_cypress-firmware-43012-sdio is not set
 # CONFIG_PACKAGE_cypress-firmware-43340-sdio is not set
 # CONFIG_PACKAGE_cypress-firmware-43362-sdio is not set
@@ -2986,8 +2965,6 @@ CONFIG_PACKAGE_nginx-util=m
 # CONFIG_PACKAGE_cypress-firmware-4373-sdio is not set
 # CONFIG_PACKAGE_cypress-firmware-4373-usb is not set
 # CONFIG_PACKAGE_cypress-firmware-54591-pcie is not set
-# CONFIG_PACKAGE_dib0700-firmware is not set
-# CONFIG_PACKAGE_drxd-firmware is not set
 # CONFIG_PACKAGE_e100-firmware is not set
 # CONFIG_PACKAGE_edgeport-firmware is not set
 # CONFIG_PACKAGE_eip197-mini-firmware is not set
@@ -3021,13 +2998,11 @@ CONFIG_PACKAGE_nginx-util=m
 # CONFIG_PACKAGE_libertas-sdio-firmware is not set
 # CONFIG_PACKAGE_libertas-spi-firmware is not set
 # CONFIG_PACKAGE_libertas-usb-firmware is not set
-# CONFIG_PACKAGE_m88ds3103-firmware is not set
 # CONFIG_PACKAGE_mt7601u-firmware is not set
 # CONFIG_PACKAGE_mt7622bt-firmware is not set
 # CONFIG_PACKAGE_mwifiex-pcie-firmware is not set
 # CONFIG_PACKAGE_mwifiex-sdio-firmware is not set
 # CONFIG_PACKAGE_mwl8k-firmware is not set
-# CONFIG_PACKAGE_ngene-firmware is not set
 # CONFIG_PACKAGE_p54-pci-firmware is not set
 # CONFIG_PACKAGE_p54-spi-firmware is not set
 # CONFIG_PACKAGE_p54-usb-firmware is not set
@@ -3052,8 +3027,6 @@ CONFIG_PACKAGE_rtl8192cu-firmware=m
 # CONFIG_PACKAGE_rtl8821ae-firmware is not set
 # CONFIG_PACKAGE_rtl8822be-firmware is not set
 # CONFIG_PACKAGE_rtl8822ce-firmware is not set
-# CONFIG_PACKAGE_si2158-firmware is not set
-# CONFIG_PACKAGE_si2168-firmware is not set
 # CONFIG_PACKAGE_ti-3410-firmware is not set
 # CONFIG_PACKAGE_ti-5052-firmware is not set
 # CONFIG_PACKAGE_wil6210-firmware is not set
@@ -3188,213 +3161,6 @@ CONFIG_PACKAGE_kmod-crypto-sha512=y
 # CONFIG_PACKAGE_kmod-crypto-xts is not set
 # CONFIG_PACKAGE_kmod-cryptodev is not set
 # end of Cryptographic API modules
-
-#
-# DVB Drivers
-#
-# CONFIG_PACKAGE_kmod-airspy is not set
-# CONFIG_PACKAGE_kmod-b2c2-flexcop is not set
-# CONFIG_PACKAGE_kmod-b2c2-flexcop-pci is not set
-# CONFIG_PACKAGE_kmod-b2c2-flexcop-usb is not set
-# CONFIG_PACKAGE_kmod-budget is not set
-# CONFIG_PACKAGE_kmod-budget-av is not set
-# CONFIG_PACKAGE_kmod-budget-ci is not set
-# CONFIG_PACKAGE_kmod-budget-core is not set
-# CONFIG_PACKAGE_kmod-budget-patch is not set
-# CONFIG_PACKAGE_kmod-cx18 is not set
-# CONFIG_PACKAGE_kmod-cx2341x is not set
-# CONFIG_PACKAGE_kmod-cx23885 is not set
-# CONFIG_PACKAGE_kmod-cx25821 is not set
-# CONFIG_PACKAGE_kmod-cypress-firmware is not set
-# CONFIG_PACKAGE_kmod-ddbridge is not set
-# CONFIG_PACKAGE_kmod-dvb-a8293 is not set
-# CONFIG_PACKAGE_kmod-dvb-af9013 is not set
-# CONFIG_PACKAGE_kmod-dvb-af9033 is not set
-# CONFIG_PACKAGE_kmod-dvb-as102 is not set
-# CONFIG_PACKAGE_kmod-dvb-as102-fe is not set
-# CONFIG_PACKAGE_kmod-dvb-ascot2e is not set
-CONFIG_PACKAGE_kmod-dvb-atbm8830=m
-# CONFIG_PACKAGE_kmod-dvb-au8522-common is not set
-# CONFIG_PACKAGE_kmod-dvb-au8522-decoder is not set
-# CONFIG_PACKAGE_kmod-dvb-au8522-dig is not set
-# CONFIG_PACKAGE_kmod-dvb-bcm3510 is not set
-CONFIG_PACKAGE_kmod-dvb-core=m
-# CONFIG_PACKAGE_kmod-dvb-cx22700 is not set
-# CONFIG_PACKAGE_kmod-dvb-cx22702 is not set
-# CONFIG_PACKAGE_kmod-dvb-cx24110 is not set
-# CONFIG_PACKAGE_kmod-dvb-cx24113 is not set
-# CONFIG_PACKAGE_kmod-dvb-cx24116 is not set
-# CONFIG_PACKAGE_kmod-dvb-cx24117 is not set
-# CONFIG_PACKAGE_kmod-dvb-cx24120 is not set
-# CONFIG_PACKAGE_kmod-dvb-cx24123 is not set
-# CONFIG_PACKAGE_kmod-dvb-cxd2099 is not set
-# CONFIG_PACKAGE_kmod-dvb-cxd2820r is not set
-# CONFIG_PACKAGE_kmod-dvb-cxd2841er is not set
-# CONFIG_PACKAGE_kmod-dvb-cxd2880 is not set
-CONFIG_PACKAGE_kmod-dvb-dib0070=m
-CONFIG_PACKAGE_kmod-dvb-dib0090=m
-# CONFIG_PACKAGE_kmod-dvb-dib3000mb is not set
-CONFIG_PACKAGE_kmod-dvb-dib3000mc=m
-CONFIG_PACKAGE_kmod-dvb-dib7000m=m
-CONFIG_PACKAGE_kmod-dvb-dib7000p=m
-# CONFIG_PACKAGE_kmod-dvb-dib8000 is not set
-CONFIG_PACKAGE_kmod-dvb-dib9000=m
-CONFIG_PACKAGE_kmod-dvb-dibx000-common=m
-# CONFIG_PACKAGE_kmod-dvb-drx39xyj is not set
-# CONFIG_PACKAGE_kmod-dvb-drxd is not set
-# CONFIG_PACKAGE_kmod-dvb-drxk is not set
-# CONFIG_PACKAGE_kmod-dvb-ds3000 is not set
-# CONFIG_PACKAGE_kmod-dvb-ec100 is not set
-# CONFIG_PACKAGE_kmod-dvb-gp8psk-fe is not set
-# CONFIG_PACKAGE_kmod-dvb-helene is not set
-# CONFIG_PACKAGE_kmod-dvb-horus3a is not set
-# CONFIG_PACKAGE_kmod-dvb-isl6405 is not set
-# CONFIG_PACKAGE_kmod-dvb-isl6421 is not set
-# CONFIG_PACKAGE_kmod-dvb-isl6423 is not set
-# CONFIG_PACKAGE_kmod-dvb-itd1000 is not set
-# CONFIG_PACKAGE_kmod-dvb-ix2505v is not set
-# CONFIG_PACKAGE_kmod-dvb-l64781 is not set
-# CONFIG_PACKAGE_kmod-dvb-lg2160 is not set
-# CONFIG_PACKAGE_kmod-dvb-lgdt3305 is not set
-# CONFIG_PACKAGE_kmod-dvb-lgdt3306a is not set
-# CONFIG_PACKAGE_kmod-dvb-lgdt330x is not set
-CONFIG_PACKAGE_kmod-dvb-lgs8gl5=m
-CONFIG_PACKAGE_kmod-dvb-lgs8gxx=m
-# CONFIG_PACKAGE_kmod-dvb-lnbh25 is not set
-# CONFIG_PACKAGE_kmod-dvb-lnbp21 is not set
-# CONFIG_PACKAGE_kmod-dvb-lnbp22 is not set
-# CONFIG_PACKAGE_kmod-dvb-m88ds3103 is not set
-# CONFIG_PACKAGE_kmod-dvb-m88rs2000 is not set
-# CONFIG_PACKAGE_kmod-dvb-mb86a16 is not set
-# CONFIG_PACKAGE_kmod-dvb-mb86a20s is not set
-# CONFIG_PACKAGE_kmod-dvb-mn88443x is not set
-# CONFIG_PACKAGE_kmod-dvb-mn88472 is not set
-# CONFIG_PACKAGE_kmod-dvb-mn88473 is not set
-# CONFIG_PACKAGE_kmod-dvb-mt312 is not set
-# CONFIG_PACKAGE_kmod-dvb-mt352 is not set
-CONFIG_PACKAGE_kmod-dvb-mxl5xx=m
-# CONFIG_PACKAGE_kmod-dvb-nxt200x is not set
-# CONFIG_PACKAGE_kmod-dvb-nxt6000 is not set
-# CONFIG_PACKAGE_kmod-dvb-or51132 is not set
-# CONFIG_PACKAGE_kmod-dvb-or51211 is not set
-# CONFIG_PACKAGE_kmod-dvb-pll is not set
-# CONFIG_PACKAGE_kmod-dvb-rtl2830 is not set
-# CONFIG_PACKAGE_kmod-dvb-rtl2832 is not set
-# CONFIG_PACKAGE_kmod-dvb-rtl2832-sdr is not set
-# CONFIG_PACKAGE_kmod-dvb-s5h1409 is not set
-# CONFIG_PACKAGE_kmod-dvb-s5h1411 is not set
-# CONFIG_PACKAGE_kmod-dvb-s5h1420 is not set
-# CONFIG_PACKAGE_kmod-dvb-s5h1432 is not set
-# CONFIG_PACKAGE_kmod-dvb-s921 is not set
-# CONFIG_PACKAGE_kmod-dvb-si2165 is not set
-# CONFIG_PACKAGE_kmod-dvb-si2168 is not set
-# CONFIG_PACKAGE_kmod-dvb-si21xx is not set
-# CONFIG_PACKAGE_kmod-dvb-sp2 is not set
-# CONFIG_PACKAGE_kmod-dvb-sp8870 is not set
-# CONFIG_PACKAGE_kmod-dvb-sp887x is not set
-# CONFIG_PACKAGE_kmod-dvb-stb0899 is not set
-# CONFIG_PACKAGE_kmod-dvb-stb6000 is not set
-# CONFIG_PACKAGE_kmod-dvb-stb6100 is not set
-# CONFIG_PACKAGE_kmod-dvb-stv0288 is not set
-# CONFIG_PACKAGE_kmod-dvb-stv0297 is not set
-# CONFIG_PACKAGE_kmod-dvb-stv0299 is not set
-# CONFIG_PACKAGE_kmod-dvb-stv0367 is not set
-# CONFIG_PACKAGE_kmod-dvb-stv0900 is not set
-# CONFIG_PACKAGE_kmod-dvb-stv090x is not set
-# CONFIG_PACKAGE_kmod-dvb-stv0910 is not set
-# CONFIG_PACKAGE_kmod-dvb-stv6110 is not set
-# CONFIG_PACKAGE_kmod-dvb-stv6110x is not set
-# CONFIG_PACKAGE_kmod-dvb-stv6111 is not set
-# CONFIG_PACKAGE_kmod-dvb-tc90522 is not set
-# CONFIG_PACKAGE_kmod-dvb-tda10021 is not set
-# CONFIG_PACKAGE_kmod-dvb-tda10023 is not set
-# CONFIG_PACKAGE_kmod-dvb-tda10048 is not set
-# CONFIG_PACKAGE_kmod-dvb-tda1004x is not set
-# CONFIG_PACKAGE_kmod-dvb-tda10071 is not set
-# CONFIG_PACKAGE_kmod-dvb-tda10086 is not set
-# CONFIG_PACKAGE_kmod-dvb-tda18271c2dd is not set
-# CONFIG_PACKAGE_kmod-dvb-tda665x is not set
-# CONFIG_PACKAGE_kmod-dvb-tda8083 is not set
-# CONFIG_PACKAGE_kmod-dvb-tda8261 is not set
-# CONFIG_PACKAGE_kmod-dvb-tda826x is not set
-# CONFIG_PACKAGE_kmod-dvb-ts2020 is not set
-# CONFIG_PACKAGE_kmod-dvb-ttpci is not set
-# CONFIG_PACKAGE_kmod-dvb-ttusb-budget is not set
-# CONFIG_PACKAGE_kmod-dvb-tua6100 is not set
-CONFIG_PACKAGE_kmod-dvb-usb=m
-# CONFIG_PACKAGE_kmod-dvb-usb-a800 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-af9005 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-af9015 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-af9035 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-anysee is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-au6610 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-az6007 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-az6027 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-ce6230 is not set
-CONFIG_PACKAGE_kmod-dvb-usb-cxusb=m
-CONFIG_PACKAGE_kmod-dvb-usb-dib0700=m
-# CONFIG_PACKAGE_kmod-dvb-usb-dibusb-common is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-dibusb-mb is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-dibusb-mc is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-dibusb-mc-common is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-digitv is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-dtt200u is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-dtv5100 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-dvbsky is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-dw2102 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-ec168 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-gl861 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-gp8psk is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-lmedm04 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-m920x is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-mxl111sf is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-nova-t-usb2 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-opera is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-pctv452e is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-rtl28xxu is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-technisat-usb2 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-ttusb2 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-umt-010 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-v2 is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-vp702x is not set
-# CONFIG_PACKAGE_kmod-dvb-usb-vp7045 is not set
-# CONFIG_PACKAGE_kmod-dvb-ves1820 is not set
-# CONFIG_PACKAGE_kmod-dvb-ves1x93 is not set
-# CONFIG_PACKAGE_kmod-dvb-zd1301-demod is not set
-# CONFIG_PACKAGE_kmod-dvb-zl10036 is not set
-# CONFIG_PACKAGE_kmod-dvb-zl10039 is not set
-# CONFIG_PACKAGE_kmod-dvb-zl10353 is not set
-# CONFIG_PACKAGE_kmod-em28xx-dvb is not set
-# CONFIG_PACKAGE_kmod-firedtv is not set
-# CONFIG_PACKAGE_kmod-hackrf is not set
-# CONFIG_PACKAGE_kmod-mantis is not set
-# CONFIG_PACKAGE_kmod-msi2500 is not set
-# CONFIG_PACKAGE_kmod-netup-unidvb is not set
-# CONFIG_PACKAGE_kmod-ngene is not set
-# CONFIG_PACKAGE_kmod-pluto2 is not set
-CONFIG_PACKAGE_kmod-rc-core=m
-# CONFIG_PACKAGE_kmod-saa7134-dvb is not set
-# CONFIG_PACKAGE_kmod-saa7146 is not set
-# CONFIG_PACKAGE_kmod-saa7146-vv is not set
-# CONFIG_PACKAGE_kmod-saa7164 is not set
-# CONFIG_PACKAGE_kmod-smipcie is not set
-# CONFIG_PACKAGE_kmod-smsmdtv is not set
-# CONFIG_PACKAGE_kmod-smsusb is not set
-# CONFIG_PACKAGE_kmod-tm6000-dvb is not set
-# CONFIG_PACKAGE_kmod-ttpci-eeprom is not set
-# CONFIG_PACKAGE_kmod-ttusb-dec is not set
-# CONFIG_PACKAGE_kmod-tveeprom is not set
-# CONFIG_PACKAGE_kmod-videobuf is not set
-CONFIG_PACKAGE_kmod-videobuf2-common=m
-# CONFIG_PACKAGE_kmod-videobuf2-dma-sg is not set
-# CONFIG_PACKAGE_kmod-videobuf2-dvb is not set
-CONFIG_PACKAGE_kmod-videobuf2-memops=m
-CONFIG_PACKAGE_kmod-videobuf2-v4l2=m
-CONFIG_PACKAGE_kmod-videobuf2-vmalloc=m
-CONFIG_PACKAGE_kmod-videodev=m
-# CONFIG_PACKAGE_kmod-vtunerc is not set
-# CONFIG_PACKAGE_kmod-zd1301 is not set
-# end of DVB Drivers
 
 #
 # Filesystems
@@ -3597,48 +3363,6 @@ CONFIG_PACKAGE_kmod-lib-zlib-inflate=m
 CONFIG_PACKAGE_kmod-lib-zstd=m
 CONFIG_PACKAGE_kmod-oid-registry=y
 # end of Libraries
-
-#
-# Media tuners
-#
-# CONFIG_PACKAGE_kmod-media-tuner-e4000 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-fc0011 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-fc0012 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-fc0013 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-fc2580 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-it913x is not set
-# CONFIG_PACKAGE_kmod-media-tuner-m88rs6000t is not set
-CONFIG_PACKAGE_kmod-media-tuner-max2165=m
-# CONFIG_PACKAGE_kmod-media-tuner-mc44s803 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-msi001 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-mt2060 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-mt2063 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-mt20xx is not set
-# CONFIG_PACKAGE_kmod-media-tuner-mt2131 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-mt2266 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-mxl301rf is not set
-CONFIG_PACKAGE_kmod-media-tuner-mxl5005s=m
-# CONFIG_PACKAGE_kmod-media-tuner-mxl5007t is not set
-# CONFIG_PACKAGE_kmod-media-tuner-qm1d1b0004 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-qm1d1c0042 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-qt1010 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-r820t is not set
-# CONFIG_PACKAGE_kmod-media-tuner-si2157 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-simple is not set
-# CONFIG_PACKAGE_kmod-media-tuner-tda18212 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-tda18218 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-tda18250 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-tda18271 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-tda827x is not set
-# CONFIG_PACKAGE_kmod-media-tuner-tda8290 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-tda9887 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-tea5761 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-tea5767 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-tua9001 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-xc2028 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-xc4000 is not set
-# CONFIG_PACKAGE_kmod-media-tuner-xc5000 is not set
-# end of Media tuners
 
 #
 # Multiplexer Support
@@ -3919,7 +3643,6 @@ CONFIG_PACKAGE_kmod-veth=m
 # CONFIG_PACKAGE_kmod-bluetooth-6lowpan is not set
 # CONFIG_PACKAGE_kmod-btmrvl is not set
 # CONFIG_PACKAGE_kmod-button-hotplug is not set
-CONFIG_PACKAGE_kmod-dma-buf=m
 # CONFIG_PACKAGE_kmod-dma-ralink is not set
 # CONFIG_PACKAGE_kmod-echo is not set
 CONFIG_PACKAGE_kmod-eeprom-93cx6=m
@@ -4234,10 +3957,6 @@ CONFIG_PACKAGE_kmod-rtlwifi-usb=m
 # CONFIG_PACKAGE_kmod-wlcore is not set
 # CONFIG_PACKAGE_kmod-zd1211rw is not set
 # end of Wireless Drivers
-
-CONFIG_PACKAGE_kmod-mc=y
-# CONFIG_V4L_SRC_TBSDTV is not set
-CONFIG_V4L_SRC_LINUXTV=y
 # end of Kernel modules
 
 #
@@ -5611,6 +5330,7 @@ CONFIG_PACKAGE_libdevmapper=m
 # CONFIG_PACKAGE_libdmapsharing is not set
 # CONFIG_PACKAGE_libdnet is not set
 # CONFIG_PACKAGE_libdrm is not set
+# CONFIG_PACKAGE_libdvbcsa is not set
 # CONFIG_PACKAGE_libdw is not set
 # CONFIG_PACKAGE_libecdsautil is not set
 # CONFIG_PACKAGE_libedit is not set
@@ -6145,6 +5865,7 @@ CONFIG_PACKAGE_luci-theme-openwrt-2020=m
 # 5. Protocols
 #
 # CONFIG_PACKAGE_luci-proto-3g is not set
+# CONFIG_PACKAGE_luci-proto-batman-adv is not set
 # CONFIG_PACKAGE_luci-proto-bonding is not set
 # CONFIG_PACKAGE_luci-proto-gre is not set
 # CONFIG_PACKAGE_luci-proto-hnet is not set
@@ -6820,8 +6541,10 @@ CONFIG_PACKAGE_luci-i18n-wol-zh-tw=m
 # CONFIG_PACKAGE_imagemagick is not set
 # CONFIG_PACKAGE_lcdgrilo is not set
 # CONFIG_PACKAGE_minidlna is not set
+# CONFIG_PACKAGE_minisatip is not set
 # CONFIG_PACKAGE_mjpg-streamer is not set
 # CONFIG_PACKAGE_motion is not set
+# CONFIG_PACKAGE_tvheadend is not set
 # CONFIG_PACKAGE_v4l2rtspserver is not set
 # CONFIG_PACKAGE_v4l2tools is not set
 # CONFIG_PACKAGE_vips is not set
@@ -7552,6 +7275,9 @@ CONFIG_PACKAGE_nginx-ssl-util=m
 # CONFIG_PACKAGE_shadowsocks-libev-ss-redir is not set
 # CONFIG_PACKAGE_shadowsocks-libev-ss-server is not set
 # CONFIG_PACKAGE_shadowsocks-libev-ss-tunnel is not set
+# CONFIG_PACKAGE_shadowsocksr-libev is not set
+CONFIG_PACKAGE_shadowsocksr-libev-alt=m
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-local is not set
 # CONFIG_PACKAGE_sockd is not set
 # CONFIG_PACKAGE_socksify is not set
 # CONFIG_PACKAGE_spawn-fcgi is not set
@@ -7740,7 +7466,6 @@ CONFIG_PACKAGE_libipset=m
 # CONFIG_PACKAGE_mbusd is not set
 # CONFIG_PACKAGE_mdns-repeater is not set
 # CONFIG_PACKAGE_memcached is not set
-# CONFIG_PACKAGE_mentohust is not set
 # CONFIG_PACKAGE_mii-tool is not set
 # CONFIG_PACKAGE_mikrotik-btest is not set
 # CONFIG_PACKAGE_mini_snmpd is not set
@@ -7784,7 +7509,6 @@ CONFIG_PACKAGE_odhcpd_full_ext_cer_id=0
 # CONFIG_PACKAGE_onionshare-cli is not set
 # CONFIG_PACKAGE_ooniprobe is not set
 # CONFIG_PACKAGE_open-iscsi is not set
-# CONFIG_PACKAGE_oscam is not set
 # CONFIG_PACKAGE_oping is not set
 # CONFIG_PACKAGE_ostiary is not set
 # CONFIG_PACKAGE_pagekitec is not set
@@ -7834,6 +7558,7 @@ CONFIG_SAMBA4_SERVER_VFS=y
 # CONFIG_PACKAGE_scapy is not set
 # CONFIG_PACKAGE_sctp-tools is not set
 # CONFIG_PACKAGE_ser2net is not set
+CONFIG_PACKAGE_shellinabox=m
 # CONFIG_PACKAGE_simple-adblock is not set
 # CONFIG_PACKAGE_slirp4netns is not set
 # CONFIG_PACKAGE_smartdns is not set
@@ -8290,6 +8015,7 @@ CONFIG_PACKAGE_zoneinfo-core=m
 # CONFIG_PACKAGE_bc is not set
 # CONFIG_PACKAGE_bluelog is not set
 # CONFIG_PACKAGE_bluez-daemon is not set
+# CONFIG_PACKAGE_bluez-tools is not set
 # CONFIG_PACKAGE_bluez-utils is not set
 # CONFIG_PACKAGE_bluez-utils-extra is not set
 # CONFIG_PACKAGE_bluld is not set
@@ -8768,6 +8494,7 @@ CONFIG_PACKAGE_luci-app-macvlan=m
 #
 # CONFIG_PACKAGE_kmod-rproxy is not set
 # CONFIG_PACKAGE_luci-app-mentohust is not set
+# CONFIG_PACKAGE_mentohust is not set
 # CONFIG_PACKAGE_mentohust-proxy is not set
 # end of Mentohust
 
@@ -8847,3 +8574,5 @@ CONFIG_PACKAGE_luci-app-xwan=m
 # CONFIG_PACKAGE_fontconfig is not set
 # end of Font-Utils
 # end of Xorg
+
+CONFIG_OVERRIDE_PKGS="csstidy mentohust"
