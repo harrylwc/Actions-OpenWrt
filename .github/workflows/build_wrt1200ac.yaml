@@ -91,7 +91,7 @@ jobs:
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
-        [ -e dvb_driver.txt ] && cat dvb_driver.txt>> openwrt/target/linux/arm/config-5.10       
+        [ -e dvb_driver.txt ] && cat dvb_driver.txt>> openwrt/target/linux/mvebu/config-5.10       
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
