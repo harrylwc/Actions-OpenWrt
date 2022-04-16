@@ -32,7 +32,7 @@ env:
   DIY_P2_SH: diy-part2.sh
   SSH_ACTIONS: true
   UPLOAD_BIN_DIR: true
-  UPLOAD_FIRMWARE: true
+q  UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
@@ -97,8 +97,8 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@main
+  #  - name: SSH connection to Actions
+   #   uses: P3TERX/ssh2actions@main
     #- name: Setup tmate session
      # uses: mxschmitt/action-tmate@v3
      # timeout-minutes: 250
@@ -166,8 +166,11 @@ jobs:
       run: |
         cd openwrt  
         mkdir bin/drivers && cp `find build_dir/target*/linux*/linux-*/ -name *.ko` bin/drivers/      
-        cd bin/targets/*/*
-        rm -rf packages
+     # cd openwrt/bin/targets/*/*
+        #rm -rf packages
+        echo "::addPath name=FIRMWARE::$PWD"
+        echo "::set-output name=status::success"   cd bin/targets/*/*
+       # rm -rf packages
         echo "::addPath name=FIRMWARE::$PWD"
         echo "::set-output name=status::success"
   
