@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 #
-name: Build OPENWRT 21.02 Branches ramips zteq7 coowifi firmware
+name: Build OPENWRT master Branches ramips zteq7 coowifi firmware
 
 on:
   repository_dispatch:
@@ -26,14 +26,14 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt.git
   REPO_URL1: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: openwrt-21.02
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config.ramips
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   SSH_ACTIONS: true
   UPLOAD_BIN_DIR: true
-  UPLOAD_FIRMWARE: true
+  UPLOAD_FIRMWARE: false
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
@@ -136,6 +136,9 @@ jobs:
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "::addPath name=DEVICE_NAME::_$(cat DEVICE_NAME)"
         echo "::addPath name=FILE_DATE::_$(date +"%Y%m%d%H%M")"
+        cd openwrt
+        mkdir bin/drivers && cp -f `find build_dir/target*/linux*/linux-*/ -name *.ko` bin/drivers/
+ 
     - name: SSH connection for failure Debug
       if: ${{ failure() }}
       uses: P3TERX/ssh2actions@main
