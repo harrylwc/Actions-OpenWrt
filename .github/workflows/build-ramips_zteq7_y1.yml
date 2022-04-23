@@ -168,7 +168,7 @@ jobs:
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
         cd openwrt  
-        mkdir bin/drivers && cp `find build_dir/target*/linux*/linux-*/ -name *.ko` bin/drivers/      
+        mkdir bin/drivers && cp -f `find build_dir/target*/linux*/linux-*/ -name *.ko` bin/drivers/      
         #cd bin/targets/*/*
         #rm -rf packages
         echo "::addPath name=FIRMWARE::$PWD"
