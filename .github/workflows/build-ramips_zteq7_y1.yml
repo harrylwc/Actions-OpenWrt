@@ -24,9 +24,9 @@ on:
     types: started
 
 env:
-  REPO_URL: https://github.com/x-wrt/x-wrt
+  REPO_URL: https://github.com/openwrt/openwrt
   REPO_URL1: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_BRANCH: 21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config.ramips
   DIY_P1_SH: diy-part1.sh
@@ -78,11 +78,8 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
       
-    - name: Update feeds coolsnowwolf
-      run: cd lede && ./scripts/feeds update -a
-
-    - name: Install feeds coolsnowwolf
-      run: cd lede && ./scripts/feeds install -a
+   # - name: Update feeds coolsnowwolf
+  #    run: cd lede && ./scripts/feeds update
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -93,13 +90,14 @@ jobs:
     - name: Load custom configuration
       run: |
         [ -e files ] && mv files openwrt/files
-        [ -e dvb_driver.txt ] && cat dvb_driver.txt>> openwrt/target/linux/ramips/mt7620/config-5.10
+        # [ -e dvb_driver.txt ] && cat dvb_driver.txt>> openwrt/target/linux/ramips/mt7620/config-5.10
         [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
     
-    - name: SSH connection to Actions
+    - name: SSH connection for failure Debug
+      if: ${{ failure() }}
       uses: P3TERX/ssh2actions@main
      # timeout-minutes: 250
     #- name: SSH connection to Actions
@@ -130,13 +128,15 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) V=s -i|| make -j1 || make -j1 V=s
+        make -j$(nproc) V=s || make -j1 || make -j1 V=s
         #make V=s -i
         echo "::set-output name=status::success"
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "::addPath name=DEVICE_NAME::_$(cat DEVICE_NAME)"
         echo "::addPath name=FILE_DATE::_$(date +"%Y%m%d%H%M")"
-
+    - name: SSH connection for failure Debug
+      if: ${{ failure() }}
+      uses: P3TERX/ssh2actions@main
     - name: Check space usage
       if: (!cancelled()) 
       run: df -hT
