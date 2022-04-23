@@ -17,4 +17,4 @@ cd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package && git clon
 cp -r /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/shadowsocksr-libev /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package 
 cp -r /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/shellinabox /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package 
 #ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/package/lean /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/
-cd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package && ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/package/lean .
+#cd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package && ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/package/lean .
