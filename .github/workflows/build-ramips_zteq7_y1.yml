@@ -137,7 +137,7 @@ jobs:
         [ -s DEVICE_NAME ] && echo "::addPath name=DEVICE_NAME::_$(cat DEVICE_NAME)"
         echo "::addPath name=FILE_DATE::_$(date +"%Y%m%d%H%M")"
         
-        mkdir bin/drivers && cp -f `find build_dir/target*/linux*/linux-*/ -name *.ko` bin/drivers/
+        mkdir bin/drivers && cp -i -f `find build_dir/target*/linux*/linux-*/ -name *.ko` bin/drivers/
  
     - name: SSH connection for failure Debug
       if: ${{ failure() }}
