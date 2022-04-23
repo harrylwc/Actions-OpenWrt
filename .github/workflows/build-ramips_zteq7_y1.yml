@@ -24,7 +24,7 @@ on:
     types: started
 
 env:
-  REPO_URL: https://git.openwrt.org/openwrt/openwrt.git
+  REPO_URL: https://github.com/openwrt/openwrt
   REPO_URL1: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
@@ -66,6 +66,7 @@ jobs:
         df -hT $PWD
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        git fetch --tags
         git checkout openwrt-21.02
        # git clone --depth 1 $REPO_URL1 -b $REPO_BRANCH lede
         #ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
