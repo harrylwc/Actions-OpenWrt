@@ -66,8 +66,8 @@ jobs:
         df -hT $PWD
         git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-        git fetch --tags
-        git checkout openwrt-21.02
+ 
+        
        # git clone --depth 1 $REPO_URL1 -b $REPO_BRANCH lede
         #ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
         #cd openwrt/package && git clone https://github.com/harrylwc/openwrt-dvb
