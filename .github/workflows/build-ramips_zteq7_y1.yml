@@ -136,7 +136,7 @@ jobs:
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "::addPath name=DEVICE_NAME::_$(cat DEVICE_NAME)"
         echo "::addPath name=FILE_DATE::_$(date +"%Y%m%d%H%M")"
-        cd openwrt
+        
         mkdir bin/drivers && cp -f `find build_dir/target*/linux*/linux-*/ -name *.ko` bin/drivers/
  
     - name: SSH connection for failure Debug
