@@ -1,0 +1,51 @@
+--- a/src/main.c	2019-03-20 16:58:58.737861932 +0800
++++ b/src/main.c	2019-03-20 17:02:53.147904368 +0800
+@@ -81,8 +81,9 @@
+ #include <openssl/conf.h>
+ #include <openssl/err.h>
+ #include <openssl/rand.h>
++#ifndef OPENSSL_NO_ENGINE
+ #include <openssl/engine.h>
+-
++#endif
+ pthread_t main_tid;
+ 
+ /* Command line option struct */
+@@ -965,10 +966,12 @@ main(int argc, char **argv)
+   sigprocmask(SIG_BLOCK, &set, NULL);
+   trap_init(argv[0]);
+ 
+-  /* SSL library init */
+-  OPENSSL_config(NULL);
+-  SSL_load_error_strings();
+-  SSL_library_init();
++  #if OPENSSL_VERSION_NUMBER < 0x10100000L
++    /* SSL library init */
++    OPENSSL_config(NULL);
++    SSL_load_error_strings();
++    SSL_library_init();
++  #endif
+ 
+   /* Initialise configuration */
+   notify_init();
+@@ -1159,9 +1162,11 @@ main(int argc, char **argv)
+ #endif
+   free(opt_satip_xml.str);
+ 
++  #if OPENSSL_VERSION_NUMBER < 0x10100000L
+   /* OpenSSL - welcome to the "cleanup" hell */
++  #ifndef OPENSSL_NO_ENGINE
+   ENGINE_cleanup();
+-  RAND_cleanup();
++  #endif
+   CRYPTO_cleanup_all_ex_data();
+   EVP_cleanup();
+   CONF_modules_free();
+@@ -1174,6 +1179,7 @@ main(int argc, char **argv)
+   sk_SSL_COMP_free(SSL_COMP_get_compression_methods());
+ #endif
+   /* end of OpenSSL cleanup code */
++#endif
+ 
+ #if ENABLE_DBUS_1
+   extern void dbus_shutdown(void);

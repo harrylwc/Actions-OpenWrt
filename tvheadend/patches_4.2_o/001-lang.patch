@@ -1,0 +1,11 @@
+--- a/Makefile	2018-12-11 04:26:06.081720587 +0800
++++ b/Makefile	2018-12-11 04:29:17.665188751 +0800
+@@ -25,7 +25,7 @@
+ include $(dir $(lastword $(MAKEFILE_LIST))).config.mk
+ include $(dir $(lastword $(MAKEFILE_LIST)))Makefile.common
+ PROG      := $(BUILDDIR)/tvheadend
+-LANGUAGES ?= $(LANGUAGES_ALL)
++LANGUAGES ?= en_US zh
+ 
+ #
+ # Common compiler flags

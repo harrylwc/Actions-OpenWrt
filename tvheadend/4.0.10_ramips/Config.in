@@ -1,0 +1,30 @@
+config TVHEADEND_CWC_SUPPORT
+	bool "NewCamD support"
+	default n
+
+config TVHEADEND_V4L_SUPPORT
+	bool "Video4Linux v2 support"
+	default n
+
+config TVHEADEND_LINUXDVB_SUPPORT
+	bool "Linux DVB support"
+	default n
+
+config TVHEADEND_DVBSCAN_SUPPORT
+	bool "Fetch DVB-scan data"
+	depends on TVHEADEND_LINUXDVB_SUPPORT
+	default TVHEADEND_LINUXDVB_SUPPORT
+
+config TVHEADEND_AVAHI_SUPPORT
+	bool "Avahi client support"
+	select PACKAGE_libavahi-client
+	default n 
+config TVHEADEND_DVBCSA_SUPPORT
+       bool "Disable tvheadend buildin tvhcsa and Enable vlc dvbcsa"
+       default n
+config DISABLE_TVHCSA_DVBCSA_SUPPORT
+       bool "Disable both DVBCSA & TVHCSA support"
+       default n
+config DISABLE_TVHEADEND_FULL_SUPPORT
+        bool "Disable Tvheadend full support(cwc,capmt,satip,iptv,zlib,uriparser,ccache...)"
+        default n
