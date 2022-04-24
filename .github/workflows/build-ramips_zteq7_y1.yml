@@ -142,6 +142,13 @@ jobs:
     - name: SSH connection for failure Debug
       if: ${{ failure() }}
       uses: P3TERX/ssh2actions@main
+    
+    - name: Upload bin directory
+      uses: actions/upload-artifact@master
+      if:  failure() && env.UPLOAD_BIN_DIR == 'true'
+      with:
+        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        path: openwrt/bin
     - name: Check space usage
       if: (!cancelled()) 
       run: df -hT
