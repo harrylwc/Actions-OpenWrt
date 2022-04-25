@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 #
-name: Build OPENWRT Master Branches ramips zteq7 coowifi firmware
+name: Build OPENWRT kernel 5.15 Master Branches ramips zteq7 coowifi firmware
 
 on:
   repository_dispatch:
