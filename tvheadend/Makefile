@@ -38,10 +38,35 @@ define Package/tvheadend
   SECTION:=multimedia
   CATEGORY:=Multimedia
   TITLE:=Tvheadend is a TV streaming server for Linux
-  DEPENDS:=+libdvbcsa +libffmpeg +ffmpeg +libx264 +libpcre2 +libopenssl +librt +zlib +TVHEADEND_AVAHI_SUPPORT:libavahi-client $(ICONV_DEPENDS)
+  DEPENDS:=+libdvbcsa +libvpx +libvorbis +libtheora +libopusenc +fdk-aac +libffmpeg +ffmpeg +libx264 +libpcre2 +libopenssl +librt +zlib +TVHEADEND_AVAHI_SUPPORT:libavahi-client $(ICONV_DEPENDS)
   URL:=https://tvheadend.org
   MAINTAINER:=CZ.NIC <packaging@turris.cz>
 endef
+
+  #DEPENDS:= \
+	#+librt \
+	#3+libffi \
+	#+libopenssl \
+	#$(ICONV_DEPENDS) \
+	#+zlib \
+	#+TVHEADEND_AVAHI_SUPPORT:libavahi-client \
+	#+TVHEADEND_REGEX_PCRE:libpcre \
+	#+TVHEADEND_REGEX_PCRE2:libpcre2 \
+	#+BUILD_PATENTED&&TVHEADEND_CSA:libdvbcsa
+
+## Transcoding | Add these to DEPENDS.
+##	+TVHEADEND_LIBFFMPEG:libffmpeg-full \
+##	+TVHEADEND_LIBVPX:libvpx \
+##	+TVHEADEND_LIBTHEORA:libtheora \
+##	+TVHEADEND_LIBVORBIS:libvorbis \
+##	+TVHEADEND_LIBOPUS:libopusenc \
+##	+TVHEADEND_LIBFDKAAC:fdk-aac \
+##	+BUILD_PATENTED&&TVHEADEND_LIBX264:libx264 \
+
+
+
+
+
 
 define Package/tvheadend/description
   Tvheadend is a TV streaming server and recorder for Linux, FreeBSD and Android
@@ -106,8 +131,8 @@ CONFIGURE_ARGS += \
 	--enable-libx265_static \
 	--disable-execinfo
 
-TARGET_CFLAGS += -Wno-error=pointer-compare -ggdb3 -O0 
-#TARGET_CFLAGS += -Wall -Wformat=0
+#TARGET_CFLAGS += -Wno-error=pointer-compare -ggdb3 -O0
+TARGET_CFLAGS += -Wno-format-security 
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
