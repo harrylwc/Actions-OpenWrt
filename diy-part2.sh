@@ -17,7 +17,7 @@ rm -r feeds/packages/multimedia/ffmpeg
 tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/ffmpeg.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/feeds/packages/multimedia/
 cp -r /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/rtl8821cu /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package/
 cp -r /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/n2n /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package/
-sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Makefile
+#sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Makefile
 #mv /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package/rtl8821cu/patches/050-ioctl_kernel5.10.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package/rtl8821cu/
 #tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/rtl8821.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package/
 #rm -r /workdir/lede/package/lean/mt/drivers/
