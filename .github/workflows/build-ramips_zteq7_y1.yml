@@ -24,9 +24,10 @@ on:
     types: started
 
 env:
-  REPO_URL: https://github.com/openwrt/openwrt.git
+  REPO_URL: https://github.com/x-wrt/x-wrt
+  #https://github.com/openwrt/openwrt.git
   REPO_URL1: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  REPO_BRANCH: '21.10'
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config.ramips
   DIY_P1_SH: diy-part1.sh
