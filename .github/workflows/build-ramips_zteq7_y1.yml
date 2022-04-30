@@ -133,7 +133,7 @@ jobs:
         echo -e "$(nproc) thread compile"
         #make -j$(nproc) V=s
         #|| make -j1 || make -j1 V=s
-        make V=s -i
+        make V=s 
         echo "::set-output name=status::success"
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "::addPath name=DEVICE_NAME::_$(cat DEVICE_NAME)"
