@@ -69,7 +69,7 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
  
         
-        git clone --depth 1 $REPO_URL1 -b $REPO_BRANCH lede
+        git clone --depth 1 $REPO_URL1 lede
         ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
         #cd openwrt/package && git clone https://github.com/harrylwc/openwrt-dvb
         
