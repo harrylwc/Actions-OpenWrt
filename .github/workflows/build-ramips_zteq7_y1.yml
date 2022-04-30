@@ -69,8 +69,8 @@ jobs:
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
  
         
-       # git clone --depth 1 $REPO_URL1 -b $REPO_BRANCH lede
-        #ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
+        git clone --depth 1 $REPO_URL1 -b $REPO_BRANCH lede
+        ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
         #cd openwrt/package && git clone https://github.com/harrylwc/openwrt-dvb
         
         
@@ -81,8 +81,8 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
       
-   # - name: Update feeds coolsnowwolf
-  #    run: cd lede && ./scripts/feeds update
+    - name: Update feeds coolsnowwolf
+      run: cd lede && ./scripts/feeds update
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
