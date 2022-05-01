@@ -1,0 +1,11 @@
+--- a/include/n2n_typedefs.h    2022-05-01 01:21:36.000000000 +0800
++++ b/include/n2n_typedefs.h    2022-05-01 11:29:21.273211105 +0800
+@@ -25,6 +25,7 @@
+ #endif
+ #include <uthash.h>
+ #include <n2n_define.h>
++#include <sys/time.h>
+
+ typedef uint8_t  n2n_community_t[N2N_COMMUNITY_SIZE];
+ typedef uint8_t  n2n_private_public_key_t[N2N_PRIVATE_PUBLIC_KEY_SIZE];
+~                                                                                 
