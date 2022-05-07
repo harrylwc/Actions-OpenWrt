@@ -1,0 +1,11 @@
+--- a/src/tvheadend.h
++++ b/src/tvheadend.h
+@@ -335,7 +335,7 @@
+ #if __WORDSIZE == 32 && defined(PLATFORM_FREEBSD)
+ #define PRItime_t       "d"
+ #else
+-#define PRItime_t       "ld"
++#define PRItime_t       "lld"
+ #endif
+
+ /* transcoding */
