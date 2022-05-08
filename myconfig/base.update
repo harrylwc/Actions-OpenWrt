@@ -1,0 +1,9 @@
+#: modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js:73
+msgid "CORE"
+msgstr "核"
+
+msgid "Current Boot Part"
+msgstr "系統分區"
+
+msgid "Temperature"
+msgstr "溫度"
