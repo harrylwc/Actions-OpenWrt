@@ -222,7 +222,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-          path: /workdir/openwt/bin
+          path: /workdir/openwrt/bin
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         uses: P3TERX/ssh2actions@main
