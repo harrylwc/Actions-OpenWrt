@@ -75,11 +75,12 @@ jobs:
       - name: Update feeds & Load custom configuration
         run: |
 	  git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
-          ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+
+	  ln -sf /workdir/openwrt  $GITHUB_WORKSPACE/openwrt
           git clone --depth 1 $REPO_URL1 lede
           ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
  
-	  git clone https://github.com/jerrykuku/luci-theme-argon openwrt/package/luci-theme-argon
+	   git clone https://github.com/jerrykuku/luci-theme-argon openwrt/package/luci-theme-argon
           #git clone https://github.com/coolsnowwolf/lede ../lede
           #replace mac80211 to version 5.10-11-1
           #git clone --depth 1 https://github.com/openwrt/openwrt.git -b openwrt-21.02 ../openwrt
