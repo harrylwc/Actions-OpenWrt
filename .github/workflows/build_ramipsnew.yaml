@@ -73,10 +73,11 @@ jobs:
 
       
       - name: Update feeds & Load custom configuration
-        working-directory: /workdir
         run: |
-          df -hT $PWD
-          git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+          sudo mkdir -p /workdir
+          sudo chown $USER:$GROUPS /workdir
+	  df -hT $PWD
+	  git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt 
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
       
           git clone --depth 1 $REPO_URL1 lede
