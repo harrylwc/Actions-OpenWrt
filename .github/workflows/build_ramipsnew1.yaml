@@ -81,7 +81,7 @@ jobs:
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
           git clone --depth 1 $REPO_URL1 lede
           ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
-	        git clone https://github.com/jerrykuku/luci-theme-argon openwrt/package/luci-theme-argon
+	   git clone https://github.com/jerrykuku/luci-theme-argon openwrt/package/luci-theme-argon
 
           
           ln -s /workdir/lede/package/lean openwrt/package
