@@ -37,7 +37,12 @@ echo `ls -alt openwrt/.config`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`;ca
 [ $CPU_MULTI_CORE == true ] && cat myconfig/base.update >> openwrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po && cp $UPDATE_MULTI_CORE_FILE1 openwrt/feeds/luci/modules/luci-base/luasrc/sys.lua && cp $UPDATE_MULTI_CORE_FILE2 openwrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js && sed -i 's/processes.js:72/processes.js:74/g' openwrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po  && sed -i 's/processes.js:73/processes.js:75/g' openwrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po
 exit 0
 
+### apply patch##### 
 
+mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/openwrt/package/firmware/wireless-regdb/patches/
+cp $GITHUB_WORKSPACE/patches/*.patch $GITHUB_WORKSPACE/openwrt/
+cd $GITHUB_WORKSPACE/openwrt/
+git am *.patch
 
 #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Makefile
 #mv /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package/rtl8821cu/patches/050-ioctl_kernel5.10.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package/rtl8821cu/

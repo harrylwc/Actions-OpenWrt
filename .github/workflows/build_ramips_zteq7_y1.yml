@@ -84,9 +84,10 @@ jobs:
           ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
           git clone https://github.com/jerrykuku/luci-theme-argon openwrt/package/luci-theme-argon
           ln -s /workdir/lede/package/lean openwrt/package
+          rm -r openwrt/package/lean/n2n_v2 
           /workdir/lede/scripts/feeds update -a
           /workdir/openwrt/scripts/feeds update -a
-          /workdir/openwrt/scripts/feeds install -a -f
+          /workdir/openwrt/scripts/feeds install -f -a
           cd $GITHUB_WORKSPACE
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
