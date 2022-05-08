@@ -76,7 +76,7 @@ jobs:
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
           git clone https://github.com/coolsnowwolf/lede ../lede
           ln -s ../lede/package/lean package
-          ../lede/scripts/feeds update -a
+          ./lede/scripts/feeds update -a
           ./scripts/feeds update -a
           ./scripts/feeds install -a -f
           chmod +x $DIY_P2_SH
