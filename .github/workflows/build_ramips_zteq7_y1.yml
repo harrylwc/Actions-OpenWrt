@@ -188,8 +188,8 @@ jobs:
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG openwrt/$KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
-           cd openwrt 
-	   make -j$(nproc) || make -j1
+           cd openwrt
+           make -j$(nproc) || make -j1
            [ $? != 0 ] && make V=s || echo "build success"
           
       - name: SSH connection for failure Debug
