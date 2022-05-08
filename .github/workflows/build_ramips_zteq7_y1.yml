@@ -87,6 +87,7 @@ jobs:
           /workdir/lede/scripts/feeds update -a
           /workdir/openwrt/scripts/feeds update -a
           /workdir/openwrt/scripts/feeds install -a -f
+          cd $GITHUB_WORKSPACE
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           #git checkout 21.10
