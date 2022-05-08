@@ -25,6 +25,10 @@ on:
 
 env:
   #####change model here ####@# 
+  REPO_URL: https://github.com/x-wrt/x-wrt
+  #https://github.com/openwrt/openwrt.git
+  REPO_URL1: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: 'master'
   ROUTER_MODEL: ramips
   TVH: false
   BUILD_KERNEL_MODULES: false
@@ -70,21 +74,25 @@ jobs:
       
       - name: Update feeds & Load custom configuration
         run: |
-          git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-          git clone https://github.com/coolsnowwolf/lede ../lede
-          #replace mac80211 to version 5.10-11-1
-          #git clone --depth 1 https://github.com/openwrt/openwrt.git -b openwrt-21.02 ../openwrt
-          #rm -rf package/kernel/mac80211
-          #cp -r ../openwrt/package/kernel/mac80211 package/kernel/
+          sudo mkdir -p /workdir
+          sudo chown $USER:$GROUPS /workdir
+          df -hT $PWD
+          git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+          ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+          git clone --depth 1 $REPO_URL1 lede
+          ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
+	        git clone https://github.com/jerrykuku/luci-theme-argon openwrt/package/luci-theme-argon
+
           
-          ln -s ../lede/package/lean package
-          ../lede/scripts/feeds update -a
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a -f
-          chmod +x $DIY_P1_SH
-          $GITHUB_WORKSPACE/$DIY_P1_SH
+          ln -s /workdir/lede/package/lean openwrt/package
+          /workdir/lede/scripts/feeds update -a
+          /workdir/openwrt/scripts/feeds update -a
+          /workdir/openwrt/scripts/feeds install -a -f
+          chmod +x $DIY_P2_SH
+          $GITHUB_WORKSPACE/$DIY_P2_SH
           #git checkout 21.10
           #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Makefile
+          
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
