@@ -72,7 +72,7 @@ jobs:
           ref: master
 
       
-      - name: Update feeds & Load custom configuration
+      - name: Compile firmware
         run: |
           sudo mkdir -p /workdir
           sudo chown $USER:$GROUPS /workdir
