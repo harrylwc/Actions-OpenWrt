@@ -36,7 +36,7 @@ env:
   DRIVERS_DIR: bin/targets/ramips/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.ramips'
   #KERNEL_CONFIG_DIR: target/linux/ipq40xx
-  KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
+  KERNEL_CONFIG_DIR: x-wrt/target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
@@ -87,11 +87,11 @@ jobs:
           ln -s /workdir/lede/package/lean x-wrt/package
           rm -r x-wrt/package/lean/n2n_v2 
           /workdir/lede/scripts/feeds update -a
-          /workdir/openwrt/scripts/feeds update -a
-          /workdir/openwrt/scripts/feeds install -f -a
           cd $GITHUB_WORKSPACE
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
+          /workdir/x-wrt/scripts/feeds update -a
+          /workdir/x-wrt/scripts/feeds install -f -a
           #git checkout 21.10
           #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Makefile
           
@@ -188,7 +188,7 @@ jobs:
            cp myconfig/config.ramips.2 x-wrt/.config
            #cat myconfig/config.tvh.ffmpeg >> .config
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
-           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG x-wrt/$KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt
            make -j$(nproc) || make -j1
