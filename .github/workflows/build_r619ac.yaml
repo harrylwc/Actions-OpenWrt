@@ -76,7 +76,7 @@ jobs:
           rm -r x-wrt/package/lean/n2n_v2
           cd x-wrt 
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-          chmod +x $DIY_P2_SH
+          chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
           ./scripts/feeds update -a
