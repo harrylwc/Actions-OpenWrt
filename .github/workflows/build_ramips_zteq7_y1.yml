@@ -78,7 +78,11 @@ jobs:
           sudo chown $USER:$GROUPS /workdir
           cd /workdir
           df -hT $PWD
-          git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+          #git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+          git clone https://github.com/x-wrt/x-wrt openwrt
+          cd openwrt
+          git checkout 9.0_b202110142350
+          cd ..
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
           git clone --depth 1 $REPO_URL1 lede
           ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
@@ -152,6 +156,7 @@ jobs:
       
       - name: Compile firmware
         run: |
+          cp myconfig/config.ramips.kernel5.4 openwrt/.config
           cd openwrt
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
@@ -207,6 +212,7 @@ jobs:
           #mkdir -p ./artifact/buildinfo
           mkdir -p openwrt/$DRIVERS_DIR
           cp -f `find openwrt/build_dir/target*/linux*/linux-*/ -name *.ko` openwrt/$DRIVERS_DIR
+          cp -f `find openwrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko` openwrt/$DRIVERS_DIR
           #cp -f .config bin/
           #cp -f myconfig/config.$ROUTER_MODEL.? bin/
           #rm -rf $(find ./bin/targets/ -type d -name "packages")
