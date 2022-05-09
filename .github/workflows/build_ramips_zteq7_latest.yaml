@@ -80,11 +80,11 @@ jobs:
           cd /workdir
           df -hT $PWD
           git clone --depth 1 $REPO_URL -b $REPO_BRANCH x-wrt
-          ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrtt
+          ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
           git clone --depth 1 $REPO_URL1 lede
           ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
           git clone https://github.com/jerrykuku/luci-theme-argon x-wrt/package/luci-theme-argon
-          ln -s /workdir/lede/package/lean x-wrt/package
+          ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
           rm -r x-wrt/package/lean/n2n_v2 
           /workdir/lede/scripts/feeds update -a
           cd $GITHUB_WORKSPACE
