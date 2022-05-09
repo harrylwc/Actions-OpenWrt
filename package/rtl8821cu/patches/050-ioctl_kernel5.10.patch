@@ -1,0 +1,11 @@
+--- a/os_dep/linux/ioctl_cfg80211.c
++++ b/os_dep/linux/ioctl_cfg80211.c
+@@ -466,7 +466,7 @@
+ 
+ 		cfg80211_ch_switch_started_notify(adapter->pnetdev, &chdef, 0, false);
+ #else
+-		cfg80211_ch_switch_started_notify(adapter->pnetdev, &chdef, 0);
++		cfg80211_ch_switch_started_notify(adapter->pnetdev, &chdef, 0, false);
+ #endif
+ 		goto exit;
+ 	}
