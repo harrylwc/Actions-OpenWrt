@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile ZTEQ7 COOWIFI OpenWrt Images  
+name: Compile ZTEQ7&COOWIFI lastest OpenWrt xwrt Images  
 
 on:
   #push:
@@ -58,7 +58,7 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build ZTEQ7 & CooWIFI OpenWrt firmware
+    name: Build ZTEQ7 & CooWIFI lastest OpenWrt xwrt firmware
 
     runs-on: ubuntu-latest
 
