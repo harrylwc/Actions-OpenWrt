@@ -157,8 +157,8 @@ jobs:
       
       - name: Compile firmware
         run: |
+          cp myconfig/config.ramips.kernel5.4 openwrt/.config 
           cd openwrt
-          cp ../myconfig/config.ramips.kernel5.4 .config 
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
           #     echo "======================="
