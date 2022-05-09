@@ -53,7 +53,7 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build R619AC kernel 5.15 TVH firmware
+    name: Build wrt1200ac TVH firmware
 
     runs-on: ubuntu-latest
 
