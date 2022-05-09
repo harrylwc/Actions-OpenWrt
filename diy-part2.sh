@@ -10,38 +10,39 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.2.100/g' package/base-files/files/bin/config_generate
-cd $GITHUB_WORKSPACE/openwrt
+cd $GITHUB_WORKSPACE/x-wrt/
 rm -r feeds/packages/multimedia/tvheadend
 #tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/tvheadend.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/feeds/packages/multimedia/
 rm -r feeds/packages/multimedia/ffmpeg
-#tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/ffmpeg.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/feeds/packages/multimedia/
-#cp -r /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/rtl8821cu /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package/
-#cp -r /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/n2n /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/package/
+#tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/ffmpeg.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/multimedia/
+#cp -r /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/rtl8821cu /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/penwrt/package/
+#cp -r /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/n2n /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 
-cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/openwrt/package/
-cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/openwrt/package/
-cd $GITHUB_WORKSPACE 
+cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
+cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
+cd $GITHUB_WORKSPACE/ 
 
+myconfig=x-wrt/.config
 CONFIG_FILE0=myconfig/config.$ROUTER_MODEL.0
 CONFIG_FILE1=myconfig/config.$ROUTER_MODEL.1
 CONFIG_FILE2=myconfig/config.$ROUTER_MODEL.2
 #CONFIG_FILE3=myconfig/config.$ROUTER_MODEL.tvh
 
 #CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE .config
-if [ $TVH == true ]; then CONFIG_FILE=$CONFIG_FILE0; cp $CONFIG_FILE openwrt/.config; cat myconfig/config.tvh.ffmpeg >> openewrt/.config; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE openwrt/.config; fi
-echo `ls -alt openwrt/.config`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`;cat openwrt/.config|grep tvheadend
+if [ $TVH == true ]; then CONFIG_FILE=$CONFIG_FILE0; cp $CONFIG_FILE $myconfig; cat myconfig/config.tvh.ffmpeg >> $myconfig; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE $myconfig; fi
+echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`;cat .config|grep tvheadend
 
 #if [ $TVH == true ]; then CONFIG_FILE=$CONFIG_FILE1; cp $CONFIG_FILE .config; cat myconfig/config.tvh.ffmpeg >>.config;cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION ; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE .config; fi
 #if [ $TVH == true ]; then CONFIG_FILE=config.$ROUTER_MODEL.tvh;cp $CONFIG_FILE .config; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE .config; fi
 #exit 0
-[ $CPU_MULTI_CORE == true ] && cat myconfig/base.update >> openwrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po && cp $UPDATE_MULTI_CORE_FILE1 openwrt/feeds/luci/modules/luci-base/luasrc/sys.lua && cp $UPDATE_MULTI_CORE_FILE2 openwrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js && sed -i 's/processes.js:72/processes.js:74/g' openwrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po  && sed -i 's/processes.js:73/processes.js:75/g' openwrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po
+[ $CPU_MULTI_CORE == true ] && cat myconfig/base.update >> x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po && cp $UPDATE_MULTI_CORE_FILE1 x-wrt/feeds/luci/modules/luci-base/luasrc/sys.lua && cp $UPDATE_MULTI_CORE_FILE2 x-wrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js && sed -i 's/processes.js:72/processes.js:74/g' x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po  && sed -i 's/processes.js:73/processes.js:75/g' x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po
 exit 0
 
 ### apply patch##### 
 
-mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/openwrt/package/firmware/wireless-regdb/patches/
-cp $GITHUB_WORKSPACE/patches/*.patch $GITHUB_WORKSPACE/openwrt/
-cd $GITHUB_WORKSPACE/openwrt/
+mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
+cp $GITHUB_WORKSPACE/patches/*.patch $GITHUB_WORKSPACE/x-wrt/
+cd $GITHUB_WORKSPACE/x-wrt/
 git am *.patch
 
 #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Makefile
