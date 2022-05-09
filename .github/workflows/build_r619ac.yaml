@@ -71,7 +71,7 @@ jobs:
         run: |
           git clone https://github.com/x-wrt/x-wrt 
           git clone https://github.com/coolsnowwolf/lede lede
-          ln -s lede/package/lean x-wrt/package 
+          ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
           lede/scripts/feeds update -a
           rm -r x-wrt/package/lean/n2n_v2
           cd x-wrt 
