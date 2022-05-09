@@ -70,16 +70,17 @@ jobs:
       - name: Update feeds & Load custom configuration
         run: |
           git clone https://github.com/x-wrt/x-wrt 
-          git clone https://github.com/coolsnowwolf/lede ../lede
+          git clone https://github.com/coolsnowwolf/lede lede
           ln -s lede/package/lean x-wrt/package 
           lede/scripts/feeds update -a
+          rm -r x-wrt/package/lean/n2n_v2
           cd x-wrt 
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a -f
           chmod +x $DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
+          ./scripts/feeds update -a
+          ./scripts/feeds install -a -f
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
