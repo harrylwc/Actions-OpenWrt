@@ -78,7 +78,7 @@ jobs:
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
-          sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
+          sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Makefile
           ./scripts/feeds update -a
           ./scripts/feeds install -a -f
       - name: Space cleanup
