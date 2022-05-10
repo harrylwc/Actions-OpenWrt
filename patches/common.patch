@@ -1,5 +1,5 @@
 diff --git a/package/kernel/mac80211/files/lib/wifi/mac80211.sh b/package/kernel/mac80211/files/lib/wifi/mac80211.sh
-index 6aa46b0..6f20f74 100644
+index 6aa46b0c74..6f20f74c46 100644
 --- a/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 +++ b/package/kernel/mac80211/files/lib/wifi/mac80211.sh
 @@ -174,7 +174,7 @@ detect_mac80211() {
@@ -12,7 +12,7 @@ index 6aa46b0..6f20f74 100644
                         set wireless.default_radio${devidx}=wifi-iface
                         set wireless.default_radio${devidx}.device=radio${devidx}
 diff --git a/package/network/services/uhttpd/files/uhttpd.config b/package/network/services/uhttpd/files/uhttpd.config
-index a9b8ff3..2568ed3 100644
+index a9b8ff3d15..55da7acafc 100644
 --- a/package/network/services/uhttpd/files/uhttpd.config
 +++ b/package/network/services/uhttpd/files/uhttpd.config
 @@ -10,7 +10,7 @@ config uhttpd main
@@ -20,7 +20,7 @@ index a9b8ff3..2568ed3 100644
  
         # Redirect HTTP requests to HTTPS if possible
 -       option redirect_https   0
-+       #option redirect_https  0
++#      option redirect_https   0
  
         # Server document root
         option home             /www
@@ -33,4 +33,3 @@ index a9b8ff3..2568ed3 100644
  
         # Maximum number of concurrent requests.
         # If this number is exceeded, further requests are
-
