@@ -1,14 +1,14 @@
---- a/os_dep/linux/ioctl_cfg80211.c	2022-05-08 16:33:57.589499774 +0800
-+++ b/os_dep/linux/ioctl_cfg80211.c	2022-05-10 05:56:29.170083374 +0800
-@@ -466,7 +466,7 @@
+--- a/os_dep/linux/ioctl_cfg80211.c	2022-05-10 08:50:39.657311144 +0800
++++ b/os_dep/linux/ioctl_cfg80211.c	2022-05-10 08:51:49.228441078 +0800
+@@ -454,7 +454,7 @@
  
- 		cfg80211_ch_switch_started_notify(adapter->pnetdev, &chdef, 0, false);
- #else
--		cfg80211_ch_switch_started_notify(adapter->pnetdev, &chdef, 0);
-+		cfg80211_ch_switch_started_notify(adapter->pnetdev, &chdef, 0, false);
- #endif
- 		goto exit;
- 	}
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 19, 0))
+ 	if (started) {
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 11, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 10, 155))
+ 
+ 		/* --- cfg80211_ch_switch_started_notfiy() ---
+ 		 *  A new parameter, bool quiet, is added from Linux kernel v5.11,
 @@ -8275,7 +8275,7 @@
  	return ret;
  }
