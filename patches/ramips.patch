@@ -99,7 +99,6 @@ index c7b7ea7..000e829 100644
  		function = "gpio";
  	};
  };
-+
 diff --git a/target/linux/ramips/mt7620/base-files/etc/board.d/01_leds b/target/linux/ramips/mt7620/base-files/etc/board.d/01_leds
 index 1293c34..7a5c050 100644
 --- a/target/linux/ramips/mt7620/base-files/etc/board.d/01_leds
