@@ -1,0 +1,13 @@
+--- a/files/arch/arm/boot/dts/qcom-ipq4019-r619ac.dtsi	2022-05-09 17:57:56.844636354 +0800
++++ b/files/arch/arm/boot/dts/qcom-ipq4019-r619ac.dtsi	2022-05-10 13:18:28.080505329 +0800
+@@ -198,10 +198,6 @@
+ 					reg = <0x5000 0x2f20>;
+ 				};
+ 			};
+-			partition@180000 {
+-				label = "unused";
+-				reg = <0x180000 0xe80000>;
+-			};	
+ 		};
+ 	};
+ };
