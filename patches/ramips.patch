@@ -125,4 +125,3 @@ index 1830998..eb0c621 100644
  		;;
  	lenovo,newifi-y1s)
  		ucidef_add_switch "switch0" \
-
