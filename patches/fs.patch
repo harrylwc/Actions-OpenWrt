@@ -1,0 +1,15 @@
+diff --git a/package/kernel/linux/modules/fs.mk b/package/kernel/linux/modules/fs.mk
+index 43656bcb2d..84ae48d858 100644
+--- a/package/kernel/linux/modules/fs.mk
++++ b/package/kernel/linux/modules/fs.mk
+@@ -428,8 +428,8 @@ define KernelPackage/fs-nfs-common
+   FILES:= \
+        $(LINUX_DIR)/fs/lockd/lockd.ko \
+        $(LINUX_DIR)/net/sunrpc/sunrpc.ko \
+-       $(LINUX_DIR)/fs/nfs_common/grace.ko \
+-       $(LINUX_DIR)/fs/nfs_common/nfs_ssc.ko@ge5.10
++       $(LINUX_DIR)/fs/nfs_common/grace.ko
++       #$(LINUX_DIR)/fs/nfs_common/nfs_ssc.ko@ge5.10
+   AUTOLOAD:=$(call AutoLoad,30,grace sunrpc lockd)
+ endef
+
