@@ -33,7 +33,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
-  MAKEMENU_CONFIG: false
+  MAKEMENU_CONFIG: true
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
@@ -182,8 +182,8 @@ jobs:
       - name: Compile again after .config updated or add kernel modules
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
-           cp $GITHUB_WORKSPACE/lede/target/linux/generic/backport-5.10/35?*.patch $GITHUB_WORKSPACE/x-wrt/target/linux/generic/backport-5.10/
-           cp $GITHUB_WORKSPACE/lede/package/kernel/linux/modules/fs.mk $GITHUB_WORKSPACE/x-wrt/package/kernel/linux/modules/ 
+           #cp $GITHUB_WORKSPACE/lede/target/linux/generic/backport-5.10/35?*.patch $GITHUB_WORKSPACE/x-wrt/target/linux/generic/backport-5.10/
+           #cp $GITHUB_WORKSPACE/lede/package/kernel/linux/modules/fs.mk $GITHUB_WORKSPACE/x-wrt/package/kernel/linux/modules/ 
            cp myconfig/config.r619ac.2.5-15 x-wrt/.config
            #cat myconfig/config.tvh.ffmpeg >> .config
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
