@@ -33,7 +33,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
-  MAKEMENU_CONFIG: true
+  MAKEMENU_CONFIG: false
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
@@ -148,6 +148,8 @@ jobs:
       
       - name: Compile firmware
         run: |
+          mkdir x-wrt/package/feeds/x/natflow/patches
+          cp natflow2.patch x-wrt/package/feeds/x/natflow/patches 
           cd x-wrt 
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
