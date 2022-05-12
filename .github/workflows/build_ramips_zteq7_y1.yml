@@ -79,21 +79,11 @@ jobs:
           cd /workdir
           df -hT $PWD
           #git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
-<<<<<<< HEAD
-          git clone https://github.com/x-wrt/x-wrt openwrt
-          cd openwrt 
-          git checkout 9.0_b202110271906 #a1d3796efebd6685ad34c9f95b67eca3486ebf3e   #24 Oct 2021 kernel 5.4.155 mac80211 5.10.68-1
-          #git checkout 21.10_b202112151800 #794e8123ce625d04f8207ba5fd3b153051b2e67e  #14 Dec 2021 kernel 5.15.8 mac80211 5.15-rc6-1
-          cd ..
-          ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
-=======
           git clone https://github.com/x-wrt/x-wrt 
           cd x-wrt
           git checkout 9.0_b202110142350
           cd ..
           ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
->>>>>>> 62057bd62242f55fc964d7d8c3c6d0b5c978ef10
-          git clone --depth 1 $REPO_URL1 lede
           ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
           git clone https://github.com/jerrykuku/luci-theme-argon x-wrt/package/luci-theme-argon
           ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
