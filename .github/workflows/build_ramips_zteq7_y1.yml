@@ -32,10 +32,10 @@ env:
   ROUTER_MODEL: ramips
   TVH: false
   BUILD_KERNEL_MODULES: false
-  DRIVERS_DIR: bin/targets/ramips/drivers
+  DRIVERS_DIR: x-wrt/bin/targets/ramips/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.ramips'
-  #KERNEL_CONFIG_DIR: target/linux/ipq40xx
-  KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
+  #KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq40xx
+  KERNEL_CONFIG_DIR: x-wrt/target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
@@ -79,20 +79,28 @@ jobs:
           cd /workdir
           df -hT $PWD
           #git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
+<<<<<<< HEAD
           git clone https://github.com/x-wrt/x-wrt openwrt
           cd openwrt 
           git checkout 9.0_b202110271906 #a1d3796efebd6685ad34c9f95b67eca3486ebf3e   #24 Oct 2021 kernel 5.4.155 mac80211 5.10.68-1
           #git checkout 21.10_b202112151800 #794e8123ce625d04f8207ba5fd3b153051b2e67e  #14 Dec 2021 kernel 5.15.8 mac80211 5.15-rc6-1
           cd ..
           ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+=======
+          git clone https://github.com/x-wrt/x-wrt 
+          cd x-wrt
+          git checkout 9.0_b202110142350
+          cd ..
+          ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
+>>>>>>> 62057bd62242f55fc964d7d8c3c6d0b5c978ef10
           git clone --depth 1 $REPO_URL1 lede
           ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
-          git clone https://github.com/jerrykuku/luci-theme-argon openwrt/package/luci-theme-argon
-          ln -s /workdir/lede/package/lean openwrt/package
-          rm -r openwrt/package/lean/n2n_v2 
+          git clone https://github.com/jerrykuku/luci-theme-argon x-wrt/package/luci-theme-argon
+          ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
+          rm -r x-wrt/package/lean/n2n_v2 
           /workdir/lede/scripts/feeds update -a
-          /workdir/openwrt/scripts/feeds update -a
-          /workdir/openwrt/scripts/feeds install -f -a
+          /workdir/x-wrt/scripts/feeds update -a
+          /workdir/x-wrt/scripts/feeds install -f -a
           cd $GITHUB_WORKSPACE
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -144,7 +152,7 @@ jobs:
 
       - name: Make download
         run: |
-          cd openwrt 
+          cd x-wrt 
           make download -j8 || make download -j1 V=s
           rm -rf $(find ./dl/ -size -1024c)
           df -h
@@ -157,8 +165,13 @@ jobs:
       
       - name: Compile firmware
         run: |
+<<<<<<< HEAD
           cp myconfig/config.ramips.kernel5.4 openwrt/.config 
           cd openwrt
+=======
+          cp myconfig/config.ramips.kernel5.4 x-wrt/.config
+          cd x-wrt
+>>>>>>> 62057bd62242f55fc964d7d8c3c6d0b5c978ef10
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
           #     echo "======================="
@@ -190,12 +203,12 @@ jobs:
       - name: Compile again after .config updated or add kernel modules
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
-           cp myconfig/config.ramips.2 openwrt/.config
+           cp myconfig/config.ramips.2 x-wrt/.config
            #cat myconfig/config.tvh.ffmpeg >> .config
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
-           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG openwrt/$KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
-           cd openwrt
+           cd x-wrt
            make -j$(nproc) || make -j1
            [ $? != 0 ] && make V=s || echo "build success"
           
@@ -211,9 +224,15 @@ jobs:
           # mkdir -p ./artifact/firmware
           #mkdir -p ./artifact/package
           #mkdir -p ./artifact/buildinfo
+<<<<<<< HEAD
           mkdir -p openwrt/$DRIVERS_DIR
           cp -f `find openwrt/build_dir/target*/linux*/linux-*/ -name *.ko` openwrt/$DRIVERS_DIR
           cp -f `find openwrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko` openwrt/$DRIVERS_DIR 
+=======
+          mkdir -p $DRIVERS_DIR
+          cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR
+          cp -f `find x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko` $DRIVERS_DIR
+>>>>>>> 62057bd62242f55fc964d7d8c3c6d0b5c978ef10
           #cp -f .config bin/
           #cp -f myconfig/config.$ROUTER_MODEL.? bin/
           #rm -rf $(find ./bin/targets/ -type d -name "packages")
@@ -221,7 +240,7 @@ jobs:
           #cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
           #cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
           
-          grep '^CONFIG_TARGET.*DEVICE.*=y' openwrt/.config|head -1 | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+          grep '^CONFIG_TARGET.*DEVICE.*=y' x-wrt/.config|head -1 | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
           [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
           echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
  
@@ -229,7 +248,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-          path: /workdir/openwrt/bin
+          path: /workdir/x-wrt/bin
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         uses: P3TERX/ssh2actions@main

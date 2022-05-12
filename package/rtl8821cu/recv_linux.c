@@ -405,7 +405,11 @@ static int napi_recv(_adapter *padapter, int budget)
 			So, we should prevent cloned SKB go into napi_gro_receive.
 		*/
 		if (pregistrypriv->en_gro && !skb_cloned(pskb)) {
+<<<<<<< HEAD
 #if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 12, 0))
+=======
+#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0))
+>>>>>>> 62057bd62242f55fc964d7d8c3c6d0b5c978ef10
 			if (rtw_napi_gro_receive(&padapter->napi, pskb) != GRO_DROP)
 				rx_ok = _TRUE;
 #else
