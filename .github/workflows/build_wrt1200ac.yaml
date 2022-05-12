@@ -27,7 +27,7 @@ env:
   ROUTER_MODEL: wrt1200ac
   TVH: true
   BUILD_KERNEL_MODULES: true
-  DRIVERS_DIR: bin/targets/mvebu/drivers
+  DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.wrt1200ac'
   #KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq40xx
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
@@ -202,9 +202,9 @@ jobs:
           # mkdir -p ./artifact/firmware
           #mkdir -p ./artifact/package
           #mkdir -p ./artifact/buildinfo
-          mkdir x-wrt/$DRIVERS_DIR
-          cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko` x-wrt/$DRIVERS_DIR
-          cp -f `find x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko` x-wrt/$DRIVERS_DIR        
+          mkdir -p $DRIVERS_DIR
+          cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR
+          cp -f `find x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko` $DRIVERS_DIR        
           #cp -f .config bin/
           #cp -f myconfig/config.$ROUTER_MODEL.? bin/
           #rm -rf $(find ./bin/targets/ -type d -name "packages")
