@@ -209,15 +209,9 @@ jobs:
           # mkdir -p ./artifact/firmware
           #mkdir -p ./artifact/package
           #mkdir -p ./artifact/buildinfo
-<<<<<<< HEAD
-          mkdir -p openwrt/$DRIVERS_DIR
-          cp -f `find openwrt/build_dir/target*/linux*/linux-*/ -name *.ko` openwrt/$DRIVERS_DIR
-          cp -f `find openwrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko` openwrt/$DRIVERS_DIR 
-=======
           mkdir -p $DRIVERS_DIR
           cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR
           cp -f `find x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko` $DRIVERS_DIR
->>>>>>> 62057bd62242f55fc964d7d8c3c6d0b5c978ef10
           #cp -f .config bin/
           #cp -f myconfig/config.$ROUTER_MODEL.? bin/
           #rm -rf $(find ./bin/targets/ -type d -name "packages")
