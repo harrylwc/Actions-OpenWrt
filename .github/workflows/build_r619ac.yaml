@@ -148,8 +148,8 @@ jobs:
       
       - name: Compile firmware
         run: |
-          mkdir x-wrt/package/feeds/x/natflow/patches
-          cp natflow.patch x-wrt/package/feeds/x/natflow/patches 
+          #mkdir x-wrt/package/feeds/x/natflow/patches
+          #cp natflow.patch x-wrt/package/feeds/x/natflow/patches 
           cd x-wrt 
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
