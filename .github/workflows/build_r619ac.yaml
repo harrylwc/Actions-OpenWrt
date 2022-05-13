@@ -34,7 +34,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: false
+  KERNEL_MENUCONFIG: true
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
   KERNEL_VERSION: '5.15'
@@ -193,7 +193,7 @@ jobs:
            make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
       - name: SSH connection for failure Debug
-        #if: ${{ failure() }}
+        if: ${{ failure() }}
           # uses: lhotari/action-upterm@v1
         uses: P3TERX/ssh2actions@main
         env:
