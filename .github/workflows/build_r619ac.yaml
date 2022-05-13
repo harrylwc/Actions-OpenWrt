@@ -193,7 +193,7 @@ jobs:
            make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
       - name: SSH connection for failure Debug
-        if: ${{ failure() }}
+        #if: ${{ failure() }}
           # uses: lhotari/action-upterm@v1
         uses: P3TERX/ssh2actions@main
         env:
