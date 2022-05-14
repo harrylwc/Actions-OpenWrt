@@ -42,7 +42,7 @@ CONFIG_FILE2=myconfig/config.$ROUTER_MODEL.2
 
 #CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE .config
 if [ $TVH == true ]; then CONFIG_FILE=$CONFIG_FILE0; cp $CONFIG_FILE $myconfig; cat myconfig/config.tvh.ffmpeg >> $myconfig; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE $myconfig; fi
-echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`;cat .config|grep tvheadend
+echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
 
 #if [ $TVH == true ]; then CONFIG_FILE=$CONFIG_FILE1; cp $CONFIG_FILE .config; cat myconfig/config.tvh.ffmpeg >>.config;cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION ; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE .config; fi
 #if [ $TVH == true ]; then CONFIG_FILE=config.$ROUTER_MODEL.tvh;cp $CONFIG_FILE .config; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE .config; fi
