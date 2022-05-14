@@ -27,8 +27,7 @@ ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applicat
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/packages/net/dnsforwarder /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/packages/net/pdnsd-alt /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 #ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/target/linux/generic/hack-5.15/953-net-patch-linux-kernel-to-support-shortcut-fe.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/target/linux/generic/hack-5.15/
-
-git clone https://github.com/brvphoenix/wrtbwmont /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
+git clone https://github.com/brvphoenix/wrtbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/wrtbwmon
 
 cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
