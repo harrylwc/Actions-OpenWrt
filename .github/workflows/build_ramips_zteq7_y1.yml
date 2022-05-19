@@ -163,8 +163,8 @@ jobs:
         run: |
           cp myconfig/config.ramips.kernel5.4 x-wrt/.config
           cd x-wrt
-          make -j$(nproc) || make -j1 V=s
-          #make V=s
+          #make -j$(nproc) || make -j1 V=s
+          make V=s
           [ $? != 0 ] && make V=s || echo "build success"
           #     echo "======================="
           #echo "Space usage:"
