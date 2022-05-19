@@ -38,7 +38,7 @@ env:
   KERNEL_CONFIG_DIR: x-wrt/target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
-  MAKEMENU_CONFIG: false
+  MAKEMENU_CONFIG: true
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: false
   
@@ -164,7 +164,7 @@ jobs:
           cp myconfig/config.ramips.kernel5.4 x-wrt/.config
           cd x-wrt
           #make -j$(nproc) || make -j1 V=s
-          make V=s
+          make
           [ $? != 0 ] && make V=s || echo "build success"
           #     echo "======================="
           #echo "Space usage:"
