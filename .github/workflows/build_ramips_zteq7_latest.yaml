@@ -165,7 +165,7 @@ jobs:
           #du -h ~/work/x-wrt --max-depth=1 || true
       
       -  name: SSH connection for failure Debug
-         #if: ${{ failure() }}
+         if: ${{ failure() }}
          #uses: P3TERX/ssh2actions@main
          #uses: lhotari/action-upterm@v1
          uses: P3TERX/ssh2actions@main
