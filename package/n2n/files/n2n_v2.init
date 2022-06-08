@@ -86,6 +86,8 @@ start() {
 
 stop() {
     config_load 'n2n_v2'
+    service_stop /usr/bin/edge
+    service_stop /usr/bin/supernode
     config_foreach stop_instance 'edge'
     config_foreach stop_instance 'supernode'
 }
