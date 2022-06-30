@@ -85,7 +85,7 @@ jobs:
           ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
           git clone https://github.com/jerrykuku/luci-theme-argon x-wrt/package/luci-theme-argon
           ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
-          rm -r x-wrt/package/lean/n2n_v2 
+          #rm -r x-wrt/package/lean/n2n_v2 
           /workdir/lede/scripts/feeds update -a
           cd $GITHUB_WORKSPACE
           /workdir/x-wrt/scripts/feeds update -a

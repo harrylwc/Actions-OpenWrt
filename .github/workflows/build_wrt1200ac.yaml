@@ -73,7 +73,7 @@ jobs:
           git clone https://github.com/coolsnowwolf/lede lede
           ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
           lede/scripts/feeds update -a
-          rm -r x-wrt/package/lean/n2n_v2
+          #rm -r x-wrt/package/lean/n2n_v2
           cd x-wrt 
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
           #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/mvebu/Makefile
