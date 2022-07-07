@@ -42,7 +42,6 @@ env:
   UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
   KERNEL_MODULE: myconfig/kernel_modules.txt
   FEEDS_CONF: feeds.conf.default
-  DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   SSH_ACTIONS: true
   UPLOAD_FIRMWARE: true
