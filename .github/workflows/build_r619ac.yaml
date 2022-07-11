@@ -74,6 +74,7 @@ jobs:
           lede/scripts/feeds update -a
           rm -r x-wrt/package/lean/n2n*
           cd x-wrt 
+          git checkout 639419e 
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
           sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
           ./scripts/feeds update -a
@@ -129,7 +130,7 @@ jobs:
           make download -j8 || make download -j1 V=s
           rm -rf $(find ./dl/ -size -1024c)
           df -h
-          git reset --hard 639419e
+          #git reset --hard 639419e
           #git revert 1a9ee367343edce263f82cc91a49d796c9d45ea3
           #git revert 41e1e838fbbb0308ad7353a3714e04b8c4585e7e
       #- name: Setup upterm session
