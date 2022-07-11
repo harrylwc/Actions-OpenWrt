@@ -33,7 +33,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
-  MAKEMENU_CONFIG: false
+  MAKEMENU_CONFIG: true
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
@@ -74,7 +74,9 @@ jobs:
           lede/scripts/feeds update -a
           rm -r x-wrt/package/lean/n2n*
           cd x-wrt 
-          git checkout 639419e 
+          #git checkout 639419e 
+          #git revert 1a9ee367343edce263f82cc91a49d796c9d45ea3
+          #git revert 41e1e838fbbb0308ad7353a3714e04b8c4585e7e
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
           sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
           ./scripts/feeds update -a
