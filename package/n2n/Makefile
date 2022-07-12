@@ -79,9 +79,9 @@ define Package/n2n-edge/install
 	$(INSTALL_DIR) $(1)/usr/bin
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/edge $(1)/usr/bin/
 	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./files/n2n_v2.init $(1)/etc/init.d/n2n_v2
+	$(INSTALL_BIN) ./files/n2n.init $(1)/etc/init.d/n2n
 	$(INSTALL_DIR) $(1)/etc/config
-	$(INSTALL_DATA) ./files/n2n_v2.config $(1)/etc/config/n2n_v2
+	$(INSTALL_DATA) ./files/n2n.config $(1)/etc/config/n2n
 endef
 
 define Package/n2n-supernode
