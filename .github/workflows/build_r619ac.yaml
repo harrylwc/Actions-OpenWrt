@@ -75,11 +75,11 @@ jobs:
           rm -r x-wrt/package/lean/n2n*
           cd x-wrt 
           #git checkout 639419e 
-          git revert -n dbcaa51
-          git revert -n 2ed7f6c
-          git revert -n a9573a0
-          #git revert -n 1a9ee3
-          git revert -n 41e1e83
+          #git revert -n dbcaa51
+          #git revert -n 2ed7f6c
+          #git revert -n a9573a0
+          ##git revert -n 1a9ee3
+          #git revert -n 41e1e83
         
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
           sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
