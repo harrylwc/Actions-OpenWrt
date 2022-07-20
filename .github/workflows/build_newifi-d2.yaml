@@ -74,8 +74,8 @@ jobs:
           lede/scripts/feeds update -a
           rm -r x-wrt/package/lean/n2n*
           cd x-wrt
-          git revert -n 1a9ee367343edce263f82cc91a49d796c9d45ea3
-          git revert -n 41e1e838fbbb0308ad7353a3714e04b8c4585e7e
+          #git revert -n 1a9ee367343edce263f82cc91a49d796c9d45ea3
+          # git revert -n 41e1e838fbbb0308ad7353a3714e04b8c4585e7e
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
           sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Makefile
           ./scripts/feeds update -a
