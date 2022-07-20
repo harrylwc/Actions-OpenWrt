@@ -82,11 +82,11 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
-      - name: Cache
-        uses: klever1988/cachewrtbuild@main
-        with:
-          ccache: 'true'
-          prefix: ${{ github.workspace }}/x-wrt
+      #- name: Cache
+      #  uses: klever1988/cachewrtbuild@main
+       # with:
+        #  ccache: 'true'
+         # prefix: ${{ github.workspace }}/x-wrt
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
