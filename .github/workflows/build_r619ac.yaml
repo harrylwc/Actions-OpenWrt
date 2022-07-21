@@ -74,13 +74,6 @@ jobs:
           lede/scripts/feeds update -a
           rm -r x-wrt/package/lean/n2n*
           cd x-wrt 
-          #git checkout 639419e 
-          #git revert -n dbcaa51
-          #git revert -n 2ed7f6c
-          #git revert -n a9573a0
-          ##git revert -n 1a9ee3
-          #git revert -n 41e1e83
-        
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
           sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
           ./scripts/feeds update -a
@@ -165,6 +158,7 @@ jobs:
       - name: Compile firmware
         run: |
           cd x-wrt 
+          cp $GITHUB_WORKSPACE/myconfig/config.r619ac.2 .config
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
  
@@ -201,7 +195,9 @@ jobs:
            #cp $GITHUB_WORKSPACE/lede/target/linux/generic/backport-5.10/35?*.patch $GITHUB_WORKSPACE/x-wrt/target/linux/generic/backport-5.10/
            #cp $GITHUB_WORKSPACE/lede/package/kernel/linux/modules/fs.mk $GITHUB_WORKSPACE/x-wrt/package/kernel/linux/modules/ 
            #cp myconfig/config.r619ac.2 x-wrt/.config
-           cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config     
+           ##cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config 
+           cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
+           
            #cat myconfig/config.tvh.ffmpeg >> .config
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
