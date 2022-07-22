@@ -164,7 +164,7 @@ jobs:
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
  
-         
+          #make V=99 2>&1 |tee build.log
           #     echo "======================="
           #echo "Space usage:"
           #echo "======================="
