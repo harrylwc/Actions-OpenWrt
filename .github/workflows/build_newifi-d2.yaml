@@ -83,11 +83,11 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
-      - name: Cache
-        uses: klever1988/cachewrtbuild@main
-        with:
-          ccache: 'true'
-          prefix: ${{ github.workspace }}/x-wrt
+          # - name: Cache
+          #uses: klever1988/cachewrtbuild@main
+          #with:
+          #ccache: 'true'
+          #prefix: ${{ github.workspace }}/x-wrt
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
@@ -100,7 +100,7 @@ jobs:
           sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler antlr3 gperf swig libtinfo5
           sudo -E apt-get -y autoremove --purge
           #sudo -E python get-pip.py
-          python -m pip install --upgrade pip
+          #python -m pip install --upgrade pip
           sudo -E apt-get clean
           df -h
      # - name: Run migrations
