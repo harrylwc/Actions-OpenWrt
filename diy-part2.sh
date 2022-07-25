@@ -32,7 +32,7 @@ git clone https://github.com/brvphoenix/wrtbwmon /home/runner/work/Actions-OpenW
 cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
 cd $GITHUB_WORKSPACE/ 
-
+cp myconfig/config* x-wrt/
 myconfig=x-wrt/.config
 CONFIG_FILE0=myconfig/config.$ROUTER_MODEL.0
 CONFIG_FILE1=myconfig/config.$ROUTER_MODEL.1
