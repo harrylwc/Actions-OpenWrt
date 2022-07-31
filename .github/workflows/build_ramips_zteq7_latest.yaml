@@ -113,6 +113,7 @@ jobs:
           sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
           df -h
+          ls -alt x-wrt/staging*
      # - name: Run migrations
       #  run: sh ./github/scripts/migrate.sh
        # env:
