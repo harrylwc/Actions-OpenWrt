@@ -103,6 +103,7 @@ jobs:
           #sudo -E pip install --no-cache-dir --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org pip setuptools
           sudo -E apt-get clean
           df -h
+          ls -alt x-wrt/staging*
      # - name: Run migrations
       #  run: sh ./github/scripts/migrate.sh
        # env:
