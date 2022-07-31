@@ -103,6 +103,7 @@ jobs:
           #python -m pip install --upgrade pip
           sudo -E apt-get clean
           df -h
+          ls -alt x-wrt/staging*
      # - name: Run migrations
       #  run: sh ./github/scripts/migrate.sh
        # env:
