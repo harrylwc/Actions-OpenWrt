@@ -113,6 +113,7 @@ jobs:
           sudo -E apt-get clean
           df -h
           ls -alt x-wrt/staging*
+          #find /home/runner/work/_temp/ -name "*cache*"
      # - name: Run migrations
       #  run: sh ./github/scripts/migrate.sh
        # env:
