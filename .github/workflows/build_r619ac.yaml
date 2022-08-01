@@ -85,6 +85,7 @@ jobs:
         uses: klever1988/cachewrtbuild@main
         with:
           ccache: 'true'
+          prefix: ${{ github.workspace }}/x-wrt
           #是否缓存工具链目录
          # toolchain: true
 
@@ -93,7 +94,7 @@ jobs:
 
           #清空缓存
           #clean: true
-          prefix: ${{ github.workspace }}/x-wrt
+          #prefix: ${{ github.workspace }}/x-wrt
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
