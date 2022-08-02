@@ -97,12 +97,22 @@ jobs:
           sudo mkdir -p /workdir
           sudo chown $USER:$GROUPS /workdir
           ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
+
       - name: Cache
         uses: klever1988/cachewrtbuild@main
         with:
           ccache: 'true'
-          #clean:  'true'
+          clean:  true
           prefix: ${{ github.workspace }}/x-wrt
+          #是否缓存工具链目录
+         # toolchain: true
+
+          #是否跳过工具链编译
+          #skip: true
+
+          #清空缓存
+          #clean: true
+          #prefix: ${{ github.workspace }}/x-wrt
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
