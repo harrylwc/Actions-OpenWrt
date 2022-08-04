@@ -185,6 +185,8 @@ jobs:
           cp config.r619ac.0 .config
           #cat $GITHUB_WORKSPACE/myconfig/config.tvh.ffmpeg >>.config
           make -j$(nproc) || make -j1 V=s
+          cp config.wrt1200ac.0 .config
+          make -j$(nproc) || make -j1 V=s
       -  name: SSH connection for failure Debug
          if: ${{ failure() }}
          #uses: P3TERX/ssh2actions@main
