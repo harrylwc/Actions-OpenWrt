@@ -83,7 +83,7 @@ jobs:
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sudo mkdir -p /workdir
           sudo chown $USER:$GROUPS /workdir
-          ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
+          ln -s ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/ /workdir/
 
       #- name: Cache
         #uses: klever1988/cachewrtbuild@main
