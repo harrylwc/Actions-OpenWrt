@@ -183,11 +183,11 @@ jobs:
           #echo "======================="
           #du -h ./ --max-depth=1
           #du -h ~/work/x-wrt --max-depth=1 || true
-          cp config.r619ac.3 .config
+          cp config.r619ac.2 .config
           #cat $GITHUB_WORKSPACE/myconfig/config.tvh.ffmpeg >>.config
           make -j$(nproc) || make -j1 V=s
-          cp config.wrt1200ac.3 .config
-          make -j$(nproc) || make -j1 V=s
+          #cp config.wrt1200ac.3 .config
+          #make -j$(nproc) || make -j1 V=s
       -  name: SSH connection for failure Debug
          if: ${{ failure() }}
          #uses: P3TERX/ssh2actions@main
