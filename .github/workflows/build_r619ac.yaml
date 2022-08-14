@@ -95,7 +95,7 @@ jobs:
           #skip: true
 
           #清空缓存
-          clean: true
+          #clean: true
           #prefix: ${{ github.workspace }}/x-wrt
       - name: Space cleanup
         env:
