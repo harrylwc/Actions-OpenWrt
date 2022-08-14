@@ -90,7 +90,7 @@ jobs:
         uses: klever1988/cachewrtbuild@main
         with:
           ccache: 'true'
-          #clean:  'true'
+          clean:  'true'
           prefix: ${{ github.workspace }}/x-wrt
           #是否缓存工具链目录
          # toolchain: true
