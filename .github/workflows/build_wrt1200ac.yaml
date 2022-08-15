@@ -82,6 +82,7 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sudo mkdir -p /workdir
+          sudo timedatectl set-timezone "$TZ"
           sudo chown $USER:$GROUPS /workdir
           ln -s ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/ /workdir/
 
