@@ -92,7 +92,7 @@ jobs:
          # toolchain: true
 
           #是否跳过工具链编译
-          #skip: true
+          skip: false
 
           #清空缓存
           #clean: true
