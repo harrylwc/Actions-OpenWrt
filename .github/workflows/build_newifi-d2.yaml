@@ -107,7 +107,7 @@ jobs:
           SSH_ACTIONS: true
           DEBIAN_FRONTEND: noninteractive
         run: |
-          ls -alt /workdir/x-wrt/staging_dir/*
+          ls -alt ${{ github.workspace }}/x-wrt/staging_dir/*
           docker rmi `docker images -q`
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
