@@ -16,7 +16,7 @@ on:
     #  - master
     
   schedule:
-     - cron: 00 15 * * *
+     - cron: 00 20 * * *
  # release:
   #  types: [published]
   #watch:
@@ -177,6 +177,7 @@ jobs:
           #cp config.ramips.2 .config
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
+          
           #     echo "======================="
           #echo "Space usage:"
           #echo "======================="
@@ -184,9 +185,10 @@ jobs:
           #echo "======================="
           #du -h ./ --max-depth=1
           #du -h ~/work/x-wrt --max-depth=1 || true
-          # cp config.r619ac.2 .config
+          cp config.r619ac.2 .config
           #cat $GITHUB_WORKSPACE/myconfig/config.tvh.ffmpeg >>.config
-          # make -j$(nproc) || make -j1 V=s
+          make -j$(nproc) || make -j1 V=s
+          df -kh
           #cp config.wrt1200ac.3 .config
           #make -j$(nproc) || make -j1 V=s
       -  name: SSH connection for failure Debug
