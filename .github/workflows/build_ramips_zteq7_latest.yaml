@@ -39,7 +39,7 @@ env:
   KERNEL_CONFIG_DIR: x-wrt/target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
-  MAKEMENU_CONFIG: true
+  MAKEMENU_CONFIG: false
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: false
   
@@ -182,14 +182,14 @@ jobs:
           #     echo "======================="
           #echo "Space usage:"
           #echo "======================="
-          #df -h
+          df -h
           #echo "======================="
           #du -h ./ --max-depth=1
           #du -h ~/work/x-wrt --max-depth=1 || true
           #cp config.r619ac.0 .config
           #cat $GITHUB_WORKSPACE/myconfig/config.tvh.ffmpeg >>.config
           #make -j$(nproc) || make -j1 V=s
-          df -kh
+          #df -kh
           #cp config.wrt1200ac.3 .config
           #make -j$(nproc) || make -j1 V=s
       -  name: SSH connection for failure Debug
