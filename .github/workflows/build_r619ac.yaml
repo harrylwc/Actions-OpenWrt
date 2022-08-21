@@ -96,7 +96,7 @@ jobs:
           #skip: false
 
           #清空缓存
-          clean: true
+          #clean: true
           #prefix: ${{ github.workspace }}/x-wrt
       - name: Space cleanup
         env:
@@ -183,7 +183,7 @@ jobs:
           #     echo "======================="
           #echo "Space usage:"
           #echo "======================="
-          #df -h
+          df -kh
           #echo "======================="
           #du -h ./ --max-depth=1
           #du -h ~/work/x-wrt --max-depth=1 || true
