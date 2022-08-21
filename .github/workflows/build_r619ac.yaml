@@ -84,11 +84,11 @@ jobs:
           sudo timedatectl set-timezone "$TZ"
           sudo chown $USER:$GROUPS /workdir
           ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
-      - name: Cache
-        uses: klever1988/cachewrtbuild@main
-        with:
-          ccache: 'true'
-          prefix: ${{ github.workspace }}/x-wrt
+     # - name: Cache
+       # uses: klever1988/cachewrtbuild@main
+       # with:
+         # ccache: 'true'
+         # prefix: ${{ github.workspace }}/x-wrt
           #是否缓存工具链目录
          # toolchain: true
 
