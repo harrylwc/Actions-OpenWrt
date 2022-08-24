@@ -28,7 +28,8 @@ env:
   TVH: true
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
-  KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
+  KERNEL_CONFIG: 'myconfig/kernel_config.r619ac.5.15'
+  ##myconfig/kernel_config.r619ac'
   KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq40xx
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
@@ -37,7 +38,8 @@ env:
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
-  KERNEL_VERSION: '5.10'
+  KERNEL_VERSION: '5.15'
+  ##  KERNEL_VERSION: '5.10'                                                                            
   UPDATE_MULTI_CORE_FILE1: myconfig/sys.lua
   UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
   KERNEL_MODULE: myconfig/kernel_modules.txt
@@ -75,7 +77,7 @@ jobs:
           rm -r x-wrt/package/lean/n2n*
           cd x-wrt 
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-          #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
+          sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
           ./scripts/feeds update -a
           ./scripts/feeds install -a -f
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
