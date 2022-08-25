@@ -131,7 +131,7 @@ CONFIGURE_ARGS += \
 	--disable-execinfo
 
 #TARGET_CFLAGS += -Wno-error=pointer-compare -ggdb3 -O0
-TARGET_CFLAGS += -Wno-format-security 
+TARGET_CFLAGS += -Wno-format-security -Wno-error=array-bounds -Wno-error=address 
 
 define Build/Prepare
 	$(call Build/Prepare/Default)
