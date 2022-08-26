@@ -49,7 +49,7 @@ echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
 [ $CPU_MULTI_CORE == true ] && cat myconfig/base.update >> x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po && cp $UPDATE_MULTI_CORE_FILE1 x-wrt/feeds/luci/modules/luci-base/luasrc/sys.lua && cp $UPDATE_MULTI_CORE_FILE2 x-wrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js && sed -i 's/processes.js:72/processes.js:74/g' x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po  && sed -i 's/processes.js:73/processes.js:75/g' x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po
 
 ### apply patch##### 
-mv $GITHUB_WORKSPACE/patches/200-gcc12-elfutils.patch $GITHUB_WORKSPACE/patches/x-wrt/package/libs/elfutils/patches/
+mv $GITHUB_WORKSPACE/patches/200-gcc12-elfutils.patch $GITHUB_WORKSPACE/x-wrt/package/libs/elfutils/patches/
 mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 cp $GITHUB_WORKSPACE/patches/*.patch $GITHUB_WORKSPACE/x-wrt/
 cd $GITHUB_WORKSPACE/x-wrt/
