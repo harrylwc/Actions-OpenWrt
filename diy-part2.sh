@@ -11,6 +11,8 @@
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.2.100/g' package/base-files/files/bin/config_generate
 cd $GITHUB_WORKSPACE/x-wrt/
+sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Makefile
+sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' x-wrt/target/linux/mvebu/Makefile
 rm -r feeds/packages/multimedia/tvheadend
 #tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/tvheadend.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/feeds/packages/multimedia/
 rm -r feeds/packages/multimedia/ffmpeg

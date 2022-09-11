@@ -93,7 +93,7 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           #git checkout 21.10
-          sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' /workdir/x-wrt/target/linux/ramips/Makefile
+          #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' /workdir/x-wrt/target/linux/ramips/Makefile
           #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' /workdir/x-wrt/target/linux/ipq40xx/Makefile
           sudo timedatectl set-timezone "$TZ"
 
