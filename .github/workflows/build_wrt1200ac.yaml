@@ -172,9 +172,10 @@ jobs:
       
       - name: Compile firmware
         run: |
-          cd x-wrt 
-          rm dl/rrdtool*
+          cd x-wrt/dl
+          #rm dl/rrdtool*
           wget https://oss.oetiker.ch/rrdtool/pub/archive/rrdtool-1.0.x/rrdtool-1.0.50.tar.gz
+          cd ../
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
  
