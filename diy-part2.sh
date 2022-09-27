@@ -57,9 +57,7 @@ mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/x-wrt/package
 cp $GITHUB_WORKSPACE/patches/*.patch $GITHUB_WORKSPACE/x-wrt/
 cd $GITHUB_WORKSPACE/x-wrt/
 git apply --ignore-space-change --ignore-whitespace *.patch
-cd dl
-wget https://github.com/stedolan/jq/releases/download/jq-1.6/jq-1.6.tar.gz
-cd ../
+
 #git revert 789a6b7
 #cp $GITHUB_WORKSPACE/lede/package/kernel/linux/modules/fs.mk $GITHUB_WORKSPACE/x-wrt/package/kernel/linux/modules/
 #cp $GITHUB_WORKSPACE/lede/target/linux/generic/backport-5.10/35?*.patch $GITHUB_WORKSPACE/x-wrt/target/linux/generic/backport-5.10/
