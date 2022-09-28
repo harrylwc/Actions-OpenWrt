@@ -182,6 +182,7 @@ jobs:
           cd x-wrt/dl
           # rm dl/rrdtool*
           wget https://oss.oetiker.ch/rrdtool/pub/archive/rrdtool-1.0.x/rrdtool-1.0.50.tar.gz
+          wget https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz
           cd ../
           ##cp $GITHUB_WORKSPACE/myconfig/config.r619ac.2 .config
           make -j$(nproc) || make -j1 V=s
