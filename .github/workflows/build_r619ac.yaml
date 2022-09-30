@@ -179,7 +179,7 @@ jobs:
       
       - name: Compile firmware
         run: |
-          cd x-wrt/dl
+          cd x-wrt
           # rm dl/rrdtool*
           #wget https://oss.oetiker.ch/rrdtool/pub/archive/rrdtool-1.0.x/rrdtool-1.0.50.tar.gz
           #wget https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz
