@@ -50,12 +50,11 @@ echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
 #if [ $TVH == true ]; then CONFIG_FILE=config.$ROUTER_MODEL.tvh;cp $CONFIG_FILE .config; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE .config; fi
 #exit 0
 [ $CPU_MULTI_CORE == true ] && cat myconfig/base.update >> x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po && cp $UPDATE_MULTI_CORE_FILE1 x-wrt/feeds/luci/modules/luci-base/luasrc/sys.lua && cp $UPDATE_MULTI_CORE_FILE2 x-wrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js && sed -i 's/processes.js:72/processes.js:74/g' x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po  && sed -i 's/processes.js:73/processes.js:75/g' x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po
-cd x-wrt
-git revert 03a0395
-git revert 5ae6c9b
-git revert b0ea2f3
-git revert 320adae
-cd ../
+cd x-wrt/scripts/
+rm download.pl
+wget https://raw.githubusercontent.com/openwrt/openwrt/dce035bb7161cd546927e73b556cd839211b00c8/scripts/download.pl
+chmod 755 download.pl
+cd ../../
 
 ### apply patch##### 
 mv $GITHUB_WORKSPACE/patches/200-gcc12-elfutils.patch $GITHUB_WORKSPACE/x-wrt/toolchain/gcc/patches/12.1.0/
