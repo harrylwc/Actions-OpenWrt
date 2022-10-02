@@ -196,6 +196,7 @@ CONFIG_TARGET_ramips_mt7621_DEVICE_d-team_newifi-d2=y
 # CONFIG_TARGET_ramips_mt7621_DEVICE_ubnt_edgerouter-x is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_ubnt_edgerouter-x-sfp is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_ubnt_unifi-6-lite is not set
+# CONFIG_TARGET_ramips_mt7621_DEVICE_ubnt_unifi-flexhd is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_ubnt_unifi-nanohd is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_ubnt_usw-flex is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_unielec_u7621-01-16m is not set
@@ -442,6 +443,11 @@ CONFIG_KERNEL_IPV6_PIMSM_V2=y
 CONFIG_KERNEL_IPV6_SEG6_LWTUNNEL=y
 # CONFIG_KERNEL_LWTUNNEL_BPF is not set
 # CONFIG_KERNEL_NET_L3_MASTER_DEV is not set
+# CONFIG_KERNEL_WIRELESS_EXT is not set
+# CONFIG_KERNEL_WEXT_CORE is not set
+# CONFIG_KERNEL_WEXT_PRIV is not set
+# CONFIG_KERNEL_WEXT_PROC is not set
+# CONFIG_KERNEL_WEXT_SPY is not set
 # CONFIG_KERNEL_IP_PNP is not set
 
 #
@@ -530,6 +536,7 @@ CONFIG_DOWNLOAD_FOLDER=""
 CONFIG_LOCALMIRROR=""
 CONFIG_AUTOREBUILD=y
 # CONFIG_AUTOREMOVE is not set
+# CONFIG_BUILD_ALL_HOST_TOOLS is not set
 CONFIG_BUILD_SUFFIX=""
 CONFIG_TARGET_ROOTFS_DIR=""
 CONFIG_CCACHE=y
@@ -2830,6 +2837,7 @@ CONFIG_PACKAGE_valgrind=m
 # CONFIG_PACKAGE_jose is not set
 # CONFIG_PACKAGE_k3wifi is not set
 CONFIG_PACKAGE_libiwinfo-data=y
+# CONFIG_PACKAGE_libjose is not set
 CONFIG_PACKAGE_nginx=m
 CONFIG_PACKAGE_nginx-mod-luci-ssl=m
 CONFIG_PACKAGE_nginx-util=m
@@ -2942,6 +2950,7 @@ CONFIG_PACKAGE_nginx-util=m
 # CONFIG_PACKAGE_libertas-sdio-firmware is not set
 # CONFIG_PACKAGE_libertas-spi-firmware is not set
 # CONFIG_PACKAGE_libertas-usb-firmware is not set
+# CONFIG_PACKAGE_midisport-firmware is not set
 # CONFIG_PACKAGE_mt7601u-firmware is not set
 # CONFIG_PACKAGE_mt7622bt-firmware is not set
 # CONFIG_PACKAGE_mt7921bt-firmware is not set
@@ -3033,7 +3042,6 @@ CONFIG_PACKAGE_wireless-regdb=y
 # CONFIG_PACKAGE_kmod-ata-ahci is not set
 # CONFIG_PACKAGE_kmod-ata-artop is not set
 # CONFIG_PACKAGE_kmod-ata-core is not set
-# CONFIG_PACKAGE_kmod-ata-marvell-sata is not set
 # CONFIG_PACKAGE_kmod-ata-nvidia-sata is not set
 # CONFIG_PACKAGE_kmod-ata-pdc202xx-old is not set
 # CONFIG_PACKAGE_kmod-ata-piix is not set
@@ -3081,6 +3089,7 @@ CONFIG_PACKAGE_kmod-crypto-des=m
 CONFIG_PACKAGE_kmod-crypto-ecb=y
 # CONFIG_PACKAGE_kmod-crypto-ecdh is not set
 # CONFIG_PACKAGE_kmod-crypto-echainiv is not set
+# CONFIG_PACKAGE_kmod-crypto-essiv is not set
 # CONFIG_PACKAGE_kmod-crypto-fcrypt is not set
 CONFIG_PACKAGE_kmod-crypto-gcm=y
 CONFIG_PACKAGE_kmod-crypto-gf128=y
@@ -3283,6 +3292,7 @@ CONFIG_PACKAGE_kmod-leds-gpio=y
 # CONFIG_PACKAGE_kmod-leds-pca955x is not set
 # CONFIG_PACKAGE_kmod-leds-pca963x is not set
 # CONFIG_PACKAGE_kmod-leds-tlc591xx is not set
+# CONFIG_PACKAGE_kmod-leds-ubnt-ledbar is not set
 # CONFIG_PACKAGE_kmod-leds-uleds is not set
 # CONFIG_PACKAGE_kmod-ledtrig-activity is not set
 # CONFIG_PACKAGE_kmod-ledtrig-audio is not set
@@ -3611,8 +3621,10 @@ CONFIG_PACKAGE_kmod-sched-core=y
 # CONFIG_PACKAGE_kmod-sched-ctinfo is not set
 # CONFIG_PACKAGE_kmod-sched-drr is not set
 # CONFIG_PACKAGE_kmod-sched-flower is not set
+# CONFIG_PACKAGE_kmod-sched-fq-pie is not set
 CONFIG_PACKAGE_kmod-sched-ipset=m
 # CONFIG_PACKAGE_kmod-sched-mqprio is not set
+# CONFIG_PACKAGE_kmod-sched-pie is not set
 # CONFIG_PACKAGE_kmod-sched-prio is not set
 # CONFIG_PACKAGE_kmod-sched-red is not set
 # CONFIG_PACKAGE_kmod-sctp is not set
@@ -3896,7 +3908,6 @@ CONFIG_PACKAGE_kmod-cfg80211=y
 # CONFIG_PACKAGE_kmod-iwl3945 is not set
 # CONFIG_PACKAGE_kmod-iwl4965 is not set
 # CONFIG_PACKAGE_kmod-iwlwifi is not set
-# CONFIG_PACKAGE_kmod-lib80211 is not set
 # CONFIG_PACKAGE_kmod-libertas-sdio is not set
 # CONFIG_PACKAGE_kmod-libertas-spi is not set
 # CONFIG_PACKAGE_kmod-libertas-usb is not set
@@ -4161,6 +4172,7 @@ CONFIG_PACKAGE_php8-mod-zip=m
 # CONFIG_PACKAGE_php8-pecl-raphf is not set
 # CONFIG_PACKAGE_php8-pecl-redis is not set
 # CONFIG_PACKAGE_php8-pecl-sodium is not set
+# CONFIG_PACKAGE_php8-pecl-xdebug is not set
 # end of PHP8
 
 #
@@ -4444,6 +4456,7 @@ CONFIG_PACKAGE_python3-flask-login=m
 # CONFIG_PACKAGE_python3-flask-session is not set
 # CONFIG_PACKAGE_python3-flask-socketio is not set
 # CONFIG_PACKAGE_python3-flask-src is not set
+# CONFIG_PACKAGE_python3-flent is not set
 # CONFIG_PACKAGE_python3-flup is not set
 # CONFIG_PACKAGE_python3-gmpy2 is not set
 # CONFIG_PACKAGE_python3-gnupg is not set
@@ -4458,6 +4471,7 @@ CONFIG_PACKAGE_python3-idna=m
 # CONFIG_PACKAGE_python3-influxdb is not set
 # CONFIG_PACKAGE_python3-iniconfig is not set
 # CONFIG_PACKAGE_python3-intelhex is not set
+# CONFIG_PACKAGE_python3-iperf3 is not set
 CONFIG_PACKAGE_python3-itsdangerous=m
 # CONFIG_PACKAGE_python3-itsdangerous-src is not set
 # CONFIG_PACKAGE_python3-jdcal is not set
@@ -5276,6 +5290,10 @@ CONFIG_OPENSSL_WITH_PSK=y
 CONFIG_PACKAGE_libopenssl-conf=y
 # CONFIG_PACKAGE_libpolarssl is not set
 CONFIG_PACKAGE_libwolfssl=y
+
+#
+# wolfSSL Library Configuration
+#
 CONFIG_WOLFSSL_HAS_AES_CCM=y
 CONFIG_WOLFSSL_HAS_CHACHA_POLY=y
 CONFIG_WOLFSSL_HAS_DH=y
@@ -5291,12 +5309,13 @@ CONFIG_WOLFSSL_HAS_WPAS=y
 # CONFIG_WOLFSSL_HAS_ECC448 is not set
 # CONFIG_WOLFSSL_HAS_OPENVPN is not set
 CONFIG_WOLFSSL_ALT_NAMES=y
-# CONFIG_WOLFSSL_ASM_CAPABLE is not set
 CONFIG_WOLFSSL_HAS_NO_HW=y
 # CONFIG_WOLFSSL_HAS_AFALG is not set
 # CONFIG_WOLFSSL_HAS_DEVCRYPTO_CBC is not set
 # CONFIG_WOLFSSL_HAS_DEVCRYPTO_AES is not set
 # CONFIG_WOLFSSL_HAS_DEVCRYPTO_FULL is not set
+# end of wolfSSL Library Configuration
+
 # CONFIG_PACKAGE_libwolfssl-benchmark is not set
 # end of SSL
 
@@ -5467,6 +5486,7 @@ CONFIG_PACKAGE_libcares=y
 # CONFIG_PACKAGE_libcbor is not set
 # CONFIG_PACKAGE_libcgroup is not set
 CONFIG_PACKAGE_libcharset=m
+# CONFIG_PACKAGE_libcli is not set
 # CONFIG_PACKAGE_libcoap is not set
 CONFIG_PACKAGE_libcomerr=y
 CONFIG_PACKAGE_libconfig=m
@@ -5629,6 +5649,7 @@ CONFIG_PACKAGE_libidn2=m
 # CONFIG_PACKAGE_libinotifytools is not set
 # CONFIG_PACKAGE_libinput is not set
 CONFIG_PACKAGE_libintl-full=y
+CONFIG_PACKAGE_libiperf3=y
 # CONFIG_PACKAGE_libipfs-http-client is not set
 # CONFIG_PACKAGE_libiw is not set
 CONFIG_PACKAGE_libiwinfo=y
@@ -5809,6 +5830,7 @@ CONFIG_LIBSODIUM_MINIMAL=y
 # end of Configuration
 
 # CONFIG_PACKAGE_libsoup is not set
+# CONFIG_PACKAGE_libsoup3 is not set
 CONFIG_PACKAGE_libsoxr=m
 # CONFIG_PACKAGE_libspeex is not set
 # CONFIG_PACKAGE_libspeexdsp is not set
@@ -6053,6 +6075,7 @@ CONFIG_PACKAGE_luci-app-hd-idle=m
 # CONFIG_PACKAGE_luci-app-ledtrig-rssi is not set
 # CONFIG_PACKAGE_luci-app-ledtrig-switch is not set
 # CONFIG_PACKAGE_luci-app-ledtrig-usbport is not set
+# CONFIG_PACKAGE_luci-app-lorawan-basicstation is not set
 CONFIG_PACKAGE_luci-app-lxc=m
 # CONFIG_PACKAGE_luci-app-minidlna is not set
 # CONFIG_PACKAGE_luci-app-mjpg-streamer is not set
@@ -6148,6 +6171,7 @@ CONFIG_PACKAGE_luci-proto-ppp=y
 # CONFIG_PACKAGE_luci-proto-qmi is not set
 # CONFIG_PACKAGE_luci-proto-relay is not set
 # CONFIG_PACKAGE_luci-proto-sstp is not set
+# CONFIG_PACKAGE_luci-proto-unet is not set
 # CONFIG_PACKAGE_luci-proto-vpnc is not set
 # CONFIG_PACKAGE_luci-proto-vxlan is not set
 # CONFIG_PACKAGE_luci-proto-wireguard is not set
@@ -7801,6 +7825,7 @@ CONFIG_PACKAGE_cgi-io=y
 # CONFIG_PACKAGE_frpc is not set
 # CONFIG_PACKAGE_frps is not set
 # CONFIG_PACKAGE_gateway-go is not set
+# CONFIG_PACKAGE_gatling is not set
 # CONFIG_PACKAGE_haproxy is not set
 # CONFIG_PACKAGE_haproxy-nossl is not set
 CONFIG_PACKAGE_kcptun-client=m
@@ -8044,6 +8069,7 @@ CONFIG_PACKAGE_ethtool=y
 # CONFIG_PACKAGE_hnet-full-secure is not set
 # CONFIG_PACKAGE_hnetd-nossl is not set
 # CONFIG_PACKAGE_hnetd-openssl is not set
+# CONFIG_PACKAGE_hping3 is not set
 # CONFIG_PACKAGE_httping is not set
 # CONFIG_PACKAGE_httping-nossl is not set
 CONFIG_PACKAGE_https-dns-proxy=m
@@ -8058,7 +8084,6 @@ CONFIG_PACKAGE_iftop=m
 CONFIG_PACKAGE_iperf=m
 CONFIG_IPERF_ENABLE_MULTICAST=y
 CONFIG_PACKAGE_iperf3=y
-CONFIG_PACKAGE_libiperf3=y
 # CONFIG_PACKAGE_iperf3-ssl is not set
 # CONFIG_PACKAGE_ipip is not set
 CONFIG_PACKAGE_ipset=m
@@ -8089,6 +8114,7 @@ CONFIG_PACKAGE_libipset=m
 # CONFIG_PACKAGE_mac-telnet-ping is not set
 # CONFIG_PACKAGE_mac-telnet-server is not set
 # CONFIG_PACKAGE_map is not set
+# CONFIG_PACKAGE_mausezahn is not set
 # CONFIG_PACKAGE_mbusd is not set
 # CONFIG_PACKAGE_mdns-repeater is not set
 # CONFIG_PACKAGE_memcached is not set
@@ -8203,6 +8229,12 @@ CONFIG_PACKAGE_smartdns=m
 # CONFIG_PACKAGE_snmp-utils is not set
 # CONFIG_PACKAGE_snmpd is not set
 # CONFIG_PACKAGE_snmptrapd is not set
+# CONFIG_PACKAGE_snowflake-broker is not set
+# CONFIG_PACKAGE_snowflake-client is not set
+# CONFIG_PACKAGE_snowflake-distinctcounter is not set
+# CONFIG_PACKAGE_snowflake-probetest is not set
+# CONFIG_PACKAGE_snowflake-proxy is not set
+# CONFIG_PACKAGE_snowflake-server is not set
 CONFIG_PACKAGE_socat=m
 # CONFIG_SOCAT_SSL is not set
 # CONFIG_PACKAGE_softflowd is not set
@@ -8235,6 +8267,7 @@ CONFIG_PACKAGE_uclient-fetch=y
 CONFIG_PACKAGE_udpxy=m
 # CONFIG_PACKAGE_ulogd is not set
 # CONFIG_PACKAGE_umdns is not set
+# CONFIG_PACKAGE_unet-cli is not set
 # CONFIG_PACKAGE_unetd is not set
 # CONFIG_PACKAGE_uradvd is not set
 # CONFIG_PACKAGE_usbip is not set
@@ -8948,6 +8981,7 @@ CONFIG_PACKAGE_flock=m
 # CONFIG_PACKAGE_fritz-tffs-nand is not set
 # CONFIG_PACKAGE_ftdi_eeprom is not set
 # CONFIG_PACKAGE_fuse-overlayfs is not set
+# CONFIG_PACKAGE_fxload is not set
 # CONFIG_PACKAGE_gammu is not set
 # CONFIG_PACKAGE_gawk is not set
 # CONFIG_PACKAGE_gddrescue is not set
