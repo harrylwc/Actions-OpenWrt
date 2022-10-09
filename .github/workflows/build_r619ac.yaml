@@ -229,7 +229,7 @@ jobs:
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt 
-           make kernel_menuconfig -j2
+           #make kernel_menuconfig -j2
            make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
            df -kh
