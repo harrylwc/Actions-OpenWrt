@@ -68,7 +68,7 @@ git apply --ignore-space-change --ignore-whitespace jq.patch
 git apply --ignore-space-change --ignore-whitespace ramips.patch
 git apply --ignore-space-change --ignore-whitespace common.patch
 git apply --ignore-space-change --ignore-whitespace revert_set_default_root.patch
-git apply --ignore-space-change --ignore-whitespace rrdtool.patch
+#git apply --ignore-space-change --ignore-whitespace rrdtool.patch
 git apply --ignore-space-change --ignore-whitespace r619ac.patch
 
 #git revert 789a6b7
