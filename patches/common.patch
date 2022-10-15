@@ -1,16 +1,3 @@
-diff --git a/package/kernel/mac80211/files/lib/wifi/mac80211.sh b/package/kernel/mac80211/files/lib/wifi/mac80211.sh
-index 6aa46b0c74..6f20f74c46 100644
---- a/package/kernel/mac80211/files/lib/wifi/mac80211.sh
-+++ b/package/kernel/mac80211/files/lib/wifi/mac80211.sh
-@@ -174,7 +174,7 @@ detect_mac80211() {
- 			set wireless.radio${devidx}.channel=${channel}
- 			set wireless.radio${devidx}.band=${mode_band}
- 			set wireless.radio${devidx}.htmode=$htmode
--			set wireless.radio${devidx}.disabled=1
-+			set wireless.radio${devidx}.disabled=0
- 
- 			set wireless.default_radio${devidx}=wifi-iface
- 			set wireless.default_radio${devidx}.device=radio${devidx}
 diff --git a/package/network/services/uhttpd/files/uhttpd.config b/package/network/services/uhttpd/files/uhttpd.config
 index a9b8ff3d15..82fe13047c 100644
 --- a/package/network/services/uhttpd/files/uhttpd.config
