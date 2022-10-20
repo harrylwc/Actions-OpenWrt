@@ -532,6 +532,7 @@ CONFIG_SECCOMP=y
 CONFIG_DEVEL=y
 # CONFIG_BROKEN is not set
 CONFIG_BINARY_FOLDER=""
+CONFIG_DOWNLOAD_TOOL_CUSTOM=""
 CONFIG_DOWNLOAD_FOLDER=""
 CONFIG_LOCALMIRROR=""
 CONFIG_AUTOREBUILD=y
@@ -2725,18 +2726,19 @@ CONFIG_PACKAGE_usign=y
 # CONFIG_PACKAGE_zabbix-get-gnutls is not set
 # CONFIG_PACKAGE_zabbix-get-openssl is not set
 # CONFIG_PACKAGE_zabbix-proxy is not set
-# CONFIG_PACKAGE_zabbix-proxy-gnutls is not set
-# CONFIG_PACKAGE_zabbix-proxy-openssl is not set
-# CONFIG_PACKAGE_zabbix-sender is not set
-# CONFIG_PACKAGE_zabbix-sender-gnutls is not set
-# CONFIG_PACKAGE_zabbix-sender-openssl is not set
-# CONFIG_PACKAGE_zabbix-server is not set
 
 #
 # Database Software
 #
 # CONFIG_ZABBIX_MYSQL is not set
 CONFIG_ZABBIX_POSTGRESQL=y
+# CONFIG_ZABBIX_SQLITE is not set
+# CONFIG_PACKAGE_zabbix-proxy-gnutls is not set
+# CONFIG_PACKAGE_zabbix-proxy-openssl is not set
+# CONFIG_PACKAGE_zabbix-sender is not set
+# CONFIG_PACKAGE_zabbix-sender-gnutls is not set
+# CONFIG_PACKAGE_zabbix-sender-openssl is not set
+# CONFIG_PACKAGE_zabbix-server is not set
 # CONFIG_PACKAGE_zabbix-server-frontend is not set
 # CONFIG_PACKAGE_zabbix-server-gnutls is not set
 # CONFIG_PACKAGE_zabbix-server-openssl is not set
@@ -2752,6 +2754,7 @@ CONFIG_ZABBIX_POSTGRESQL=y
 
 # CONFIG_PACKAGE_atop is not set
 # CONFIG_PACKAGE_backuppc is not set
+# CONFIG_PACKAGE_btop is not set
 # CONFIG_PACKAGE_debian-archive-keyring is not set
 # CONFIG_PACKAGE_debootstrap is not set
 # CONFIG_PACKAGE_gkrellmd is not set
@@ -4440,8 +4443,7 @@ CONFIG_PACKAGE_python3-django=m
 # CONFIG_PACKAGE_python3-docker is not set
 # CONFIG_PACKAGE_python3-dockerpty is not set
 # CONFIG_PACKAGE_python3-docopt is not set
-#CONFIG_PACKAGE_python3-docutils=m
-# CONFIG_PACKAGE_python3-docutils-src is not set
+# CONFIG_PACKAGE_python3-docutils is not set
 # CONFIG_PACKAGE_python3-dotenv is not set
 # CONFIG_PACKAGE_python3-drf-nested-routers is not set
 CONFIG_PACKAGE_python3-email=y
@@ -6169,6 +6171,7 @@ CONFIG_PACKAGE_luci-proto-ipv6=y
 # CONFIG_PACKAGE_luci-proto-mbim is not set
 # CONFIG_PACKAGE_luci-proto-modemmanager is not set
 # CONFIG_PACKAGE_luci-proto-ncm is not set
+# CONFIG_PACKAGE_luci-proto-nebula is not set
 # CONFIG_PACKAGE_luci-proto-openconnect is not set
 # CONFIG_PACKAGE_luci-proto-openfortivpn is not set
 CONFIG_PACKAGE_luci-proto-ppp=y
@@ -7840,6 +7843,11 @@ CONFIG_PACKAGE_lighttpd=y
 CONFIG_LIGHTTPD_SSL=y
 # CONFIG_LIGHTTPD_SSL_DEPENDS is not set
 CONFIG_LIGHTTPD_SSL_SELECT=m
+CONFIG_LIGHTTPD_PCRE2=y
+# CONFIG_LIGHTTPD_CRYPTOLIB_NONE is not set
+CONFIG_LIGHTTPD_CRYPTOLIB_NETTLE=y
+# CONFIG_LIGHTTPD_CRYPTOLIB_MBEDTLS is not set
+# CONFIG_LIGHTTPD_CRYPTOLIB_WOLFSSL is not set
 # CONFIG_LIGHTTPD_LOGROTATE is not set
 CONFIG_PACKAGE_lighttpd-mod-access=y
 CONFIG_PACKAGE_lighttpd-mod-accesslog=y
@@ -8100,6 +8108,7 @@ CONFIG_PACKAGE_iw=y
 # CONFIG_PACKAGE_iw-full is not set
 # CONFIG_PACKAGE_jool-tools-netfilter is not set
 # CONFIG_PACKAGE_keepalived is not set
+# CONFIG_PACKAGE_keepalived-sync is not set
 # CONFIG_PACKAGE_knxd is not set
 # CONFIG_PACKAGE_kplex is not set
 # CONFIG_PACKAGE_krb5-client is not set
