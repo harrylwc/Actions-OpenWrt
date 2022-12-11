@@ -89,7 +89,7 @@ jobs:
       - name: Cache
         uses: klever1988/cachewrtbuild@main
         with:
-          ccache: 'true'
+          ccache: 'false'
           prefix: ${{ github.workspace }}/x-wrt
          #with:
          # ccache: 'true'
@@ -101,7 +101,7 @@ jobs:
           #skip: false
 
           #清空缓存
-          #clean: true
+          clean: true
           #prefix: ${{ github.workspace }}/x-wrt
       - name: Space cleanup
         env:
