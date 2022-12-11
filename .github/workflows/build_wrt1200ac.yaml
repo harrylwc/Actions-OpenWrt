@@ -232,7 +232,7 @@ jobs:
           #mkdir -p ./artifact/buildinfo
           mkdir -p $DRIVERS_DIR
           cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR
-          cp -f `find x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko` $DRIVERS_DIR        
+          cp -f x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
           #cp -f .config bin/
           #cp -f myconfig/config.$ROUTER_MODEL.? bin/
           #rm -rf $(find ./bin/targets/ -type d -name "packages")
