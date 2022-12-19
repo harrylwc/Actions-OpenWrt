@@ -56,8 +56,8 @@ jobs:
     ###@####
     name: Build R619AC  TVH firmware
 
-    #runs-on: ubuntu-latest
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    #runs-on: ubuntu-22.04
     if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
