@@ -72,6 +72,8 @@ git apply --ignore-space-change --ignore-whitespace common.patch
 git apply --ignore-space-change --ignore-whitespace revert_set_default_root.patch
 #git apply --ignore-space-change --ignore-whitespace rrdtool.patch
 git apply --ignore-space-change --ignore-whitespace r619ac.patch
+mkdir -p $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/python/python-pycparser
+cp $GITHUB_WORKSPACE/patches/Makefile.python-pycparser  $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/python/python-pycparser/Makefile
 
 #git revert 789a6b7
 #cp $GITHUB_WORKSPACE/lede/package/kernel/linux/modules/fs.mk $GITHUB_WORKSPACE/x-wrt/package/kernel/linux/modules/
