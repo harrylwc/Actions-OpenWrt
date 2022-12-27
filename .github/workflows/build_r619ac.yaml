@@ -34,8 +34,8 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
-  MAKEMENU_CONFIG: true
-  KERNEL_MENUCONFIG: true
+  MAKEMENU_CONFIG: false
+  KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
   KERNEL_VERSION: '5.15'
@@ -74,7 +74,7 @@ jobs:
           git clone https://github.com/coolsnowwolf/lede lede
           ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
           lede/scripts/feeds update -a
-          rm -r x-wrt/package/lean/n2n*
+          #rm -r x-wrt/package/lean/n2n*
           cd x-wrt 
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
           #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
