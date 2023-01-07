@@ -64,7 +64,8 @@ EXTRA_CFLAGS:= \
 	-DRTW_USE_CFG80211_STA_EVENT \
 	-DCONFIG_IOCTL_CFG80211 \
 	-DCONFIG_CONCURRENT_MODE \
-        -msoft-float \
+	-Wno-unused-variable \
+	-msoft-float \
 	-DBUILD_OPENWRT
 
 ifeq ($(ARCH),arm)
