@@ -95,7 +95,7 @@ jobs:
          # ccache: 'true'
          # prefix: ${{ github.workspace }}/x-wrt
           #是否缓存工具链目录
-          toolchain: true
+          #toolchain: true
 
           #是否跳过工具链编译
           #skip: false
