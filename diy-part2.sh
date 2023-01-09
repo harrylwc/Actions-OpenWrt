@@ -72,6 +72,7 @@ git apply --ignore-space-change --ignore-whitespace common.patch
 git apply --ignore-space-change --ignore-whitespace revert_set_default_root.patch
 #git apply --ignore-space-change --ignore-whitespace rrdtool.patch
 git apply --ignore-space-change --ignore-whitespace r619ac.patch
+git apply --ignore-space-change --ignore-whitespace ocserv.patch
 #mkdir -p $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/python/python-pycparser
 #cp $GITHUB_WORKSPACE/patches/Makefile.python-pycparser  $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/python/python-pycparser/Makefile
 cp $GITHUB_WORKSPACE/patches/elfutils.Makefile $GITHUB_WORKSPACE/x-wrt/package/libs/elfutils/Makefile
