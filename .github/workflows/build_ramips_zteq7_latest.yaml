@@ -97,21 +97,11 @@ jobs:
           #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' /workdir/x-wrt/target/linux/ipq40xx/Makefile
           sudo timedatectl set-timezone "$TZ"
 
-      #- name: Cache
-        #uses: klever1988/cachewrtbuild@main
-        #with:
-          #ccache: 'true'
-          #clean:  true
-          #prefix: ${{ github.workspace }}/x-wrt
-          #是否缓存工具链目录
-          #toolchain: true
-
-          #是否跳过工具链编译
-          #skip: true
-
-          #清空缓存
-          #clean: true
-          #prefix: ${{ github.workspace }}/x-wrt
+      - name: Cache
+        uses: klever1988/cachewrtbuild@main
+        with:
+          ccache: 'true'
+          prefix: ${{ github.workspace }}/x-wrt
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
