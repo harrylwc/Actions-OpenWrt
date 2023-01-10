@@ -6017,6 +6017,7 @@ CONFIG_PACKAGE_luci-app-acme=m
 CONFIG_PACKAGE_luci-app-adblock=m
 # CONFIG_PACKAGE_luci-app-advanced-reboot is not set
 # CONFIG_PACKAGE_luci-app-ahcp is not set
+CONFIG_PACKAGE_luci-app-alist=m
 CONFIG_PACKAGE_luci-app-apinger=m
 CONFIG_PACKAGE_luci-app-aria2=m
 CONFIG_PACKAGE_luci-app-attendedsysupgrade=m
@@ -6268,6 +6269,7 @@ CONFIG_PACKAGE_luci-i18n-acme-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-adblock-vi is not set
 CONFIG_PACKAGE_luci-i18n-adblock-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-adblock-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-alist-zh-cn=m
 # CONFIG_PACKAGE_luci-i18n-aria2-ar is not set
 # CONFIG_PACKAGE_luci-i18n-aria2-bg is not set
 # CONFIG_PACKAGE_luci-i18n-aria2-bn is not set
@@ -7755,6 +7757,7 @@ CONFIG_PACKAGE_ddns-scripts=y
 # CONFIG_PACKAGE_ddns-scripts-gandi is not set
 # CONFIG_PACKAGE_ddns-scripts-gcp is not set
 # CONFIG_PACKAGE_ddns-scripts-godaddy is not set
+# CONFIG_PACKAGE_ddns-scripts-luadns is not set
 # CONFIG_PACKAGE_ddns-scripts-noip is not set
 # CONFIG_PACKAGE_ddns-scripts-ns1 is not set
 # CONFIG_PACKAGE_ddns-scripts-nsupdate is not set
@@ -8252,6 +8255,9 @@ CONFIG_PACKAGE_git-http=y
 #
 # Web Servers/Proxies
 #
+CONFIG_PACKAGE_alist=m
+# CONFIG_ALIST_COMPRESS_UPX is not set
+# CONFIG_ALIST_COMPRESS_GOPROXY is not set
 # CONFIG_PACKAGE_apache is not set
 CONFIG_PACKAGE_cgi-io=y
 # CONFIG_PACKAGE_clamav is not set
@@ -9733,6 +9739,7 @@ CONFIG_PACKAGE_triggerhappy=m
 CONFIG_PACKAGE_ubi-utils=y
 # CONFIG_PACKAGE_ubnt-manager is not set
 CONFIG_PACKAGE_ucode=y
+# CONFIG_PACKAGE_ucode-mod-bpf is not set
 CONFIG_PACKAGE_ucode-mod-fs=y
 CONFIG_PACKAGE_ucode-mod-html=y
 CONFIG_PACKAGE_ucode-mod-lua=y
