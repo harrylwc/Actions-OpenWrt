@@ -97,11 +97,11 @@ jobs:
           #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' /workdir/x-wrt/target/linux/ipq40xx/Makefile
           sudo timedatectl set-timezone "$TZ"
 
-      - name: Cache
-        uses: klever1988/cachewrtbuild@main
-        with:
-          ccache: 'true'
-          prefix: ${{ github.workspace }}/x-wrt
+      #- name: Cache
+       # uses: klever1988/cachewrtbuild@main
+        #with:
+         # ccache: 'true'
+          #prefix: ${{ github.workspace }}/x-wrt
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
