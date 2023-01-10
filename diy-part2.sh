@@ -35,6 +35,9 @@ git clone https://github.com/brvphoenix/wrtbwmon /home/runner/work/Actions-OpenW
 cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
 cd $GITHUB_WORKSPACE/ 
+rm -rf x-wrt/feeds/packages/lang/golang
+svn export https://github.com/sbwml/packages_lang_golang/branches/19.x x-wrt/feeds/packages/lang/golang
+git clone https://github.com/sbwml/luci-app-alist x-wrt/package/alist
 cp myconfig/config* x-wrt/
 myconfig=x-wrt/.config
 CONFIG_FILE0=myconfig/config.$ROUTER_MODEL.0
