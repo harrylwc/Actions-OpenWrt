@@ -38,6 +38,7 @@ cd $GITHUB_WORKSPACE/
 #rm -rf x-wrt/feeds/packages/lang/golang
 #svn export https://github.com/sbwml/packages_lang_golang/branches/19.x x-wrt/feeds/packages/lang/golang
 git clone https://github.com/sbwml/luci-app-alist x-wrt/package/alist
+cp patches/alist.po x-wrt/package/alist/luci-app-alist/po/zh_Hans/
 cp myconfig/config* x-wrt/
 myconfig=x-wrt/.config
 CONFIG_FILE0=myconfig/config.$ROUTER_MODEL.0
