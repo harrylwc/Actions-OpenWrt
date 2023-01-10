@@ -70,7 +70,7 @@ cd $GITHUB_WORKSPACE/x-wrt/
 sed -i 's/set wireless.${name}.disabled=1/set wireless.${name}.disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 git apply --ignore-space-change --ignore-whitespace fs.patch
-git apply --ignore-space-change --ignore-whitespace jq.patch
+#git apply --ignore-space-change --ignore-whitespace jq.patch
 git apply --ignore-space-change --ignore-whitespace ramips.patch
 git apply --ignore-space-change --ignore-whitespace common.patch
 git apply --ignore-space-change --ignore-whitespace revert_set_default_root.patch
@@ -79,7 +79,7 @@ git apply --ignore-space-change --ignore-whitespace r619ac.patch
 #git apply --ignore-space-change --ignore-whitespace ocserv.patch
 #mkdir -p $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/python/python-pycparser
 #cp $GITHUB_WORKSPACE/patches/Makefile.python-pycparser  $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/python/python-pycparser/Makefile
-cp $GITHUB_WORKSPACE/patches/elfutils.Makefile $GITHUB_WORKSPACE/x-wrt/package/libs/elfutils/Makefile
+#cp $GITHUB_WORKSPACE/patches/elfutils.Makefile $GITHUB_WORKSPACE/x-wrt/package/libs/elfutils/Makefile
 
 #git revert 789a6b7
 #cp $GITHUB_WORKSPACE/lede/package/kernel/linux/modules/fs.mk $GITHUB_WORKSPACE/x-wrt/package/kernel/linux/modules/
