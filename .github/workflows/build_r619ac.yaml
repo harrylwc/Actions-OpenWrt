@@ -168,7 +168,10 @@ jobs:
             
       - name: SSH connection for make menuconfig    
         if: env.MAKEMENU_CONFIG == 'true'
-        uses: P3TERX/ssh2actions@main
+        #uses: P3TERX/ssh2actions@main
+        uses: lhotari/action-upterm@v1
+        #uses: mxschmitt/action-tmate@v1
+        #uses: csexton/debugger-action@master
         env:
          TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
          TELEGRAM_CHAT_ID: 1373335316
