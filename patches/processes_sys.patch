@@ -1,0 +1,42 @@
+--- a/x-wrt/feeds/luci/modules/luci-lua-runtime/luasrc/sys.lua
++++ b/x-wrt/feeds/luci/modules/luci-lua-runtime/luasrc/sys.lua
+
+@@ -384,8 +384,8 @@
+        end
+ 
+        for line in ps do
+-               local pid, ppid, user, stat, vsz, mem, cpu, cmd = line:match(
+-                       "^ *(%d+) +(%d+) +(%S.-%S) +([RSDZTW][<NW ][<N ]) +(%d+m?) +(%d+%%) +(%d+%%) +(.+)"
++               local pid, ppid, user, stat, vsz, mem, core, cpu, cmd = line:match(
++                       "^ *(%d+) +(%d+) +(%S.-%S) +([RSDZTW][W ][<N ]) +(%d+m?) +(%d+%%) +(%d+) +(%d+%%) +(.+)"
+                )
+ 
+                local idx = tonumber(pid)
+@@ -397,6 +397,7 @@
+                                ['STAT']    = stat,
+                                ['VSZ']     = vsz,
+                                ['%MEM']    = mem,
++                               ['CPU']     = core,
+                                ['%CPU']    = cpu,
+                                ['COMMAND'] = cmd
+                        }
+
+--- a/x-wrt/feeds/luci/modules/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
++++ b/x-wrt/feeds/luci/modules/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
+
+@@ -37,6 +37,7 @@
+ 				proc.PID,
+ 				proc.USER,
+ 				proc.COMMAND,
++			 	proc['CPU'],
+ 				proc['%CPU'],
+ 				proc['%MEM'],
+ 				E('div', {}, [
+@@ -69,6 +70,7 @@
+ 					E('th', { 'class': 'th' }, _('PID')),
+ 					E('th', { 'class': 'th' }, _('Owner')),
+ 					E('th', { 'class': 'th' }, _('Command')),
++					E('th', { 'class': 'th' }, _('CORE')),
+ 					E('th', { 'class': 'th' }, _('CPU usage (%)')),
+ 					E('th', { 'class': 'th' }, _('Memory usage (%)')),
+ 					E('th', { 'class': 'th center nowrap cbi-section-actions' })
