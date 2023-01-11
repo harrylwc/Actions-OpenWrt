@@ -3,41 +3,41 @@ index 2a146a52aa..2728e67f6d 100644
 --- a/x-wrt/feeds/luci/modules/luci-lua-runtime/luasrc/sys.lua
 +++ b/x-wrt/feeds/luci/modules/luci-lua-runtime/luasrc/sys.lua
 @@ -385,8 +385,8 @@ function process.list()
-        end
+ 	end
  
-        for line in ps do
--               local pid, ppid, user, stat, vsz, mem, cpu, cmd = line:match(
--                       "^ *(%d+) +(%d+) +(%S.-%S) +([RSDZTW][<NW ][<N ]) +(%d+m?) +(%d+%%) +(%d+%%) +(.+)"
+ 	for line in ps do
+-		local pid, ppid, user, stat, vsz, mem, cpu, cmd = line:match(
+-			"^ *(%d+) +(%d+) +(%S.-%S) +([RSDZTW][<NW ][<N ]) +(%d+m?) +(%d+%%) +(%d+%%) +(.+)"
 +               local pid, ppid, user, stat, vsz, mem, core, cpu, cmd = line:match(
 +                       "^ *(%d+) +(%d+) +(%S.-%S) +([RSDZTW][W ][<N ]) +(%d+m?) +(%d+%%) +(%d+) +(%d+%%) +(.+)"
-                )
+ 		)
  
-                local idx = tonumber(pid)
+ 		local idx = tonumber(pid)
 @@ -398,6 +398,7 @@ function process.list()
-                                ['STAT']    = stat,
-                                ['VSZ']     = vsz,
-                                ['%MEM']    = mem,
-+                               ['CPU']     = core,
-                                ['%CPU']    = cpu,
-                                ['COMMAND'] = cmd
-                        }
+ 				['STAT']    = stat,
+ 				['VSZ']     = vsz,
+ 				['%MEM']    = mem,
++				['CPU']     = core,
+ 				['%CPU']    = cpu,
+ 				['COMMAND'] = cmd
+ 			}
 diff --git a/x-wrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js b/x-wrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
 index e7d094a7f9..64f2be351e 100644
 --- a/x-wrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
 +++ b/x-wrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
 @@ -37,6 +37,7 @@ return view.extend({
-                                proc.PID,
-                                proc.USER,
-                                proc.COMMAND,
-+                               proc['CPU'],
-                                proc['%CPU'],
-                                proc['%MEM'],
-                                E('div', {}, [
+ 				proc.PID,
+ 				proc.USER,
+ 				proc.COMMAND,
++				proc['CPU'],
+ 				proc['%CPU'],
+ 				proc['%MEM'],
+ 				E('div', {}, [
 @@ -69,6 +70,7 @@ return view.extend({
-                                        E('th', { 'class': 'th' }, _('PID')),
-                                        E('th', { 'class': 'th' }, _('Owner')),
-                                        E('th', { 'class': 'th' }, _('Command')),
-+                                       E('th', { 'class': 'th' }, _('CORE')),
-                                        E('th', { 'class': 'th' }, _('CPU usage (%)')),
-                                        E('th', { 'class': 'th' }, _('Memory usage (%)')),
-                                        E('th', { 'class': 'th center nowrap cbi-section-actions' })
+ 					E('th', { 'class': 'th' }, _('PID')),
+ 					E('th', { 'class': 'th' }, _('Owner')),
+ 					E('th', { 'class': 'th' }, _('Command')),
++					E('th', { 'class': 'th' }, _('CORE')),
+ 					E('th', { 'class': 'th' }, _('CPU usage (%)')),
+ 					E('th', { 'class': 'th' }, _('Memory usage (%)')),
+ 					E('th', { 'class': 'th center nowrap cbi-section-actions' })
