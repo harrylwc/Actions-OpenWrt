@@ -1,6 +1,5 @@
 --- a/x-wrt/feeds/luci/modules/luci-lua-runtime/luasrc/sys.lua
 +++ b/x-wrt/feeds/luci/modules/luci-lua-runtime/luasrc/sys.lua
-
 @@ -384,8 +384,8 @@
         end
  
@@ -23,7 +22,6 @@
 
 --- a/x-wrt/feeds/luci/modules/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
 +++ b/x-wrt/feeds/luci/modules/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
-
 @@ -37,6 +37,7 @@
  				proc.PID,
  				proc.USER,
