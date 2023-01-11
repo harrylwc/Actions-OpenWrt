@@ -1,6 +1,8 @@
+diff --git a/x-wrt/feeds/luci/modules/luci-lua-runtime/luasrc/sys.lua b/x-wrt/feeds/luci/modules/luci-lua-runtime/luasrc/sys.lua
+index 2a146a52aa..2728e67f6d 100644
 --- a/x-wrt/feeds/luci/modules/luci-lua-runtime/luasrc/sys.lua
 +++ b/x-wrt/feeds/luci/modules/luci-lua-runtime/luasrc/sys.lua
-@@ -384,8 +384,8 @@
+@@ -385,8 +385,8 @@ function process.list()
         end
  
         for line in ps do
@@ -11,7 +13,7 @@
                 )
  
                 local idx = tonumber(pid)
-@@ -397,6 +397,7 @@
+@@ -398,6 +398,7 @@ function process.list()
                                 ['STAT']    = stat,
                                 ['VSZ']     = vsz,
                                 ['%MEM']    = mem,
@@ -19,22 +21,23 @@
                                 ['%CPU']    = cpu,
                                 ['COMMAND'] = cmd
                         }
-
---- a/x-wrt/feeds/luci/modules/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
-+++ b/x-wrt/feeds/luci/modules/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
-@@ -37,6 +37,7 @@
- 				proc.PID,
- 				proc.USER,
- 				proc.COMMAND,
-+			 	proc['CPU'],
- 				proc['%CPU'],
- 				proc['%MEM'],
- 				E('div', {}, [
-@@ -69,6 +70,7 @@
- 					E('th', { 'class': 'th' }, _('PID')),
- 					E('th', { 'class': 'th' }, _('Owner')),
- 					E('th', { 'class': 'th' }, _('Command')),
-+					E('th', { 'class': 'th' }, _('CORE')),
- 					E('th', { 'class': 'th' }, _('CPU usage (%)')),
- 					E('th', { 'class': 'th' }, _('Memory usage (%)')),
- 					E('th', { 'class': 'th center nowrap cbi-section-actions' })
+diff --git a/x-wrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js b/x-wrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
+index e7d094a7f9..64f2be351e 100644
+--- a/x-wrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
++++ b/x-wrt/feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/processes.js
+@@ -37,6 +37,7 @@ return view.extend({
+                                proc.PID,
+                                proc.USER,
+                                proc.COMMAND,
++                               proc['CPU'],
+                                proc['%CPU'],
+                                proc['%MEM'],
+                                E('div', {}, [
+@@ -69,6 +70,7 @@ return view.extend({
+                                        E('th', { 'class': 'th' }, _('PID')),
+                                        E('th', { 'class': 'th' }, _('Owner')),
+                                        E('th', { 'class': 'th' }, _('Command')),
++                                       E('th', { 'class': 'th' }, _('CORE')),
+                                        E('th', { 'class': 'th' }, _('CPU usage (%)')),
+                                        E('th', { 'class': 'th' }, _('Memory usage (%)')),
+                                        E('th', { 'class': 'th center nowrap cbi-section-actions' })
