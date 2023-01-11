@@ -35,6 +35,7 @@ git clone https://github.com/brvphoenix/wrtbwmon /home/runner/work/Actions-OpenW
 cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
 cd $GITHUB_WORKSPACE/ 
+cp $GITHUB_WORKSPACE/patches/*.patch $GITHUB_WORKSPACE/x-wrt/
 #rm -rf x-wrt/feeds/packages/lang/golang
 #svn export https://github.com/sbwml/packages_lang_golang/branches/19.x x-wrt/feeds/packages/lang/golang
 git clone https://github.com/sbwml/luci-app-alist x-wrt/package/alist
@@ -64,7 +65,6 @@ echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
 ### apply patch##### 
 mv $GITHUB_WORKSPACE/patches/200-gcc12-elfutils.patch $GITHUB_WORKSPACE/x-wrt/toolchain/gcc/patches/12.1.0/
 mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
-cp $GITHUB_WORKSPACE/patches/*.patch $GITHUB_WORKSPACE/x-wrt/
 cd $GITHUB_WORKSPACE/x-wrt/
 #wget -qO- https://patchwork.kernel.org/project/linux-wireless/patch/20220908173618.155291-2-hdegoede@redhat.com/raw/ > package/kernel/mac80211/patches/rt2x00/612-rt2x00-ap-assoc-invalid-queue-2.patch
 sed -i 's/set wireless.${name}.disabled=1/set wireless.${name}.disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
