@@ -54,7 +54,7 @@ echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
 #if [ $TVH == true ]; then CONFIG_FILE=$CONFIG_FILE1; cp $CONFIG_FILE .config; cat myconfig/config.tvh.ffmpeg >>.config;cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION ; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE .config; fi
 #if [ $TVH == true ]; then CONFIG_FILE=config.$ROUTER_MODEL.tvh;cp $CONFIG_FILE .config; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE .config; fi
 #exit 0
-[ $CPU_MULTI_CORE == true ] && cat myconfig/base.update >> x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po && git apply x-wrt/processes_sys.patch && sed -i 's/processes.js:72/processes.js:74/g' x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po  && sed -i 's/processes.js:73/processes.js:75/g' x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po
+[ $CPU_MULTI_CORE == true ] && cat myconfig/base.update >> x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po ##&& git apply x-wrt/processes_sys.patch && sed -i 's/processes.js:72/processes.js:74/g' x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po  && sed -i 's/processes.js:73/processes.js:75/g' x-wrt/feeds/luci/modules/luci-base/po/zh_Hant/base.po
 
 #cd x-wrt/scripts/
 #rm download.pl
