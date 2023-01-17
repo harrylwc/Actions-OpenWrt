@@ -10,17 +10,18 @@
 name: Compile R619AC TVH OpenWrt Images  
 
 on:
+  workflow_dispatch:    
   #push:
    # branches: 
     #  - master
   schedule:
-    - cron: '00 13 * * *'
+    - cron: '20 13 * * *'
   #release:
    # types: [published]
   #watch:
    # types: started
 
-  workflow_dispatch:    
+  #workflow_dispatch:    
     
 env:
   #####change model here ####@# 
