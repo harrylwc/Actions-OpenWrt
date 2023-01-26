@@ -38,6 +38,7 @@ CONFIG_HOST_OS_LINUX=y
 # CONFIG_TARGET_armvirt is not set
 CONFIG_TARGET_ipq40xx=y
 # CONFIG_TARGET_ipq806x is not set
+# CONFIG_TARGET_ipq807x is not set
 # CONFIG_TARGET_realtek is not set
 # CONFIG_TARGET_rockchip is not set
 # CONFIG_TARGET_archs38 is not set
@@ -64,12 +65,14 @@ CONFIG_TARGET_ipq40xx_generic=y
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_compex_wpj428 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_dlink_dap-2610 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_edgecore_ecw5211 is not set
+# CONFIG_TARGET_ipq40xx_generic_DEVICE_extreme-networks_ws-ap3915i is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_glinet_gl-a1300 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_glinet_gl-b1300 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_glinet_gl-b2200 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_linksys_ea6350v3 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_linksys_ea8300 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_linksys_mr8300 is not set
+# CONFIG_TARGET_ipq40xx_generic_DEVICE_linksys_whw03v2 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_linksys_whw01 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_luma_wrtq-329acn is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_meraki_mr33 is not set
@@ -90,6 +93,7 @@ CONFIG_TARGET_ipq40xx_generic_DEVICE_p2w_r619ac-128m=y
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_qcom_ap-dk01.1-c1 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_qcom_ap-dk04.1-c1 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_sony_ncp-hg100-cellular is not set
+# CONFIG_TARGET_ipq40xx_generic_DEVICE_zte_mf18a is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_zte_mf286d is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_zte_mf289f is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_zyxel_nbg6617 is not set
@@ -451,7 +455,8 @@ CONFIG_TOOLCHAINOPTS=y
 #
 # CONFIG_BINUTILS_USE_VERSION_2_37 is not set
 # CONFIG_BINUTILS_USE_VERSION_2_38 is not set
-CONFIG_BINUTILS_USE_VERSION_2_39=y
+# CONFIG_BINUTILS_USE_VERSION_2_39 is not set
+CONFIG_BINUTILS_USE_VERSION_2_40=y
 CONFIG_EXTRA_BINUTILS_CONFIG_OPTIONS=""
 # CONFIG_DWARVES is not set
 
@@ -482,8 +487,8 @@ CONFIG_GDB=y
 # CONFIG_HAS_PREBUILT_LLVM_TOOLCHAIN is not set
 CONFIG_USE_MUSL=y
 CONFIG_SSP_SUPPORT=y
-CONFIG_BINUTILS_VERSION_2_39=y
-CONFIG_BINUTILS_VERSION="2.39"
+CONFIG_BINUTILS_VERSION_2_40=y
+CONFIG_BINUTILS_VERSION="2.40"
 CONFIG_GCC_VERSION="12.2.0"
 CONFIG_LIBC="musl"
 CONFIG_TARGET_SUFFIX="muslgnueabi"
@@ -2746,20 +2751,30 @@ CONFIG_PACKAGE_libiwinfo-data=y
 #
 # CONFIG_PACKAGE_ipq-wifi-aruba_ap-365 is not set
 # CONFIG_PACKAGE_ipq-wifi-devolo_magic-2-wifi-next is not set
+# CONFIG_PACKAGE_ipq-wifi-dynalink_dl-wrx36 is not set
+# CONFIG_PACKAGE_ipq-wifi-edgecore_eap102 is not set
 # CONFIG_PACKAGE_ipq-wifi-edgecore_ecw5410 is not set
 # CONFIG_PACKAGE_ipq-wifi-edgecore_oap100 is not set
+# CONFIG_PACKAGE_ipq-wifi-edimax_cax1800 is not set
 # CONFIG_PACKAGE_ipq-wifi-extreme-networks_ws-ap3915i is not set
 # CONFIG_PACKAGE_ipq-wifi-glinet_gl-a1300 is not set
 # CONFIG_PACKAGE_ipq-wifi-glinet_gl-ap1300 is not set
 # CONFIG_PACKAGE_ipq-wifi-glinet_gl-s1300 is not set
 # CONFIG_PACKAGE_ipq-wifi-linksys_ea8300 is not set
+# CONFIG_PACKAGE_ipq-wifi-linksys_whw03v2 is not set
 CONFIG_PACKAGE_ipq-wifi-p2w_r619ac=y
 # CONFIG_PACKAGE_ipq-wifi-pakedge_wr-1 is not set
+# CONFIG_PACKAGE_ipq-wifi-qnap_301w is not set
 # CONFIG_PACKAGE_ipq-wifi-qxwlan_e2600ac-c1 is not set
 # CONFIG_PACKAGE_ipq-wifi-qxwlan_e2600ac-c2 is not set
+# CONFIG_PACKAGE_ipq-wifi-redmi_ax6 is not set
 # CONFIG_PACKAGE_ipq-wifi-sony_ncp-hg100-cellular is not set
 # CONFIG_PACKAGE_ipq-wifi-teltonika_rutx is not set
+# CONFIG_PACKAGE_ipq-wifi-xiaomi_ax3600 is not set
+# CONFIG_PACKAGE_ipq-wifi-xiaomi_ax9000 is not set
+# CONFIG_PACKAGE_ipq-wifi-zte_mf18a is not set
 # CONFIG_PACKAGE_ipq-wifi-zte_mf289f is not set
+# CONFIG_PACKAGE_ipq-wifi-zyxel_nbg7815 is not set
 # end of ath10k Board-Specific Overrides
 
 # CONFIG_PACKAGE_aircard-pcmcia-firmware is not set
@@ -2796,7 +2811,9 @@ CONFIG_PACKAGE_ath10k-firmware-qca4019-ct=y
 # CONFIG_PACKAGE_ath10k-firmware-qca99x0-ct is not set
 # CONFIG_PACKAGE_ath10k-firmware-qca99x0-ct-full-htt is not set
 # CONFIG_PACKAGE_ath10k-firmware-qca99x0-ct-htt is not set
+# CONFIG_PACKAGE_ath11k-firmware-ipq8074 is not set
 # CONFIG_PACKAGE_ath11k-firmware-qca6390 is not set
+# CONFIG_PACKAGE_ath11k-firmware-qcn9074 is not set
 # CONFIG_PACKAGE_ath11k-firmware-wcn6750 is not set
 # CONFIG_PACKAGE_ath11k-firmware-wcn6855 is not set
 # CONFIG_PACKAGE_ath6k-firmware is not set
@@ -3234,6 +3251,7 @@ CONFIG_PACKAGE_kmod-lib-crc32c=y
 CONFIG_PACKAGE_kmod-lib-lzo=y
 # CONFIG_PACKAGE_kmod-lib-textsearch is not set
 # CONFIG_PACKAGE_kmod-lib-zstd is not set
+# CONFIG_PACKAGE_kmod-ltq-ifxos is not set
 # CONFIG_PACKAGE_kmod-oid-registry is not set
 # end of Libraries
 
@@ -3401,12 +3419,13 @@ CONFIG_PACKAGE_kmod-nft-offload=y
 # CONFIG_PACKAGE_kmod-iavf is not set
 # CONFIG_PACKAGE_kmod-ifb is not set
 # CONFIG_PACKAGE_kmod-igb is not set
-# CONFIG_PACKAGE_kmod-igb-intel is not set
 # CONFIG_PACKAGE_kmod-igc is not set
 # CONFIG_PACKAGE_kmod-ipvlan is not set
 # CONFIG_PACKAGE_kmod-ixgbe is not set
 # CONFIG_PACKAGE_kmod-ixgbevf is not set
 # CONFIG_PACKAGE_kmod-libphy is not set
+# CONFIG_PACKAGE_kmod-ltq-vdsl-vr11 is not set
+# CONFIG_PACKAGE_kmod-ltq-vdsl-vr11-mei is not set
 # CONFIG_PACKAGE_kmod-macvlan is not set
 # CONFIG_PACKAGE_kmod-mdio-gpio is not set
 # CONFIG_PACKAGE_kmod-mhi-net is not set
@@ -3461,6 +3480,8 @@ CONFIG_PACKAGE_kmod-nft-offload=y
 # CONFIG_PACKAGE_kmod-via-rhine is not set
 # CONFIG_PACKAGE_kmod-via-velocity is not set
 # CONFIG_PACKAGE_kmod-vmxnet3 is not set
+# CONFIG_PACKAGE_kmod-vrx518_ep is not set
+# CONFIG_PACKAGE_kmod-vrx518_tc is not set
 # CONFIG_PACKAGE_kmod-wwan is not set
 # end of Network Devices
 
@@ -5058,6 +5079,7 @@ CONFIG_LIBCURL_PROXY=y
 # CONFIG_LIBCURL_UNIX_SOCKETS is not set
 # CONFIG_LIBCURL_LIBCURL_OPTION is not set
 # CONFIG_LIBCURL_VERBOSE is not set
+# CONFIG_PACKAGE_libcurl-gnutls is not set
 # CONFIG_PACKAGE_libdaemon is not set
 # CONFIG_PACKAGE_libdaq is not set
 # CONFIG_PACKAGE_libdaq3 is not set
@@ -5115,7 +5137,6 @@ CONFIG_PACKAGE_libffi=m
 # CONFIG_PACKAGE_libgensio is not set
 # CONFIG_PACKAGE_libgensiocpp is not set
 # CONFIG_PACKAGE_libgmp is not set
-# CONFIG_PACKAGE_libgnurl is not set
 # CONFIG_PACKAGE_libgpg-error is not set
 # CONFIG_PACKAGE_libgpgme is not set
 # CONFIG_PACKAGE_libgpgmepp is not set
@@ -5143,6 +5164,7 @@ CONFIG_PACKAGE_libffi=m
 # CONFIG_PACKAGE_libipfs-http-client is not set
 # CONFIG_PACKAGE_libiw is not set
 CONFIG_PACKAGE_libiwinfo=y
+# CONFIG_PACKAGE_libjaylink is not set
 # CONFIG_PACKAGE_libjpeg-turbo is not set
 CONFIG_PACKAGE_libjson-c=y
 # CONFIG_PACKAGE_libkeyutils is not set
@@ -5421,6 +5443,7 @@ CONFIG_PACKAGE_zlib=m
 #
 # CONFIG_PACKAGE_luci is not set
 # CONFIG_PACKAGE_luci-lib-docker is not set
+# CONFIG_PACKAGE_luci-light is not set
 # CONFIG_PACKAGE_luci-nginx is not set
 # CONFIG_PACKAGE_luci-ssl is not set
 # CONFIG_PACKAGE_luci-ssl-nginx is not set
@@ -5479,6 +5502,7 @@ CONFIG_LUCI_CSSTIDY=y
 # CONFIG_PACKAGE_luci-mod-admin-full is not set
 # CONFIG_PACKAGE_luci-mod-battstatus is not set
 # CONFIG_PACKAGE_luci-mod-dashboard is not set
+# CONFIG_PACKAGE_luci-mod-dsl is not set
 # CONFIG_PACKAGE_luci-mod-network is not set
 # CONFIG_PACKAGE_luci-mod-rpc is not set
 # CONFIG_PACKAGE_luci-mod-status is not set
@@ -5545,6 +5569,7 @@ CONFIG_LUCI_CSSTIDY=y
 # CONFIG_PACKAGE_luci-app-olsr is not set
 # CONFIG_PACKAGE_luci-app-olsr-services is not set
 # CONFIG_PACKAGE_luci-app-olsr-viz is not set
+# CONFIG_PACKAGE_luci-app-olsrd2 is not set
 # CONFIG_PACKAGE_luci-app-omcproxy is not set
 # CONFIG_PACKAGE_luci-app-openvpn is not set
 # CONFIG_PACKAGE_luci-app-openwisp is not set
@@ -5781,7 +5806,6 @@ CONFIG_PACKAGE_yt-dlp=m
 # CONFIG_PACKAGE_atftp is not set
 # CONFIG_PACKAGE_atftpd is not set
 CONFIG_PACKAGE_curl=m
-# CONFIG_PACKAGE_gnurl is not set
 # CONFIG_PACKAGE_lftp is not set
 # CONFIG_PACKAGE_ps3netsrv is not set
 # CONFIG_PACKAGE_rclone is not set
@@ -6143,6 +6167,8 @@ CONFIG_PACKAGE_nftables-json=y
 # CONFIG_PACKAGE_mwan3plus is not set
 # CONFIG_PACKAGE_nstat is not set
 # CONFIG_PACKAGE_olsrd is not set
+# CONFIG_PACKAGE_pbr is not set
+# CONFIG_PACKAGE_pbr-iptables is not set
 # CONFIG_PACKAGE_prince is not set
 # CONFIG_PACKAGE_quagga is not set
 # CONFIG_PACKAGE_rdma is not set
@@ -6310,8 +6336,6 @@ CONFIG_PACKAGE_nftables-json=y
 # CONFIG_PACKAGE_openvpn-mbedtls is not set
 # CONFIG_PACKAGE_openvpn-openssl is not set
 # CONFIG_PACKAGE_openvpn-wolfssl is not set
-# CONFIG_PACKAGE_pbr is not set
-# CONFIG_PACKAGE_pbr-iptables is not set
 # CONFIG_PACKAGE_pptpd is not set
 # CONFIG_PACKAGE_softethervpn-base is not set
 # CONFIG_PACKAGE_softethervpn-bridge is not set
@@ -6608,6 +6632,9 @@ CONFIG_PACKAGE_iw=y
 CONFIG_PACKAGE_libipset=m
 # CONFIG_PACKAGE_libndp is not set
 # CONFIG_PACKAGE_linknx is not set
+# CONFIG_PACKAGE_ltq-dsl-base is not set
+# CONFIG_PACKAGE_ltq-vdsl-vr11-app is not set
+# CONFIG_PACKAGE_ltq-vdsl-vr11-mei-test is not set
 # CONFIG_PACKAGE_lynx is not set
 # CONFIG_PACKAGE_mac-telnet-client is not set
 # CONFIG_PACKAGE_mac-telnet-discover is not set
@@ -7178,6 +7205,7 @@ CONFIG_PACKAGE_uboot-envtools=y
 # CONFIG_PACKAGE_bluez-daemon is not set
 # CONFIG_PACKAGE_bluez-tools is not set
 # CONFIG_PACKAGE_bluez-utils is not set
+# CONFIG_PACKAGE_bluez-utils-btmon is not set
 # CONFIG_PACKAGE_bluez-utils-extra is not set
 # CONFIG_PACKAGE_bluld is not set
 # CONFIG_PACKAGE_bonniexx is not set
@@ -7365,6 +7393,7 @@ CONFIG_PACKAGE_libucode=y
 # CONFIG_PACKAGE_openzwave-config is not set
 # CONFIG_PACKAGE_owipcalc is not set
 # CONFIG_PACKAGE_passh is not set
+# CONFIG_PACKAGE_pcat-manager is not set
 # CONFIG_PACKAGE_pciids is not set
 # CONFIG_PACKAGE_pciutils is not set
 # CONFIG_PACKAGE_pcsc-tools is not set
@@ -7391,6 +7420,7 @@ CONFIG_PACKAGE_libucode=y
 # CONFIG_PACKAGE_pservice is not set
 # CONFIG_PACKAGE_psmisc is not set
 # CONFIG_PACKAGE_pv is not set
+# CONFIG_PACKAGE_qfirehose is not set
 # CONFIG_PACKAGE_qmi-utils is not set
 # CONFIG_PACKAGE_qrencode is not set
 # CONFIG_PACKAGE_quota is not set
