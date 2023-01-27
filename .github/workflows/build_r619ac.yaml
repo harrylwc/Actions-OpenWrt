@@ -14,12 +14,12 @@ on:
   #push:
    #branches: 
     #- master
-  #schedule:
-   # - cron: "20 13 * * *"
+  schedule:
+    - cron: "20 13 * * *"
   #release:
    # types: [published]
-  #watch:
-   # types: started
+  watch:
+    types: started
 
   #workflow_dispatch:    
     
