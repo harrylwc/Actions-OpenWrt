@@ -11,9 +11,9 @@ name: Compile R619AC TVH OpenWrt Images
 
 on:
   workflow_dispatch:    
-  push:
-   branches: 
-    - master
+  #push:
+   #branches: 
+    #- master
   #schedule:
    # - cron: "20 13 * * *"
   #release:
