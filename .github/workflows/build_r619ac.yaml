@@ -88,11 +88,11 @@ jobs:
           sudo chown $USER:$GROUPS /workdir
           mkdir -p ../$DRIVERS_DIR 
           ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
-      - name: Cache
-        uses: klever1988/cachewrtbuild@main
-        with:
-          ccache: 'true'
-          prefix: ${{ github.workspace }}/x-wrt
+      #- name: Cache
+        #uses: klever1988/cachewrtbuild@main
+        #with:
+          #ccache: 'true'
+          #prefix: ${{ github.workspace }}/x-wrt
          #with:
          # ccache: 'true'
          # prefix: ${{ github.workspace }}/x-wrt
