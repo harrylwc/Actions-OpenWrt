@@ -39,7 +39,7 @@ start_instance() {
                 [ "$mode" != 'dhcp' ] || address='0.0.0.0'
 
                 procd_open_instance "edge_$cfg"
-                procd_set_param command /usr/bin/edge -f
+                procd_set_param command /usr/bin/edge -i 5 -f
                 procd_append_param command -u 0 -g 0
                 procd_append_param command -d "$tunname"
                 procd_append_param command -a "$mode:$address"
