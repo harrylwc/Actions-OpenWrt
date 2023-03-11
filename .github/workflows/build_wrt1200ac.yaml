@@ -192,8 +192,8 @@ jobs:
       
       -  name: SSH connection for failure Debug
          if: ${{ failure() }}
-           #uses: lhotari/action-upterm@v1
-         uses: P3TERX/ssh2actions@main
+         uses: lhotari/action-upterm@v1
+         #uses: P3TERX/ssh2actions@main
          env:
           TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
           TELEGRAM_CHAT_ID: '1373335316'
