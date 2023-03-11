@@ -125,6 +125,7 @@ jobs:
           #sudo -E pip install --no-cache-dir --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org pip setuptools
           sudo -E apt-get clean
           df -kh
+          cat /proc/cpuinfo
           #find /home/runner/work/_temp/ -name "*cache*"
      # - name: Run migrations
       #  run: sh ./github/scripts/migrate.sh
@@ -243,8 +244,8 @@ jobs:
            df -kh
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
-          # uses: lhotari/action-upterm@v1
-        uses: P3TERX/ssh2actions@main
+        uses: lhotari/action-upterm@v1
+        #uses: P3TERX/ssh2actions@main
         env:
           TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
           TELEGRAM_CHAT_ID: '1373335316'
