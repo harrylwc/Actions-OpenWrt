@@ -35,7 +35,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
-  MAKEMENU_CONFIG: false
+  MAKEMENU_CONFIG: true
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
@@ -166,10 +166,6 @@ jobs:
           #git reset --hard 639419e
           #git revert 1a9ee367343edce263f82cc91a49d796c9d45ea3
           #git revert 41e1e838fbbb0308ad7353a3714e04b8c4585e7e
-      #- name: Setup upterm session
-        #if: env.MAKEMENU_CONFIG == 'true'
-        #uses: lhotari/action-upterm@v1
-            # - name: SSH connection for failure Debug
             
       - name: SSH connection for make menuconfig    
         if: env.MAKEMENU_CONFIG == 'true'
