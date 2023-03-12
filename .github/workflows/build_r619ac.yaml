@@ -110,6 +110,7 @@ jobs:
           SSH_ACTIONS: true
           DEBIAN_FRONTEND: noninteractive
         run: |
+          cat /proc/cpuinfo|grep model 
           ls -alt ${{ github.workspace }}/x-wrt/staging_dir/*
           docker rmi `docker images -q`
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
@@ -125,7 +126,6 @@ jobs:
           #sudo -E pip install --no-cache-dir --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org pip setuptools
           sudo -E apt-get clean
           df -kh
-          cat /proc/cpuinfo
           #find /home/runner/work/_temp/ -name "*cache*"
      # - name: Run migrations
       #  run: sh ./github/scripts/migrate.sh
