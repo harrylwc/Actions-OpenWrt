@@ -89,7 +89,7 @@ jobs:
           mkdir -p ../$DRIVERS_DIR 
           ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
       - name: Cache    
-        uses: klever1988/cachewrtbuild@main
+        uses: stupidloud/cachewrtbuild@main
         with:
          ccache: 'true'
          mixkey: 'ipq40xx'
