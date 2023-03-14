@@ -38,6 +38,7 @@ sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 git pull
 ./scripts/feeds update -a
 ./scripts/feeds install -a -f
+git checkout 166ab6f90eef9e08b1d5f45fe5464ecd2194b2e3
 
 cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/

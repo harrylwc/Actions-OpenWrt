@@ -72,12 +72,12 @@ jobs:
       - name: Update feeds & Load custom configuration
         run: |
           git clone https://github.com/x-wrt/x-wrt 
-          git checkout 166ab6f90eef9e08b1d5f45fe5464ecd2194b2e3 
           git clone https://github.com/coolsnowwolf/lede lede
           ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
           lede/scripts/feeds update -a
           #rm -r x-wrt/package/lean/n2n*
           cd x-wrt 
+          git checkout 166ab6f90eef9e08b1d5f45fe5464ecd2194b2e3 
           git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
           #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
           ./scripts/feeds update -a
