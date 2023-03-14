@@ -223,8 +223,8 @@ jobs:
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt 
            make -j$(nproc) || make -j1 
-           cp config.ramips.2 .config
-           make -j$(nproc) || make -j1 
+           # cp config.ramips.2 .config
+           #make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
