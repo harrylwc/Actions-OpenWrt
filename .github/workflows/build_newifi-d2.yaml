@@ -87,6 +87,25 @@ jobs:
           sudo chown $USER:$GROUPS /workdir
           mkdir -p ../$DRIVERS_DIR 
           ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
+      - name: Generate cache mixkey
+        id: gen_cache_mixkey
+        working-directory: ${{ env.WORKING_DIR }}
+        run: |
+          target_device_arch_1="ramips"
+          #target_device_arch_2="ramips"
+          gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
+          ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
+          mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
+          #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
+          echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
+      - name: Cache1
+        uses: HiGarfield/cachewrtbuild@main
+        with:
+          ccache: 'true'
+          mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
+          #prefix: ${{ env.WORKING_DIR }}
+          prefix: ${{ github.workspace }}/x-wrt
+          skip_saving: 'false'
 
   #    - name: Cache
    #         uses: klever1988/cachewrtbuild@main
@@ -203,6 +222,8 @@ jobs:
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt 
            make -j$(nproc) || make -j1 
+           cp config.ramips.2 .config
+           make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
@@ -217,8 +238,8 @@ jobs:
           #mkdir -p ./artifact/package
           #mkdir -p ./artifact/buildinfo
           #mkdir -p $DRIVERS_DIR
-          cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR
-          cp -f x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
+          cp -f `find x-wrt/build_dir/target*/linux*/linux-*7621*/ -name *.ko` $DRIVERS_DIR
+          cp -f x-wrt/build_dir/target*/linux*7621*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
           #cp -f .config bin/
           #cp -f myconfig/config.$ROUTER_MODEL.? bin/
           #rm -rf $(find ./bin/targets/ -type d -name "packages")
