@@ -117,7 +117,6 @@ CONFIG_TARGET_MULTI_PROFILE=y
 # CONFIG_TARGET_ramips_mt7620_DEVICE_linksys_e1700 is not set
 # CONFIG_TARGET_ramips_mt7620_DEVICE_microduino_microwrt is not set
 # CONFIG_TARGET_ramips_mt7620_DEVICE_netcore_nw5212 is not set
-# CONFIG_TARGET_ramips_mt7620_DEVICE_modou_m101c is not set
 # CONFIG_TARGET_ramips_mt7620_DEVICE_netgear_ex2700 is not set
 # CONFIG_TARGET_ramips_mt7620_DEVICE_netgear_ex3700 is not set
 # CONFIG_TARGET_ramips_mt7620_DEVICE_netgear_ex6120 is not set
@@ -164,7 +163,6 @@ CONFIG_TARGET_MULTI_PROFILE=y
 # CONFIG_TARGET_ramips_mt7620_DEVICE_wevo_air-duo is not set
 # CONFIG_TARGET_ramips_mt7620_DEVICE_wrtnode_wrtnode is not set
 # CONFIG_TARGET_ramips_mt7620_DEVICE_xiaomi_miwifi-mini is not set
-# CONFIG_TARGET_ramips_mt7620_DEVICE_xiaomi_miwifi-r3 is not set
 # CONFIG_TARGET_ramips_mt7620_DEVICE_youku_x2 is not set
 # CONFIG_TARGET_ramips_mt7620_DEVICE_youku_yk-l1 is not set
 # CONFIG_TARGET_ramips_mt7620_DEVICE_youku_yk-l1c is not set
@@ -256,7 +254,6 @@ CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_lenovo_newifi-y1=y
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_ralink_mt7620a-evb is not set
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_ralink_mt7620a-v22sg-evb is not set
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_microduino_microwrt is not set
-# CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_modou_m101c is not set
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_netcore_nw5212 is not set
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_netgear_ex2700 is not set
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_netgear_ex3700 is not set
@@ -299,7 +296,6 @@ CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_lenovo_newifi-y1=y
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_wavlink_wl-wn579x3 is not set
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_wevo_air-duo is not set
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_wrtnode_wrtnode is not set
-# CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_xiaomi_miwifi-r3 is not set
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_xiaomi_miwifi-mini is not set
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_youku_x2 is not set
 # CONFIG_TARGET_DEVICE_ramips_mt7620_DEVICE_youku_yk-l1 is not set
@@ -340,6 +336,7 @@ CONFIG_DEFAULT_iwinfo=y
 CONFIG_DEFAULT_kmod-gpio-button-hotplug=y
 CONFIG_DEFAULT_kmod-leds-gpio=y
 CONFIG_DEFAULT_kmod-mt76x2=y
+CONFIG_DEFAULT_kmod-nft-offload=y
 CONFIG_DEFAULT_kmod-rt2800-soc=y
 CONFIG_DEFAULT_kmod-usb-ohci=y
 CONFIG_DEFAULT_kmod-usb2=y
@@ -356,6 +353,7 @@ CONFIG_DEFAULT_opkg=y
 CONFIG_DEFAULT_ppp=y
 CONFIG_DEFAULT_ppp-mod-pppoe=y
 CONFIG_DEFAULT_procd=y
+CONFIG_DEFAULT_procd-ujail=y
 CONFIG_DEFAULT_swconfig=y
 CONFIG_DEFAULT_uci=y
 CONFIG_DEFAULT_uclient-fetch=y
@@ -370,7 +368,6 @@ CONFIG_USES_DEVICETREE=y
 CONFIG_USES_INITRAMFS=y
 CONFIG_USES_SQUASHFS=y
 CONFIG_HAS_MIPS16=y
-CONFIG_NAND_SUPPORT=y
 CONFIG_mipsel=y
 CONFIG_ARCH="mipsel"
 
@@ -729,7 +726,6 @@ CONFIG_FEED_packages=y
 CONFIG_FEED_luci=m
 CONFIG_FEED_routing=y
 CONFIG_FEED_telephony=y
-CONFIG_FEED_x=y
 
 #
 # Base system
@@ -2760,7 +2756,6 @@ CONFIG_DROPBEAR_AGENTFORWARD=y
 CONFIG_PACKAGE_firewall=m
 CONFIG_PACKAGE_firewall4=y
 CONFIG_PACKAGE_fstools=y
-CONFIG_FSTOOLS_UBIFS_EXTROOT=y
 # CONFIG_FSTOOLS_OVL_MOUNT_FULL_ACCESS_TIME is not set
 # CONFIG_FSTOOLS_OVL_MOUNT_COMPRESS_ZLIB is not set
 CONFIG_PACKAGE_fwtool=y
@@ -3144,11 +3139,6 @@ CONFIG_PACKAGE_wireless-regdb=y
 # end of Fonts
 
 #
-# Independent
-#
-# end of Independent
-
-#
 # Kernel modules
 #
 
@@ -3271,7 +3261,6 @@ CONFIG_PACKAGE_kmod-fs-ntfs3=m
 CONFIG_PACKAGE_kmod-fs-squashfs=m
 # CONFIG_PACKAGE_kmod-fs-udf is not set
 CONFIG_PACKAGE_kmod-fs-vfat=m
-# CONFIG_PACKAGE_kmod-fs-virtiofs is not set
 # CONFIG_PACKAGE_kmod-fs-xfs is not set
 CONFIG_PACKAGE_kmod-fuse=m
 # CONFIG_PACKAGE_kmod-pstore is not set
@@ -3787,7 +3776,6 @@ CONFIG_PACKAGE_kmod-gpio-button-hotplug=y
 # CONFIG_PACKAGE_kmod-gpio-nxp-74hc164 is not set
 # CONFIG_PACKAGE_kmod-gpio-pca953x is not set
 # CONFIG_PACKAGE_kmod-gpio-pcf857x is not set
-# CONFIG_PACKAGE_kmod-gsw150 is not set
 # CONFIG_PACKAGE_kmod-i6300esb-wdt is not set
 # CONFIG_PACKAGE_kmod-ikconfig is not set
 # CONFIG_PACKAGE_kmod-keys-encrypted is not set
@@ -5640,7 +5628,7 @@ CONFIG_PACKAGE_libuci=y
 CONFIG_PACKAGE_libuclient=y
 CONFIG_PACKAGE_libucode=y
 CONFIG_PACKAGE_libudev-zero=y
-# CONFIG_PACKAGE_libudns is not set
+CONFIG_PACKAGE_libudns=m
 # CONFIG_PACKAGE_libuecc is not set
 # CONFIG_PACKAGE_libugpio is not set
 # CONFIG_PACKAGE_libunistring is not set
@@ -7226,15 +7214,15 @@ CONFIG_PACKAGE_tc-tiny=m
 # SSH
 #
 # CONFIG_PACKAGE_autossh is not set
-# CONFIG_PACKAGE_openssh-client is not set
-# CONFIG_PACKAGE_openssh-client-utils is not set
-# CONFIG_PACKAGE_openssh-keygen is not set
+CONFIG_PACKAGE_openssh-client=m
+CONFIG_PACKAGE_openssh-client-utils=m
+CONFIG_PACKAGE_openssh-keygen=m
 # CONFIG_PACKAGE_openssh-moduli is not set
 # CONFIG_PACKAGE_openssh-server is not set
 # CONFIG_PACKAGE_openssh-server-pam is not set
 # CONFIG_PACKAGE_openssh-sftp-avahi-service is not set
-# CONFIG_PACKAGE_openssh-sftp-client is not set
-# CONFIG_PACKAGE_openssh-sftp-server is not set
+CONFIG_PACKAGE_openssh-sftp-client=m
+CONFIG_PACKAGE_openssh-sftp-server=m
 # CONFIG_PACKAGE_sshtunnel is not set
 # CONFIG_PACKAGE_tmate is not set
 # end of SSH
@@ -7492,16 +7480,17 @@ CONFIG_PACKAGE_shadowsocks-libev-ss-tunnel=m
 # CONFIG_PACKAGE_shadowsocks-rust-ssserver is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssservice is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssurl is not set
-CONFIG_PACKAGE_shadowsocksr-libev=m
-CONFIG_PACKAGE_shadowsocksr-libev-alt=m
+CONFIG_PACKAGE_shadowsocksr-libev-ssr-check=m
 CONFIG_PACKAGE_shadowsocksr-libev-ssr-local=m
+CONFIG_PACKAGE_shadowsocksr-libev-ssr-nat=m
+CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir=m
+CONFIG_PACKAGE_shadowsocksr-libev-ssr-server=m
 # CONFIG_PACKAGE_sockd is not set
 # CONFIG_PACKAGE_socksify is not set
 # CONFIG_PACKAGE_spawn-fcgi is not set
 # CONFIG_PACKAGE_squid is not set
 # CONFIG_PACKAGE_srelay is not set
 # CONFIG_PACKAGE_tinyproxy is not set
-# CONFIG_PACKAGE_trojan is not set
 # CONFIG_PACKAGE_trojan-go is not set
 CONFIG_PACKAGE_uhttpd=y
 # CONFIG_PACKAGE_uhttpd-mod-lua is not set
@@ -7784,7 +7773,6 @@ CONFIG_PACKAGE_odhcpd_ipv6only_ext_cer_id=0
 # CONFIG_PACKAGE_pcapplusplus is not set
 # CONFIG_PACKAGE_pen is not set
 # CONFIG_PACKAGE_phantap is not set
-# CONFIG_PACKAGE_phytool is not set
 # CONFIG_PACKAGE_pimbd is not set
 # CONFIG_PACKAGE_pingcheck is not set
 # CONFIG_PACKAGE_port-mirroring is not set
@@ -7826,8 +7814,15 @@ CONFIG_PACKAGE_ppp-mod-pppoe=y
 # CONFIG_PACKAGE_ser2net is not set
 CONFIG_PACKAGE_shellinabox=m
 CONFIG_PACKAGE_simple-adblock=m
-CONFIG_PACKAGE_simple-obfs-client=m
+# CONFIG_PACKAGE_simple-obfs is not set
 CONFIG_PACKAGE_simple-obfs-server=m
+
+#
+# Simple-obfs Compile Configuration
+#
+# CONFIG_SIMPLE_OBFS_STATIC_LINK is not set
+# end of Simple-obfs Compile Configuration
+
 # CONFIG_PACKAGE_sing-box is not set
 # CONFIG_PACKAGE_slirp4netns is not set
 # CONFIG_PACKAGE_smartdns is not set
@@ -7868,6 +7863,7 @@ CONFIG_PACKAGE_tcpdump=m
 # CONFIG_PACKAGE_tor-fw-helper is not set
 # CONFIG_PACKAGE_trafficshaper is not set
 # CONFIG_PACKAGE_travelmate is not set
+# CONFIG_PACKAGE_trojan is not set
 # CONFIG_PACKAGE_trojan-plus is not set
 # CONFIG_PACKAGE_u2pnpd is not set
 # CONFIG_PACKAGE_uacme is not set
@@ -8393,7 +8389,6 @@ CONFIG_PACKAGE_collectd-mod-rrdtool=m
 # CONFIG_PACKAGE_collectd-mod-ted is not set
 # CONFIG_PACKAGE_collectd-mod-thermal is not set
 # CONFIG_PACKAGE_collectd-mod-threshold is not set
-# CONFIG_PACKAGE_collectd-mod-ubi is not set
 # CONFIG_PACKAGE_collectd-mod-unixsock is not set
 # CONFIG_PACKAGE_collectd-mod-uptime is not set
 # CONFIG_PACKAGE_collectd-mod-users is not set
@@ -8534,7 +8529,6 @@ CONFIG_PACKAGE_libjson-script=y
 # CONFIG_PACKAGE_mqttled is not set
 # CONFIG_PACKAGE_mt-st is not set
 # CONFIG_PACKAGE_namei is not set
-# CONFIG_PACKAGE_nand-utils is not set
 # CONFIG_PACKAGE_naywatch is not set
 # CONFIG_PACKAGE_netopeer2-cli is not set
 # CONFIG_PACKAGE_netopeer2-server is not set
@@ -8656,7 +8650,6 @@ CONFIG_STRACE_NONE=y
 # CONFIG_PACKAGE_tracertools is not set
 # CONFIG_PACKAGE_tree is not set
 # CONFIG_PACKAGE_triggerhappy is not set
-CONFIG_PACKAGE_ubi-utils=y
 # CONFIG_PACKAGE_ubnt-manager is not set
 # CONFIG_PACKAGE_ucode-mod-bpf is not set
 CONFIG_PACKAGE_ucode-mod-html=y
@@ -8845,4 +8838,4 @@ CONFIG_PACKAGE_lua-ipops=m
 # end of Font-Utils
 # end of Xorg
 
-CONFIG_OVERRIDE_PKGS="adguardhome csstidy luci-app-dockerman luci-app-nlbwmon luci-app-smartdns luci-app-ttyd luci-lib-ipkg mentohust microsocks smartdns trojan-go ucl upx v2ray-core v2ray-geodata v2raya xray-core"
+CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng csstidy ddnsto dns2socks dns2tcp filebrowser gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argonne-config luci-app-bypass luci-app-clash luci-app-ddnsto luci-app-design-config luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-filebrowser luci-app-gost luci-app-ikoolproxy luci-app-koolproxyR luci-app-lucky luci-app-mosdns luci-app-nlbwmon luci-app-openclash luci-app-passwall luci-app-passwall2 luci-app-pushbot luci-app-serverchan luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-ttyd luci-app-unblockneteasemusic luci-app-vssr luci-lib-ipkg luci-lib-taskd luci-lib-xterm luci-theme-argon luci-theme-argonne luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-neobird luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mosdns naiveproxy pdnsd-alt redsocks2 sagernet-core shadowsocks-rust shadowsocksr-libev simple-obfs smartdns ssocks taskd tcping trojan trojan-go trojan-plus ucl upx v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"

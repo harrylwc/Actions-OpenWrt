@@ -233,46 +233,24 @@ CONFIG_TARGET_ramips_mt7621_DEVICE_d-team_newifi-d2=y
 # CONFIG_TARGET_ramips_mt7621_DEVICE_wevo_w2914ns-v2 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_winstars_ws-wn583a6 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-3g is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-3g-nor is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-3g-v2 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-3-pro is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-4 is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-3-pro-nor is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-4a-gigabit is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-4a-gigabit-v2 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-ac2100 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-cr6606 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-cr6608 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-cr6609 is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_mi-router-cr660x is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaomi_redmi-router-ac2100 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xiaoyu_xy-c5 is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_mac500f is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_ac8000p is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_nxc200p is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_puppies is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_nxc2009e-v100 is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_nxc2005ex is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_xzwifi_creativebox-v1 is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_fm10-ax-nand is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_wr1800k-ax-nand is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_wr1800k-ax-norplusemmc is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_wr1800k-ax-nor is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_ruijie_rg-ew1800gx is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_dm2-t-mb2ep-v02-nor is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_ms1800k-ax-nor is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_t-cpe1200k-v01 is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_t-cpe1201k-v01 is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_t-cpe1202kd-v01 is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_x-sdwan-1200 is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_xwrt_ms1201k is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_youhua_wr1200js is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_youku_yk-l2 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_yuncore_ax820 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_yuncore_fap640 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_yuncore_fap690 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_zbtlink_zbt-we1326 is not set
-# CONFIG_TARGET_ramips_mt7621_DEVICE_zbtlink_zbt-wg108 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_zbtlink_zbt-we3526 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_zbtlink_zbt-wg1602-16m is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_zbtlink_zbt-wg1602-v04-16m is not set
@@ -308,6 +286,7 @@ CONFIG_DEFAULT_kmod-gpio-button-hotplug=y
 CONFIG_DEFAULT_kmod-leds-gpio=y
 CONFIG_DEFAULT_kmod-mt7603=y
 CONFIG_DEFAULT_kmod-mt76x2=y
+CONFIG_DEFAULT_kmod-nft-offload=y
 CONFIG_DEFAULT_kmod-usb-ledtrig-usbport=y
 CONFIG_DEFAULT_kmod-usb3=y
 CONFIG_DEFAULT_libc=y
@@ -323,7 +302,7 @@ CONFIG_DEFAULT_opkg=y
 CONFIG_DEFAULT_ppp=y
 CONFIG_DEFAULT_ppp-mod-pppoe=y
 CONFIG_DEFAULT_procd=y
-CONFIG_DEFAULT_swconfig=y
+CONFIG_DEFAULT_procd-ujail=y
 CONFIG_DEFAULT_uci=y
 CONFIG_DEFAULT_uclient-fetch=y
 CONFIG_DEFAULT_urandom-seed=y
@@ -647,9 +626,9 @@ CONFIG_TARGET_PREINIT_TIMEOUT=2
 # CONFIG_TARGET_PREINIT_SHOW_NETMSG is not set
 # CONFIG_TARGET_PREINIT_SUPPRESS_FAILSAFE_NETMSG is not set
 CONFIG_TARGET_PREINIT_IFNAME=""
-CONFIG_TARGET_PREINIT_IP="192.168.15.1"
+CONFIG_TARGET_PREINIT_IP="192.168.1.1"
 CONFIG_TARGET_PREINIT_NETMASK="255.255.255.0"
-CONFIG_TARGET_PREINIT_BROADCAST="192.168.15.255"
+CONFIG_TARGET_PREINIT_BROADCAST="192.168.1.255"
 # CONFIG_INITOPT is not set
 CONFIG_TARGET_INIT_PATH="/usr/sbin:/usr/bin:/sbin:/bin"
 CONFIG_TARGET_INIT_ENV=""
@@ -661,7 +640,6 @@ CONFIG_FEED_packages=y
 CONFIG_FEED_luci=y
 CONFIG_FEED_routing=y
 CONFIG_FEED_telephony=y
-CONFIG_FEED_x=y
 
 #
 # Base system
@@ -3094,13 +3072,6 @@ CONFIG_PACKAGE_wireless-regdb=y
 # end of Fonts
 
 #
-# Independent
-#
-# CONFIG_PACKAGE_poe-controller is not set
-# CONFIG_PACKAGE_xs2184 is not set
-# end of Independent
-
-#
 # Kernel modules
 #
 
@@ -3223,7 +3194,6 @@ CONFIG_PACKAGE_kmod-fs-ntfs3=y
 # CONFIG_PACKAGE_kmod-fs-squashfs is not set
 # CONFIG_PACKAGE_kmod-fs-udf is not set
 CONFIG_PACKAGE_kmod-fs-vfat=y
-# CONFIG_PACKAGE_kmod-fs-virtiofs is not set
 # CONFIG_PACKAGE_kmod-fs-xfs is not set
 CONFIG_PACKAGE_kmod-fuse=y
 # CONFIG_PACKAGE_kmod-pstore is not set
@@ -3747,7 +3717,6 @@ CONFIG_PACKAGE_kmod-gpio-button-hotplug=y
 # CONFIG_PACKAGE_kmod-gpio-nxp-74hc164 is not set
 # CONFIG_PACKAGE_kmod-gpio-pca953x is not set
 # CONFIG_PACKAGE_kmod-gpio-pcf857x is not set
-# CONFIG_PACKAGE_kmod-gsw150 is not set
 # CONFIG_PACKAGE_kmod-hsdma-mtk is not set
 # CONFIG_PACKAGE_kmod-i6300esb-wdt is not set
 CONFIG_PACKAGE_kmod-ikconfig=m
@@ -6054,7 +6023,7 @@ CONFIG_PACKAGE_libuci-lua=m
 CONFIG_PACKAGE_libuclient=y
 CONFIG_PACKAGE_libucode=y
 CONFIG_PACKAGE_libudev-zero=y
-# CONFIG_PACKAGE_libudns is not set
+CONFIG_PACKAGE_libudns=m
 # CONFIG_PACKAGE_libuecc is not set
 # CONFIG_PACKAGE_libugpio is not set
 CONFIG_PACKAGE_libunistring=m
@@ -8058,7 +8027,7 @@ CONFIG_OPENSSH_LIBFIDO2=y
 CONFIG_PACKAGE_openssh-sftp-client=m
 CONFIG_PACKAGE_openssh-sftp-server=m
 # CONFIG_PACKAGE_sshtunnel is not set
-#CONFIG_PACKAGE_tmate=m
+# CONFIG_PACKAGE_tmate is not set
 # end of SSH
 
 #
@@ -8337,16 +8306,17 @@ CONFIG_PACKAGE_shadowsocks-libev-ss-tunnel=m
 # CONFIG_PACKAGE_shadowsocks-rust-ssserver is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssservice is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssurl is not set
-# CONFIG_PACKAGE_shadowsocksr-libev is not set
-CONFIG_PACKAGE_shadowsocksr-libev-alt=m
+CONFIG_PACKAGE_shadowsocksr-libev-ssr-check=m
 CONFIG_PACKAGE_shadowsocksr-libev-ssr-local=m
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-nat is not set
+CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir=m
+CONFIG_PACKAGE_shadowsocksr-libev-ssr-server=m
 # CONFIG_PACKAGE_sockd is not set
 # CONFIG_PACKAGE_socksify is not set
 # CONFIG_PACKAGE_spawn-fcgi is not set
 # CONFIG_PACKAGE_squid is not set
 # CONFIG_PACKAGE_srelay is not set
 CONFIG_PACKAGE_tinyproxy=m
-CONFIG_PACKAGE_trojan=m
 # CONFIG_PACKAGE_trojan-go is not set
 CONFIG_PACKAGE_uhttpd=y
 # CONFIG_PACKAGE_uhttpd-mod-lua is not set
@@ -8637,7 +8607,6 @@ CONFIG_PACKAGE_odhcpd_ipv6only_ext_cer_id=0
 # CONFIG_PACKAGE_pcapplusplus is not set
 # CONFIG_PACKAGE_pen is not set
 # CONFIG_PACKAGE_phantap is not set
-# CONFIG_PACKAGE_phytool is not set
 # CONFIG_PACKAGE_pimbd is not set
 # CONFIG_PACKAGE_pingcheck is not set
 # CONFIG_PACKAGE_port-mirroring is not set
@@ -8685,8 +8654,15 @@ CONFIG_PACKAGE_samba4-utils=m
 # CONFIG_PACKAGE_ser2net is not set
 CONFIG_PACKAGE_shellinabox=y
 CONFIG_PACKAGE_simple-adblock=m
-CONFIG_PACKAGE_simple-obfs-client=m
+CONFIG_PACKAGE_simple-obfs=m
 CONFIG_PACKAGE_simple-obfs-server=m
+
+#
+# Simple-obfs Compile Configuration
+#
+# CONFIG_SIMPLE_OBFS_STATIC_LINK is not set
+# end of Simple-obfs Compile Configuration
+
 # CONFIG_PACKAGE_sing-box is not set
 # CONFIG_PACKAGE_slirp4netns is not set
 CONFIG_PACKAGE_smartdns=m
@@ -8727,6 +8703,7 @@ CONFIG_PACKAGE_tcping=m
 # CONFIG_PACKAGE_tor-fw-helper is not set
 # CONFIG_PACKAGE_trafficshaper is not set
 # CONFIG_PACKAGE_travelmate is not set
+CONFIG_PACKAGE_trojan=m
 CONFIG_PACKAGE_trojan-plus=m
 # CONFIG_PACKAGE_u2pnpd is not set
 # CONFIG_PACKAGE_uacme is not set
@@ -9920,4 +9897,4 @@ CONFIG_PACKAGE_urllogger=m
 # end of Font-Utils
 # end of Xorg
 
-CONFIG_OVERRIDE_PKGS="adguardhome csstidy luci-app-dockerman luci-app-nlbwmon luci-app-smartdns luci-app-ttyd luci-lib-ipkg mentohust microsocks smartdns trojan-go ucl upx v2ray-core v2ray-geodata v2raya xray-core"
+CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng csstidy ddnsto dns2socks dns2tcp filebrowser gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argonne-config luci-app-bypass luci-app-clash luci-app-ddnsto luci-app-design-config luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-filebrowser luci-app-gost luci-app-ikoolproxy luci-app-koolproxyR luci-app-lucky luci-app-mosdns luci-app-nlbwmon luci-app-openclash luci-app-passwall luci-app-passwall2 luci-app-pushbot luci-app-serverchan luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-ttyd luci-app-unblockneteasemusic luci-app-vssr luci-lib-ipkg luci-lib-taskd luci-lib-xterm luci-theme-argon luci-theme-argonne luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-neobird luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mosdns naiveproxy pdnsd-alt redsocks2 sagernet-core shadowsocks-rust shadowsocksr-libev simple-obfs smartdns ssocks taskd tcping trojan trojan-go trojan-plus ucl upx v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
