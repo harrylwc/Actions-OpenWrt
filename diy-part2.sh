@@ -69,7 +69,7 @@ mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/x-wrt/package
 cd $GITHUB_WORKSPACE/x-wrt/
 #wget -qO- https://patchwork.kernel.org/project/linux-wireless/patch/20220908173618.155291-2-hdegoede@redhat.com/raw/ > package/kernel/mac80211/patches/rt2x00/612-rt2x00-ap-assoc-invalid-queue-2.patch
 sed -i 's/set wireless.${name}.disabled=1/set wireless.${name}.disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-
+git apply --ignore-space-change --ignore-whitespace gnutls.patch
 git apply --ignore-space-change --ignore-whitespace fs.patch
 #git apply --ignore-space-change --ignore-whitespace jq.patch
 git apply --ignore-space-change --ignore-whitespace ramips.patch
