@@ -24,7 +24,7 @@ ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applicat
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applications/luci-app-wrtbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 cp -r /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applications/luci-app-turboacc /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-turboacc/po/zh_Hant
-cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/turboacc.po /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-turboacc/po/zh_Hant/ 
+#cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/turboacc.po /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-turboacc/po/zh_Hant/ 
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applications/luci-app-ttyd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/packages/net/dnsforwarder /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/packages/net/pdnsd-alt /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
@@ -64,7 +64,7 @@ echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
 #cd ../../
 
 ### apply patch##### 
-mv $GITHUB_WORKSPACE/patches/200-gcc12-elfutils.patch $GITHUB_WORKSPACE/x-wrt/toolchain/gcc/patches/12.1.0/
+#mv $GITHUB_WORKSPACE/patches/200-gcc12-elfutils.patch $GITHUB_WORKSPACE/x-wrt/toolchain/gcc/patches/12.1.0/
 mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 cd $GITHUB_WORKSPACE/x-wrt/
 #wget -qO- https://patchwork.kernel.org/project/linux-wireless/patch/20220908173618.155291-2-hdegoede@redhat.com/raw/ > package/kernel/mac80211/patches/rt2x00/612-rt2x00-ap-assoc-invalid-queue-2.patch
