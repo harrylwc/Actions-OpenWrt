@@ -30,7 +30,7 @@ sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
 ./scripts/feeds update -a
-./scripts/feeds install -a -f
+./scripts/feeds install -f -a
 sudo mkdir -p /workdir
 sudo timedatectl set-timezone "$TZ"
 sudo chown $USER:$GROUPS /workdir
