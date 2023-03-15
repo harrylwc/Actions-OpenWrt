@@ -11,8 +11,18 @@ git clone https://github.com/x-wrt/x-wrt
 git clone https://github.com/coolsnowwolf/lede lede
 ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
 lede/scripts/feeds update -a
+
+git clone https://github.com/kenzok8/openwrt-packages.git /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/openwrt-packages
+git clone https://github.com/kenzok8/small.git /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/small
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+
+#git checkout 1d5f45fe5464ecd2194b2e3
 #rm -r x-wrt/package/lean/n2n*
 cd x-wrt 
+git pull
+git checkout 90d9cb4
+#git checkout 7832be9
 #git checkout 166ab6f90eef9e08b1d5f45fe5464ecd2194b2e3 
 git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
