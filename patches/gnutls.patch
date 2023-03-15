@@ -1,4 +1,4 @@
-diff --git a/libs/gnutls/Makefile b/libs/gnutls/Makefile
+diff --git a/package/libs/gnutls/Makefile b/package/libs/gnutls/Makefile
 index 211470205..1634e9681 100644
 --- a/libs/gnutls/Makefile
 +++ b/libs/gnutls/Makefile
