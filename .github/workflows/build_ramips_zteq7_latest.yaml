@@ -75,27 +75,11 @@ jobs:
       
       - name: Update feeds & Load custom configuration
         run: |
-          sudo mkdir -p /workdir
-          sudo chown $USER:$GROUPS /workdir
-          cd /workdir
-          df -hT $PWD
-          git clone --depth 1 $REPO_URL -b $REPO_BRANCH x-wrt
-          ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
-          git clone --depth 1 $REPO_URL1 lede
-          ln -sf /workdir/lede $GITHUB_WORKSPACE/lede
-          git clone https://github.com/jerrykuku/luci-theme-argon x-wrt/package/luci-theme-argon
-          ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
-          #rm -r x-wrt/package/lean/n2n* 
-          /workdir/lede/scripts/feeds update -a
-          cd $GITHUB_WORKSPACE
-          /workdir/x-wrt/scripts/feeds update -a
-          /workdir/x-wrt/scripts/feeds install -a -f
+          chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
+          $GITHUB_WORKSPACE/$DIY_P1_SH
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
-          #git checkout 21.10
-          #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' /workdir/x-wrt/target/linux/ramips/Makefile
-          #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' /workdir/x-wrt/target/linux/ipq40xx/Makefile
-          sudo timedatectl set-timezone "$TZ"
+          sudo timedatectl set-timezone "$TZ
       
       - name: Generate cache mixkey
         id: gen_cache_mixkey
