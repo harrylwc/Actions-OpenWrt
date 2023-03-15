@@ -247,7 +247,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
-          path: /workdir/x-wrt/bin
+          path: ${{ github.workspace }}/x-wrt/bin
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         uses: P3TERX/ssh2actions@main
