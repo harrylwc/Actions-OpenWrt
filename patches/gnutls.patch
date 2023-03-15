@@ -1,7 +1,7 @@
 diff --git a/feeds/packages/libs/gnutls/Makefile b/feeds/packages/libs/gnutls/Makefile
 index 211470205..1634e9681 100644
---- a/libs/gnutls/Makefile
-+++ b/libs/gnutls/Makefile
+--- a/feeds/packages/libs/gnutls/Makefile
++++ b/feeds/packages/libs/gnutls/Makefile
 @@ -6,13 +6,13 @@
  include $(TOPDIR)/rules.mk
 
