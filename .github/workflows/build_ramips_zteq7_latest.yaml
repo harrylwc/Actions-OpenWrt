@@ -79,7 +79,7 @@ jobs:
           $GITHUB_WORKSPACE/$DIY_P1_SH
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
-          sudo timedatectl set-timezone "$TZ
+          sudo timedatectl set-timezone "$TZ"
       
       - name: Generate cache mixkey
         id: gen_cache_mixkey
