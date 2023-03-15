@@ -21,7 +21,7 @@ sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 #rm -r x-wrt/package/lean/n2n*
 cd x-wrt 
 git pull
-git checkout 22.10_b202303121313
+git reset --hard 22.10_b202303121313
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 #git checkout 90d9cb4
