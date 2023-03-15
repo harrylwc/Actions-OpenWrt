@@ -31,14 +31,7 @@ ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/packages/net/
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applications/luci-app-netdata /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 #ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/target/linux/generic/hack-5.15/953-net-patch-linux-kernel-to-support-shortcut-fe.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/target/linux/generic/hack-5.15/
 git clone https://github.com/brvphoenix/wrtbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/wrtbwmon
-git clone https://github.com/kenzok8/openwrt-packages.git /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/openwrt-packages
-git clone https://github.com/kenzok8/small.git /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/small
-sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
-git pull
-./scripts/feeds update -a
-./scripts/feeds install -a -f
-#git checkout 166ab6f90eef9e08b1d5f45fe5464ecd2194b2e3
+
 
 cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
