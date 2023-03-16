@@ -35,7 +35,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
-  MAKEMENU_CONFIG: true
+  MAKEMENU_CONFIG: false
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
@@ -98,6 +98,7 @@ jobs:
           #prefix: ${{ env.WORKING_DIR }}                           
           prefix: ${{ github.workspace }}/x-wrt                     
           skip_saving: 'true'    
+          #  /usr/bin/tar -xf /home/runner/work/_temp/1a144490-77f9-4c00-ae54-698cee23f6b0/cache.tgz -P -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt -z
  
       #- name: Cache    
         #Euses: stupidloud/cachewrtbuild@main
