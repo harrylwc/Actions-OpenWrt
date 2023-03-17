@@ -29,8 +29,7 @@ env:
   TVH: true
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
-  KERNEL_CONFIG: 'myconfig/kernel_config.r619ac.5.15'
-  ##myconfig/kernel_config.r619ac'
+  KERNEL_CONFIG: 'kernel_config.r619ac'
   KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq40xx
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
@@ -267,9 +266,7 @@ jobs:
            ##cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
            
            #cat myconfig/config.tvh.ffmpeg >> .config
-           #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
-           #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt 
            #make kernel_menuconfig -j2
            make -j$(nproc) || make -j1 
