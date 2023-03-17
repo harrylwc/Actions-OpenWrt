@@ -72,6 +72,8 @@ jobs:
       
       - name: Update feeds & Load custom configuration
         run: |
+          cat /proc/cpuinfo|grep model
+          cat /proc/cpuinfo|grep proce
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
           $GITHUB_WORKSPACE/$DIY_P1_SH
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -117,7 +119,6 @@ jobs:
           SSH_ACTIONS: true
           DEBIAN_FRONTEND: noninteractive
         run: |
-          cat /proc/cpuinfo|grep model
           ls -alt ${{ github.workspace }}/x-wrt/staging_dir/*
           docker rmi `docker images -q`
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
