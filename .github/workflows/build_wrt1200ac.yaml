@@ -34,7 +34,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   KERNEL_CONFIG_DIR: x-wrt/target/linux/mvebu
-  MAKEMENU_CONFIG: true
+  MAKEMENU_CONFIG: false
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
@@ -96,7 +96,7 @@ jobs:
           mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
-          skip_saving: 'true'
+          #skip_saving: 'true'
       #- name: Cache
         #uses: klever1988/cachewrtbuild@main
         #with:
