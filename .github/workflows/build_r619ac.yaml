@@ -97,7 +97,7 @@ jobs:
           mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}     
           #prefix: ${{ env.WORKING_DIR }}                           
           prefix: ${{ github.workspace }}/x-wrt                     
-          #skip_saving: 'true'    
+          skip_saving: 'true'    
           #  /usr/bin/tar -xf /home/runner/work/_temp/1a144490-77f9-4c00-ae54-698cee23f6b0/cache.tgz -P -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt -z
  
       #- name: Cache    
