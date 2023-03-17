@@ -94,7 +94,7 @@ jobs:
       - name: Cache1                                                          
         uses: HiGarfield/cachewrtbuild@main                                   
         with:                                                                 
-          ccache: 'true'                                                      
+          ccache: 'false'                                                      
           mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}     
           #prefix: ${{ env.WORKING_DIR }}                           
           prefix: ${{ github.workspace }}/x-wrt                     
