@@ -15,8 +15,8 @@ on:
    # branches: 
     #  - master
     
-  #schedule:
-     #- cron: 00 12 * * *
+  schedule:
+     - cron: '30 21 * * *'
  # release:
   #  types: [published]
   #watch:
