@@ -29,7 +29,7 @@ env:
   TVH: true
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
-  KERNEL_CONFIG: 'kernel_config.r619ac'
+  KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
   KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq40xx
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
