@@ -12,7 +12,7 @@ name: Compile ZTEQ7&COOWIFI lastest OpenWrt xwrt Images
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '30 22 * * *'
+    - cron:  '00 23 * * *'
 #on:
   #push:
    # branches: 
