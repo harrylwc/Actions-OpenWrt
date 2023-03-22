@@ -10,6 +10,7 @@
 ####@
 name: Compile ZTEQ7&COOWIFI lastest OpenWrt xwrt Images  
 on:
+  workflow_dispatch:
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '00 23 * * *'
