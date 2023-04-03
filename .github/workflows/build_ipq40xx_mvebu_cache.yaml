@@ -220,7 +220,7 @@ jobs:
       - name: Compile ipq40xx image
         run: |
           cd x-wrt
-          cp config.r619ac.0 .config 
+          cp config.r619ac.2 .config 
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
           
@@ -254,7 +254,7 @@ jobs:
       - name: Compile mvebu image 
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
-           cp myconfig/config.wrt1200ac.0 x-wrt/.config 
+           cp myconfig/config.wrt1200ac.2 x-wrt/.config 
            cd x-wrt 
            make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
