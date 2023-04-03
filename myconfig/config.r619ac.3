@@ -5499,8 +5499,15 @@ CONFIG_PACKAGE_jansson=y
 CONFIG_PACKAGE_libantlr3c=m
 # CONFIG_PACKAGE_libao is not set
 # CONFIG_PACKAGE_libapparmor is not set
-# CONFIG_PACKAGE_libapr is not set
-# CONFIG_PACKAGE_libaprutil is not set
+CONFIG_PACKAGE_libapr=m
+CONFIG_PACKAGE_libaprutil=m
+CONFIG_PACKAGE_libaprutil-crypto-openssl=m
+# CONFIG_PACKAGE_libaprutil-dbd-mysql is not set
+# CONFIG_PACKAGE_libaprutil-dbd-odbc is not set
+# CONFIG_PACKAGE_libaprutil-dbd-pgsql is not set
+# CONFIG_PACKAGE_libaprutil-dbd-sqlite3 is not set
+# CONFIG_PACKAGE_libaprutil-dbm-gdbm is not set
+CONFIG_PACKAGE_libaprutil-ldap=m
 # CONFIG_PACKAGE_libarchive is not set
 # CONFIG_PACKAGE_libarchive-noopenssl is not set
 # CONFIG_PACKAGE_libasm is not set
@@ -6098,6 +6105,7 @@ CONFIG_PACKAGE_luci-app-acl=m
 CONFIG_PACKAGE_luci-app-acme=m
 CONFIG_PACKAGE_luci-app-adblock=m
 CONFIG_PACKAGE_luci-app-adguardhome=m
+# CONFIG_PACKAGE_luci-app-adguardhome_INCLUDE_binary is not set
 CONFIG_PACKAGE_luci-app-advanced=m
 # CONFIG_PACKAGE_luci-app-advanced-reboot is not set
 # CONFIG_PACKAGE_luci-app-ahcp is not set
@@ -6325,7 +6333,6 @@ CONFIG_PACKAGE_luci-theme-bootstrap=y
 CONFIG_PACKAGE_luci-theme-design=m
 CONFIG_PACKAGE_luci-theme-ifit=m
 CONFIG_PACKAGE_luci-theme-material=m
-CONFIG_PACKAGE_luci-theme-neobird=m
 CONFIG_PACKAGE_luci-theme-opentopd=m
 # CONFIG_PACKAGE_luci-theme-openwrt is not set
 CONFIG_PACKAGE_luci-theme-openwrt-2020=m
@@ -6478,6 +6485,7 @@ CONFIG_PACKAGE_luci-i18n-acme-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-adblock-vi is not set
 CONFIG_PACKAGE_luci-i18n-adblock-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-adblock-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-alist-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-cn=m
 # CONFIG_PACKAGE_luci-i18n-aria2-ar is not set
@@ -8544,7 +8552,24 @@ CONFIG_PACKAGE_git-http=y
 # Web Servers/Proxies
 #
 CONFIG_PACKAGE_alist=m
-# CONFIG_PACKAGE_apache is not set
+CONFIG_PACKAGE_apache=m
+CONFIG_PACKAGE_apache-ab=m
+CONFIG_PACKAGE_apache-error=m
+CONFIG_PACKAGE_apache-icons=m
+CONFIG_PACKAGE_apache-mod-deflate=m
+CONFIG_PACKAGE_apache-mod-http2=m
+CONFIG_PACKAGE_apache-mod-ldap=m
+CONFIG_PACKAGE_apache-mod-lua=m
+CONFIG_PACKAGE_apache-mod-md=m
+CONFIG_PACKAGE_apache-mod-php8=m
+CONFIG_PACKAGE_apache-mod-proxy=m
+CONFIG_PACKAGE_apache-mod-proxy-html=m
+CONFIG_PACKAGE_apache-mod-session-crypto=m
+CONFIG_PACKAGE_apache-mod-ssl=m
+CONFIG_PACKAGE_apache-mod-suexec=m
+CONFIG_PACKAGE_apache-mod-webdav=m
+CONFIG_PACKAGE_apache-suexec=m
+CONFIG_PACKAGE_apache-utils=m
 # CONFIG_PACKAGE_brook is not set
 CONFIG_PACKAGE_cgi-io=y
 # CONFIG_PACKAGE_clamav is not set
@@ -9563,7 +9588,7 @@ CONFIG_PACKAGE_zoneinfo-core=y
 CONFIG_PACKAGE_collectd=m
 # CONFIG_PACKAGE_COLLECTD_ENCRYPTED_NETWORK is not set
 # CONFIG_PACKAGE_COLLECTD_DEBUG_OUTPUT_ENABLE is not set
-# CONFIG_PACKAGE_collectd-mod-apache is not set
+CONFIG_PACKAGE_collectd-mod-apache-m
 # CONFIG_PACKAGE_collectd-mod-apcups is not set
 # CONFIG_PACKAGE_collectd-mod-ascent is not set
 # CONFIG_PACKAGE_collectd-mod-bind is not set
@@ -10264,4 +10289,4 @@ CONFIG_PACKAGE_urllogger=m
 # end of Font-Utils
 # end of Xorg
 
-CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng csstidy ddnsto dns2socks dns2tcp filebrowser gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argonne-config luci-app-bypass luci-app-clash luci-app-ddnsto luci-app-design-config luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-filebrowser luci-app-gost luci-app-ikoolproxy luci-app-koolproxyR luci-app-lucky luci-app-mosdns luci-app-nlbwmon luci-app-openclash luci-app-passwall luci-app-passwall2 luci-app-pushbot luci-app-serverchan luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-ttyd luci-app-unblockneteasemusic luci-app-vssr luci-lib-ipkg luci-lib-taskd luci-lib-xterm luci-theme-argon luci-theme-argonne luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-neobird luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mosdns naiveproxy pdnsd-alt redsocks2 sagernet-core shadowsocks-rust shadowsocksr-libev simple-obfs smartdns ssocks taskd tcping trojan trojan-go trojan-plus ucl upx v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
+CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng csstidy ddnsto dns2socks dns2tcp filebrowser gn gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argonne-config luci-app-bypass luci-app-clash luci-app-ddnsto luci-app-design-config luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-filebrowser luci-app-gost luci-app-ikoolproxy luci-app-koolproxyR luci-app-lucky luci-app-mosdns luci-app-nlbwmon luci-app-openclash luci-app-passwall luci-app-passwall2 luci-app-pushbot luci-app-serverchan luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-ttyd luci-app-unblockneteasemusic luci-app-vssr luci-lib-ipkg luci-lib-taskd luci-lib-xterm luci-theme-argon luci-theme-argonne luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mosdns naiveproxy pdnsd-alt redsocks2 sagernet-core shadowsocks-rust shadowsocksr-libev simple-obfs smartdns ssocks taskd tcping trojan trojan-go trojan-plus ucl upx v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
