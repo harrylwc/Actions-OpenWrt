@@ -68,11 +68,13 @@ jobs:
           ref: master
           fetch-depth: 0
 
+      - name: Check CPU model                                        
+        run: |                                                    
+          cat /proc/cpuinfo|grep model                            
+          cat /proc/cpuinfo|grep proce      
       
       - name: Update feeds & Load custom configuration
         run: |
-          cat /proc/cpuinfo|grep model
-          cat /proc/cpuinfo|grep proce
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
           $GITHUB_WORKSPACE/$DIY_P1_SH
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
