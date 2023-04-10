@@ -28,10 +28,14 @@ mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-t
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applications/luci-app-ttyd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/packages/net/dnsforwarder /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/packages/net/pdnsd-alt /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
-ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applications/luci-app-netdata /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
+#ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applications/luci-app-netdata /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 #ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/target/linux/generic/hack-5.15/953-net-patch-linux-kernel-to-support-shortcut-fe.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/target/linux/generic/hack-5.15/
-git clone https://github.com/brvphoenix/wrtbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/wrtbwmon
+#git clone https://github.com/brvphoenix/wrtbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/wrtbwmon
+git clone https://github.com/muink/luci-app-netdata /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-netdata
+git clone https://github.com/brvphoenix/luci-app-wrtbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon
 
+mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon/luci-app-wrtbwmon/po/zh_Hant
+opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon/luci-app-wrtbwmon/po/zh_Hans/wrtbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon/luci-app-wrtbwmon/po/zh_Hant/wrtwmon.po
 
 cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
