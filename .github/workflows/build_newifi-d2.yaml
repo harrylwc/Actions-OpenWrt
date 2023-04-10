@@ -240,7 +240,7 @@ jobs:
           #cp -rf $(find ./bin/targets/ -type f) ./artifact/firmware/
           #cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
           #cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
-          cat `find bin/targets/ -name version.buildinfo`|head -1|cut -c1-6> BUILD_VERSION
+          cat `find x-wrt/bin/targets/ -name version.buildinfo`|head -1|cut -c1-6> BUILD_VERSION
           [ -s BUILD_VERSION ] && echo "BUILD_VERSION=_$(cat BUILD_VERSION)" >> $GITHUB_ENV
           grep '^CONFIG_TARGET.*DEVICE.*=y' x-wrt/.config|head -1 | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
           [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
