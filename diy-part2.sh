@@ -10,6 +10,9 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.2.100/g' package/base-files/files/bin/config_generate
+sudo -E apt-get update
+sudo -E apt-get -y install opencc
+
 cd $GITHUB_WORKSPACE/x-wrt/
 sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Makefile
 sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/mvebu/Makefile
