@@ -122,9 +122,10 @@ endef
 CONFIGURE_ARGS += \
 	--disable-documentation \
 	--disable-silent-rules \
+	--enable-nftables \
 	--disable-assert \
 	--disable-ssp \
-
+TARGET_CFLAGS += -std=gnu99 -Wno-error
 TARGET_LDFLAGS += -Wl,--gc-sections,--as-needed
 
 $(eval $(call BuildPackage,shadowsocks-libev-config))
