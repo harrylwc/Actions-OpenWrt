@@ -1,0 +1,12 @@
+--- a/src/server.c
++++ b/src/server.c
+@@ -479,7 +479,8 @@
+                 d = NULL;
+             }
+             nftbl_badip_sets[i++] = si;
+-            if (i == sizeof(nftbl_badip_sets) / sizeof(*si) - 1)
++            size_t n = sizeof(nftbl_badip_sets) / sizeof(*si) -1);
++	    if (i == n)
+                 break;
+             while (*p && isspace(*(++p)));
+             p0 = p;
