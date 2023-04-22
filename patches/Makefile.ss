@@ -122,6 +122,7 @@ endef
 CONFIGURE_ARGS += \
 	--disable-documentation \
 	--disable-silent-rules \
+	--enable-nftables \
 	--disable-assert \
 	--disable-ssp \
 
