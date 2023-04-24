@@ -18,7 +18,7 @@ sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Mak
 sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/mvebu/Makefile
 rm -r feeds/packages/multimedia/tvheadend
 #tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/tvheadend.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/feeds/packages/multimedia/
-rm -r feeds/packages/multimedia/ffmpeg
+#rm -r feeds/packages/multimedia/ffmpeg
 #tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/ffmpeg.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/multimedia/
 #cp -r /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/rtl8821cu /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/penwrt/package/
 #cp -r /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/n2n /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
