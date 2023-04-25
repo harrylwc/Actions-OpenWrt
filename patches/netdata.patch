@@ -1,0 +1,11 @@
+--- a/package/luci-app-netdata/Makefile	2023-04-25 14:16:04.126648116 +0800
++++ b/package/luci-app-netdata/Makefile	2023-04-25 14:15:41.878331447 +0800
+@@ -10,7 +10,7 @@
+ PKG_VERSION:=20230424
+ 
+ LUCI_TITLE:=LuCI Netdata
+-LUCI_DEPENDS:=+netdata +openssl-util +PACKAGE_nginx:luci-nginx +PACKAGE_nginx:luci-ssl-nginx
++LUCI_DEPENDS:=+netdata +openssl-util
+ 
+ LUCI_DESCRIPTION:=Real-time performance monitoring
+ 
