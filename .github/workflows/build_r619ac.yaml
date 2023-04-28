@@ -27,7 +27,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: r619ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.3
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.2.bak
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
