@@ -67,6 +67,11 @@ jobs:
           ref: master
           fetch-depth: 0
 
+      - name: Check CPU model
+        run: |
+          cat /proc/cpuinfo|grep model
+          cat /proc/cpuinfo|grep proce
+
       
       - name: Update feeds & Load custom configuration
         run: |

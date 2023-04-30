@@ -44,7 +44,7 @@ env:
   KERNEL_CONFIG_DIR: x-wrt/target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
-  MAKEMENU_CONFIG: true
+  MAKEMENU_CONFIG: false
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: false
   
@@ -78,11 +78,14 @@ jobs:
           ref: master
           fetch-depth: 0
 
-      
-      - name: Update feeds & Load custom configuration
+     
+      - name: Check CPU model
         run: |
           cat /proc/cpuinfo|grep model
           cat /proc/cpuinfo|grep proce
+ 
+      - name: Update feeds & Load custom configuration
+        run: |
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
           $GITHUB_WORKSPACE/$DIY_P1_SH
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
