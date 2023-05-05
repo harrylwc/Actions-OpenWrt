@@ -27,7 +27,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: r619ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.3
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.2.bak
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
@@ -35,7 +35,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
-  MAKEMENU_CONFIG: false
+  MAKEMENU_CONFIG: true
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
