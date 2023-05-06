@@ -1,5 +1,5 @@
---- db.txt	2023-05-06 07:55:03.000000000 +0800
-+++ db.txt.new	2023-05-06 08:08:52.611401822 +0800
+--- a/db.txt	2023-05-06 07:55:03.000000000 +0800
++++ b/db.txt	2023-05-06 08:08:52.611401822 +0800
 @@ -753,11 +753,8 @@
  # https://www.ofca.gov.hk/filemanager/ofca/en/content_401/hkca1081.pdf (6 GHz)
  country HK: DFS-ETSI
