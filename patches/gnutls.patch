@@ -59,13 +59,13 @@ GNUTLS_SRTP_AEAD_AES_256_GCM: New gnutls_srtp_profile_t enum member
 
 Signed-off-by: Antonio Flores <antflores627@gmail.com>
 ---
- libs/gnutls/Makefile | 8 ++++----
+ feeds/packages/libs/gnutls/Makefile | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/libs/gnutls/Makefile b/libs/gnutls/Makefile
+diff --git a/feeds/packages/libs/gnutls/Makefile b/feeds/packages/libs/gnutls/Makefile
 index 3246bb254c76..dc94591c2dd4 100644
---- a/libs/gnutls/Makefile
-+++ b/libs/gnutls/Makefile
+--- a/feeds/packages/libs/gnutls/Makefile
++++ b/feeds/packages/libs/gnutls/Makefile
 @@ -6,13 +6,13 @@
  include $(TOPDIR)/rules.mk
  
