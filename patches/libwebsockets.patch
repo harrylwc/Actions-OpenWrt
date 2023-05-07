@@ -1,0 +1,11 @@
+--- a/lib/tls/openssl/openssl-server.c	2022-05-18 00:53:27.000000000 +0800
++++ b/lib/tls/openssl/openssl-server.c	2023-05-07 18:45:08.288923143 +0800
+@@ -709,7 +709,7 @@
+ 	return 0;
+ }
+ 
+-int
++enum lws_ssl_capable_status
+ lws_tls_server_abort_connection(struct lws *wsi)
+ {
+ 	if (wsi->tls.use_ssl)
