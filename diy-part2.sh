@@ -29,7 +29,7 @@ mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-n
 #cp $GITHUB_WORKSPACE/Makefile.lighttpd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/lighttpd/Makefile
 #cp $GITHUB_WORKSPACE/*.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/lighttpd/patches/
 cp $GITHUB_WORKSPACE/patches/Makefile.ss /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/shadowsocks-libev/Makefile
-cp $GITHUB_WORKSPACE/patches/Makefile.mwlwifi /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/kernel/mwlwifi/Makefile
+#cp $GITHUB_WORKSPACE/patches/Makefile.mwlwifi /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/kernel/mwlwifi/Makefile
 #mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/shadowsocks-libev/patches
 #cp $GITHUB_WORKSPACE/ss_server.patch  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/shadowsocks-libev/patches
 
