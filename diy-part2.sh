@@ -26,11 +26,6 @@ ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applicat
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applications/luci-app-nlbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw
 /usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-cn/nlbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw/nlbwmon.po 
-#cp $GITHUB_WORKSPACE/patches/Makefile.libtins  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libtins/Makefile
-#cp $GITHUB_WORKSPACE/Makefile.lighttpd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/lighttpd/Makefile
-#cp $GITHUB_WORKSPACE/patches/Makefile.gnutls  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/Makefile
-cp $GITHUB_WORKSPACE/010-m4.patch  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/patches/
-cp $GITHUB_WORKSPACE/020-dont-install-m4-files.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/patches/
 #cp $GITHUB_WORKSPACE/*.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/lighttpd/patches/
 mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libwebsockets/patches/
 cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/libwebsockets.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libwebsockets/patches/
@@ -91,7 +86,6 @@ mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/x-wrt/package
 cd $GITHUB_WORKSPACE/x-wrt/
 #wget -qO- https://patchwork.kernel.org/project/linux-wireless/patch/20220908173618.155291-2-hdegoede@redhat.com/raw/ > package/kernel/mac80211/patches/rt2x00/612-rt2x00-ap-assoc-invalid-queue-2.patch
 sed -i 's/set wireless.${name}.disabled=1/set wireless.${name}.disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
-git apply --ignore-space-change --ignore-whitespace gnutls.patch
 git apply --ignore-space-change --ignore-whitespace netdata.patch                                                                                                                                                
 git apply --ignore-space-change --ignore-whitespace fs.patch
 #git apply --ignore-space-change --ignore-whitespace jq.patch
