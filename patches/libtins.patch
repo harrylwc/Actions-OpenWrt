@@ -1,5 +1,5 @@
---- a/include/tins/ip_address.h/ip_address.h
-+++ b/include/tins/ip_address.h/ip_address.h
+--- a/include/tins/ip_address.h
++++ b/include/tins/ip_address.h
 @@ -33,7 +33,7 @@
  #include <string>
  #include <iosfwd>
