@@ -1,0 +1,20 @@
+--- a/src/secure_allocator.hpp
++++ b/src/secure_allocator.hpp
+@@ -95,6 +99,17 @@
+ #else
+ template <typename T> struct secure_allocator_t : std::allocator<T>
+ {
++    secure_allocator_t () ZMQ_DEFAULT;
++
++    template <class U>
++    secure_allocator_t (const secure_allocator_t<U> &) ZMQ_NOEXCEPT
++    {
++    }
++
++    template <class U> struct rebind
++    {
++        typedef secure_allocator_t<U> other;
++    };
+ };
+ #endif
+ }
