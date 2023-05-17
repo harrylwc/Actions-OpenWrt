@@ -39,7 +39,9 @@ cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/Makefile.gnutls /ho
 cp  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/secure_allocator.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/zmq/patches/ 
 cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/030-unistring-optional.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/patches/               
 cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/Makefile.pciaccess /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libpciaccess/Makefile
+cp $GITHUB_WORKSPACE/patches/Makefile.btrfs-progs $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/btrfs-progs/Makefile
 cp $GITHUB_WORKSPACE/patches/Makefile.perl $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/perl/Makefile
+
 
 
 cp $GITHUB_WORKSPACE/patches/Makefile.ss /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/shadowsocks-libev/Makefile
