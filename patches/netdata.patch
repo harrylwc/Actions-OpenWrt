@@ -1,7 +1,7 @@
 --- a/package/luci-app-netdata/Makefile
 +++ b/package/luci-app-netdata/Makefile
 @@ -10,7 +10,7 @@
- PKG_VERSION:=20230430
+ PKG_VERSION:=20230507
  
  LUCI_TITLE:=LuCI Netdata
 -LUCI_DEPENDS:=+netdata-ssl +openssl-util
