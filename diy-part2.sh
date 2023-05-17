@@ -39,6 +39,7 @@ cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/Makefile.gnutls /ho
 cp  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/secure_allocator.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/zmq/patches/ 
 cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/030-unistring-optional.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/patches/               
 cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/acl.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/utils/acl/patches/               
+cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/Makefile.pciaccess /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libpciaccess/Makefile
 
 
 
