@@ -41,6 +41,7 @@ cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/030-unistring-optio
 cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/Makefile.pciaccess /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libpciaccess/Makefile
 cp $GITHUB_WORKSPACE/patches/Makefile.btrfs-progs $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/btrfs-progs/Makefile
 cp $GITHUB_WORKSPACE/patches/Makefile.perl $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/perl/Makefile
+cp $GITHUB_WORKSPACE/patches/Makefile.perl-html-parser $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/perl-html-parser/Makefile
 cp $GITHUB_WORKSPACE/patches/Makefile.php8 $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/php8/Makefile
 
 
