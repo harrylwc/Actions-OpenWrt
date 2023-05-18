@@ -26,6 +26,7 @@ HOST_BUILD_DEPENDS:=perl/host
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
 include ../perl/perlmod.mk
+TARGET_CFLAGS += -D_LARGEFILE64_SOURCE
 
 define Package/perl-html-parser
   SUBMENU:=Perl
