@@ -38,8 +38,6 @@ cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/libtins.patch /home
 cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/Makefile.gnutls /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/Makefile
 cp  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/secure_allocator.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/zmq/patches/ 
 cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/030-unistring-optional.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/patches/               
-cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/Makefile.pciaccess /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libpciaccess/Makefile
-cp $GITHUB_WORKSPACE/patches/Makefile.btrfs-progs $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/btrfs-progs/Makefile
 cp $GITHUB_WORKSPACE/patches/Makefile.perl $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/perl/Makefile
 cp $GITHUB_WORKSPACE/patches/Makefile.perl-html-parser $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/perl-html-parser/Makefile
 cp $GITHUB_WORKSPACE/patches/Makefile.php8 $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/php8/Makefile
