@@ -41,6 +41,7 @@ cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/030-unistring-optio
 cp $GITHUB_WORKSPACE/patches/Makefile.perl $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/perl/Makefile
 cp $GITHUB_WORKSPACE/patches/Makefile.perl-html-parser $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/perl-html-parser/Makefile
 cp $GITHUB_WORKSPACE/patches/Makefile.php8 $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/php8/Makefile
+cp $GITHUB_WORKSPACE/patches/Makefile.python3-packages $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/python/python3-packages/Makefile
 
 
 cp $GITHUB_WORKSPACE/patches/Makefile.ss /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/shadowsocks-libev/Makefile
