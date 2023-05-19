@@ -3057,7 +3057,6 @@ CONFIG_PACKAGE_kmod-fs-ext4=y
 # CONFIG_PACKAGE_kmod-fs-isofs is not set
 # CONFIG_PACKAGE_kmod-fs-jfs is not set
 CONFIG_PACKAGE_kmod-fs-ksmbd=y
-CONFIG_KSMBD_SMB_INSECURE_SERVER=y
 # CONFIG_PACKAGE_kmod-fs-minix is not set
 CONFIG_PACKAGE_kmod-fs-msdos=y
 # CONFIG_PACKAGE_kmod-fs-netfs is not set
@@ -3070,6 +3069,7 @@ CONFIG_PACKAGE_kmod-fs-nfsd=y
 CONFIG_PACKAGE_kmod-fs-ntfs=y
 CONFIG_PACKAGE_kmod-fs-ntfs3=y
 # CONFIG_PACKAGE_kmod-fs-reiserfs is not set
+CONFIG_PACKAGE_kmod-fs-smbfs-common=y
 # CONFIG_PACKAGE_kmod-fs-squashfs is not set
 # CONFIG_PACKAGE_kmod-fs-udf is not set
 CONFIG_PACKAGE_kmod-fs-vfat=y
@@ -4267,6 +4267,7 @@ CONFIG_PACKAGE_perlbase-xsloader=m
 #
 # Python
 #
+# CONFIG_PACKAGE_borgbackup is not set
 CONFIG_PACKAGE_libpython3=y
 # CONFIG_PACKAGE_micropython-lib is not set
 # CONFIG_PACKAGE_micropython-mbedtls is not set
@@ -4351,8 +4352,8 @@ CONFIG_PACKAGE_python3-distutils=m
 # CONFIG_PACKAGE_python3-django-cors-headers is not set
 # CONFIG_PACKAGE_python3-django-etesync-journal is not set
 # CONFIG_PACKAGE_python3-django-restframework is not set
-#CONFIG_PACKAGE_python3-dns=m
-# CONFIG_PACKAGE_python3-dns-src is not set
+# CONFIG_PACKAGE_python3-dns is not set
+# CONFIG_PACKAGE_python3-docker is not set
 # CONFIG_PACKAGE_python3-dockerpty is not set
 # CONFIG_PACKAGE_python3-docopt is not set
 # CONFIG_PACKAGE_python3-docutils is not set
@@ -4448,6 +4449,7 @@ CONFIG_PACKAGE_python3-openssl=m
 # CONFIG_PACKAGE_python3-openssl-src is not set
 # CONFIG_PACKAGE_python3-outcome is not set
 # CONFIG_PACKAGE_python3-packages is not set
+# CONFIG_PACKAGE_python3-packaging is not set
 # CONFIG_PACKAGE_python3-paho-mqtt is not set
 # CONFIG_PACKAGE_python3-paramiko is not set
 CONFIG_PACKAGE_python3-parsley=m
@@ -4495,6 +4497,9 @@ CONFIG_PACKAGE_python3-pyparsing=m
 # CONFIG_PACKAGE_python3-pyrsistent is not set
 # CONFIG_PACKAGE_python3-pyserial is not set
 # CONFIG_PACKAGE_python3-pysocks is not set
+# CONFIG_PACKAGE_python3-pytest is not set
+# CONFIG_PACKAGE_python3-pytest-forked is not set
+# CONFIG_PACKAGE_python3-pytest-xdist is not set
 # CONFIG_PACKAGE_python3-pytz is not set
 CONFIG_PACKAGE_python3-readline=m
 # CONFIG_PACKAGE_python3-readline-src is not set
@@ -5730,6 +5735,7 @@ CONFIG_PACKAGE_libnl-tiny=y
 CONFIG_PACKAGE_libogg=m
 # CONFIG_PACKAGE_liboil is not set
 # CONFIG_PACKAGE_libopcodes is not set
+# CONFIG_PACKAGE_libopen62541 is not set
 # CONFIG_PACKAGE_libopendkim is not set
 # CONFIG_PACKAGE_libopenobex is not set
 # CONFIG_PACKAGE_libopensc is not set
@@ -6647,6 +6653,7 @@ CONFIG_PACKAGE_luci-i18n-commands-zh-tw=y
 # CONFIG_PACKAGE_luci-i18n-ddns-ko is not set
 # CONFIG_PACKAGE_luci-i18n-ddns-mr is not set
 # CONFIG_PACKAGE_luci-i18n-ddns-ms is not set
+# CONFIG_PACKAGE_luci-i18n-ddns-nl is not set
 # CONFIG_PACKAGE_luci-i18n-ddns-no is not set
 # CONFIG_PACKAGE_luci-i18n-ddns-pl is not set
 # CONFIG_PACKAGE_luci-i18n-ddns-pt is not set
@@ -6703,6 +6710,7 @@ CONFIG_PACKAGE_luci-i18n-diag-core-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-dnscrypt-proxy-ko is not set
 # CONFIG_PACKAGE_luci-i18n-dnscrypt-proxy-mr is not set
 # CONFIG_PACKAGE_luci-i18n-dnscrypt-proxy-ms is not set
+# CONFIG_PACKAGE_luci-i18n-dnscrypt-proxy-nl is not set
 # CONFIG_PACKAGE_luci-i18n-dnscrypt-proxy-no is not set
 # CONFIG_PACKAGE_luci-i18n-dnscrypt-proxy-pl is not set
 # CONFIG_PACKAGE_luci-i18n-dnscrypt-proxy-pt is not set
@@ -6735,6 +6743,7 @@ CONFIG_PACKAGE_luci-i18n-dnscrypt-proxy-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-dockerman-ko is not set
 # CONFIG_PACKAGE_luci-i18n-dockerman-mr is not set
 # CONFIG_PACKAGE_luci-i18n-dockerman-ms is not set
+# CONFIG_PACKAGE_luci-i18n-dockerman-nl is not set
 # CONFIG_PACKAGE_luci-i18n-dockerman-no is not set
 # CONFIG_PACKAGE_luci-i18n-dockerman-pl is not set
 # CONFIG_PACKAGE_luci-i18n-dockerman-pt is not set
@@ -6858,6 +6867,7 @@ CONFIG_PACKAGE_luci-i18n-https-dns-proxy-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-ksmbd-ko is not set
 # CONFIG_PACKAGE_luci-i18n-ksmbd-mr is not set
 # CONFIG_PACKAGE_luci-i18n-ksmbd-ms is not set
+# CONFIG_PACKAGE_luci-i18n-ksmbd-nl is not set
 # CONFIG_PACKAGE_luci-i18n-ksmbd-no is not set
 # CONFIG_PACKAGE_luci-i18n-ksmbd-pl is not set
 # CONFIG_PACKAGE_luci-i18n-ksmbd-pt is not set
@@ -7054,6 +7064,7 @@ CONFIG_PACKAGE_luci-i18n-privoxy-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-qos-ko is not set
 # CONFIG_PACKAGE_luci-i18n-qos-mr is not set
 # CONFIG_PACKAGE_luci-i18n-qos-ms is not set
+# CONFIG_PACKAGE_luci-i18n-qos-nl is not set
 # CONFIG_PACKAGE_luci-i18n-qos-no is not set
 # CONFIG_PACKAGE_luci-i18n-qos-pl is not set
 # CONFIG_PACKAGE_luci-i18n-qos-pt is not set
@@ -7119,6 +7130,7 @@ CONFIG_PACKAGE_luci-i18n-samba4-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ko is not set
 # CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-mr is not set
 # CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ms is not set
+# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-nl is not set
 # CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-no is not set
 # CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-pl is not set
 # CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-pt is not set
@@ -7345,6 +7357,7 @@ CONFIG_PACKAGE_luci-i18n-wifischedule-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-wol-ko is not set
 # CONFIG_PACKAGE_luci-i18n-wol-mr is not set
 # CONFIG_PACKAGE_luci-i18n-wol-ms is not set
+# CONFIG_PACKAGE_luci-i18n-wol-nl is not set
 # CONFIG_PACKAGE_luci-i18n-wol-no is not set
 # CONFIG_PACKAGE_luci-i18n-wol-pl is not set
 # CONFIG_PACKAGE_luci-i18n-wol-pt is not set
@@ -8292,9 +8305,6 @@ CONFIG_NGINX_PCRE=y
 # CONFIG_NGINX_HTTP_REAL_IP is not set
 # CONFIG_NGINX_HTTP_SECURE_LINK is not set
 # CONFIG_NGINX_HTTP_SUB is not set
-CONFIG_NGINX_STREAM_CORE_MODULE=y
-# CONFIG_NGINX_STREAM_SSL_MODULE is not set
-# CONFIG_NGINX_STREAM_SSL_PREREAD_MODULE is not set
 # end of Configuration
 
 CONFIG_PACKAGE_nginx-ssl-util=m
@@ -8344,7 +8354,7 @@ CONFIG_PACKAGE_shadowsocks-libev-ss-tunnel=m
 # CONFIG_PACKAGE_shadowsocks-rust-ssservice is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssurl is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-check is not set
-# CONFIG_PACKAGE_shadowsocksr-libev-ssr-local=m
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-local is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-nat is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-server is not set
@@ -8452,6 +8462,7 @@ CONFIG_PACKAGE_wpad-openssl=m
 # CONFIG_PACKAGE_6rd is not set
 # CONFIG_PACKAGE_6to4 is not set
 # CONFIG_PACKAGE_UDPspeeder is not set
+# CONFIG_PACKAGE_aardvark-dns is not set
 CONFIG_PACKAGE_acme=m
 CONFIG_PACKAGE_acme-acmesh=m
 # CONFIG_PACKAGE_acme-acmesh-dnsapi is not set
@@ -8607,6 +8618,7 @@ CONFIG_PACKAGE_libipset=m
 # CONFIG_PACKAGE_nebula is not set
 # CONFIG_PACKAGE_nebula-cert is not set
 # CONFIG_PACKAGE_net-tools-route is not set
+# CONFIG_PACKAGE_netavark is not set
 # CONFIG_PACKAGE_netcat is not set
 # CONFIG_PACKAGE_netdiscover is not set
 # CONFIG_PACKAGE_netifyd is not set
@@ -9582,7 +9594,6 @@ CONFIG_PACKAGE_openssl-util=y
 # Configuration
 #
 # CONFIG_PODMAN_SELINUX_SUPPORT is not set
-# CONFIG_PODMAN_IPTABLES_FW is not set
 # end of Configuration
 
 # CONFIG_PACKAGE_poemgr is not set
