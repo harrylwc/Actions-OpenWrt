@@ -102,7 +102,7 @@ sed -i 's/set wireless.${name}.disabled=1/set wireless.${name}.disabled=0/g' pac
 #git apply --ignore-space-change --ignore-whitespace libtins.patch
 #git apply --ignore-space-change --ignore-whitespace rule.patch
 git apply --ignore-space-change --ignore-whitespace netdata.patch                                                                                                                                                
-#git apply --ignore-space-change --ignore-whitespace fs.patch
+git apply --ignore-space-change --ignore-whitespace fs.patch
 #git apply --ignore-space-change --ignore-whitespace jq.patch
 git apply --ignore-space-change --ignore-whitespace ramips.patch
 git apply --ignore-space-change --ignore-whitespace common.patch
