@@ -10,10 +10,11 @@
 ####@
 name: Compile ZTEQ7&COOWIFI lastest OpenWrt xwrt Images  
 on:
-  workflow_dispatch:
   schedule:
-    # * is a special character in YAML so you have to quote this string
-     - cron:  '01 25 * * *'
+    # Runs "at minute 55 past every hour" (see https://crontab.guru)
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
 #on:
   #push:
    # branches: 
