@@ -12,7 +12,7 @@ name: Compile ZTEQ7&COOWIFI lastest OpenWrt xwrt Images
 on:
   schedule:
     # Runs "at minute 55 past every hour" (see https://crontab.guru)
-    - cron: '57 0 * * *'
+    - cron: '30 1 * * *'
   #workflow_dispatch:
 
 #on:
