@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile ipq40xx mvebu caches 
+name: Compile ipq40xx mvebu ramips caches 
 
 on:
   workflow_dispatch:    
@@ -55,7 +55,7 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build ipq40xx mvebu caches 
+    name: Build ipq40xx mvebu ramips caches 
 
     runs-on: ubuntu-latest
     #runs-on: ubuntu-22.10
@@ -68,7 +68,11 @@ jobs:
         with:
           ref: master
           fetch-depth: 0
-      
+      - name: Check CPU model
+        run: |                                                    
+          cat /proc/cpuinfo|grep model                            
+          cat /proc/cpuinfo|grep proce 
+        
       - name: Update feeds & Load custom configuration
         run: |
           cat /proc/cpuinfo|grep model
@@ -85,7 +89,7 @@ jobs:
         uses: klever1988/cachewrtbuild@main                                   
         with:                                                                 
           ccache: 'true'                                                   
-          mixkey: ipq40x_mvebu 
+          mixkey: ipq40x_mvebu_ramips 
           #prefix: ${{ env.WORKING_DIR }}                           
           prefix: ${{ github.workspace }}/x-wrt                     
           #skip_saving: 'true'    
@@ -210,10 +214,12 @@ jobs:
       - name: Compile ipq40xx image
         run: |
           cd x-wrt
-          cp config.r619ac.2 .config 
+          cp config.r619ac.0 .config 
           make -j$(nproc) || make -j1 V=s
-          [ $? != 0 ] && make V=s || echo "build success"
-          
+          [ $? != 0 ] && make V=s || echo "build ipq4x00 success"
+          cp config.ramips.0 .config 
+          make -j$(nproc) || make -j1 V=s
+          [ $? != 0 ] && make V=s || echo "build ramips success"
           #make V=99 2>&1 |tee build.log
           #     echo "======================="
           #echo "Space usage:"
@@ -244,11 +250,12 @@ jobs:
       - name: Compile mvebu image 
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
-           cp myconfig/config.wrt1200ac.2 x-wrt/.config 
+           cp myconfig/config.wrt1200ac.0 x-wrt/.config 
            cd x-wrt 
            make -j$(nproc) || make -j1 
-           [ $? != 0 ] && make V=s || echo "build success" 
+           [ $? != 0 ] && make V=s || echo "build mvebu success" 
            df -kh
+           ls -alt ${{ github.workspace }}/x-wrt/staging_dir/*
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         #uses: lhotari/action-upterm@v1
