@@ -85,62 +85,13 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sudo timedatectl set-timezone "$TZ"
-          
-     
-      - name: Generate cache mixkey
-        id: gen_cache_mixkey
-        working-directory: ${{ env.WORKING_DIR }}
-        run: |                                   
-          target_device_arch_1="ipq40xx"           
-          #target_device_arch_2="ramips"
-          gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
-          ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
-          mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"           
-          #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"          
-          echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT                           
-      - name: Cache1                                                          
-        uses: HiGarfield/cachewrtbuild@main                                   
-        with:                                                                 
-          ccache: 'true'                                                   
-          mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}     
-          #prefix: ${{ env.WORKING_DIR }}                           
-          prefix: ${{ github.workspace }}/x-wrt                     
-          #skip_saving: 'true'    
-          #  /usr/bin/tar -xf /home/runner/work/_temp/1a144490-77f9-4c00-ae54-698cee23f6b0/cache.tgz -P -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt -z
- 
-      #- name: Cache    
-        #Euses: stupidloud/cachewrtbuild@main
-        #with:
-         #ccache: 'true'
-         #mixkey: 'ipq40xx'
-         #prefix: ${{ github.workspace }}/x-wrt
-         
-      #- name: Generate cache mixkey
-        #id: gen_cache_mixkey
-        #working-directory: ${{ env.WORKING_DIR }}
-       # run: |
-          #target_device_arch_1="ipq40xx"
-          #target_device_arch_2="ramips"
-          #gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
-         # ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
-         # mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
-         # mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
-        #  echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
-         # echo "mixkey2=$mixkey2" >> $GITHUB_OUTPUT
       
-     # - name: Cache1
-      #  uses: HiGarfield/cachewrtbuild@main
-       # with:
-        #  ccache: 'true'
-        #  mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
-        #  prefix: ${{ env.WORKING_DIR }}
-
        
-      #- name: Cache
-        #uses: klever1988/cachewrtbuild@main
-        #with:
-          #ccache: 'true'
-          #prefix: ${{ github.workspace }}/x-wrt
+      - name: Cache
+        uses: klever1988/cachewrtbuild@main
+        with:
+          ccache: 'true'
+          prefix: ${{ github.workspace }}/x-wrt
          #with:
          # ccache: 'true'
          # prefix: ${{ github.workspace }}/x-wrt
