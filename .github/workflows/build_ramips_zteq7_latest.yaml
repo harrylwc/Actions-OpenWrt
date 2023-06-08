@@ -90,7 +90,7 @@ jobs:
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          target_device_arch_1="mvebu"
+          target_device_arch_1="ramips"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
