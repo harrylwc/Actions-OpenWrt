@@ -82,56 +82,27 @@ jobs:
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sudo timedatectl set-timezone "$TZ"
       - name: Generate cache mixkey
-
         id: gen_cache_mixkey
-
         working-directory: ${{ env.WORKING_DIR }}
-
         run: |
-
           target_device_arch_1="mvebu"
-
           #target_device_arch_2="ramips"
-
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
-
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
-
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
-
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
-
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
-
+          
       - name: Cache1
-
-        uses: klever1988/cachewrtbuild@main    #HiGarfield/cachewrtbuild@main
-
+        uses: HiGarfield/cachewrtbuild@main   #klever1988/cachewrtbuild@main  
         with:
-
           ccache: 'true'
-
           mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
-
+          #mixkey: 'mvebu'
           #prefix: ${{ env.WORKING_DIR }}
-
           prefix: ${{ github.workspace }}/x-wrt
-
           #skip_saving: 'true'
-      ##- name: Cache
-        ##uses: klever1988/cachewrtbuild@main
-        ##with:
-          ##ccache: 'true'
-          ##prefix: ${{ github.workspace }}/x-wrt
-         #with:
-         # ccache: 'true'
-         # prefix: ${{ github.workspace }}/x-wrt
-          #是否缓存工具链目录
-          #toolchain: true
-          #是否跳过工具链编译
-          #skip: false
-          #清空缓存
-          #clean: true
+ 
 
     
       - name: Space cleanup
