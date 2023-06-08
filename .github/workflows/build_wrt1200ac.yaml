@@ -56,19 +56,14 @@ jobs:
   build_openwrt:
     ###@####
     name: Build wrt1200ac TVH firmware
-
     runs-on: ubuntu-latest
-
     if: github.event.repository.owner.id == github.event.sender.id
-
     steps:
-
       - name: Checkout
         uses: actions/checkout@v3
         with:
           ref: master
           fetch-depth: 0
-
       - name: Check CPU model                                        
         run: |                                                    
           cat /proc/cpuinfo|grep model                            
@@ -81,6 +76,7 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sudo timedatectl set-timezone "$TZ"
+
       - name: Generate cache mixkey
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
@@ -102,9 +98,7 @@ jobs:
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
- 
-
-    
+          
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
