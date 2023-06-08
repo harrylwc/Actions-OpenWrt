@@ -25,7 +25,7 @@ on:
 env:
   #####change model here ####@# 
   ROUTER_MODEL: wrt1200ac
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.3
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.2.bak
   TVH: true
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
@@ -85,18 +85,18 @@ jobs:
           target_device_arch_1="mvebu"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')d10ba60a
-          gcc_hash='d10ba60a'       ###force cahche version
+          #gcc_hash='d10ba60a'       ###force cahche version
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
      
       - name: Cache1
-        uses: HiGarfield/cachewrtbuild@main   #klever1988/cachewrtbuild@main  
+        uses: klever1988/cachewrtbuild@main     #HiGarfield/cachewrtbuild@main 
         with:
           ccache: 'true'
-          mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
-          #mixkey: 'mvebu'
+          #mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
+          mixkey: 'ipq40xx_mvebu_ramips'
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
