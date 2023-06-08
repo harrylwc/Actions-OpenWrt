@@ -54,25 +54,19 @@ jobs:
   build_openwrt:
     ###@####
     name: Build newifi-d2 kernel 5.15 TVH firmware
-
     runs-on: ubuntu-latest
-
     if: github.event.repository.owner.id == github.event.sender.id
-
     steps:
-
       - name: Checkout
         uses: actions/checkout@v3
         with:
           ref: master
           fetch-depth: 0
-
       - name: Check CPU model
         run: |
           cat /proc/cpuinfo|grep model
           cat /proc/cpuinfo|grep proce
-
-      
+     
       - name: Update feeds & Load custom configuration
         run: |
           cat /proc/cpuinfo|grep model
@@ -87,27 +81,24 @@ jobs:
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          target_device_arch_1="ramips"
+          target_device_arch_1="mvebu"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
+          
       - name: Cache1
-        uses: HiGarfield/cachewrtbuild@main
+        uses: HiGarfield/cachewrtbuild@main   #klever1988/cachewrtbuild@main  
         with:
           ccache: 'true'
           mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
+          #mixkey: 'mvebu'
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
-
-  #    - name: Cache
-   #         uses: klever1988/cachewrtbuild@main
-     #       with:
-      #        ccache: 'true'
-       #       prefix: ${{ github.workspace }}/x-wrt
+          
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
