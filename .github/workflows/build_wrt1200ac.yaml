@@ -88,7 +88,7 @@ jobs:
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
-          
+          echo "mixkey1="$mixkey1
       - name: Cache1
         uses: HiGarfield/cachewrtbuild@main   #klever1988/cachewrtbuild@main  
         with:
@@ -98,12 +98,18 @@ jobs:
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
-          
+  
+      - name: SSH connection for make menuconfig    
+        uses: P3TERX/ssh2actions@main
+        env:
+         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+         TELEGRAM_CHAT_ID: 1373335316
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
           DEBIAN_FRONTEND: noninteractive
         run: |
+          #/usr/bin/tar -xf /home/runner/work/_temp/1a144490-77f9-4c00-ae54-698cee23f6b0/cache.tgz -P -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt -z
           ls -alt ${{ github.workspace }}/x-wrt/staging_dir/*
           docker rmi `docker images -q`
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
