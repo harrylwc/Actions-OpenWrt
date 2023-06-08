@@ -211,7 +211,7 @@ jobs:
          TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
          TELEGRAM_CHAT_ID: 1373335316
       
-      - name: Compile ipq40xx image
+      - name: Compile ipq40xx ramips image
         run: |
           cd x-wrt
           cp config.r619ac.0 .config 
@@ -256,6 +256,7 @@ jobs:
            [ $? != 0 ] && make V=s || echo "build mvebu success" 
            df -kh
            ls -alt ${{ github.workspace }}/x-wrt/staging_dir/*
+         
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         #uses: lhotari/action-upterm@v1
