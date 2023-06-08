@@ -111,7 +111,7 @@ jobs:
 
           ccache: 'true'
 
-          #mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
+          mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
 
           #prefix: ${{ env.WORKING_DIR }}
 
