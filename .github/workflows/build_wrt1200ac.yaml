@@ -25,7 +25,7 @@ on:
 env:
   #####change model here ####@# 
   ROUTER_MODEL: wrt1200ac
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.3
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.2
   TVH: true
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
@@ -94,8 +94,8 @@ jobs:
         uses: HiGarfield/cachewrtbuild@main 
         with:
           ccache: 'true'
-          mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
-          #mixkey: 'ipq40xx_mvebu_ramips'
+          #mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
+          mixkey: 'mvebu'
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
