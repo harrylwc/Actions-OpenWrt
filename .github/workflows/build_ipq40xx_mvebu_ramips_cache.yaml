@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile ipq40xx mvebu ramips caches 
+name: Compile ipq40xx mvebu caches 
 
 on:
   workflow_dispatch:    
@@ -55,7 +55,7 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build ipq40xx mvebu ramips caches 
+    name: Build ipq40xx mvebu caches 
 
     runs-on: ubuntu-latest
     #runs-on: ubuntu-22.10
@@ -89,7 +89,7 @@ jobs:
         uses: klever1988/cachewrtbuild@main                                   
         with:                                                                 
           ccache: 'true'                                                   
-          mixkey: ipq40x_mvebu_ramips 
+          mixkey: 'ipq40x_mvebu'
           #prefix: ${{ env.WORKING_DIR }}                           
           prefix: ${{ github.workspace }}/x-wrt                     
           #skip_saving: 'true'    
@@ -211,15 +211,15 @@ jobs:
          TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
          TELEGRAM_CHAT_ID: 1373335316
       
-      - name: Compile ipq40xx ramips image
+      - name: Compile ipq40xx image
         run: |
           cd x-wrt
           cp config.r619ac.0 .config 
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build ipq4x00 success"
-          cp config.ramips.2 .config 
-          make -j$(nproc) || make -j1 V=s
-          [ $? != 0 ] && make V=s || echo "build ramips success"
+          # cp config.ramips.2 .config 
+          # make -j$(nproc) || make -j1 V=s
+          # [ $? != 0 ] && make V=s || echo "build ramips success"
           #make V=99 2>&1 |tee build.log
           #     echo "======================="
           #echo "Space usage:"
