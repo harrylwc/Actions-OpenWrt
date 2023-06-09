@@ -217,7 +217,7 @@ jobs:
           cp config.r619ac.0 .config 
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build ipq4x00 success"
-          cp config.ramips.0 .config 
+          cp config.ramips.2 .config 
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build ramips success"
           #make V=99 2>&1 |tee build.log
