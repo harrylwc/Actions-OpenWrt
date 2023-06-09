@@ -86,7 +86,7 @@ jobs:
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          target_device_arch_1="mvebu"
+          target_device_arch_1="ipq40xx"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')d10ba60a
           #gcc_hash='d10ba60a'       ###force cahche version
