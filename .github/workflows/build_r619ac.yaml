@@ -93,6 +93,7 @@ jobs:
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
+          echo "mixkey=" $mixkey1
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
      
       - name: Cache1
