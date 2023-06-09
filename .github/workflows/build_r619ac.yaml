@@ -27,7 +27,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: r619ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.3
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.2.bak
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
@@ -36,7 +36,6 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
-  DEBUG_CACHE: false
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
@@ -100,17 +99,12 @@ jobs:
         uses: klever1988/cachewrtbuild@main     #HiGarfield/cachewrtbuild@main 
         with:
           ccache: 'true'
-          #mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
-          mixkey: 'ipq40xx_mvebu_ramips'
+          mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
+          #mixkey: 'ipq40xx_mvebu_ramips'
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
-      - name: SSH connection for make menuconfig    
-        uses: P3TERX/ssh2actions@main
-        env:
-         if: env.DEBUG_CACHE == 'true'
-         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
-         TELEGRAM_CHAT_ID: 1373335316
+      
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
