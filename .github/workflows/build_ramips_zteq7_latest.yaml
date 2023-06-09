@@ -86,6 +86,7 @@ jobs:
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sudo timedatectl set-timezone "$TZ"
+
       - name: Generate cache mixkey
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
@@ -96,8 +97,9 @@ jobs:
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
+          echo "mixkey=" $mixkey1
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
-          
+       
       - name: Cache1
         uses: HiGarfield/cachewrtbuild@main   #klever1988/cachewrtbuild@main  
         with:
