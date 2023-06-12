@@ -27,7 +27,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: r619ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.3
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.2
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
@@ -97,11 +97,11 @@ jobs:
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
      
       - name: Cache1
-        uses: klever1988/cachewrtbuild@main #HiGarfield/cachewrtbuild@main    #klever1988/cachewrtbuild@main
+        uses: HiGarfield/cachewrtbuild@main 				#klever1988/cachewrtbuild@main 
         with:
           ccache: 'true'
-          #mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
-          mixkey: 'ipq40xx'
+          mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
+          #mixkey: 'ipq40xx'
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'

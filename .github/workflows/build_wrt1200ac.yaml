@@ -92,11 +92,11 @@ jobs:
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
      
       - name: Cache1
-        uses: klever1988/cachewrtbuild@main     #HiGarfield/cachewrtbuild@main 
+        uses: HiGarfield/cachewrtbuild@main 			#klever1988/cachewrtbuild@main     
         with:
           ccache: 'true'
-          #mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
-          mixkey: 'mvebu'
+          mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
+          #mixkey: 'mvebu'
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
