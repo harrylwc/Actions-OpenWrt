@@ -85,7 +85,7 @@ jobs:
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           #gcc_hash='d10ba60a'       ###force cahche version
-	  ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
+          ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
           echo "mixkey=" $mixkey1
