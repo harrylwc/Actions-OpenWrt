@@ -94,11 +94,11 @@ jobs:
           target_device_arch_1="ramips"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
-          #gcc_hash='d10ba60a'       ###force cahche version
+          echo "gcc_hash="$gcc_hash
+          #gcc_hash='37dab1b7'             ###force cahche version#gcc_hash='d10ba60a'       ###force cahche version
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
-          echo "mixkey=" $mixkey1
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
        
       - name: Cache1
