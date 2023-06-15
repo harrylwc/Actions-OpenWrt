@@ -25,7 +25,7 @@ on:
 env:
   #####change model here ####@# 
   ROUTER_MODEL: wrt1200ac
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.2
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.3
   TVH: true
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
@@ -84,10 +84,10 @@ jobs:
           target_device_arch_1="mvebu"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
-          #gcc_hash='d10ba60a'       ###force cahche version
+          echo "mixkey=" $mixkey1
+          gcc_hash='37dab1b7'             ###force cahche version
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
-          echo "mixkey=" $mixkey1
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
      
