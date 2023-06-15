@@ -27,7 +27,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: r619ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.2
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.3
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
@@ -89,11 +89,12 @@ jobs:
           target_device_arch_1="ipq40xx"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
-          #gcc_hash='d10ba60a'       ###force cahche version
+          echo "mixkey=" $mixkey1
+          gcc_hash='37dab1b7'       ###force cahche version
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
-          echo "mixkey=" $mixkey1
+          
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
      
       - name: Cache1
