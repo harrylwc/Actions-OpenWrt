@@ -84,7 +84,6 @@ jobs:
           target_device_arch_1="mvebu"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
-          echo "gcc_hash="$gcc_hash
           #gcc_hash='37dab1b7'             ###force cahche version
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
@@ -95,7 +94,8 @@ jobs:
         uses: HiGarfield/cachewrtbuild@main 			#klever1988/cachewrtbuild@main     
         with:
           ccache: 'true'
-          mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
+          mixkey: ipq40xx-d10ba60a-37dab1b7-cache-openwrt-e2f34df828-1686796505'
+          #mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
           #mixkey: 'mvebu'
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
