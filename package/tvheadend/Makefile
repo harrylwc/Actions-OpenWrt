@@ -9,7 +9,8 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=tvheadend
 PKG_VERSION:=4.3
-PKG_RELEASE:=0
+PKG_RELEASE:=$(AUTORELEASE)
+
 
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)
 PKG_SOURCE_VERSION:=v$(PKG_VERSION)
@@ -25,8 +26,8 @@ PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE.md
 
-PKG_FIXUP:=autoreconf
-
+#PKG_FIXUP:=autoreconf
+PKG_FIXUP:=gettext-version
 PKG_USE_MIPS16:=0
 
 include $(INCLUDE_DIR)/package.mk
@@ -133,7 +134,7 @@ CONFIGURE_ARGS += \
 TARGET_CFLAGS += -Wno-format-security -Wno-error=array-bounds -Wno-error=address 
 
 define Build/Prepare
-	cp -r ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/tvheadend/.git $(PKG_BUILD_DIR)/
+	#cp -r ./files/.git $(PKG_BUILD_DIR)/
 	$(call Build/Prepare/Default)
 	#echo 'Tvheadend $(shell echo $(PKG_SOURCE_VERSION) | sed "s/^v//")~openwrt$(PKG_RELEASE)' \
 		#> $(PKG_BUILD_DIR)/debian/changelog
