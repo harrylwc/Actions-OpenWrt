@@ -15,7 +15,7 @@ sudo -E apt-get -y install opencc
 
 cd $GITHUB_WORKSPACE/x-wrt/
 git clone https://github.com/tvheadend/tvheadend.git
-cp -r tvheadend/.git package/tvheadend/files/
+cp -r $GITHUB_WORKSPACE/x-wrt/tvheadend/.git $GITHUB_WORKSPACE/x-wrt/package/tvheadend/files/
 sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ramips/Makefile
 sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/mvebu/Makefile
 rm -r feeds/packages/multimedia/tvheadend
