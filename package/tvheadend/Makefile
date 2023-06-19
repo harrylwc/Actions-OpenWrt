@@ -19,15 +19,15 @@ PKG_SOURCE_VERSION:=master
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/tvheadend/tvheadend.git
-
 PKG_BUILD_DIR:=$(BUILD_DIR)/$(PKG_NAME)
 
+PKG_BUILD_PARALLEL:=1
+PKG_INSTALL:=1
 
 PKG_LICENSE:=GPL-3.0
 PKG_LICENSE_FILES:=LICENSE.md
 
-#PKG_FIXUP:=autoreconf
-PKG_FIXUP:=gettext-version
+PKG_FIXUP:=autoreconf
 PKG_USE_MIPS16:=0
 
 include $(INCLUDE_DIR)/package.mk
