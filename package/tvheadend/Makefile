@@ -134,7 +134,7 @@ CONFIGURE_ARGS += \
 TARGET_CFLAGS += -Wno-format-security -Wno-error=array-bounds -Wno-error=address 
 
 define Build/Prepare
-	#cp -r ./files/.git $(PKG_BUILD_DIR)/
+	cp -r files/.git $(PKG_BUILD_DIR)/
 	$(call Build/Prepare/Default)
 	#echo 'Tvheadend $(shell echo $(PKG_SOURCE_VERSION) | sed "s/^v//")~openwrt$(PKG_RELEASE)' \
 		#> $(PKG_BUILD_DIR)/debian/changelog
