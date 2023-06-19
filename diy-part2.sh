@@ -12,7 +12,7 @@
 #sed -i 's/192.168.1.1/192.168.2.100/g' package/base-files/files/bin/config_generate
 sudo -E apt-get update
 sudo -E apt-get -y install opencc
-
+cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
 cd $GITHUB_WORKSPACE/x-wrt/
 git clone https://github.com/tvheadend/tvheadend.git
 cp -r $GITHUB_WORKSPACE/x-wrt/tvheadend/.git $GITHUB_WORKSPACE/x-wrt/package/tvheadend/files/
@@ -66,7 +66,7 @@ git clone https://github.com/brvphoenix/luci-app-wrtbwmon /home/runner/work/Acti
 mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon/luci-app-wrtbwmon/po/zh_Hant
 /usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon/luci-app-wrtbwmon/po/zh_Hans/wrtbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon/luci-app-wrtbwmon/po/zh_Hant/wrtwmon.po
 
-cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
+
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
 cd $GITHUB_WORKSPACE/ 
 cp $GITHUB_WORKSPACE/patches/*.patch $GITHUB_WORKSPACE/x-wrt/
