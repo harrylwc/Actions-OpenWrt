@@ -136,7 +136,7 @@ jobs:
 
     - name: 下载插件
 
-      run: cd ox-wrt && ./scripts/feeds update -a
+      run: cd x-wrt && ./scripts/feeds update -a
 
     - name: 读取插件
 
@@ -167,7 +167,27 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-
+    - name: Generate cache mixkey
+      id: gen_cache_mixkey
+      working-directory: ${{ env.WORKING_DIR }}
+      run: |
+          target_device_arch_1="ipq40xx"
+          #target_device_arch_2="ramips"
+          gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
+          #gcc_hash='37dab1b7'       
+          ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
+          mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
+          #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
+          echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
+     
+    - name: Cache1
+      uses: HiGarfield/cachewrtbuild@main 				#klever1988/cachewrtbuild@main 
+      with:
+          ccache: 'true'
+          mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
+          #prefix: ${{ env.WORKING_DIR }}
+          prefix: ${{ github.workspace }}/x-wrt
+          #skip_saving: 'true'
     - name: 下载安装包
 
       id: package
