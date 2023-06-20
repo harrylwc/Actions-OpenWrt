@@ -119,11 +119,12 @@ jobs:
     - name: 更改设置
 
       run: |
+        cp config.* x-wrt/
         [ -e files ] && mv files x-wrt/files
         [ -e $CONFIG_FILE ] && cp $CONFIG_FILE x-wrt/.config
         chmod +x $DIY_P2_SH
         $GITHUB_WORKSPACE/$DIY_P2_SH
-
+         
     - name: SSH链接管理
 
       uses: P3TERX/ssh2actions@v1.0.0
@@ -177,8 +178,9 @@ jobs:
       id: compile
 
       run: |
-        cp $CONFIG_FILE x-wrt/.config
+        
         cd x-wrt
+        cp $CONFIG_FILE .config
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> $GITHUB_OUTPUT
