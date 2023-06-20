@@ -27,28 +27,20 @@ on:
     - cron: 30 3 * * *
 
 env:
-
   REPO_URL: https://github.com/coolsnowwolf/lede
-
   REPO_BRANCH: master
-
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config.r619ac.2
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
-
   SSH_ACTIONS: false
-
   UPLOAD_BIN_DIR: false
-
   UPLOAD_FIRMWARE: true
-
   UPLOAD_COWTRANSFER: false
-
   UPLOAD_WETRANSFER: false
-
   UPLOAD_RELEASE: true
-
+  TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+  TELEGRAM_CHAT_ID: 1373335316
   TZ: Asia/Shanghai
 
 jobs:
@@ -310,47 +302,6 @@ jobs:
 
         
 
-    - name: 创建release标签
-
-      id: tag
-
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-
-      run: |
-
-        echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
-
-        touch release.txt
-
-        echo "功能介绍：Dockerman、定时重拨、Openclash、Bypass、Passwall、VSSR、Openvpn、nps穿透、UU加速等插件。" >> release.txt
-        echo "[固件源码](https://github.com/coolsnowwolf/lede)" >> release.txt
-        echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
-        echo "📥 固件下载" >> release.txt
-        [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [国内NN网盘](${{ steps.cowtransfer.outputs.url }})" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [国外WT网盘](${{ steps.wetransfer.outputs.url }})" >> release.txt
-        echo "status=success" >> $GITHUB_OUTPUT
-    - name: 发布至releas
-      uses: softprops/action-gh-release@v1
-      if: steps.tag.outputs.status == 'success' && !cancelled()
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-      with:
-        name: ${{ env.FILE_TIME }} 「 openwrt6.1-X86-64 」
-        tag_name: ${{ steps.tag.outputs.release_tag }}
-        body_path: release.txt
-        files: ${{ env.FIRMWARE }}/     
-    - name: 清理旧的workflow
-       uses: FunctionXJB/delete-workflow-runs@main
-      with:
-        retain_days: 180
-        keep_minimum_runs: 10
-    - name: 删除旧的Releases
-      uses: dev-drprasad/delete-older-releases@v0.1.0
-      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-      with:
-        keep_latest: 9
-        delete_tags: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
-   - name: TG推送
-      run: curl "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}&text=🅱️恭喜主人X86-openwrt6.1-1806版固件编译完成！🎉%0A⏰编译时间：${{ env.DATE }}%0A📥下载地址：https://github.com/firker/openwrt-Exclusive/releases/tag/${{ env.TAG_TIME }}%0A🌐WT网盘：${{ steps.wetransfer.outputs.url }}"
+    
+    - name: TG推送
+      run: curl "https://api.telegram.org/bot${{ TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ 1373335316 }}&text=🅱️恭喜主人X86-openwrt6.1-1806版固件编译完成！🎉%0A⏰编译时间：${{ env.DATE }}%0A📥下载地址：https://github.com/firker/openwrt-Exclusive/releases/tag/${{ env.TAG_TIME }}%0A🌐WT网盘：${{ steps.wetransfer.outputs.url }}"
