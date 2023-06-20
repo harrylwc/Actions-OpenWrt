@@ -21,8 +21,8 @@ on:
     #  - master
   
   workflow_dispatch:
-   #schedule:
-     #- cron: '00 22 * * *'
+  schedule:
+     - cron: '00 12 * * *'
  # release:
   #  types: [published]
   #watch:
@@ -67,7 +67,7 @@ jobs:
     ###@####
     name: Build ZTEQ7 & CooWIFI lastest OpenWrt xwrt firmware
     runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
+    #if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
         uses: actions/checkout@v3
