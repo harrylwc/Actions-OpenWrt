@@ -9,24 +9,17 @@
 ####@
 name: Compile ipq40xx mvebu 
 on:
-
   repository_dispatch:
-
   workflow_dispatch:
-
     inputs:
-
       ssh:
-
         description: 'SSH connection to Actions'
-
         required: false
-
         default: 'false'
-
   schedule:
 
-    - cron: 0 18 */5 * *    
+    - cron: 30 0 * * * 
+    #- cron: 0 18 */5 * *    
 env:
   #####change model here ####@# 
   ROUTER_MODEL: r619ac
