@@ -122,7 +122,7 @@ jobs:
     - name: 更改设置
 
       run: |
-        cp config.* x-wrt/
+        cp myconfig/config.* x-wrt/
         [ -e files ] && mv files x-wrt/files
         [ -e $CONFIG_FILE ] && cp $CONFIG_FILE x-wrt/.config
         chmod +x $DIY_P2_SH
