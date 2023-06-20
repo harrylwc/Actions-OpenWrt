@@ -89,36 +89,15 @@ jobs:
     - name: 清理空间
 
       run: |
-
         sudo swapoff -a
-
         sudo rm -f /swapfile
-
         sudo apt clean
-
         docker rmi $(docker image ls -aq)
-
         
 
-    - name: 下载固件源码
+    
 
-      working-directory: /workdir
-
-      run: |
-
-        df -hT $PWD
-
-        git clone $REPO_URL -b $REPO_BRANCH x-wrt
-
-        ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
-
-        cd x-wrt
-
-        useVersionInfo=$(git show -s --date=short --format="%0AAuthor: %an%0Adate: %cd%0Acommit: %s%0Acommit hash: %H")
-
-        echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
-
-        echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
+    
 
         
 
@@ -127,13 +106,12 @@ jobs:
       run: |
 
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF x-wrt/feeds.conf.default
-
         chmod +x $DIY_P1_SH
-
-        cd x-wrt
-
         $GITHUB_WORKSPACE/$DIY_P1_SH
-
+        cd x-wrt
+        useVersionInfo=$(git show -s --date=short --format="%0AAuthor: %an%0Adate: %cd%0Acommit: %s%0Acommit hash: %H")
+        echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
+        echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
     - name: 下载插件
 
       run: cd x-wrt && ./scripts/feeds update -a
