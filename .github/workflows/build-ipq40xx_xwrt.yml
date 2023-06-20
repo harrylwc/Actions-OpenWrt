@@ -6,7 +6,7 @@
 # Author: P3TER
 # Blog: https://p3terx.com
 #=================================================
-name: build x-wrt
+name: build ipq40xx x-wrt
 
 on:
   repository_dispatch:
