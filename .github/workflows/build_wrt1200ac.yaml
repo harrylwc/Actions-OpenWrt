@@ -57,7 +57,7 @@ jobs:
     ###@####
     name: Build wrt1200ac TVH firmware
     runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
+   # if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
         uses: actions/checkout@v3
