@@ -18,7 +18,7 @@ on:
         default: 'false'
   schedule:
 
-    - cron: 20 1 * * * 
+    - cron: 20 6 * * * 
     #- cron: 0 18 */5 * *    
 env:
   #####change model here ####@# 
@@ -54,9 +54,10 @@ jobs:
     ###@####
     name: Build ipq40xx mvebu caches 
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+    #runs-on: ubuntu-latest
     #runs-on: ubuntu-22.10
-    if: github.event.repository.owner.id == github.event.sender.id
+    #if: github.event.repository.owner.id == github.event.sender.id
 
     steps:
 
