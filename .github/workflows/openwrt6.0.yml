@@ -6,10 +6,9 @@
 # Author: P3TER
 # Blog: https://p3terx.com
 #=================================================
-name: OpenWrt-lede6.0
+name: build x-wrt
 
 on:
-
   repository_dispatch:
 
   workflow_dispatch:
@@ -27,18 +26,19 @@ on:
     - cron: 0 5 * * *
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
+  #REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_URL: https://github.com/x-wrt/x-wrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: config.r619ac.2
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   SSH_ACTIONS: false
-  UPLOAD_BIN_DIR: false
+  UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
-  UPLOAD_RELEASE: true
+  UPLOAD_RELEASE: false
   TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
   TELEGRAM_CHAT_ID: 1373335316
   TZ: Asia/Shanghai
@@ -108,11 +108,11 @@ jobs:
 
         df -hT $PWD
 
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        git clone $REPO_URL -b $REPO_BRANCH x-wrt
 
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
 
-        cd openwrt
+        cd x-wrt
 
         useVersionInfo=$(git show -s --date=short --format="%0AAuthor: %an%0Adate: %cd%0Acommit: %s%0Acommit hash: %H")
 
@@ -126,33 +126,33 @@ jobs:
 
       run: |
 
-        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF x-wrt/feeds.conf.default
 
         chmod +x $DIY_P1_SH
 
-        cd openwrt
+        cd x-wrt
 
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: 下载插件
 
-      run: cd openwrt && ./scripts/feeds update -a
+      run: cd ox-wrt && ./scripts/feeds update -a
 
     - name: 读取插件
 
-      run: cd openwrt && ./scripts/feeds install -a
+      run: cd x-wrt && ./scripts/feeds install -a
 
     - name: 更改设置
 
       run: |
 
-        [ -e files ] && mv files openwrt/files
+        [ -e files ] && mv files x-wrt/files
 
-        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE openwrt/.config
+        [ -e $CONFIG_FILE ] && mv $CONFIG_FILE x-wrt/.config
 
         chmod +x $DIY_P2_SH
 
-        cd openwrt
+        cd x-wrt
 
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
@@ -174,7 +174,7 @@ jobs:
 
       run: |
 
-        cd openwrt
+        cd x-wrt
 
         make defconfig
 
@@ -190,7 +190,7 @@ jobs:
 
       run: |
 
-        cd openwrt
+        cd x-wrt
 
         echo -e "$(nproc) thread compile"
 
@@ -222,9 +222,9 @@ jobs:
 
       with:
 
-        name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
+        name: x-wrt/bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
 
-        path: openwrt/bin/packages/x86_64
+        path: x-wrt/bin/packages/x86_64
 
     - name: 整理编译好的固件
 
@@ -234,7 +234,7 @@ jobs:
 
       run: |
 
-        cd openwrt/bin/targets/*/*
+        cd x-wrt/bin/targets/*/*
 
         rm -rf packages && mkdir packages
 
