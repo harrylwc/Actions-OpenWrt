@@ -303,8 +303,8 @@ jobs:
         
 
     
-    - name: TG推送
-      env:
-         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
-         TELEGRAM_CHAT_ID: 1373335316
-      run: curl "https://api.telegram.org/bot${{ TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ 1373335316 }}&text=🅱️恭喜主人X86-openwrt6.1-1806版固件编译完成！🎉%0A⏰编译时间：${{ env.DATE }}%0A📥下载地址：https://github.com/firker/openwrt-Exclusive/releases/tag/${{ env.TAG_TIME }}%0A🌐WT网盘：${{ steps.wetransfer.outputs.url }}"
+   # - name: TG推送
+    #  env:
+       #  TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+        # TELEGRAM_CHAT_ID: 1373335316
+    #  run: curl "https://api.telegram.org/bot${{ TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ 1373335316 }}&text=🅱️恭喜主人X86-openwrt6.1-1806版固件编译完成！🎉%0A⏰编译时间：${{ env.DATE }}%0A📥下载地址：https://github.com/firker/openwrt-Exclusive/releases/tag/${{ env.TAG_TIME }}%0A🌐WT网盘：${{ steps.wetransfer.outputs.url }}"
