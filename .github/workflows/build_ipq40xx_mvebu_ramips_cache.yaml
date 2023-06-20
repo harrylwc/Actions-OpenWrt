@@ -7,22 +7,26 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile ipq40xx mvebu caches 
-
+name: Compile ipq40xx mvebu 
 on:
-  workflow_dispatch:    
-  #push:
-   #branches: 
-    #- master
-  #schedule:
-   # - cron: "20 13 * * *"
-  #release:
-   # types: [published]
-  watch:
-    types: started
 
-  #workflow_dispatch:    
-    
+  repository_dispatch:
+
+  workflow_dispatch:
+
+    inputs:
+
+      ssh:
+
+        description: 'SSH connection to Actions'
+
+        required: false
+
+        default: 'false'
+
+  schedule:
+
+    - cron: 0 18 */5 * *    
 env:
   #####change model here ####@# 
   ROUTER_MODEL: r619ac
