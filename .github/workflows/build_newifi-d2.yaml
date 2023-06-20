@@ -13,14 +13,15 @@ on:
   #push:
    # branches: 
     #  - master
-  #schedule:
-     #- cron: 00 13 * * *
+ workflow_dispatch:
+ schedule:
+     - cron: 30 14 * * *
   #release:
    # types: [published]
-  #watch:
-   # types: started
+ watch:
+     types: started
 
-  workflow_dispatch:    
+   
     
 env:
   #####change model here ####@# 
@@ -55,7 +56,7 @@ jobs:
     ###@####
     name: Build newifi-d2 kernel 5.15 TVH firmware
     runs-on: ubuntu-latest
-    if: github.event.repository.owner.id == github.event.sender.id
+    #if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
         uses: actions/checkout@v3
