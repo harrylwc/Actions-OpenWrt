@@ -213,9 +213,7 @@ jobs:
            cd x-wrt 
            make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build 2nd version success" 
-           cp config.wrt1200ac.3 .config
-           make -j$(nproc) || make -j1 
-           [ $? != 0 ] && make V=s || echo "build 3rd version success" 
+          
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         #uses: lhotari/action-upterm@v1
