@@ -9,15 +9,18 @@
 #============================================================
 git clone https://github.com/x-wrt/x-wrt 
 git clone https://github.com/coolsnowwolf/lede lede
-ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
 lede/scripts/feeds update -a
 
+
+#rm -r x-wrt/package/lean/n2n*
+cd x-wrt
+#git checkout 56f821f
+
+ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
 git clone https://github.com/kenzok8/openwrt-packages.git /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/openwrt-packages
 git clone https://github.com/kenzok8/small.git /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/small
 
-#git checkout 1d5f45fe5464ecd2194b2e3
-#rm -r x-wrt/package/lean/n2n*
-cd x-wrt
+
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 git pull
