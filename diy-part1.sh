@@ -14,7 +14,7 @@ lede/scripts/feeds update -a
 
 #rm -r x-wrt/package/lean/n2n*
 cd x-wrt
-#git checkout 56f821f
+git checkout 56f821f
 
 ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
 git clone https://github.com/kenzok8/openwrt-packages.git /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/openwrt-packages
