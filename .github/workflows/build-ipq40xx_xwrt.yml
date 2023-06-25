@@ -193,11 +193,7 @@ jobs:
         cp config.r619ac.2 .config
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> $GITHUB_OUTPUT
-        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
-        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
-        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
-        echo "FILE_TIME=$(date "+%Y年%m月%d日-%H点")" >> $GITHUB_ENV
-        echo "TAG_TIME=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_ENV
+
 
     - name: 查看磁盘使用情况
 
@@ -205,17 +201,34 @@ jobs:
 
       run: df -hT
 
-    - name: 上传bin压缩目录
-
-      uses: actions/upload-artifact@main
-
-      if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
-
+    - name: Prepare artifact
+      run: |
+          # mkdir -p ./artifact/firmware
+          #mkdir -p ./artifact/package
+          #mkdir -p ./artifact/buildinfo
+          #mkdir -p $DRIVERS_DIR
+          cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR
+          cp -f x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
+          #cp -f .config bin/
+          #cp -f myconfig/config.$ROUTER_MODEL.? bin/
+          #rm -rf $(find ./bin/targets/ -type d -name "packages")
+          #cp -rf $(find ./bin/targets/ -type f) ./artifact/firmware/
+          #cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
+          #cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
+          cat `find x-wrt/bin/targets/ -name version.buildinfo`|head -1|cut -c1-6> BUILD_VERSION
+          [ -s BUILD_VERSION ] && echo "BUILD_VERSION=_$(cat BUILD_VERSION)" >> $GITHUB_ENV 
+          grep '^CONFIG_TARGET.*DEVICE.*=y' x-wrt/.config|head -1 | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+          [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
+          echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+          strings $DRIVERS_DIR/usbhid.ko |grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
+          #strings $DRIVERS_DIR/rtl8821cu.ko |grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
+          [ -s KERNEL_VER ] && echo "KERNEL_VER=_$(cat KERNEL_VER)" >> $GITHUB_ENV
+    - name: Upload bin directory
+      uses: actions/upload-artifact@master
       with:
-
-        name: x-wrt/bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-
-        path: x-wrt/bin
+          name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
+           #OpenWrt_bin_${{ env.ROUTER_MODEL }}
+          path: x-wrt/bin
 
     - name: 整理编译好的固件
 
