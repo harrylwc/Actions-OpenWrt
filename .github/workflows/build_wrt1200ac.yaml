@@ -14,7 +14,7 @@ on:
    # branches: 
     #  - master
   schedule:
-     - cron: 05 13 * * *
+     - cron: 05 17 * * *
   #release:
    # types: [published]
   #watch:
@@ -25,7 +25,7 @@ on:
 env:
   #####change model here ####@# 
   ROUTER_MODEL: wrt1200ac
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.2
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.3
   TVH: true
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
