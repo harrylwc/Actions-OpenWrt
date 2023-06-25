@@ -6,7 +6,7 @@
 # Author: P3TER
 # Blog: https://p3terx.com
 #=================================================
-name: build ipq40xx x-wrt
+name: build mvebu x-wrt
 
 on:
   repository_dispatch:
