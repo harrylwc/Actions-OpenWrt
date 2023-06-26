@@ -33,6 +33,7 @@ env:
   CONFIG_FILE: config.r619ac.2
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
+  DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: false
@@ -207,7 +208,7 @@ jobs:
           #mkdir -p ./artifact/package
           #mkdir -p ./artifact/buildinfo
           #mkdir -p $DRIVERS_DIR
-          cp -f `find x-wrt/build_dir/target*/linux*/linux-*/driver* -name *.ko` $DRIVERS_DIR
+          cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR
           cp -f x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
           #cp -f .config bin/
           #cp -f myconfig/config.$ROUTER_MODEL.? bin/
