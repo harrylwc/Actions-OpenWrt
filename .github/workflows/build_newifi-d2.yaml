@@ -15,7 +15,7 @@ on:
     #  - master
  workflow_dispatch:
  schedule:
-     - cron: 30 14 * * *
+     - cron: 30 19 * * *
   #release:
    # types: [published]
  watch:
