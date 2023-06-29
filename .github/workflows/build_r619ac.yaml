@@ -20,7 +20,7 @@ on:
    #branches: 
     #- master
   schedule:
-    - cron: "0 16 * * *"
+    - cron: "20 18 * * *"
   #release:
    # types: [published]
   watch:
@@ -32,7 +32,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: r619ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.2
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.3
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
