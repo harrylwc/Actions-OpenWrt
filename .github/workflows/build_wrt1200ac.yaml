@@ -25,8 +25,8 @@ on:
 env:
   #####change model here ####@# 
   ROUTER_MODEL: wrt1200ac
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.2
-  TVH: true
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.3
+  TVH: tru
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.wrt1200ac'
