@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile wrt1200 kernel TVH OpenWrt Images  
+name: Compile wrt1200.2 kernel TVH OpenWrt Images  
 
 on:
   #push:
@@ -55,7 +55,7 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build wrt1200ac TVH firmware
+    name: Build wrt1200ac.2 TVH firmware
     runs-on: ubuntu-latest
    # if: github.event.repository.owner.id == github.event.sender.id
     steps:
