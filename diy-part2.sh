@@ -7,7 +7,7 @@
 # Author: P3TERX
 # Blog: https://p3terx.com
 #============================================================
-### libtins
+
 ### nginx-util
 ### perl-html-parser 
  
@@ -41,9 +41,7 @@ mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-n
 cp $GITHUB_WORKSPACE/patches/Makefile.nginx-util $GITHUB_WORKSPACE/x-wrt/feeds/packages/net/nginx-util/Makefile
 #mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libwebsockets/patches/
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/libwebsockets.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libwebsockets/patches/
-cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/libtins.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libtins/patches/               
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/Makefile.gnutls /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/Makefile
-
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/030-unistring-optional.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/patches/               
 cp $GITHUB_WORKSPACE/patches/Makefile.perl-html-parser $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/perl-html-parser/Makefile
 #cp $GITHUB_WORKSPACE/patches/Makefile.php8 $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/php8/Makefile
