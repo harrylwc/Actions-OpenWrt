@@ -70,7 +70,8 @@ mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-w
 /usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon/luci-app-wrtbwmon/po/zh_Hans/wrtbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon/luci-app-wrtbwmon/po/zh_Hant/wrtwmon.po
 mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/kenzo/luci-app-serverchan/po/zh_Hant
 /usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/kenzo/luci-app-serverchan/po/zh_Hans/wechatpush.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/kenzo/luci-app-serverchan/po/zh_Hant/wechatpush.po
-ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/kenzo/luci-app-serverchan/po/zh_Hant /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/kenzo/luci-app-serverchan/po/zh-tw 
+cd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/kenzo/luci-app-serverchan/po
+ln -s zh_Hant zh-tw 
 
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
 cd $GITHUB_WORKSPACE/ 
