@@ -76,6 +76,12 @@ jobs:
         run: |                                                    
           cat /proc/cpuinfo|grep model                            
           cat /proc/cpuinfo|grep proce 
+       
+
+      - name: Clear caches
+        uses: easimon/wipe-cache@main
+        with:
+          dry-run: 'true'
   
       - name: Update feeds & Load custom configuration
         run: |
