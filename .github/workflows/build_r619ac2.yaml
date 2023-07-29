@@ -72,11 +72,24 @@ jobs:
         with:
           ref: master
           fetch-depth: 0
-      - name: Check CPU model
+      - name: Check CPU model and clear cache
         run: |                                                    
           cat /proc/cpuinfo|grep model                            
           cat /proc/cpuinfo|grep proc
-  
+          gh extension install actions/gh-actions-cache
+          REPO=${{ github.repository }}
+          BRANCH="refs/pull/${{ github.event.pull_request.number }}/merge"
+          echo "Fetching list of cache key"
+          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 | cut -f 1 )
+          ## Setting this to not fail the workflow while deleting cache keys. 
+          set +e
+          echo "Deleting caches..."
+          for cacheKey in $cacheKeysForPR
+          do
+              gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
+
+          done
+          echo "Done"
       - name: Update feeds & Load custom configuration
         run: |
           #cat /proc/cpuinfo|grep model
@@ -108,7 +121,7 @@ jobs:
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
-          clean: true
+          #clean: true
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
