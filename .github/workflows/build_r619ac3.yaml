@@ -134,6 +134,11 @@ jobs:
           sudo rm -f /swapfile
           docker rmi $(docker image ls -aq)
           sudo rm -rf /usr/local/lib/android
+          sudo apt-get autoremove
+          sudo apt-get autoclean -y 
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          docker rmi $(docker image ls -aq)
           df -kh
           #find /home/runner/work/_temp/ -name "*cache*"
      # - name: Run migrations
