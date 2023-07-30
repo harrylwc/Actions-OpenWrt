@@ -128,6 +128,12 @@ jobs:
           #sudo -E python3 -m pip install --upgrade pip 
           #sudo -E pip install --no-cache-dir --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org pip setuptools
           sudo -E apt-get clean
+          sudo apt-get autoremove
+          sudo apt-get autoclean -y 
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          docker rmi $(docker image ls -aq)
+          sudo rm -rf /usr/local/lib/android
           df -kh
           #find /home/runner/work/_temp/ -name "*cache*"
      # - name: Run migrations
