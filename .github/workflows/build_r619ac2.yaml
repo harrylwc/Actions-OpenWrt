@@ -147,7 +147,6 @@ jobs:
           sudo apt-get autoclean -y 
           sudo swapoff -a
           sudo rm -f /swapfile
-          docker rmi $(docker image ls -aq)
           sudo rm -rf /usr/local/lib/android
           df -kh
           #find /home/runner/work/_temp/ -name "*cache*"
