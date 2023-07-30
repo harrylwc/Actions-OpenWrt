@@ -129,7 +129,6 @@ jobs:
           sudo -E apt-get clean
           sudo swapoff -a
           sudo rm -f /swapfile
-          docker rmi $(docker image ls -aq)
           df -kh
           #find /home/runner/work/_temp/ -name "*cache*"
      # - name: Run migrations
