@@ -138,7 +138,6 @@ jobs:
           sudo apt-get autoclean -y 
           sudo swapoff -a
           sudo rm -f /swapfile
-          docker rmi $(docker image ls -aq)
           df -kh
           #find /home/runner/work/_temp/ -name "*cache*"
      # - name: Run migrations
@@ -244,6 +243,7 @@ jobs:
            #make kernel_menuconfig -j2
            make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
+           sudo rm -rf $GITHUB_WORKSPACE/lede
            df -kh
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
