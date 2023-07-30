@@ -123,7 +123,7 @@ jobs:
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
-          #clean: true
+          clean: true
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
