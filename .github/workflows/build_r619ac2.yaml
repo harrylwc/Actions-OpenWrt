@@ -250,7 +250,9 @@ jobs:
            cd x-wrt 
            #make kernel_menuconfig -j2
            make -j$(nproc) || make -j1 
-           [ $? != 0 ] && make V=s || echo "build success" 
+           [ $? != 0 ] && make V=s || echo "build success"
+           sudo swapoff /swapfile
+           sudo rm -rf /swapfile /usr/share/dotnet /usr/local/lib/android /opt/ghc
            df -kh
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
