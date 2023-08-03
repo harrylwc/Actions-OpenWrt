@@ -57,7 +57,7 @@ env:
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
   target_device_arch_1: ipq40xx
-  CLEARHCACHE: false
+  CLEARHCACHE: true
 jobs:
 
   build_openwrt:
