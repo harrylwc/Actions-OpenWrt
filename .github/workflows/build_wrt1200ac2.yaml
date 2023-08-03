@@ -56,7 +56,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
-  
+  target_device_arch_1: mvebu
 jobs:
 
   build_openwrt:
@@ -72,10 +72,29 @@ jobs:
         with:
           ref: master
           fetch-depth: 0
-      - name: Check CPU model
+      - name: Check CPU model and clear cache
         run: |                                                    
           cat /proc/cpuinfo|grep model                            
-          cat /proc/cpuinfo|grep proce 
+          cat /proc/cpuinfo|grep proc
+          gh extension install actions/gh-actions-cache
+          REPO=${{ github.repository }}
+          BRANCH="master"
+          echo "Fetching list of cache key"
+          
+          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1 )
+          
+          ## Setting this to not fail the workflow while deleting cache keys. 
+          set +e
+          echo "Deleting caches..."
+          for cacheKey in $cacheKeysForPR
+          do
+              echo " delete "$cacheKeysForPR
+              gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
+
+          done
+          echo "Done"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   
       - name: Update feeds & Load custom configuration
         run: |
@@ -91,7 +110,7 @@ jobs:
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          target_device_arch_1="mvebu"
+          #target_device_arch_1="mvebu"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           #gcc_hash='37dab1b7'       
