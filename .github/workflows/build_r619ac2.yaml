@@ -57,6 +57,7 @@ env:
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
   target_device_arch_1: ipq40xx
+  CLEARHCACHE: false
 jobs:
 
   build_openwrt:
@@ -80,19 +81,18 @@ jobs:
           REPO=${{ github.repository }}
           BRANCH="master"
           echo "Fetching list of cache key"
-          
           cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1 )
-          
-          ## Setting this to not fail the workflow while deleting cache keys. 
-          set +e
-          echo "Deleting caches..."
-          for cacheKey in $cacheKeysForPR
-          do
-              echo " delete "$cacheKeysForPR
+          echo "Current caches "$cacheKeysForPR
+          if: env.CLEARCACHE == 'true'
+            ## Setting this to not fail the workflow while deleting cache keys. 
+            set +e
+            echo "Deleting caches..."
+            for cacheKey in $cacheKeysForPR
+            do
               gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
 
-          done
-          echo "Done"
+            done
+            echo "Done"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Update feeds & Load custom configuration
