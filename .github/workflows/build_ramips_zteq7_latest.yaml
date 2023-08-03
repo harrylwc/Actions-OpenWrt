@@ -75,6 +75,7 @@ jobs:
         with:
           ref: master
           fetch-depth: 0   
+      - name: Check CPU model and clear cache
         run: |                                                    
           cat /proc/cpuinfo|grep model                            
           cat /proc/cpuinfo|grep proce
