@@ -75,7 +75,7 @@ jobs:
       - name: Check CPU model
         run: |                                                    
           cat /proc/cpuinfo|grep model                            
-          cat /proc/cpuinfo|grep proce 
+          cat /proc/cpuinfo|grep proc
   
       - name: Update feeds & Load custom configuration
         run: |
