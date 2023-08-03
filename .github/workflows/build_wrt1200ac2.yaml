@@ -75,7 +75,6 @@ jobs:
           fetch-depth: 0
       - name: Check CPU model
         run: | 
-        if: env.CLEARCACHE == 'true'
           cat /proc/cpuinfo|grep model                            
           cat /proc/cpuinfo|grep proc
          
@@ -114,41 +113,21 @@ jobs:
       - name: Clear Cache
         if: env.CLEARCACHE == 'true'
         run: |                                                    
-
-          cat /proc/cpuinfo|grep model                            
-
-          cat /proc/cpuinfo|grep proc
-
           gh extension install actions/gh-actions-cache
-
           REPO=${{ github.repository }}
-
           BRANCH="master"
-
           echo "Fetching list of cache key"
-
           cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1 )
-
           echo "Current caches "$cacheKeysForPR
-
           ## Setting this to not fail the workflow while deleting cache keys. 
-
           set +e
-
           echo "Deleting caches..."
-
           for cacheKey in $cacheKeysForPR
-
           do
-
             gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
-
             done
-
             echo "Done"
-
         env:
-
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
       - name: Space cleanup
         env:
