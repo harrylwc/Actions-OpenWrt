@@ -75,13 +75,10 @@ jobs:
         with:
           ref: master
           fetch-depth: 0   
-      - name: Check CPU model and clear cache
-        if: env.CLEARCACHE == 'true'
+      - name: Check CPU model
         run: |                                                    
           cat /proc/cpuinfo|grep model                            
-          cat /proc/cpuinfo|grep proc
-          
-          
+          cat /proc/cpuinfo|grep proc         
       - name: Update feeds & Load custom configuration
         run: |
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
@@ -119,9 +116,7 @@ jobs:
           #skip_saving: 'true'
       - name: Clear Cache
         if: env.CLEARCACHE == 'true'
-        run: |                                                    
-          cat /proc/cpuinfo|grep model                            
-          cat /proc/cpuinfo|grep proc
+        run: |                                                                              
           gh extension install actions/gh-actions-cache
           REPO=${{ github.repository }}
           BRANCH="master"
