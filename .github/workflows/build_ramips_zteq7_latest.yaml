@@ -60,6 +60,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
+  target_device_arch_1: ramips
   
 jobs:
 
@@ -74,10 +75,28 @@ jobs:
         with:
           ref: master
           fetch-depth: 0   
-      - name: Check CPU model
-        run: |
-          cat /proc/cpuinfo|grep model
+        run: |                                                    
+          cat /proc/cpuinfo|grep model                            
           cat /proc/cpuinfo|grep proce
+          gh extension install actions/gh-actions-cache
+          REPO=${{ github.repository }}
+          BRANCH="master"
+          echo "Fetching list of cache key"
+          
+          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1 )
+          
+          ## Setting this to not fail the workflow while deleting cache keys. 
+          set +e
+          echo "Deleting caches..."
+          for cacheKey in $cacheKeysForPR
+          do
+              echo " delete "$cacheKeysForPR
+              gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
+
+          done
+          echo "Done"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
       - name: Update feeds & Load custom configuration
         run: |
@@ -94,7 +113,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
 
         run: |
-          target_device_arch_1="ramips"
+          #target_device_arch_1="ramips"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           echo "gcc_hash="$gcc_hash
