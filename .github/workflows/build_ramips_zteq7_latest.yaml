@@ -61,7 +61,7 @@ env:
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
   target_device_arch_1: ramips
-  CLEARCACHE: false
+  CLEARCACHE: true
 jobs:
 
   build_openwrt:
