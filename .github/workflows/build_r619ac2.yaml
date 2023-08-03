@@ -56,7 +56,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
-  
+  target_device_arch_1: ipq40xx
 jobs:
 
   build_openwrt:
@@ -80,15 +80,15 @@ jobs:
           REPO=${{ github.repository }}
           BRANCH="master"
           echo "Fetching list of cache key"
-          gh actions-cache list -R $REPO
-          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 | cut -f 1 )
+          
+          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1 )
           
           ## Setting this to not fail the workflow while deleting cache keys. 
           set +e
           echo "Deleting caches..."
           for cacheKey in $cacheKeysForPR
           do
-              echo $cacheKeysForPR
+              echo " delete "$cacheKeysForPR
               gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
 
           done
@@ -109,7 +109,7 @@ jobs:
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          target_device_arch_1="ipq40xx"
+          #target_device_arch_1="ipq40xx"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           #gcc_hash='37dab1b7'       
