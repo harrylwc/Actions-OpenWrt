@@ -98,8 +98,6 @@ CONFIG_TARGET_ipq40xx_generic_DEVICE_p2w_r619ac-128m=y
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_pakedge_wr-1 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_plasmacloud_pa1200 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_plasmacloud_pa2200 is not set
-# CONFIG_TARGET_ipq40xx_generic_DEVICE_qcom_ap-dk01.1-c1 is not set
-# CONFIG_TARGET_ipq40xx_generic_DEVICE_qcom_ap-dk04.1-c1 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_qxwlan_e2600ac-c1 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_qxwlan_e2600ac-c2 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_sony_ncp-hg100-cellular is not set
@@ -477,6 +475,7 @@ CONFIG_TOOLCHAINOPTS=y
 # CONFIG_BINUTILS_USE_VERSION_2_38 is not set
 # CONFIG_BINUTILS_USE_VERSION_2_39 is not set
 CONFIG_BINUTILS_USE_VERSION_2_40=y
+# CONFIG_BINUTILS_USE_VERSION_2_41 is not set
 CONFIG_EXTRA_BINUTILS_CONFIG_OPTIONS=""
 # CONFIG_DWARVES is not set
 
@@ -3352,6 +3351,7 @@ CONFIG_PACKAGE_kmod-br-netfilter=y
 CONFIG_PACKAGE_kmod-ip6tables=m
 # CONFIG_PACKAGE_kmod-ip6tables-extra is not set
 # CONFIG_PACKAGE_kmod-ipt-account is not set
+# CONFIG_PACKAGE_kmod-ipt-asn is not set
 # CONFIG_PACKAGE_kmod-ipt-chaos is not set
 # CONFIG_PACKAGE_kmod-ipt-checksum is not set
 # CONFIG_PACKAGE_kmod-ipt-cluster is not set
@@ -3501,6 +3501,7 @@ CONFIG_PACKAGE_kmod-nft-tproxy=m
 # CONFIG_PACKAGE_kmod-phy-bcm84881 is not set
 # CONFIG_PACKAGE_kmod-phy-broadcom is not set
 # CONFIG_PACKAGE_kmod-phy-marvell is not set
+# CONFIG_PACKAGE_kmod-phy-marvell-10g is not set
 # CONFIG_PACKAGE_kmod-phy-microchip is not set
 # CONFIG_PACKAGE_kmod-phy-realtek is not set
 # CONFIG_PACKAGE_kmod-phy-smsc is not set
@@ -4226,7 +4227,8 @@ CONFIG_PACKAGE_python3-light=m
 # end of Configuration
 
 # CONFIG_PACKAGE_python3-light-src is not set
-# CONFIG_PACKAGE_python3-logging is not set
+CONFIG_PACKAGE_python3-logging=m
+# CONFIG_PACKAGE_python3-logging-src is not set
 # CONFIG_PACKAGE_python3-lxml is not set
 # CONFIG_PACKAGE_python3-lzma is not set
 # CONFIG_PACKAGE_python3-markdown is not set
@@ -4331,7 +4333,8 @@ CONFIG_PACKAGE_python3-sqlite3=m
 CONFIG_PACKAGE_python3-urllib=m
 # CONFIG_PACKAGE_python3-urllib-src is not set
 # CONFIG_PACKAGE_python3-urllib3 is not set
-# CONFIG_PACKAGE_python3-uuid is not set
+CONFIG_PACKAGE_python3-uuid=m
+# CONFIG_PACKAGE_python3-uuid-src is not set
 # CONFIG_PACKAGE_python3-venv is not set
 # CONFIG_PACKAGE_python3-vobject is not set
 # CONFIG_PACKAGE_python3-voluptuous is not set
@@ -4445,7 +4448,6 @@ CONFIG_SQLITE3_RTREE=y
 # CONFIG_PACKAGE_libattr is not set
 # CONFIG_PACKAGE_libfuse is not set
 # CONFIG_PACKAGE_libfuse3 is not set
-# CONFIG_PACKAGE_libnvme is not set
 # CONFIG_PACKAGE_libow is not set
 # CONFIG_PACKAGE_libow-capi is not set
 # CONFIG_PACKAGE_libsysfs is not set
@@ -5416,6 +5418,7 @@ CONFIG_PACKAGE_libnl-tiny=y
 # CONFIG_PACKAGE_libnopoll is not set
 # CONFIG_PACKAGE_libnpth is not set
 # CONFIG_PACKAGE_libnpupnp is not set
+# CONFIG_PACKAGE_libnvme is not set
 # CONFIG_PACKAGE_liboath is not set
 # CONFIG_PACKAGE_libogg is not set
 # CONFIG_PACKAGE_liboil is not set
@@ -5567,7 +5570,7 @@ CONFIG_PACKAGE_libudns=m
 # CONFIG_PACKAGE_libustream-openssl is not set
 CONFIG_PACKAGE_libustream-wolfssl=y
 # CONFIG_PACKAGE_libutp is not set
-# CONFIG_PACKAGE_libuuid is not set
+CONFIG_PACKAGE_libuuid=m
 # CONFIG_PACKAGE_libuv is not set
 # CONFIG_PACKAGE_libuwifi is not set
 # CONFIG_PACKAGE_libv4l is not set
@@ -5772,6 +5775,7 @@ CONFIG_PACKAGE_luci-app-bypass_INCLUDE_Socks_Server=y
 # CONFIG_PACKAGE_luci-app-dump1090 is not set
 # CONFIG_PACKAGE_luci-app-dynapoint is not set
 # CONFIG_PACKAGE_luci-app-easymesh is not set
+# CONFIG_PACKAGE_luci-app-email is not set
 # CONFIG_PACKAGE_luci-app-eoip is not set
 # CONFIG_PACKAGE_luci-app-eqos is not set
 # CONFIG_PACKAGE_luci-app-example is not set
@@ -5816,6 +5820,7 @@ CONFIG_PACKAGE_luci-app-bypass_INCLUDE_Socks_Server=y
 # CONFIG_PACKAGE_luci-app-openclash is not set
 # CONFIG_PACKAGE_iptables-mod-tproxy is not set
 # CONFIG_PACKAGE_iptables-mod-extra is not set
+# CONFIG_PACKAGE_luci-app-openthread is not set
 # CONFIG_PACKAGE_luci-app-openvpn is not set
 # CONFIG_PACKAGE_luci-app-openwisp is not set
 # CONFIG_PACKAGE_luci-app-opkg is not set
@@ -5873,7 +5878,6 @@ CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_V2ray_Plugin=y
 # CONFIG_PACKAGE_luci-app-pbr is not set
 # CONFIG_PACKAGE_luci-app-polipo is not set
 # CONFIG_PACKAGE_luci-app-privoxy is not set
-# CONFIG_PACKAGE_luci-app-pushbot is not set
 # CONFIG_PACKAGE_luci-app-qos is not set
 # CONFIG_PACKAGE_luci-app-radicale is not set
 # CONFIG_PACKAGE_luci-app-radicale2 is not set
@@ -6225,6 +6229,7 @@ CONFIG_PACKAGE_curl=m
 CONFIG_PACKAGE_ip6tables-nft=m
 # CONFIG_PACKAGE_ip6tables-zz-legacy is not set
 # CONFIG_PACKAGE_iptables-mod-account is not set
+# CONFIG_PACKAGE_iptables-mod-asn is not set
 # CONFIG_PACKAGE_iptables-mod-chaos is not set
 # CONFIG_PACKAGE_iptables-mod-checksum is not set
 # CONFIG_PACKAGE_iptables-mod-cluster is not set
@@ -6268,6 +6273,14 @@ CONFIG_PACKAGE_iptables-nft=y
 # CONFIG_PACKAGE_iptables-mod-trace is not set
 # CONFIG_PACKAGE_iptables-mod-u32 is not set
 # CONFIG_PACKAGE_iptaccount is not set
+# CONFIG_PACKAGE_iptasn is not set
+
+#
+# Select iptasn options
+#
+# CONFIG_IPTASN_PRESERVE is not set
+# end of Select iptasn options
+
 # CONFIG_PACKAGE_iptgeoip is not set
 
 #
@@ -6834,7 +6847,10 @@ CONFIG_PACKAGE_shadowsocks-libev-ss-server=m
 # CONFIG_PACKAGE_shadowsocks-rust-ssservice is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssurl is not set
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-check is not set
+#CONFIG_PACKAGE_shadowsocksr-libev-ssr-local=m
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-nat is not set
+#CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir=m
+#CONFIG_PACKAGE_shadowsocksr-libev-ssr-server=m
 # CONFIG_PACKAGE_sockd is not set
 # CONFIG_PACKAGE_socksify is not set
 # CONFIG_PACKAGE_spawn-fcgi is not set
@@ -7119,6 +7135,7 @@ CONFIG_PACKAGE_odhcpd_ipv6only_ext_cer_id=0
 # CONFIG_PACKAGE_oor is not set
 # CONFIG_PACKAGE_open-iscsi is not set
 # CONFIG_PACKAGE_openelp is not set
+# CONFIG_PACKAGE_openthread-br is not set
 # CONFIG_PACKAGE_oping is not set
 # CONFIG_PACKAGE_ostiary is not set
 # CONFIG_PACKAGE_pagekitec is not set
@@ -7382,6 +7399,7 @@ CONFIG_PACKAGE_unzip=m
 # CONFIG_PACKAGE_lvm2-selinux is not set
 # CONFIG_PACKAGE_mdadm is not set
 # CONFIG_PACKAGE_mtools is not set
+# CONFIG_PACKAGE_nvme-cli is not set
 # CONFIG_PACKAGE_parted is not set
 # CONFIG_PACKAGE_partx-utils is not set
 # CONFIG_PACKAGE_sfdisk is not set
@@ -7467,7 +7485,6 @@ CONFIG_PACKAGE_unzip=m
 # CONFIG_PACKAGE_ntfs-3g-low is not set
 # CONFIG_PACKAGE_ntfs-3g-utils is not set
 # CONFIG_PACKAGE_ntfs3-mount is not set
-# CONFIG_PACKAGE_nvme-cli is not set
 # CONFIG_PACKAGE_owfs is not set
 # CONFIG_PACKAGE_owshell is not set
 # CONFIG_PACKAGE_resize2fs is not set
@@ -7883,6 +7900,7 @@ CONFIG_PACKAGE_jshn=y
 # CONFIG_PACKAGE_lcdproc-drivers is not set
 # CONFIG_PACKAGE_lcdproc-server is not set
 # CONFIG_PACKAGE_less is not set
+# CONFIG_PACKAGE_libflashrom is not set
 CONFIG_PACKAGE_libjson-script=y
 # CONFIG_PACKAGE_librespeed-cli is not set
 # CONFIG_PACKAGE_libxml2-utils is not set
@@ -7967,7 +7985,6 @@ CONFIG_PACKAGE_libjson-script=y
 # CONFIG_PACKAGE_prlimit is not set
 # CONFIG_PACKAGE_procps-ng is not set
 # CONFIG_PACKAGE_progress is not set
-# CONFIG_PACKAGE_prometheus is not set
 # CONFIG_PACKAGE_prometheus-node-exporter-lua is not set
 # CONFIG_PACKAGE_prometheus-statsd-exporter is not set
 # CONFIG_PACKAGE_pservice is not set
@@ -8251,4 +8268,4 @@ CONFIG_PACKAGE_lua-ipops=m
 # end of Font-Utils
 # end of Xorg
 
-CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng csstidy ddnsto dns2socks dns2tcp filebrowser gn gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argone-config luci-app-bypass luci-app-clash luci-app-ddnsto luci-app-design-config luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-filebrowser luci-app-gost luci-app-ikoolproxy luci-app-koolproxyR luci-app-lucky luci-app-mosdns luci-app-nlbwmon luci-app-openclash luci-app-passwall luci-app-passwall2 luci-app-pushbot luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-ttyd luci-app-unblockneteasemusic luci-app-vssr luci-lib-ipkg luci-lib-taskd luci-lib-xterm luci-theme-argon luci-theme-argone luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mosdns naiveproxy pdnsd-alt redsocks2 shadowsocks-rust shadowsocksr-libev simple-obfs sing-box smartdns ssocks taskd tcping trojan trojan-go trojan-plus tuic-client ucl upx v2dat v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
+CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng csstidy ddnsto dns2socks dns2tcp filebrowser gn gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argone-config luci-app-bypass luci-app-clash luci-app-ddnsto luci-app-design-config luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-filebrowser luci-app-gost luci-app-ikoolproxy luci-app-koolproxyR luci-app-lucky luci-app-mosdns luci-app-nlbwmon luci-app-openclash luci-app-passwall luci-app-passwall2 luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-ttyd luci-app-unblockneteasemusic luci-app-vssr luci-app-wechatpush luci-lib-ipkg luci-lib-taskd luci-lib-xterm luci-theme-argon luci-theme-argone luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mosdns naiveproxy pdnsd-alt redsocks2 shadowsocks-rust shadowsocksr-libev simple-obfs sing-box smartdns ssocks taskd tcping trojan trojan-go trojan-plus tuic-client ucl upx v2dat v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
