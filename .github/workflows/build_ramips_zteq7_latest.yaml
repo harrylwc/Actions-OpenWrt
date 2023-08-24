@@ -45,11 +45,11 @@ env:
   KERNEL_CONFIG_DIR: x-wrt/target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
-  MAKEMENU_CONFIG: false
+  MAKEMENU_CONFIG: true
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: false
   
-  KERNEL_VERSION: '5.10'
+  KERNEL_VERSION: '5.15'
   UPDATE_MULTI_CORE_FILE1: myconfig/sys.lua
   UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
   KERNEL_MODULE: myconfig/kernel_modules.txt
