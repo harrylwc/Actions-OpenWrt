@@ -11,10 +11,14 @@ git clone https://github.com/x-wrt/x-wrt
 git clone https://github.com/coolsnowwolf/lede lede
 lede/scripts/feeds update -a
 
-
 #rm -r x-wrt/package/lean/n2n*
 cd x-wrt
-#git checkout 4e623c4
+SUB='mt7620'
+if [[ "$KERNEL_CONFIG_DIR" == *"$SUB"* ]]; then
+  echo "mt7620 found."
+  git checkout 4e623c4
+fi
+
 
 ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
 git clone https://github.com/kenzok8/openwrt-packages.git /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/openwrt-packages
