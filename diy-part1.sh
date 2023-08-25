@@ -13,11 +13,17 @@ lede/scripts/feeds update -a
 
 #rm -r x-wrt/package/lean/n2n*
 cd x-wrt
-SUB='mt7620'
-if [[ "$KERNEL_CONFIG_DIR" == *"$SUB"* ]]; then
-  echo "mt7620 found."
-  git checkout 4e623c4
-fi
+#SUB='mt7620'
+#if [[ "$KERNEL_CONFIG_DIR" == *"$SUB"* ]]; then
+#  echo "mt7620 found."
+#  git checkout 4e623c4
+#fi
+rm target/linux/ramips/dts/mt7620a.dtsi
+rm target/linux/ramips/dts/mt7620n.dtsi
+rm target/linux/ramips/mt7620/target.mk
+wget https://raw.githubusercontent.com/openwrt/openwrt/main/target/linux/ramips/dts/mt7620a.dtsi -O target/linux/ramips/dts/mt7620a.dtsi
+wget https://raw.githubusercontent.com/openwrt/openwrt/main/target/linux/ramips/dts/mt7620n.dtsi -O target/linux/ramips/dts/mt7620n.dtsi
+wget https://raw.githubusercontent.com/openwrt/openwrt/main/target/linux/ramips/mt7620/target.mk -O target/linux/ramips/mt7620/target.mk
 
 
 ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
