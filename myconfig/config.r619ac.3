@@ -67,6 +67,7 @@ CONFIG_TARGET_ipq40xx_generic=y
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_buffalo_wtr-m2133hp is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_cellc_rtl30vw is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_compex_wpj428 is not set
+# CONFIG_TARGET_ipq40xx_generic_DEVICE_devolo_magic-2-wifi-next is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_dlink_dap-2610 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_edgecore_ecw5211 is not set
 # CONFIG_TARGET_ipq40xx_generic_DEVICE_extreme-networks_ws-ap3915i is not set
@@ -3536,7 +3537,7 @@ CONFIG_PACKAGE_kmod-dnsresolver=m
 # CONFIG_PACKAGE_kmod-geneve is not set
 CONFIG_PACKAGE_kmod-gre=y
 CONFIG_PACKAGE_kmod-gre6=m
-# CONFIG_PACKAGE_kmod-inet-diag is not set
+CONFIG_PACKAGE_kmod-inet-diag=m
 CONFIG_PACKAGE_kmod-ip6-tunnel=m
 # CONFIG_PACKAGE_kmod-ipip is not set
 # CONFIG_PACKAGE_kmod-ipsec is not set
@@ -5919,27 +5920,6 @@ CONFIG_PACKAGE_libsensors=y
 # CONFIG_PACKAGE_libshout-nossl is not set
 # CONFIG_PACKAGE_libsispmctl is not set
 # CONFIG_PACKAGE_libslang2 is not set
-# CONFIG_PACKAGE_libslang2-mod-base64 is not set
-# CONFIG_PACKAGE_libslang2-mod-chksum is not set
-# CONFIG_PACKAGE_libslang2-mod-csv is not set
-# CONFIG_PACKAGE_libslang2-mod-fcntl is not set
-# CONFIG_PACKAGE_libslang2-mod-fork is not set
-# CONFIG_PACKAGE_libslang2-mod-histogram is not set
-# CONFIG_PACKAGE_libslang2-mod-iconv is not set
-# CONFIG_PACKAGE_libslang2-mod-json is not set
-# CONFIG_PACKAGE_libslang2-mod-onig is not set
-# CONFIG_PACKAGE_libslang2-mod-pcre is not set
-# CONFIG_PACKAGE_libslang2-mod-png is not set
-# CONFIG_PACKAGE_libslang2-mod-rand is not set
-# CONFIG_PACKAGE_libslang2-mod-select is not set
-# CONFIG_PACKAGE_libslang2-mod-slsmg is not set
-# CONFIG_PACKAGE_libslang2-mod-socket is not set
-# CONFIG_PACKAGE_libslang2-mod-stats is not set
-# CONFIG_PACKAGE_libslang2-mod-sysconf is not set
-# CONFIG_PACKAGE_libslang2-mod-termios is not set
-# CONFIG_PACKAGE_libslang2-mod-varray is not set
-# CONFIG_PACKAGE_libslang2-mod-zlib is not set
-# CONFIG_PACKAGE_libslang2-modules is not set
 CONFIG_PACKAGE_libsmartcols=m
 # CONFIG_PACKAGE_libsndfile is not set
 # CONFIG_PACKAGE_libsoc is not set
@@ -5999,6 +5979,7 @@ CONFIG_PACKAGE_libuci-lua=m
 # CONFIG_PACKAGE_libucl is not set
 CONFIG_PACKAGE_libuclient=y
 CONFIG_PACKAGE_libucode=y
+# CONFIG_PACKAGE_libucontext is not set
 CONFIG_PACKAGE_libudev-zero=y
 CONFIG_PACKAGE_libudns=m
 # CONFIG_PACKAGE_libuecc is not set
@@ -6172,6 +6153,7 @@ CONFIG_PACKAGE_luci-mod-system=y
 CONFIG_PACKAGE_luci-app-acl=m
 CONFIG_PACKAGE_luci-app-acme=m
 CONFIG_PACKAGE_luci-app-adblock=m
+CONFIG_PACKAGE_luci-app-adblock-fast=m
 CONFIG_PACKAGE_luci-app-adguardhome=m
 # CONFIG_PACKAGE_luci-app-adguardhome_INCLUDE_binary is not set
 CONFIG_PACKAGE_luci-app-advanced=m
@@ -6191,7 +6173,7 @@ CONFIG_PACKAGE_luci-app-banip=y
 # CONFIG_PACKAGE_luci-app-bcp38 is not set
 # CONFIG_PACKAGE_luci-app-bmx6 is not set
 # CONFIG_PACKAGE_luci-app-bmx7 is not set
-# CONFIG_PACKAGE_luci-app-bypass is not set
+CONFIG_PACKAGE_luci-app-bypass=m
 CONFIG_PACKAGE_luci-app-bypass_INCLUDE_Shadowsocks_Libev_Client=y
 CONFIG_PACKAGE_luci-app-bypass_INCLUDE_Shadowsocks_Libev_Server=y
 CONFIG_PACKAGE_luci-app-bypass_INCLUDE_ShadowsocksR_Libev_Client=y
@@ -6290,34 +6272,36 @@ CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks_Libev_Server=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Client=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_ShadowsocksR_Libev_Server=y
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Simple_Obfs=y
+CONFIG_PACKAGE_luci-app-passwall_INCLUDE_SingBox=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_GO is not set
 CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan_Plus=y
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_tuic_client is not set
-# CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Geodata is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_V2ray_Plugin is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray is not set
 # CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Xray_Plugin is not set
 # end of Configuration
 
-# CONFIG_PACKAGE_luci-app-passwall2 is not set
+CONFIG_PACKAGE_luci-app-passwall2=m
 
 #
 # Configuration
 #
+# CONFIG_PACKAGE_luci-app-passwall2_Iptables_Transparent_Proxy is not set
+CONFIG_PACKAGE_luci-app-passwall2_Nftables_Transparent_Proxy=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Brook is not set
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Haproxy=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Hysteria is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_NaiveProxy is not set
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Libev_Client=y
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Libev_Server is not set
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Libev_Server=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Rust_Client is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Rust_Server is not set
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_ShadowsocksR_Libev_Client=y
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_ShadowsocksR_Libev_Server=y
 CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Simple_Obfs=y
+CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_SingBox=y
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_tuic_client is not set
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_V2ray is not set
 # CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_V2ray_Plugin is not set
 # end of Configuration
 
@@ -6333,14 +6317,13 @@ CONFIG_PACKAGE_luci-app-ser2net=m
 CONFIG_PACKAGE_luci-app-shadowsocks-libev=m
 # CONFIG_PACKAGE_luci-app-shairplay is not set
 # CONFIG_PACKAGE_luci-app-siitwizard is not set
-CONFIG_PACKAGE_luci-app-simple-adblock=m
 CONFIG_PACKAGE_luci-app-smartdns=m
 # CONFIG_PACKAGE_luci-app-snmpd is not set
 # CONFIG_PACKAGE_luci-app-softether is not set
 # CONFIG_PACKAGE_luci-app-splash is not set
 # CONFIG_PACKAGE_luci-app-sqm is not set
 # CONFIG_PACKAGE_luci-app-squid is not set
-# CONFIG_PACKAGE_luci-app-ssr-plus is not set
+CONFIG_PACKAGE_luci-app-ssr-plus=m
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_NONE_Client is not set
 CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Libev_Client=y
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Client is not set
@@ -6532,6 +6515,39 @@ CONFIG_PACKAGE_luci-i18n-acme-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-adblock-de is not set
 # CONFIG_PACKAGE_luci-i18n-adblock-el is not set
 # CONFIG_PACKAGE_luci-i18n-adblock-es is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-ar is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-bg is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-bn is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-ca is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-cs is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-da is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-de is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-el is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-es is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-fi is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-fr is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-he is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-hi is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-hu is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-it is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-ja is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-ko is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-lt is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-mr is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-ms is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-no is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-pl is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-pt is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-pt-br is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-ro is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-ru is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-sk is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-sv is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-tr is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-uk is not set
+# CONFIG_PACKAGE_luci-i18n-adblock-fast-vi is not set
+CONFIG_PACKAGE_luci-i18n-adblock-fast-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-adblock-fast-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-adblock-fi is not set
 # CONFIG_PACKAGE_luci-i18n-adblock-fr is not set
 # CONFIG_PACKAGE_luci-i18n-adblock-he is not set
@@ -6696,6 +6712,7 @@ CONFIG_PACKAGE_luci-i18n-banip-zh-tw=y
 # CONFIG_PACKAGE_luci-i18n-base-vi is not set
 CONFIG_PACKAGE_luci-i18n-base-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-base-zh-tw=y
+CONFIG_PACKAGE_luci-i18n-bypass-zh-cn=m
 # CONFIG_PACKAGE_luci-i18n-commands-ar is not set
 # CONFIG_PACKAGE_luci-i18n-commands-bg is not set
 # CONFIG_PACKAGE_luci-i18n-commands-bn is not set
@@ -7326,6 +7343,7 @@ CONFIG_PACKAGE_luci-i18n-openvpn-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-opkg-vi is not set
 CONFIG_PACKAGE_luci-i18n-opkg-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-opkg-zh-tw=y
+CONFIG_PACKAGE_luci-i18n-passwall2-zh-cn=m
 # CONFIG_PACKAGE_luci-i18n-pbr-ar is not set
 # CONFIG_PACKAGE_luci-i18n-pbr-bg is not set
 # CONFIG_PACKAGE_luci-i18n-pbr-bn is not set
@@ -7527,44 +7545,12 @@ CONFIG_PACKAGE_luci-i18n-ser2net-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-vi is not set
 CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-zh-tw=m
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-ar is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-bg is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-bn is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-ca is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-cs is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-da is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-de is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-el is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-es is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-fi is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-fr is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-he is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-hi is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-hu is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-it is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-ja is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-ko is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-lt is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-mr is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-ms is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-no is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-pl is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-pt is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-ro is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-ru is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-sk is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-sv is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-tr is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-uk is not set
-# CONFIG_PACKAGE_luci-i18n-simple-adblock-vi is not set
-CONFIG_PACKAGE_luci-i18n-simple-adblock-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-simple-adblock-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-smartdns-de is not set
 # CONFIG_PACKAGE_luci-i18n-smartdns-es is not set
 # CONFIG_PACKAGE_luci-i18n-smartdns-lt is not set
 CONFIG_PACKAGE_luci-i18n-smartdns-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-smartdns-zh-tw=m
+CONFIG_PACKAGE_luci-i18n-ssr-plus-zh-cn=m
 # CONFIG_PACKAGE_luci-i18n-statistics-ar is not set
 # CONFIG_PACKAGE_luci-i18n-statistics-bg is not set
 # CONFIG_PACKAGE_luci-i18n-statistics-bn is not set
@@ -8008,6 +7994,7 @@ CONFIG_ARIA2_WEBSOCKET=y
 
 # CONFIG_PACKAGE_atftp is not set
 # CONFIG_PACKAGE_atftpd is not set
+# CONFIG_PACKAGE_croc is not set
 CONFIG_PACKAGE_curl=y
 CONFIG_PACKAGE_lftp=y
 # CONFIG_PACKAGE_ps3netsrv is not set
@@ -8274,8 +8261,8 @@ CONFIG_PACKAGE_pdnsd-alt=m
 # CONFIG_PACKAGE_unbound-control-setup is not set
 # CONFIG_PACKAGE_unbound-daemon is not set
 # CONFIG_PACKAGE_unbound-host is not set
-# CONFIG_PACKAGE_v2ray-geoip is not set
-# CONFIG_PACKAGE_v2ray-geosite is not set
+CONFIG_PACKAGE_v2ray-geoip=m
+CONFIG_PACKAGE_v2ray-geosite=m
 CONFIG_PACKAGE_wsdd2=y
 # CONFIG_PACKAGE_zonestitcher is not set
 # end of IP Addresses and Names
@@ -8864,11 +8851,11 @@ CONFIG_PACKAGE_shadowsocks-libev-ss-tunnel=m
 # CONFIG_PACKAGE_shadowsocks-rust-ssserver is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssservice is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssurl is not set
-# CONFIG_PACKAGE_shadowsocksr-libev-ssr-check is not set
-# CONFIG_PACKAGE_shadowsocksr-libev-ssr-local is not set
+#CONFIG_PACKAGE_shadowsocksr-libev-ssr-check=m
+#CONFIG_PACKAGE_shadowsocksr-libev-ssr-local=m
 # CONFIG_PACKAGE_shadowsocksr-libev-ssr-nat is not set
-# CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir is not set
-# CONFIG_PACKAGE_shadowsocksr-libev-ssr-server is not set
+#CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir=m
+#CONFIG_PACKAGE_shadowsocksr-libev-ssr-server=m
 # CONFIG_PACKAGE_sockd is not set
 # CONFIG_PACKAGE_socksify is not set
 # CONFIG_PACKAGE_spawn-fcgi is not set
@@ -8978,6 +8965,7 @@ CONFIG_PACKAGE_acme-acmesh=m
 # CONFIG_PACKAGE_acme-acmesh-dnsapi is not set
 CONFIG_PACKAGE_acme-common=m
 CONFIG_PACKAGE_adblock=y
+CONFIG_PACKAGE_adblock-fast=m
 # CONFIG_PACKAGE_adbyby is not set
 # CONFIG_PACKAGE_addrwatch is not set
 # CONFIG_PACKAGE_addrwatch-mysql is not set
@@ -9217,7 +9205,6 @@ CONFIG_PACKAGE_samba4-utils=m
 # CONFIG_PACKAGE_sctp-tools is not set
 CONFIG_PACKAGE_ser2net=m
 CONFIG_PACKAGE_shellinabox=y
-CONFIG_PACKAGE_simple-adblock=m
 CONFIG_PACKAGE_simple-obfs=m
 CONFIG_PACKAGE_simple-obfs-server=y
 
@@ -9227,7 +9214,27 @@ CONFIG_PACKAGE_simple-obfs-server=y
 # CONFIG_SIMPLE_OBFS_STATIC_LINK is not set
 # end of Simple-obfs Compile Configuration
 
-# CONFIG_PACKAGE_sing-box is not set
+CONFIG_PACKAGE_sing-box=m
+
+#
+# Select build options
+#
+# CONFIG_SINGBOX_WITH_ACME is not set
+CONFIG_SINGBOX_WITH_CLASH_API=y
+# CONFIG_SINGBOX_WITH_DHCP is not set
+# CONFIG_SINGBOX_WITH_ECH is not set
+# CONFIG_SINGBOX_WITH_EMBEDDED_TOR is not set
+# CONFIG_SINGBOX_WITH_GRPC is not set
+CONFIG_SINGBOX_WITH_GVISOR=y
+# CONFIG_SINGBOX_WITH_LWIP is not set
+CONFIG_SINGBOX_WITH_QUIC=y
+CONFIG_SINGBOX_WITH_REALITY_SERVER=y
+# CONFIG_SINGBOX_WITH_SHADOWSOCKSR is not set
+CONFIG_SINGBOX_WITH_UTLS=y
+# CONFIG_SINGBOX_WITH_V2RAY_API is not set
+CONFIG_SINGBOX_WITH_WIREGUARD=y
+# end of Select build options
+
 # CONFIG_PACKAGE_slirp4netns is not set
 CONFIG_PACKAGE_smartdns=m
 # CONFIG_PACKAGE_smbinfo is not set
@@ -9303,7 +9310,8 @@ CONFIG_PACKAGE_vlmcsd=y
 # CONFIG_PACKAGE_wpan-tools is not set
 # CONFIG_PACKAGE_wwan is not set
 # CONFIG_PACKAGE_xinetd is not set
-# CONFIG_PACKAGE_xray-core is not set
+CONFIG_PACKAGE_xray-core=m
+# CONFIG_PACKAGE_xray-example is not set
 # CONFIG_PACKAGE_ztdns is not set
 # end of Network
 
@@ -10493,6 +10501,7 @@ CONFIG_PACKAGE_hmac-sha1-util=m
 CONFIG_PACKAGE_mbed-hmac-sha1=m
 # end of mbed tools
 
+# CONFIG_PACKAGE_hev-socks5-tunnel is not set
 # CONFIG_PACKAGE_initramfs-upgrade-fw is not set
 # CONFIG_PACKAGE_sendip is not set
 # CONFIG_PACKAGE_telnetd-test is not set
