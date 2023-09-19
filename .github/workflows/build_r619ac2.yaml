@@ -274,6 +274,10 @@ jobs:
           #mkdir -p ./artifact/package
           #mkdir -p ./artifact/buildinfo
           #mkdir -p $DRIVERS_DIR
+          swapoff -a
+          sudo rm -r  x-wrt/dl 
+          sudo -E apt purge opencc  p7zip p7zip-full 
+          df -kh 
           cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR
           cp -f x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
           #cp -f .config bin/
