@@ -151,8 +151,8 @@ jobs:
           sudo -E apt-get clean
           sudo apt-get autoremove
           sudo apt-get autoclean -y 
-          #sudo swapoff -a
-          #sudo rm -f /swapfile
+          sudo swapoff -a
+          sudo rm -f /swapfile
           sudo rm -rf /usr/local/lib/android
           df -kh
           #find /home/runner/work/_temp/ -name "*cache*"
@@ -274,8 +274,8 @@ jobs:
           #mkdir -p ./artifact/package
           #mkdir -p ./artifact/buildinfo
           #mkdir -p $DRIVERS_DIR
-          sudo swapoff -a
-          sudo rm -rf /swapfile
+          #sudo swapoff -a
+          #sudo rm -rf /swapfile
           sudo rm -rf  x-wrt/dl 
           sudo -E apt purge opencc  p7zip p7zip-full 
           df -kh 
