@@ -194,7 +194,7 @@ jobs:
         cp config.r619ac.2 .config
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "status=success" >> $GITHUB_OUTPUT
-
+        sudo rm -rf $GITHUB_WORKSPACE/lede
 
     - name: 查看磁盘使用情况
 
@@ -204,6 +204,14 @@ jobs:
 
     - name: Prepare artifact
       run: |
+          sudo -E apt-get clean
+          sudo apt-get autoremove
+          sudo apt-get autoclean -y 
+          sudo swapoff -a
+          sudo rm -rf x-wrt/dl
+          sudo rm -rf /swapfile
+          sudo rm -rf /usr/local/lib/android
+          df -kh
           # mkdir -p ./artifact/firmware
           #mkdir -p ./artifact/package
           #mkdir -p ./artifact/buildinfo
