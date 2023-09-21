@@ -44,8 +44,8 @@ env:
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
-  KERNEL_VERSION: '6.1'
-  #KERNEL_VERSION: '5.15'                                                                            
+  #KERNEL_VERSION: '6.1'
+  KERNEL_VERSION: '5.15'                                                                            
   UPDATE_MULTI_CORE_FILE1: myconfig/sys.lua
   UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
   KERNEL_MODULE: myconfig/kernel_modules.txt
