@@ -275,7 +275,8 @@ jobs:
           #mkdir -p ./artifact/buildinfo
           #mkdir -p $DRIVERS_DIR
           sudo swapoff -a
-          sudo rm -r  x-wrt/dl 
+          sudo rm -rf /swapfile
+          sudo rm -rf  x-wrt/dl 
           sudo -E apt purge opencc  p7zip p7zip-full 
           df -kh 
           cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR
