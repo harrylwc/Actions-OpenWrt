@@ -183,13 +183,13 @@ jobs:
         
         cd x-wrt
         #cp $CONFIG_FILE .config
-        cp config.r619ac.0 .config
+        cp config.r619ac.1 .config
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "build config.r619ac.0 success"
-        cp config.r619ac.2 .config
-        make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "status=success" >> $GITHUB_OUTPUT
+        echo "build config.r619ac.1 success"
+        #cp config.r619ac.2 .config
+        #make -j$(nproc) || make -j1 || make -j1 V=s
+        #echo "status=success" >> $GITHUB_OUTPUT
         sudo rm -rf $GITHUB_WORKSPACE/lede
     - name: SSH connection for failure Debug
       if: ${{ failure() }}
