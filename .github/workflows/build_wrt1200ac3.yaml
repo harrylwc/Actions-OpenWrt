@@ -10,17 +10,22 @@
 name: Compile WRT1200AC3 TVH OpenWrt Images  
 
 on:
+  repository_dispatch:
+    types: [wrt1200ac_completed]
   workflow_dispatch:    
     inputs:
       ssh:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
+        
+       
+  
   #push:
    #branches: 
     #- master
-  schedule:
-    - cron: "20 17 * * *"
+  #schedule:
+   # - cron: "20 17 * * *"
   #release:
    # types: [published]
   watch:
