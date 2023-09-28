@@ -10,6 +10,8 @@
 name: Compile R619AC2 TVH OpenWrt Images  
 
 on:
+  repository_dispatch:
+    types: [r619ac_completed]
   workflow_dispatch:    
     inputs:
       ssh:
@@ -19,8 +21,8 @@ on:
   #push:
    #branches: 
     #- master
-  schedule:
-    - cron: "20 11 * * *"
+  #schedule:
+   # - cron: "20 11 * * *"
   #release:
    # types: [published]
   watch:
