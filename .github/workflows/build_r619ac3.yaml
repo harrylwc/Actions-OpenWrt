@@ -10,7 +10,9 @@
 name: Compile R619AC3 TVH OpenWrt Images  
 
 on:
-  workflow_dispatch:    
+ repository_dispatch:
+    types: [r619ac_completed]
+ workflow_dispatch:    
     inputs:
       ssh:
         description: 'SSH connection to Actions'
@@ -19,12 +21,12 @@ on:
   #push:
    #branches: 
     #- master
-  schedule:
-    - cron: "15 17 * * *"
+ # schedule:
+    #- cron: "15 17 * * *"
   #release:
    # types: [published]
-  watch:
-    types: started
+  #watch:
+    #types: started
 
   #workflow_dispatch:    
     
