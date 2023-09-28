@@ -317,7 +317,16 @@ jobs:
         echo "url=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
 
         
-
+    - name: Send repository_dispatch
+      env:
+        PAT: ${{ secrets.ACTIONS_PAT }}
+      run: |
+        curl \
+        -X POST \
+        -H "Authorization: token $PAT" \
+        -H "Accept: application/vnd.github.v3+json" \
+        https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
+        -d '{"event_type":"r619ac_completed"}' 
     
    # - name: TG推送
     #  env:
