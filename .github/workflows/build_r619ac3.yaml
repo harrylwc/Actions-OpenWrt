@@ -75,13 +75,17 @@ jobs:
           ref: master
           fetch-depth: 0
       - name: Check CPU model
+        env:
+          PAT: ${{ secrets.ACTIONS_PAT }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
         run: |                                                    
           cat /proc/cpuinfo|grep model                            
           cat /proc/cpuinfo|grep proc
           free
-  
+          echo pat=$PAT 
+          echo GH=$GH_TOKEN 
       - name: Update feeds & Load custom configuration
-        run: |
+          run: |
           #cat /proc/cpuinfo|grep model
           #cat /proc/cpuinfo|grep proce
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
