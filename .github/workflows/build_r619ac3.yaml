@@ -85,7 +85,7 @@ jobs:
           echo pat=$PAT 
           echo GH=$GH_TOKEN 
       - name: Update feeds & Load custom configuration
-          run: |
+        run: |
           #cat /proc/cpuinfo|grep model
           #cat /proc/cpuinfo|grep proce
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
