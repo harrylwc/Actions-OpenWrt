@@ -10,7 +10,6 @@ name: build mvebu x-wrt
 
 on:
 
-
   workflow_dispatch:
 
     inputs:
@@ -43,6 +42,7 @@ env:
   TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
   TELEGRAM_CHAT_ID: 1373335316
   TZ: Asia/Shanghai
+  
 
 jobs:
 
@@ -62,10 +62,11 @@ jobs:
     - name: 安装编译环境
 
       env:
-
+        
         DEBIAN_FRONTEND: noninteractive
 
       run: |
+          echo $PAT
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
           sudo -E apt-get update
@@ -301,7 +302,17 @@ jobs:
 
         echo "url=$(cat wetransfer.log | grep https | cut -f3 -d" ")" >> $GITHUB_OUTPUT
 
-        
+    - name: Send repository_dispatch
+      env:
+        PAT: ${{ secrets.ACTIONS_PAT }}
+      run: |
+        curl \
+        -X POST \
+        -H "Authorization: token $PAT" \
+        -H "Accept: application/vnd.github.v3+json" \
+        https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
+        -d '{"event_type":"wrt1200ac_completed"}' 
+     
 
     
    # - name: TG推送
