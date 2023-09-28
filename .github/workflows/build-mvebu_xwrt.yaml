@@ -66,7 +66,6 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
 
       run: |
-          echo $PAT
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
           sudo -E apt-get update
@@ -304,7 +303,7 @@ jobs:
 
     - name: Send repository_dispatch
       env:
-        PAT: ${{ secrets.ACTIONS_PAT }}
+        PAT: ${{ secrets.GITHUB_TOKEN }} 
       run: |
         curl \
         -X POST \

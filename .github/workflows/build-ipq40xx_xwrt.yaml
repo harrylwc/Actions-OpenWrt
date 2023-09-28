@@ -319,7 +319,7 @@ jobs:
         
     - name: Send repository_dispatch
       env:
-        PAT: ${{ secrets.ACTIONS_PAT }}
+        PAT: ${{ secrets.GITHUB_TOKEN }} 
       run: |
         curl \
         -X POST \
