@@ -9,7 +9,7 @@
 name: build mvebu x-wrt
 
 on:
-  repository_dispatch:
+
 
   workflow_dispatch:
 
