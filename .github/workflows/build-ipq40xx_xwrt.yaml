@@ -34,6 +34,8 @@ env:
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
+  KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
+  KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq40xx
   SSH_ACTIONS: false
   UPLOAD_BIN_DIR: true
   UPLOAD_FIRMWARE: false
@@ -180,7 +182,7 @@ jobs:
       id: compile
 
       run: |
-        
+        [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
         cd x-wrt
         #cp $CONFIG_FILE .config
         cp config.r619ac.1 .config
