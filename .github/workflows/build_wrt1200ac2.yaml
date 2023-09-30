@@ -10,9 +10,9 @@
 name: Compile WRT1200AC2 TVH OpenWrt Images  
 
 on:
-   #repository_dispatch:
+ # repository_dispatch:
     #types: [wrt1200ac_completed]
-   workflow_dispatch
+   workflow_dispatch:    
     inputs:
       ssh:
         description: 'SSH connection to Actions'
