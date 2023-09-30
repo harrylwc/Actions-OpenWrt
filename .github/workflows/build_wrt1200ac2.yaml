@@ -25,8 +25,8 @@ on:
    # - cron: "30 11 * * *"
   #release:
    # types: [published]
-  watch:
-    types: started
+  #watch:
+   # types: started
 
   #workflow_dispatch:    
     
