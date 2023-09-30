@@ -10,7 +10,7 @@
 name: Compile R619AC2 TVH OpenWrt Images  
 
 on:
-  repository_dispatch:
+ # repository_dispatch:
     types: [r619ac_completed]
   workflow_dispatch:    
     inputs:
