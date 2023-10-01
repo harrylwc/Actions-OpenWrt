@@ -240,7 +240,7 @@ jobs:
            ##cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
            
            #cat myconfig/config.tvh.ffmpeg >> .config
-           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           [ -e $KERNEL_CONFIG.5.15.bak ] && cp -f $KERNEL_CONFIG.5.15.bak $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt 
            #make kernel_menuconfig -j2
            make -j$(nproc) || make -j1 
