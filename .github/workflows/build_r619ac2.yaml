@@ -128,8 +128,9 @@ jobs:
           for cacheKey in $cacheKeysForPR
           do
             #gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
-            done
+            echo $cacheKey
             echo "Done"
+          done
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
       - name: Space cleanup
