@@ -242,7 +242,11 @@ jobs:
            #cat myconfig/config.tvh.ffmpeg >> .config
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt 
-           sudo rm -rf $GITHUB_WORKSPACE/lede
+           sudo rm -rf /usr/share/dotnet
+           sudo rm -rf /opt/ghc
+           sudo rm -rf "/usr/local/share/boost"
+           sudo rm -rf "$AGENT_TOOLSDIRECTORY" 
+           #sudo rm -rf $GITHUB_WORKSPACE/lede
            #make kernel_menuconfig -j2
            make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
