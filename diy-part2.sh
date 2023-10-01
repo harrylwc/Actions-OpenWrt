@@ -22,7 +22,7 @@ git clone https://github.com/tvheadend/tvheadend.git
 cp -r $GITHUB_WORKSPACE/x-wrt/tvheadend/.git $GITHUB_WORKSPACE/x-wrt/package/tvheadend/files/
 #sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/ramips/Makefile
 #sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/mvebu/Makefile
-#sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile 
+sed -i 's/KERNEL_PATCHVER:=6.1/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile 
 rm -r feeds/packages/multimedia/tvheadend
 #tar xvf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/tvheadend.tar -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/openwrt/feeds/packages/multimedia/
 #rm -r feeds/packages/multimedia/ffmpeg
@@ -96,7 +96,7 @@ CONFIG_FILE2=myconfig/config.$ROUTER_MODEL.2
 #CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE .config
 if  [ $KERNEL_VERSION  = "5.15" ]
 then
-cp -f $KERNEL_CONFIG.5.15 $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION;cp myconfig/config.$ROUTER_MODEL.0.5_15 myconfig/config.$ROUTER_MODEL.0;cp myconfig/config.$ROUTER_MODEL.1.5_15 myconfig/config.$ROUTER_MODEL.1;cp myconfig/config.$ROUTER_MODEL.2.5_15 myconfig/config.$ROUTER_MODEL.2;cp myconfig/config.$ROUTER_MODEL.3.5_15 myconfig/config.$ROUTER_MODEL.3
+cp -f $KERNEL_CONFIG.5.15 $KERNEL_CONFIG;cp myconfig/config.$ROUTER_MODEL.0.5_15 myconfig/config.$ROUTER_MODEL.0;cp myconfig/config.$ROUTER_MODEL.1.5_15 myconfig/config.$ROUTER_MODEL.1;cp myconfig/config.$ROUTER_MODEL.2.5_15 myconfig/config.$ROUTER_MODEL.2;cp myconfig/config.$ROUTER_MODEL.3.5_15 myconfig/config.$ROUTER_MODEL.3
 fi
 if [ $TVH == true ]; then CONFIG_FILE=$CONFIG_FILE0; cp $CONFIG_FILE $myconfig; cat myconfig/config.tvh.ffmpeg >> $myconfig; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE $myconfig; fi
 echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
