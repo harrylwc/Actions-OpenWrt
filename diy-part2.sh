@@ -94,7 +94,10 @@ CONFIG_FILE2=myconfig/config.$ROUTER_MODEL.2
 #CONFIG_FILE3=myconfig/config.$ROUTER_MODEL.tvh
 
 #CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE .config
-if [ $KERNEL_VERSION ] == "5.15";[ -e $KERNEL_CONFIG.5.15 ] && cp -f $KERNEL_CONFIG.5.15 $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION;cp myconfig/config.$ROUTER_MODEL.0.5_15 /myconfig/config.$ROUTER_MODEL.0;cp myconfig/config.$ROUTER_MODEL.1.5_15 /myconfig/config.$ROUTER_MODEL.1;cp myconfig/config.$ROUTER_MODEL.2.5_15 /myconfig/config.$ROUTER_MODEL.2;cp myconfig/config.$ROUTER_MODEL.3.5_15 /myconfig/config.$ROUTER_MODEL.3;fi
+if  [ $KERNEL_VERSION  = "5.15" ]
+then
+cp -f $KERNEL_CONFIG.5.15 $KERNEL_CONFIG;cp myconfig/config.$ROUTER_MODEL.0.5_15 myconfig/config.$ROUTER_MODEL.0;cp myconfig/config.$ROUTER_MODEL.1.5_15 myconfig/config.$ROUTER_MODEL.1;cp myconfig/config.$ROUTER_MODEL.2.5_15 myconfig/config.$ROUTER_MODEL.2;cp myconfig/config.$ROUTER_MODEL.3.5_15 myconfig/config.$ROUTER_MODEL.3
+fi
 if [ $TVH == true ]; then CONFIG_FILE=$CONFIG_FILE0; cp $CONFIG_FILE $myconfig; cat myconfig/config.tvh.ffmpeg >> $myconfig; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE $myconfig; fi
 echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
 
