@@ -124,6 +124,7 @@ jobs:
           sudo swapoff -a
           sudo rm -f /swapfile
           sudo rm -rf /usr/local/lib/android
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY" 
           df -h
      # - name: Run migrations
       #  run: sh ./github/scripts/migrate.sh
