@@ -122,7 +122,7 @@ jobs:
           echo "Fetching list of cache key"
           tmp=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1)
           echo $tmp
-          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1 )
+          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1|tail -1 )
           echo "Current caches "$cacheKeysForPR
           ## Setting this to not fail the workflow while deleting cache keys. 
           set +e
