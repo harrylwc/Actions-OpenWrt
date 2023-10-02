@@ -16,6 +16,8 @@
 #sed -i 's/192.168.1.1/192.168.2.100/g' package/base-files/files/bin/config_generate
 sudo -E apt-get update
 sudo -E apt-get -y install opencc
+
+sudo apt install libcurl4-openssl-dev libssl-dev
 cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
 cd $GITHUB_WORKSPACE/x-wrt/
 git clone https://github.com/tvheadend/tvheadend.git
