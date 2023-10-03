@@ -13,9 +13,11 @@ on:
   #push:
    # branches: 
     #  - master
+ repository_dispatch:
+    types: [ramips_completed]
  workflow_dispatch:
- schedule:
-     - cron: 30 15 * * *
+ #schedule:
+    # - cron: 30 15 * * *
   #release:
    # types: [published]
  watch:
