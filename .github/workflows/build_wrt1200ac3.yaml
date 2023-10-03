@@ -61,6 +61,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
+  CLEARCACHE: true
   
 jobs:
 
