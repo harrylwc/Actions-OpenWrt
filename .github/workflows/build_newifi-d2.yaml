@@ -185,7 +185,7 @@ jobs:
           #cp config.$ROUTER_MODEL.0 .config
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "zteq7 build success"
- 
+          cp -f bin/targets/ramips/mt7621/openwrt-ramips-mt7621-d-team_newifi-d2-squashfs-sysupgrade.bin $DRIVERS_DIR 
          
           #     echo "======================="
           #echo "Space usage:"
