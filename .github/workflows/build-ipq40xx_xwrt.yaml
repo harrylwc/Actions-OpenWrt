@@ -182,7 +182,7 @@ jobs:
       id: compile
 
       run: |
-        [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+        #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
         cd x-wrt
         #cp $CONFIG_FILE .config
         cp config.r619ac.1 .config
