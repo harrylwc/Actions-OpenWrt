@@ -423,7 +423,7 @@ CONFIG_DOWNLOAD_CHECK_CERTIFICATE=y
 #
 # CONFIG_DISPLAY_SUPPORT is not set
 CONFIG_BUILD_PATENTED=y
-# CONFIG_BUILD_NLS is not set
+CONFIG_BUILD_NLS=y
 CONFIG_SHADOW_PASSWORDS=y
 # CONFIG_CLEAN_IPKG is not set
 # CONFIG_IPK_FILES_CHECKSUMS is not set
@@ -4196,6 +4196,7 @@ CONFIG_PACKAGE_lua-cjson=m
 # CONFIG_PACKAGE_lua-eco is not set
 # CONFIG_PACKAGE_lua-eco-base64 is not set
 # CONFIG_PACKAGE_lua-eco-dns is not set
+# CONFIG_PACKAGE_lua-eco-file is not set
 # CONFIG_PACKAGE_lua-eco-http is not set
 # CONFIG_PACKAGE_lua-eco-ip is not set
 # CONFIG_PACKAGE_lua-eco-log is not set
@@ -4209,6 +4210,7 @@ CONFIG_PACKAGE_lua-cjson=m
 CONFIG_LUA_ECO_OPENSSL=y
 # CONFIG_LUA_ECO_WOLFSSL is not set
 # CONFIG_LUA_ECO_MBEDTLS is not set
+# CONFIG_PACKAGE_lua-eco-sys is not set
 # CONFIG_PACKAGE_lua-eco-termios is not set
 # CONFIG_PACKAGE_lua-eco-ubus is not set
 # CONFIG_PACKAGE_lua-eco-websocket is not set
@@ -4265,31 +4267,31 @@ CONFIG_PACKAGE_luci-lib-fs=y
 #
 # PHP8
 #
-CONFIG_PACKAGE_php8=m
+CONFIG_PACKAGE_php8=y
 CONFIG_PHP8_LIBXML=y
 CONFIG_PHP8_SYSTEMTZDATA=y
-CONFIG_PACKAGE_php8-cgi=m
+CONFIG_PACKAGE_php8-cgi=y
 CONFIG_PACKAGE_php8-cli=m
-CONFIG_PACKAGE_php8-fastcgi=m
+CONFIG_PACKAGE_php8-fastcgi=y
 CONFIG_PACKAGE_php8-fpm=m
 CONFIG_PACKAGE_php8-mod-bcmath=m
 CONFIG_PACKAGE_php8-mod-calendar=m
 CONFIG_PACKAGE_php8-mod-ctype=m
-CONFIG_PACKAGE_php8-mod-curl=m
+CONFIG_PACKAGE_php8-mod-curl=y
 CONFIG_PACKAGE_php8-mod-dom=m
 CONFIG_PACKAGE_php8-mod-exif=m
 CONFIG_PACKAGE_php8-mod-fileinfo=m
 CONFIG_PACKAGE_php8-mod-filter=m
 CONFIG_PACKAGE_php8-mod-ftp=m
-CONFIG_PACKAGE_php8-mod-gd=m
+CONFIG_PACKAGE_php8-mod-gd=y
 CONFIG_PACKAGE_php8-mod-gettext=m
 CONFIG_PACKAGE_php8-mod-gmp=m
-CONFIG_PACKAGE_php8-mod-iconv=m
+CONFIG_PACKAGE_php8-mod-iconv=y
 # CONFIG_PACKAGE_php8-mod-imap is not set
 CONFIG_PACKAGE_php8-mod-intl=m
 # CONFIG_PHP8_FULLICUDATA is not set
 # CONFIG_PACKAGE_php8-mod-ldap is not set
-CONFIG_PACKAGE_php8-mod-mbstring=m
+CONFIG_PACKAGE_php8-mod-mbstring=y
 CONFIG_PACKAGE_php8-mod-mysqli=m
 CONFIG_PACKAGE_php8-mod-mysqlnd=m
 CONFIG_PACKAGE_php8-mod-opcache=m
@@ -4301,7 +4303,7 @@ CONFIG_PACKAGE_php8-mod-pdo-pgsql=m
 CONFIG_PACKAGE_php8-mod-pdo-sqlite=m
 CONFIG_PACKAGE_php8-mod-pgsql=m
 CONFIG_PACKAGE_php8-mod-phar=m
-CONFIG_PACKAGE_php8-mod-session=m
+CONFIG_PACKAGE_php8-mod-session=y
 CONFIG_PACKAGE_php8-mod-shmop=m
 CONFIG_PACKAGE_php8-mod-simplexml=m
 CONFIG_PACKAGE_php8-mod-snmp=m
@@ -4502,7 +4504,7 @@ CONFIG_PACKAGE_perlbase-xsloader=m
 #
 # Python
 #
-CONFIG_PACKAGE_libpython3=m
+CONFIG_PACKAGE_libpython3=y
 # CONFIG_PACKAGE_micropython-lib is not set
 # CONFIG_PACKAGE_micropython-lib-src is not set
 # CONFIG_PACKAGE_micropython-lib-unix is not set
@@ -4510,7 +4512,7 @@ CONFIG_PACKAGE_libpython3=m
 # CONFIG_PACKAGE_micropython-mbedtls is not set
 # CONFIG_PACKAGE_micropython-mpremote is not set
 # CONFIG_PACKAGE_micropython-nossl is not set
-CONFIG_PACKAGE_python3=m
+CONFIG_PACKAGE_python3=y
 # CONFIG_PACKAGE_python3-aio-mqtt-mod is not set
 # CONFIG_PACKAGE_python3-aiohttp is not set
 # CONFIG_PACKAGE_python3-aiohttp-cors is not set
@@ -4524,7 +4526,7 @@ CONFIG_PACKAGE_python3-asgiref=m
 # CONFIG_PACKAGE_python3-async-generator is not set
 CONFIG_PACKAGE_python3-async-timeout=m
 # CONFIG_PACKAGE_python3-async-timeout-src is not set
-CONFIG_PACKAGE_python3-asyncio=m
+CONFIG_PACKAGE_python3-asyncio=y
 # CONFIG_PACKAGE_python3-asyncio-src is not set
 # CONFIG_PACKAGE_python3-atomicwrites is not set
 CONFIG_PACKAGE_python3-attrs=m
@@ -4534,7 +4536,7 @@ CONFIG_PACKAGE_python3-attrs=m
 # CONFIG_PACKAGE_python3-awesomeversion is not set
 # CONFIG_PACKAGE_python3-awscli is not set
 # CONFIG_PACKAGE_python3-babel is not set
-CONFIG_PACKAGE_python3-base=m
+CONFIG_PACKAGE_python3-base=y
 # CONFIG_PACKAGE_python3-base-src is not set
 CONFIG_PACKAGE_python3-bcrypt=m
 # CONFIG_PACKAGE_python3-bcrypt-src is not set
@@ -4551,9 +4553,9 @@ CONFIG_PACKAGE_python3-certifi=m
 # CONFIG_PACKAGE_python3-certifi-src is not set
 CONFIG_PACKAGE_python3-cffi=m
 # CONFIG_PACKAGE_python3-cffi-src is not set
-CONFIG_PACKAGE_python3-cgi=m
+CONFIG_PACKAGE_python3-cgi=y
 # CONFIG_PACKAGE_python3-cgi-src is not set
-CONFIG_PACKAGE_python3-cgitb=m
+CONFIG_PACKAGE_python3-cgitb=y
 # CONFIG_PACKAGE_python3-cgitb-src is not set
 CONFIG_PACKAGE_python3-chardet=m
 # CONFIG_PACKAGE_python3-chardet-src is not set
@@ -4562,7 +4564,7 @@ CONFIG_PACKAGE_python3-chardet=m
 CONFIG_PACKAGE_python3-click=m
 # CONFIG_PACKAGE_python3-click-log is not set
 # CONFIG_PACKAGE_python3-click-src is not set
-CONFIG_PACKAGE_python3-codecs=m
+CONFIG_PACKAGE_python3-codecs=y
 # CONFIG_PACKAGE_python3-codecs-src is not set
 # CONFIG_PACKAGE_python3-colorama is not set
 # CONFIG_PACKAGE_python3-constantly is not set
@@ -4572,16 +4574,16 @@ CONFIG_PACKAGE_python3-codecs=m
 # CONFIG_PACKAGE_python3-cryptodomex is not set
 CONFIG_PACKAGE_python3-cryptography=m
 # CONFIG_PACKAGE_python3-cryptography-src is not set
-CONFIG_PACKAGE_python3-ctypes=m
+CONFIG_PACKAGE_python3-ctypes=y
 # CONFIG_PACKAGE_python3-ctypes-src is not set
 CONFIG_PACKAGE_python3-curl=m
 # CONFIG_PACKAGE_python3-curl-src is not set
 CONFIG_PACKAGE_python3-dateutil=m
 # CONFIG_PACKAGE_python3-dateutil-src is not set
-CONFIG_PACKAGE_python3-dbm=m
+CONFIG_PACKAGE_python3-dbm=y
 # CONFIG_PACKAGE_python3-dbm-src is not set
 # CONFIG_PACKAGE_python3-dbus-fast is not set
-CONFIG_PACKAGE_python3-decimal=m
+CONFIG_PACKAGE_python3-decimal=y
 # CONFIG_PACKAGE_python3-decimal-src is not set
 CONFIG_PACKAGE_python3-decorator=m
 # CONFIG_PACKAGE_python3-decorator-src is not set
@@ -4589,7 +4591,7 @@ CONFIG_PACKAGE_python3-decorator=m
 # CONFIG_PACKAGE_python3-dev is not set
 CONFIG_PACKAGE_python3-distro=m
 # CONFIG_PACKAGE_python3-distro-src is not set
-CONFIG_PACKAGE_python3-distutils=m
+CONFIG_PACKAGE_python3-distutils=y
 # CONFIG_PACKAGE_python3-distutils-src is not set
 CONFIG_PACKAGE_python3-django=m
 # CONFIG_PACKAGE_python3-django-cors-headers is not set
@@ -4602,7 +4604,7 @@ CONFIG_PACKAGE_python3-django=m
 # CONFIG_PACKAGE_python3-docutils is not set
 # CONFIG_PACKAGE_python3-dotenv is not set
 # CONFIG_PACKAGE_python3-drf-nested-routers is not set
-CONFIG_PACKAGE_python3-email=m
+CONFIG_PACKAGE_python3-email=y
 # CONFIG_PACKAGE_python3-email-src is not set
 # CONFIG_PACKAGE_python3-engineio is not set
 # CONFIG_PACKAGE_python3-et_xmlfile is not set
@@ -4645,7 +4647,7 @@ CONFIG_PACKAGE_python3-jinja2=m
 # CONFIG_PACKAGE_python3-jsonschema is not set
 # CONFIG_PACKAGE_python3-lib2to3 is not set
 # CONFIG_PACKAGE_python3-libmodbus is not set
-CONFIG_PACKAGE_python3-light=m
+CONFIG_PACKAGE_python3-light=y
 
 #
 # Configuration
@@ -4654,10 +4656,10 @@ CONFIG_PACKAGE_python3-light=m
 # end of Configuration
 
 # CONFIG_PACKAGE_python3-light-src is not set
-CONFIG_PACKAGE_python3-logging=m
+CONFIG_PACKAGE_python3-logging=y
 # CONFIG_PACKAGE_python3-logging-src is not set
 # CONFIG_PACKAGE_python3-lxml is not set
-CONFIG_PACKAGE_python3-lzma=m
+CONFIG_PACKAGE_python3-lzma=y
 # CONFIG_PACKAGE_python3-lzma-src is not set
 # CONFIG_PACKAGE_python3-markdown is not set
 CONFIG_PACKAGE_python3-markupsafe=m
@@ -4667,9 +4669,9 @@ CONFIG_PACKAGE_python3-markupsafe=m
 # CONFIG_PACKAGE_python3-msgpack is not set
 CONFIG_PACKAGE_python3-multidict=m
 # CONFIG_PACKAGE_python3-multidict-src is not set
-CONFIG_PACKAGE_python3-multiprocessing=m
+CONFIG_PACKAGE_python3-multiprocessing=y
 # CONFIG_PACKAGE_python3-multiprocessing-src is not set
-CONFIG_PACKAGE_python3-ncurses=m
+CONFIG_PACKAGE_python3-ncurses=y
 # CONFIG_PACKAGE_python3-ncurses-src is not set
 # CONFIG_PACKAGE_python3-netdisco is not set
 # CONFIG_PACKAGE_python3-netifaces is not set
@@ -4683,7 +4685,7 @@ CONFIG_PACKAGE_python3-ncurses=m
 # end of Configuration
 
 # CONFIG_PACKAGE_python3-openpyxl is not set
-CONFIG_PACKAGE_python3-openssl=m
+CONFIG_PACKAGE_python3-openssl=y
 # CONFIG_PACKAGE_python3-openssl-src is not set
 # CONFIG_PACKAGE_python3-outcome is not set
 CONFIG_PACKAGE_python3-packages=m
@@ -4719,7 +4721,7 @@ CONFIG_PACKAGE_python3-py=m
 CONFIG_PACKAGE_python3-pycparser=m
 # CONFIG_PACKAGE_python3-pycparser-src is not set
 # CONFIG_PACKAGE_python3-pycrate is not set
-CONFIG_PACKAGE_python3-pydoc=m
+CONFIG_PACKAGE_python3-pydoc=y
 # CONFIG_PACKAGE_python3-pydoc-src is not set
 # CONFIG_PACKAGE_python3-pyfuse3 is not set
 # CONFIG_PACKAGE_python3-pyinotify is not set
@@ -4741,7 +4743,7 @@ CONFIG_PACKAGE_python3-pyparsing=m
 # CONFIG_PACKAGE_python3-pytest-xdist is not set
 CONFIG_PACKAGE_python3-pytz=m
 # CONFIG_PACKAGE_python3-pytz-src is not set
-CONFIG_PACKAGE_python3-readline=m
+CONFIG_PACKAGE_python3-readline=y
 # CONFIG_PACKAGE_python3-readline-src is not set
 CONFIG_PACKAGE_python3-requests=m
 # CONFIG_PACKAGE_python3-requests-src is not set
@@ -4769,7 +4771,7 @@ CONFIG_PACKAGE_python3-smbus=m
 # CONFIG_PACKAGE_python3-sortedcontainers is not set
 # CONFIG_PACKAGE_python3-speedtest-cli is not set
 # CONFIG_PACKAGE_python3-sqlalchemy is not set
-CONFIG_PACKAGE_python3-sqlite3=m
+CONFIG_PACKAGE_python3-sqlite3=y
 # CONFIG_PACKAGE_python3-sqlite3-src is not set
 CONFIG_PACKAGE_python3-sqlparse=m
 # CONFIG_PACKAGE_python3-sqlparse-src is not set
@@ -4785,13 +4787,13 @@ CONFIG_PACKAGE_python3-sqlparse=m
 # CONFIG_PACKAGE_python3-uci is not set
 CONFIG_PACKAGE_python3-unidecode=m
 # CONFIG_PACKAGE_python3-unidecode-src is not set
-CONFIG_PACKAGE_python3-unittest=m
+CONFIG_PACKAGE_python3-unittest=y
 # CONFIG_PACKAGE_python3-unittest-src is not set
-CONFIG_PACKAGE_python3-urllib=m
+CONFIG_PACKAGE_python3-urllib=y
 # CONFIG_PACKAGE_python3-urllib-src is not set
 CONFIG_PACKAGE_python3-urllib3=m
 # CONFIG_PACKAGE_python3-urllib3-src is not set
-CONFIG_PACKAGE_python3-uuid=m
+CONFIG_PACKAGE_python3-uuid=y
 # CONFIG_PACKAGE_python3-uuid-src is not set
 # CONFIG_PACKAGE_python3-venv is not set
 # CONFIG_PACKAGE_python3-vobject is not set
@@ -4802,7 +4804,7 @@ CONFIG_PACKAGE_python3-uuid=m
 # CONFIG_PACKAGE_python3-websockets is not set
 CONFIG_PACKAGE_python3-werkzeug=m
 # CONFIG_PACKAGE_python3-werkzeug-src is not set
-CONFIG_PACKAGE_python3-xml=m
+CONFIG_PACKAGE_python3-xml=y
 # CONFIG_PACKAGE_python3-xml-src is not set
 # CONFIG_PACKAGE_python3-xmltodict is not set
 CONFIG_PACKAGE_python3-yaml=m
@@ -5551,7 +5553,7 @@ CONFIG_OPENSSL_ENGINE=y
 CONFIG_PACKAGE_libopenssl-conf=y
 # CONFIG_PACKAGE_libopenssl-devcrypto is not set
 # CONFIG_PACKAGE_libopenssl-gost_engine is not set
-CONFIG_PACKAGE_libopenssl-legacy=m
+# CONFIG_PACKAGE_libopenssl-legacy is not set
 # CONFIG_PACKAGE_libpolarssl is not set
 CONFIG_PACKAGE_libwolfssl=y
 
@@ -6321,6 +6323,7 @@ CONFIG_PACKAGE_luci-app-aria2=m
 # CONFIG_PACKAGE_luci-app-babeld is not set
 CONFIG_PACKAGE_luci-app-banip=m
 # CONFIG_PACKAGE_luci-app-bcp38 is not set
+# CONFIG_PACKAGE_luci-app-bmx6 is not set
 # CONFIG_PACKAGE_luci-app-bmx7 is not set
 # CONFIG_PACKAGE_luci-app-bypass is not set
 CONFIG_PACKAGE_luci-app-bypass_INCLUDE_Shadowsocks_Libev_Client=y
@@ -6567,11 +6570,13 @@ CONFIG_PACKAGE_luci-proto-ppp=y
 # 6. Libraries
 #
 CONFIG_PACKAGE_luci-lib-base=y
+# CONFIG_PACKAGE_luci-lib-dracula is not set
 # CONFIG_PACKAGE_luci-lib-httpclient is not set
 # CONFIG_PACKAGE_luci-lib-httpprotoutils is not set
 CONFIG_PACKAGE_luci-lib-ip=y
 CONFIG_PACKAGE_luci-lib-ipkg=y
 # CONFIG_PACKAGE_luci-lib-iptparser is not set
+CONFIG_PACKAGE_luci-lib-jquery-1-4=m
 # CONFIG_PACKAGE_luci-lib-json is not set
 CONFIG_PACKAGE_luci-lib-jsonc=y
 CONFIG_PACKAGE_luci-lib-nixio=y
@@ -8089,6 +8094,7 @@ CONFIG_PACKAGE_p910nd=m
 # CONFIG_PACKAGE_bird2 is not set
 # CONFIG_PACKAGE_bird2c is not set
 # CONFIG_PACKAGE_bird2cl is not set
+# CONFIG_PACKAGE_bmx6 is not set
 # CONFIG_PACKAGE_bmx7 is not set
 # CONFIG_PACKAGE_cjdns is not set
 # CONFIG_PACKAGE_cjdns-tests is not set
@@ -8347,7 +8353,7 @@ CONFIG_PACKAGE_kcptun-client=m
 CONFIG_PACKAGE_kcptun-config=m
 # CONFIG_PACKAGE_kcptun-server is not set
 # CONFIG_PACKAGE_librespeed-go is not set
-CONFIG_PACKAGE_lighttpd=m
+CONFIG_PACKAGE_lighttpd=y
 CONFIG_LIGHTTPD_SSL=y
 # CONFIG_LIGHTTPD_SSL_DEPENDS is not set
 CONFIG_LIGHTTPD_SSL_SELECT=m
@@ -8357,32 +8363,32 @@ CONFIG_LIGHTTPD_CRYPTOLIB_NETTLE=y
 # CONFIG_LIGHTTPD_CRYPTOLIB_MBEDTLS is not set
 # CONFIG_LIGHTTPD_CRYPTOLIB_WOLFSSL is not set
 # CONFIG_LIGHTTPD_LOGROTATE is not set
-CONFIG_PACKAGE_lighttpd-mod-access=m
-CONFIG_PACKAGE_lighttpd-mod-accesslog=m
+CONFIG_PACKAGE_lighttpd-mod-access=y
+CONFIG_PACKAGE_lighttpd-mod-accesslog=y
 # CONFIG_PACKAGE_lighttpd-mod-ajp13 is not set
-CONFIG_PACKAGE_lighttpd-mod-alias=m
-CONFIG_PACKAGE_lighttpd-mod-auth=m
-CONFIG_PACKAGE_lighttpd-mod-authn_file=m
+CONFIG_PACKAGE_lighttpd-mod-alias=y
+CONFIG_PACKAGE_lighttpd-mod-auth=y
+CONFIG_PACKAGE_lighttpd-mod-authn_file=y
 # CONFIG_PACKAGE_lighttpd-mod-authn_gssapi is not set
 # CONFIG_PACKAGE_lighttpd-mod-authn_pam is not set
-CONFIG_PACKAGE_lighttpd-mod-cgi=m
-CONFIG_PACKAGE_lighttpd-mod-deflate=m
+CONFIG_PACKAGE_lighttpd-mod-cgi=y
+CONFIG_PACKAGE_lighttpd-mod-deflate=y
 # CONFIG_PACKAGE_lighttpd-mod-evhost is not set
-CONFIG_PACKAGE_lighttpd-mod-expire=m
+CONFIG_PACKAGE_lighttpd-mod-expire=y
 # CONFIG_PACKAGE_lighttpd-mod-extforward is not set
-CONFIG_PACKAGE_lighttpd-mod-fastcgi=m
+CONFIG_PACKAGE_lighttpd-mod-fastcgi=y
 # CONFIG_PACKAGE_lighttpd-mod-gnutls is not set
 CONFIG_PACKAGE_lighttpd-mod-magnet=m
 # CONFIG_PACKAGE_lighttpd-mod-maxminddb is not set
 # CONFIG_PACKAGE_lighttpd-mod-mbedtls is not set
 # CONFIG_PACKAGE_lighttpd-mod-nss is not set
-CONFIG_PACKAGE_lighttpd-mod-openssl=m
+CONFIG_PACKAGE_lighttpd-mod-openssl=y
 # CONFIG_PACKAGE_lighttpd-mod-proxy is not set
 CONFIG_PACKAGE_lighttpd-mod-redirect=m
 CONFIG_PACKAGE_lighttpd-mod-rewrite=m
 # CONFIG_PACKAGE_lighttpd-mod-rrdtool is not set
 CONFIG_PACKAGE_lighttpd-mod-scgi=m
-CONFIG_PACKAGE_lighttpd-mod-setenv=m
+CONFIG_PACKAGE_lighttpd-mod-setenv=y
 CONFIG_PACKAGE_lighttpd-mod-simple_vhost=m
 # CONFIG_PACKAGE_lighttpd-mod-sockproxy is not set
 CONFIG_PACKAGE_lighttpd-mod-ssi=m
@@ -8588,7 +8594,7 @@ CONFIG_PACKAGE_acme=m
 CONFIG_PACKAGE_acme-acmesh=m
 # CONFIG_PACKAGE_acme-acmesh-dnsapi is not set
 CONFIG_PACKAGE_acme-common=m
-CONFIG_PACKAGE_adblock=m
+CONFIG_PACKAGE_adblock=y
 # CONFIG_PACKAGE_adblock-fast is not set
 # CONFIG_PACKAGE_adbyby is not set
 # CONFIG_PACKAGE_addrwatch is not set
@@ -8641,7 +8647,7 @@ CONFIG_PACKAGE_dhcpcd=m
 # CONFIG_PACKAGE_esniper is not set
 CONFIG_PACKAGE_etherwake=y
 # CONFIG_PACKAGE_etherwake-nfqueue is not set
-CONFIG_PACKAGE_ethtool=m
+CONFIG_PACKAGE_ethtool=y
 # CONFIG_PACKAGE_ethtool-full is not set
 # CONFIG_PACKAGE_fail2ban is not set
 # CONFIG_PACKAGE_fakeidentd is not set
@@ -8682,7 +8688,7 @@ CONFIG_IPERF_ENABLE_MULTICAST=y
 CONFIG_PACKAGE_iperf3=y
 # CONFIG_PACKAGE_iperf3-ssl is not set
 # CONFIG_PACKAGE_ipip is not set
-CONFIG_PACKAGE_ipset=m
+CONFIG_PACKAGE_ipset=y
 # CONFIG_PACKAGE_ipset-dns is not set
 CONFIG_PACKAGE_ipt2socks=m
 # CONFIG_PACKAGE_iptraf-ng is not set
@@ -8703,7 +8709,7 @@ CONFIG_PACKAGE_iw=y
 CONFIG_PACKAGE_krb5-libs=m
 # CONFIG_PACKAGE_krb5-server is not set
 # CONFIG_PACKAGE_krb5-server-extras is not set
-CONFIG_PACKAGE_libipset=m
+CONFIG_PACKAGE_libipset=y
 # CONFIG_PACKAGE_libndp is not set
 # CONFIG_PACKAGE_linknx is not set
 # CONFIG_PACKAGE_lucky is not set
@@ -8897,7 +8903,7 @@ CONFIG_PACKAGE_udpxy=m
 # CONFIG_PACKAGE_ustp is not set
 # CONFIG_PACKAGE_v2ray-core is not set
 # CONFIG_PACKAGE_vallumd is not set
-# CONFIG_PACKAGE_vlmcsd is not set
+# CONFIG_PACKAGE_vlmcsd=m
 # CONFIG_PACKAGE_vncrepeater is not set
 # CONFIG_PACKAGE_vnstat is not set
 # CONFIG_PACKAGE_vnstat2 is not set
