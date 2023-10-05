@@ -267,8 +267,8 @@ jobs:
            ##cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
            
            #cat myconfig/config.tvh.ffmpeg >> .config
-           #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
-           [ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
+           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
            cd x-wrt 
            sudo rm -rf /usr/share/dotnet
            sudo rm -rf /opt/ghc
