@@ -37,7 +37,7 @@ env:
   KERNEL_CONFIG_DIR: x-wrt/target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: false
+  KERNEL_MENUCONFIG: true
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
   KERNEL_VERSION: '5.15'
@@ -224,6 +224,7 @@ jobs:
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt 
+           make kernel_menuconfig -j4 V=s 
            make -j$(nproc) || make -j1 
            # cp config.ramips.2 .config
            #make -j$(nproc) || make -j1 
