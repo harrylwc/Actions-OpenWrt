@@ -50,7 +50,7 @@ env:
   KERNEL_VERSION: '6.1'                                                                            
   UPDATE_MULTI_CORE_FILE1: myconfig/sys.lua
   UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
-  KERNEL_MODULE: myconfig/kernel_modules.txt
+  KERNEL_MODULE: myconfig/kernel_r619ac
   FEEDS_CONF: feeds.conf.default
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
@@ -267,7 +267,8 @@ jobs:
            ##cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
            
            #cat myconfig/config.tvh.ffmpeg >> .config
-           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           [ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
            cd x-wrt 
            sudo rm -rf /usr/share/dotnet
            sudo rm -rf /opt/ghc
