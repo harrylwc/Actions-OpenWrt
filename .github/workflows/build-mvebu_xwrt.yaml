@@ -114,13 +114,6 @@ jobs:
         useVersionInfo=$(git show -s --date=short --format="%0AAuthor: %an%0Adate: %cd%0Acommit: %s%0Acommit hash: %H")
         echo "useVersionInfo=$useVersionInfo" >> $GITHUB_ENV
         echo "DATE=$(date "+%Y-%m-%d %H:%M:%S")" >> $GITHUB_ENV
-    - name: 下载插件
-
-      run: cd x-wrt && ./scripts/feeds update -a
-
-    - name: 读取插件
-
-      run: cd x-wrt && ./scripts/feeds install -a
 
     - name: 更改设置
 
