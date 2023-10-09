@@ -43,7 +43,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: true
+  KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
   #KERNEL_VERSION: '5.15'
@@ -236,7 +236,7 @@ jobs:
           #echo "======================="
           #du -h ./ --max-depth=1
           #du -h ~/work/x-wrt --max-depth=1 || true
-          make kernel_menuconfig -j4
+          #make kernel_menuconfig -j4
       
       -  name: SSH connection for failure Debug
          if: ${{ failure() }}
