@@ -266,7 +266,7 @@ jobs:
            cd x-wrt 
            sudo rm -rf "$AGENT_TOOLSDIRECTORY"
            #sudo rm -rf $GITHUB_WORKSPACE/lede
-           make kernel_menuconfig -j4
+           #make kernel_menuconfig -j4
            make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
          
