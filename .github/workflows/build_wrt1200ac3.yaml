@@ -230,7 +230,7 @@ jobs:
           #echo "======================="
           #du -h ./ --max-depth=1
           #du -h ~/work/x-wrt --max-depth=1 || true
-          #make kernel_menuconfig -j4
+          make kernel_menuconfig -j4
       
       -  name: SSH connection for failure Debug
          if: ${{ failure() }}
