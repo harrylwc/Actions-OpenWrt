@@ -236,7 +236,7 @@ jobs:
           #echo "======================="
           #du -h ./ --max-depth=1
           #du -h ~/work/x-wrt --max-depth=1 || true
-          #make kernel_menuconfig -j4
+          
       
       -  name: SSH connection for failure Debug
          if: ${{ failure() }}
@@ -276,7 +276,7 @@ jobs:
            sudo rm -rf "/usr/local/share/boost"
            sudo rm -rf "$AGENT_TOOLSDIRECTORY" 
            #sudo rm -rf $GITHUB_WORKSPACE/lede
-           #make kernel_menuconfig -j2
+           #make kernel_menuconfig -j4
            make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
           
