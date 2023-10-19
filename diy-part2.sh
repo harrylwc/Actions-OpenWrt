@@ -81,8 +81,9 @@ sed -i 's/zh_Hans/zh_Hant/g' /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x
 #cd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/kenzo/luci-app-serverchan/po
 #ln -s zh_Hant zh-tw 
 
-cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
-cp $GITHUB_WORKSPACE/patches/Makefile.vlmcsd $GITHUB_WORKSPACE/x-wrt/package/vlmcsd/Makefile
+#cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
+#cp $GITHUB_WORKSPACE/patches/Makefile.vlmcsd $GITHUB_WORKSPACE/x-wrt/package/vlmcsd/Makefile
+git clone https://github.com/cokebar/openwrt-vlmcsd $GITHUB_WORKSPACE/x-wrt/package/
 cd $GITHUB_WORKSPACE/ 
 cp $GITHUB_WORKSPACE/patches/*.patch $GITHUB_WORKSPACE/x-wrt/
 #rm -rf x-wrt/feeds/packages/lang/golang
