@@ -83,7 +83,7 @@ sed -i 's/zh_Hans/zh_Hant/g' /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x
 
 #cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
 #cp $GITHUB_WORKSPACE/patches/Makefile.vlmcsd $GITHUB_WORKSPACE/x-wrt/package/vlmcsd/Makefile
-git clone https://github.com/cokebar/openwrt-vlmcsd $GITHUB_WORKSPACE/x-wrt/package/
+git clone https://github.com/cokebar/openwrt-vlmcsd $GITHUB_WORKSPACE/x-wrt/package/vlmcsd
 cd $GITHUB_WORKSPACE/ 
 cp $GITHUB_WORKSPACE/patches/*.patch $GITHUB_WORKSPACE/x-wrt/
 #rm -rf x-wrt/feeds/packages/lang/golang
