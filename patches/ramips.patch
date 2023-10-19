@@ -1,71 +1,62 @@
-diff --git a/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts b/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts
-index bff117b729..5c277ab509 100644
+/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts b/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts
+index 24b79711c5..65954d4139 100644
 --- a/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts
 +++ b/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts
 @@ -9,7 +9,6 @@
- 		led-failsafe = &led_power;
- 		led-running = &led_power;
- 		led-upgrade = &led_power;
--		label-mac-device = &ethernet;
- 	};
- 
- 	leds {
-@@ -20,51 +19,25 @@
- 			gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
- 		};
- 
--		wlan1 {
-+		wlan0 {
- 			label = "blue:wifi";
- 			gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
- 		};
- 
--		wlan2 {
--			label = "blue:wifi5g";
--			gpios = <&gpio2 10 GPIO_ACTIVE_LOW>;
--		};
+                led-failsafe = &led_power;
+                led-running = &led_power;
+                led-upgrade = &led_power;
+-               label-mac-device = &ethernet;
+        };
+
+        leds {
+@@ -20,41 +19,25 @@
+                        gpios = <&gpio0 9 GPIO_ACTIVE_LOW>;
+                };
+
+-               wlan1 {
++               wlan0 {
+                        label = "blue:wifi";
+                        gpios = <&gpio3 0 GPIO_ACTIVE_LOW>;
+                };
+
+-               wlan2 {
+-                       label = "blue:wifi5g";
+-                       gpios = <&gpio2 10 GPIO_ACTIVE_LOW>;
+-               };
 -
- 		usb {
- 			label = "blue:usb";
--			gpios = <&gpio2 12 GPIO_ACTIVE_LOW>;
-+			gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
- 			trigger-sources = <&ohci_port1>, <&ehci_port1>;
- 			linux,default-trigger = "usbport";
- 		};
- 
--		lan {
--			label = "blue:lan";
--			gpios = <&gpio2 15 GPIO_ACTIVE_LOW>;
--		};
+                usb {
+                        label = "blue:usb";
+-                       gpios = <&gpio2 12 GPIO_ACTIVE_LOW>;
++                       gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
+                        trigger-sources = <&ohci_port1>, <&ehci_port1>;
+                        linux,default-trigger = "usbport";
+                };
+
+-               lan {
+-                       label = "blue:lan";
+-                       gpios = <&gpio2 15 GPIO_ACTIVE_LOW>;
+-               };
 -
--		internet {
--			label = "blue:internet";
--			gpios = <&gpio2 11 GPIO_ACTIVE_LOW>;
--		};
- 	};
+-               internet {
+-                       label = "blue:internet";
+-                       gpios = <&gpio2 11 GPIO_ACTIVE_LOW>;
+-               };
+        };
  };
- 
+
  &ethernet {
- 	pinctrl-names = "default";
- 	pinctrl-0 = <&ephy_pins>;
+        pinctrl-names = "default";
+        pinctrl-0 = <&ephy_pins>;
 -
--	nvmem-cells = <&macaddr_factory_28>;
--	nvmem-cell-names = "mac-address";
+-       nvmem-cells = <&macaddr_factory_28>;
+-       nvmem-cell-names = "mac-address";
 -
--	mediatek,portmap = "llllw";
-+	mtd-mac-address = <&factory 0x4>;
-+	mediatek,portmap = "wllll";
+-       mediatek,portmap = "llllw";
++
++       mtd-mac-address = <&factory 0x4>;
++       mediatek,portmap = "wllll";
  };
- 
--&factory {
--	compatible = "nvmem-cells";
--	#address-cells = <1>;
--	#size-cells = <1>;
--
--	macaddr_factory_28: macaddr@28 {
--		reg = <0x28 0x6>;
--	};
--};
 diff --git a/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dtsi b/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dtsi
 index c7b7ea7b90..f081e8aba9 100644
 --- a/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dtsi
