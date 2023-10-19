@@ -1,4 +1,4 @@
-/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts b/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts
+diff --git a/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts b/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts
 index 24b79711c5..65954d4139 100644
 --- a/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts
 +++ b/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts
