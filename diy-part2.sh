@@ -38,6 +38,7 @@ ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applicat
 #cp -r $GITHUB_WORKSPACE/gettext-full $GITHUB_WORKSPACE/x-wrt/package/libs/
 
 #cp $GITHUB_WORKSPACE/patches/999-workqueue.patch $GITHUB_WORKSPACE/x-wrt/target/linux/generic/backport-5.15/
+#mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/luci/luci-app-easymesh/po/zh-tw
 
 mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw
 /usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-cn/nlbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw/nlbwmon.po 
