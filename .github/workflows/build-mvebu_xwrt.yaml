@@ -177,7 +177,7 @@ jobs:
         
         cd x-wrt
         #cp $CONFIG_FILE .config
-        cp config.wrt1200ac.0 .config
+        cp config.wrt1200ac.1 .config
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         #echo "build config.wrt1200ac.0 success"
