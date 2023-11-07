@@ -183,6 +183,7 @@ jobs:
           #make -j$(nproc) || make -j1 V=s
           #[ $? != 0 ] && make V=s || echo "zteq7 build success"
           #cp config.$ROUTER_MODEL.0 .config
+          echo cpu core=$(nproc)
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "zteq7 build success"
           cp -f bin/targets/ramips/mt7621/openwrt-ramips-mt7621-d-team_newifi-d2-squashfs-sysupgrade.bin bin/targets/ramips/drivers/
@@ -226,6 +227,7 @@ jobs:
            cd x-wrt 
            make -j$(nproc) || make -j1 
            # cp config.ramips.2 .config
+           echo cpu core=$(nproc)
            #make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
       - name: SSH connection for failure Debug
