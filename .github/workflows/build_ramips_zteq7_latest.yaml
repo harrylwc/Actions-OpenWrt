@@ -78,7 +78,8 @@ jobs:
       - name: Check CPU model
         run: |                                                    
           cat /proc/cpuinfo|grep model                            
-          cat /proc/cpuinfo|grep proc         
+          cat /proc/cpuinfo|grep proc     
+          echo cpu core=$(nproc)
       - name: Update feeds & Load custom configuration
         run: |
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
@@ -202,6 +203,7 @@ jobs:
         run: |
           cd x-wrt
           #cp config.ramips.2 .config
+          echo cpu core=$(nproc)
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
           
@@ -237,6 +239,7 @@ jobs:
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt
+           echo cpu core=$(nproc)
            make -j$(nproc) || make -j1
            [ $? != 0 ] && make V=s || echo "build success"
           
