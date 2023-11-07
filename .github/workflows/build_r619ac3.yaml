@@ -79,6 +79,7 @@ jobs:
         run: |                                                    
           cat /proc/cpuinfo|grep model                            
           cat /proc/cpuinfo|grep proc
+          echo cpu core=$(nproc)
           free
       - name: Update feeds & Load custom configuration
         run: |
@@ -225,6 +226,7 @@ jobs:
           #wget https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz
           #cd ../
           ##cp $GITHUB_WORKSPACE/myconfig/config.r619ac.2 .config
+          echo cpu core=$(nproc)
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
           
@@ -277,6 +279,7 @@ jobs:
            sudo rm -rf "$AGENT_TOOLSDIRECTORY" 
            #sudo rm -rf $GITHUB_WORKSPACE/lede
            #make kernel_menuconfig -j4
+           echo cpu core=$(nproc)
            make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
           
