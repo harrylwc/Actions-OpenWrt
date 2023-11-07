@@ -82,6 +82,7 @@ jobs:
         run: |                                                    
           cat /proc/cpuinfo|grep model                            
           cat /proc/cpuinfo|grep proc
+          echo cpu core=$(nproc)
           free
   
       - name: Update feeds & Load custom configuration
@@ -220,6 +221,7 @@ jobs:
           #wget https://oss.oetiker.ch/rrdtool/pub/archive/rrdtool-1.0.x/rrdtool-1.0.50.tar.gz
           #wget https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz
           #cd ../
+          echo cpu core=$(nproc)
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
           
@@ -266,6 +268,7 @@ jobs:
            cd x-wrt 
            sudo rm -rf "$AGENT_TOOLSDIRECTORY"
            #sudo rm -rf $GITHUB_WORKSPACE/lede
+           echo cpu core=$(nproc)
            #make kernel_menuconfig -j4
            make -j$(nproc) || make -j1 
            [ $? != 0 ] && make V=s || echo "build success" 
