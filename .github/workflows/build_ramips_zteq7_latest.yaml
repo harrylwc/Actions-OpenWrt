@@ -46,7 +46,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: false
+  KERNEL_MENUCONFIG: true
   CPU_MULTI_CORE: false
   
   KERNEL_VERSION: '5.15'
@@ -221,15 +221,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
           TELEGRAM_CHAT_ID: 1373335316
  
-      - name: SSH connection for KERNEL MENU CONFIG
-        if: env.KERNEL_MENUCONFIG == 'true'
-        uses: P3TERX/ssh2actions@main
-        env:
-         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
-         TELEGRAM_CHAT_ID: 1373335316
-          #uses: lhotari/action-upterm@v1
 
- 
       - name: Compile again after .config updated or add kernel modules
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
@@ -242,7 +234,14 @@ jobs:
            echo cpu core=$(nproc)
            make -j$(nproc) || make -j1
            [ $? != 0 ] && make V=s || echo "build success"
-          
+      - name: SSH connection for KERNEL MENU CONFIG
+        if: env.KERNEL_MENUCONFIG == 'true'
+          # uses: lhotari/action-upterm@v1
+        uses: P3TERX/ssh2actions@main
+        env:
+         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+         TELEGRAM_CHAT_ID: 1373335316
+         
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         uses: P3TERX/ssh2actions@main
