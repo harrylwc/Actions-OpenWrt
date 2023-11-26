@@ -2858,6 +2858,7 @@ CONFIG_PACKAGE_nginx-util=m
 # CONFIG_PACKAGE_ibt-firmware is not set
 # CONFIG_PACKAGE_iwl3945-firmware is not set
 # CONFIG_PACKAGE_iwl4965-firmware is not set
+# CONFIG_PACKAGE_iwlwifi-firmware-ax101 is not set
 # CONFIG_PACKAGE_iwlwifi-firmware-ax200 is not set
 # CONFIG_PACKAGE_iwlwifi-firmware-ax210 is not set
 # CONFIG_PACKAGE_iwlwifi-firmware-iwl100 is not set
@@ -4032,6 +4033,7 @@ CONFIG_PACKAGE_lua-cjson=m
 # CONFIG_PACKAGE_lua-eco-nl80211 is not set
 # CONFIG_PACKAGE_lua-eco-sha1 is not set
 # CONFIG_PACKAGE_lua-eco-socket is not set
+# CONFIG_PACKAGE_lua-eco-ssh is not set
 # CONFIG_PACKAGE_lua-eco-ssl is not set
 CONFIG_LUA_ECO_OPENSSL=y
 # CONFIG_LUA_ECO_WOLFSSL is not set
@@ -4230,7 +4232,6 @@ CONFIG_PERL_NOCOMMENT=y
 # CONFIG_PACKAGE_perlbase-anydbm-file is not set
 # CONFIG_PACKAGE_perlbase-app is not set
 # CONFIG_PACKAGE_perlbase-archive is not set
-# CONFIG_PACKAGE_perlbase-arybase is not set
 # CONFIG_PACKAGE_perlbase-attribute is not set
 # CONFIG_PACKAGE_perlbase-attributes is not set
 # CONFIG_PACKAGE_perlbase-autodie is not set
@@ -4456,6 +4457,8 @@ CONFIG_PACKAGE_python3-flask-login=m
 # CONFIG_PACKAGE_python3-flask-socketio is not set
 # CONFIG_PACKAGE_python3-flask-src is not set
 # CONFIG_PACKAGE_python3-flup is not set
+# CONFIG_PACKAGE_python3-fnv-hash-fast is not set
+# CONFIG_PACKAGE_python3-fnvhash is not set
 # CONFIG_PACKAGE_python3-frozenlist is not set
 # CONFIG_PACKAGE_python3-gensio is not set
 # CONFIG_PACKAGE_python3-gmpy2 is not set
@@ -4494,6 +4497,7 @@ CONFIG_PACKAGE_python3-light=y
 # CONFIG_PACKAGE_python3-light-src is not set
 CONFIG_PACKAGE_python3-logging=m
 # CONFIG_PACKAGE_python3-logging-src is not set
+# CONFIG_PACKAGE_python3-lru-dict is not set
 CONFIG_PACKAGE_python3-lxml=m
 # CONFIG_PACKAGE_python3-lxml-src is not set
 CONFIG_PACKAGE_python3-lzma=m
@@ -4525,6 +4529,7 @@ CONFIG_PACKAGE_python3-netifaces=m
 # CONFIG_PACKAGE_python3-openpyxl is not set
 CONFIG_PACKAGE_python3-openssl=m
 # CONFIG_PACKAGE_python3-openssl-src is not set
+# CONFIG_PACKAGE_python3-orjson is not set
 # CONFIG_PACKAGE_python3-outcome is not set
 # CONFIG_PACKAGE_python3-packages is not set
 # CONFIG_PACKAGE_python3-packaging is not set
@@ -4775,12 +4780,6 @@ CONFIG_PACKAGE_libiptext6=y
 CONFIG_PACKAGE_libxtables=y
 # CONFIG_IPTABLES_CONNLABEL is not set
 # end of Firewall
-
-#
-# Instant Messaging
-#
-# CONFIG_PACKAGE_quasselc is not set
-# end of Instant Messaging
 
 #
 # IoT
@@ -5398,7 +5397,7 @@ CONFIG_OPENSSL_ENGINE=y
 CONFIG_PACKAGE_libopenssl-conf=y
 # CONFIG_PACKAGE_libopenssl-devcrypto is not set
 # CONFIG_PACKAGE_libopenssl-gost_engine is not set
-CONFIG_PACKAGE_libopenssl-legacy=m
+CONFIG_PACKAGE_libopenssl-legacy=y
 # CONFIG_PACKAGE_libpolarssl is not set
 CONFIG_PACKAGE_libwolfssl=y
 
@@ -7909,7 +7908,6 @@ CONFIG_PACKAGE_wsdd2=y
 # CONFIG_PACKAGE_ngircd is not set
 # CONFIG_PACKAGE_ngircd-nossl is not set
 # CONFIG_PACKAGE_prosody is not set
-# CONFIG_PACKAGE_quassel-irssi is not set
 # CONFIG_PACKAGE_umurmur-mbedtls is not set
 # CONFIG_PACKAGE_umurmur-openssl is not set
 # CONFIG_PACKAGE_znc is not set
@@ -8543,10 +8541,10 @@ CONFIG_WPA_MBO_SUPPORT=y
 # CONFIG_PACKAGE_wpad-basic is not set
 # CONFIG_PACKAGE_wpad-basic-mbedtls is not set
 # CONFIG_PACKAGE_wpad-basic-openssl is not set
-CONFIG_PACKAGE_wpad-basic-wolfssl=y
+CONFIG_PACKAGE_wpad-basic-wolfssl=m
 # CONFIG_PACKAGE_wpad-mbedtls is not set
 # CONFIG_PACKAGE_wpad-mesh-mbedtls is not set
-CONFIG_PACKAGE_wpad-mesh-openssl=m
+CONFIG_PACKAGE_wpad-mesh-openssl=y
 # CONFIG_PACKAGE_wpad-mesh-wolfssl is not set
 # CONFIG_PACKAGE_wpad-mini is not set
 CONFIG_PACKAGE_wpad-openssl=m
