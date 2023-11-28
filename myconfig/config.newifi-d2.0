@@ -87,6 +87,7 @@ CONFIG_TARGET_ramips_mt7621=y
 # CONFIG_TARGET_ramips_mt7621_DEVICE_cudy_m1800 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_cudy_wr1300-v1 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_cudy_wr1300-v2 is not set
+# CONFIG_TARGET_ramips_mt7621_DEVICE_cudy_wr1300-v3 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_cudy_wr2100 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_cudy_x6-v1 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_cudy_x6-v2 is not set
@@ -232,6 +233,7 @@ CONFIG_TARGET_ramips_mt7621_DEVICE_d-team_newifi-d2=y
 # CONFIG_TARGET_ramips_mt7621_DEVICE_tplink_eap615-wall-v1 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_tplink_ec330-g5u-v1 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_tplink_er605-v2 is not set
+# CONFIG_TARGET_ramips_mt7621_DEVICE_tplink_ex220-v1 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_tplink_mr600-v2-eu is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_tplink_re350-v1 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_tplink_re500-v1 is not set
@@ -6922,10 +6924,10 @@ CONFIG_DRIVER_11AC_SUPPORT=y
 CONFIG_PACKAGE_wpad-basic-wolfssl=m
 # CONFIG_PACKAGE_wpad-mbedtls is not set
 # CONFIG_PACKAGE_wpad-mesh-mbedtls is not set
-CONFIG_PACKAGE_wpad-mesh-openssl=y
+# CONFIG_PACKAGE_wpad-mesh-openssl is not set
 CONFIG_PACKAGE_wpad-mesh-wolfssl=m
 # CONFIG_PACKAGE_wpad-mini is not set
-# CONFIG_PACKAGE_wpad-openssl is not set
+CONFIG_PACKAGE_wpad-openssl=y
 # CONFIG_PACKAGE_wpad-wolfssl is not set
 # end of WirelessAPD
 
