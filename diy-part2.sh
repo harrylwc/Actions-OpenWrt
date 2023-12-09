@@ -46,9 +46,9 @@ mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-n
 #cp $GITHUB_WORKSPACE/*.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/lighttpd/patches/
 
 #cp $GITHUB_WORKSPACE/patches/Makefile.nginx $GITHUB_WORKSPACE/x-wrt/feeds/packages/net/nginx/Makefile
-mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libxml2/patches/
-cp $GITHUB_WORKSPACE/patches/Makefile.xml2 /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libxml2/
-cp $GITHUB_WORKSPACE/patches/iconv.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libxml2/patches/
+mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/libs/libxml2/patches
+cp $GITHUB_WORKSPACE/patches/Makefile.xml2 /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/libs/libxml2/Makefile
+cp $GITHUB_WORKSPACE/patches/iconv.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/libs/libxml2/patches/
 
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/libwebsockets.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libwebsockets/patches/
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/Makefile.gnutls /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/Makefile
