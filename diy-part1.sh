@@ -44,6 +44,8 @@ git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
 #sed -i 's/KERNEL_PATCHVER:=5.10/KERNEL_PATCHVER:=5.15/g' target/linux/ipq40xx/Makefile
 ./scripts/feeds update -a
 ./scripts/feeds install -f -a
+rm -rf package/openwrt-packages/luci-app-wechatapp
+rm -rf feeds/kenzo/luci-app-wechatapp
 sudo mkdir -p /workdir
 sudo timedatectl set-timezone "$TZ"
 sudo chown $USER:$GROUPS /workdir
