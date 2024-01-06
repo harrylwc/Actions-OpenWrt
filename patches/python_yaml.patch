@@ -1,0 +1,12 @@
+--- a/feeds/packages/lang/python/python-yaml/Makefile
++++ b/feeds/packages/lang/python/python-yaml/Makefile
+@@ -39,7 +39,8 @@
+ endef
+ 
+ PYTHON3_PKG_BUILD_VARS:=PYYAML_FORCE_LIBYAML=1
+-
++PYTHON3_PKG_SETUP_ARGS:= \
++	--no-build-isolation
+ $(eval $(call Py3Package,python3-yaml))
+ $(eval $(call BuildPackage,python3-yaml))
+ $(eval $(call BuildPackage,python3-yaml-src))
