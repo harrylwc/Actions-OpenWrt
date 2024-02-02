@@ -232,7 +232,7 @@ jobs:
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt
            echo cpu core=$(nproc)
-           make -j$(nproc) || make -j1
+           make -j$(nproc) || make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success"
       - name: SSH connection for KERNEL MENU CONFIG
         if: env.KERNEL_MENUCONFIG == 'true'
