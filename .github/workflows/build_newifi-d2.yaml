@@ -225,7 +225,7 @@ jobs:
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt 
-           make -j$(nproc) || make -j1 
+           make -j$(nproc) || make -j1 V=s
            # cp config.ramips.2 .config
            echo cpu core=$(nproc)
            #make -j$(nproc) || make -j1 
