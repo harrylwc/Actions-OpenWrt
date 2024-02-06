@@ -8296,7 +8296,7 @@ CONFIG_PACKAGE_natcapd-server=m
 #
 # Natflow users module support
 #
-CONFIG_PACKAGE_luci-app-natflow-users=m
+#CONFIG_PACKAGE_luci-app-natflow-users=m
 # end of Natflow users module support
 
 #
