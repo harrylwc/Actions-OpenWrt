@@ -281,7 +281,8 @@ jobs:
            #sudo rm -rf $GITHUB_WORKSPACE/lede
            echo cpu core=$(nproc)
            #make kernel_menuconfig -j4
-           make -j$(nproc) || make -j1 V=s
+           make -j$(nproc)
+           #|| make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success" 
          
            df -kh
