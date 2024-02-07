@@ -21,6 +21,7 @@ sudo apt install libcurl4-openssl-dev libssl-dev
 cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
 cd $GITHUB_WORKSPACE/x-wrt/
 git clone https://github.com/tvheadend/tvheadend.git
+
 cp -r $GITHUB_WORKSPACE/x-wrt/tvheadend/.git $GITHUB_WORKSPACE/x-wrt/package/tvheadend/files/
 #sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/ramips/Makefile
 sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/mvebu/Makefile
@@ -44,7 +45,7 @@ mkdir ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/feeds/kenzo/luci-app-
 mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw
 /usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-cn/nlbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw/nlbwmon.po 
 #cp $GITHUB_WORKSPACE/*.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/lighttpd/patches/
-
+cp $GITHUB_WORKSPACE/patches/imagemagick.Makefile $GITHUB_WORKSPACE/x-wrt/feeds/package/feeds/packages/imagemagick/Makefile
 #cp $GITHUB_WORKSPACE/patches/Makefile.nginx $GITHUB_WORKSPACE/x-wrt/feeds/packages/net/nginx/Makefile
 #mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/libs/libxml2/patches
 #cp $GITHUB_WORKSPACE/patches/Makefile.xml2 /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/libs/libxml2/Makefile
