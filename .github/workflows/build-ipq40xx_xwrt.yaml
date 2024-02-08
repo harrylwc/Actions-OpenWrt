@@ -175,6 +175,7 @@ jobs:
       id: compile
 
       run: |
+        rm /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/build_dir/target-arm_cortex-a7+neon-vfpv4_musl_eabi/linux-ipq40xx_generic/linux-6.1.75/arch/arm/boot/dts/qcom-ipq4019-rt-ac42u.dts
         #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
         cd x-wrt
         #cp $CONFIG_FILE .config
