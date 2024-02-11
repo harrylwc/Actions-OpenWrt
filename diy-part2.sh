@@ -46,6 +46,8 @@ mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-n
 /usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-cn/nlbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw/nlbwmon.po 
 #cp $GITHUB_WORKSPACE/*.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/lighttpd/patches/
 cp $GITHUB_WORKSPACE/patches/imagemagick.Makefile $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/imagemagick/Makefile
+cp $GITHUB_WORKSPACE/patches/libssh2.Makefile  $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/libssh2/Makefile
+
 #cp $GITHUB_WORKSPACE/patches/Makefile.nginx $GITHUB_WORKSPACE/x-wrt/feeds/packages/net/nginx/Makefile
 #mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/libs/libxml2/patches
 #cp $GITHUB_WORKSPACE/patches/Makefile.xml2 /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/libs/libxml2/Makefile
