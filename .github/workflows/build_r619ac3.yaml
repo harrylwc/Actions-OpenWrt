@@ -250,7 +250,7 @@ jobs:
           [ $? != 0 ] && make V=s || echo "build success"
           df -kh
           rm `find $GITHUB_WORKSPACE/x-wrt/build_dir/ -name *.o`
-          du -a /dir/ | sort -n -r | head -n 20>/tmp/largefiles.txt
+          du -a / | sort -n -r | head -n 20>/tmp/largefiles.txt
           cat /tmp/largefiles.txt
           df -kh
           #make V=99 2>&1 |tee build.log
