@@ -46,7 +46,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: true
+  KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: false
   
   KERNEL_VERSION: '6.1'
@@ -203,6 +203,7 @@ jobs:
         run: |
           cd x-wrt
           cp $GITHUB_WORKSPACE/myconfig/config.ramips.0 $GITHUB_WORKSPACE/x-wrt/.config
+          ls -alt x-wrt/.config
           echo cpu core=$(nproc)
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
@@ -232,6 +233,7 @@ jobs:
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt
+           ls -alt .config
            echo cpu core=$(nproc)
            make -j$(nproc) || make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success"
