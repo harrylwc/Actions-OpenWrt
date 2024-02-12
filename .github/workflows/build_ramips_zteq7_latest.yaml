@@ -38,7 +38,7 @@ env:
   REPO_BRANCH: 'master'
   ROUTER_MODEL: ramips
   TVH: false
-  BUILD_KERNEL_MODULES: false
+  BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ramips/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.ramips'
   #KERNEL_CONFIG_DIR: target/linux/ipq40xx
