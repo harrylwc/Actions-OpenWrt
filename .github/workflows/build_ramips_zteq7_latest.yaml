@@ -202,7 +202,7 @@ jobs:
       - name: Compile firmware
         run: |
           cd x-wrt
-          #cp config.ramips.2 .config
+          cp config.ramips.0 .config
           echo cpu core=$(nproc)
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
