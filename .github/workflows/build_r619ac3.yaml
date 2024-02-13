@@ -150,7 +150,7 @@ jobs:
           ls -alt ${{ github.workspace }}/x-wrt/staging_dir/*
           docker rmi `docker images -q`
           sudo apt remove firefox powershell microsoft-edge* temurin* php* nginx dotnet* ubuntu-gnome-desktop gnome-shell golang* google* mysql* ruby* apach* r-*
-          sudo apt-get purge --auto-remove openjdk* firefox powershell microsoft-edge* temurin* r-* php* nginx dotnet* ubuntu-gnome-desktop gnome-shell golang* google* mysql* ruby* apach*
+          sudo apt-get purge --auto-remove azure* openjdk* firefox powershell microsoft-edge* temurin* r-* php* nginx dotnet* ubuntu-gnome-desktop gnome-shell golang* google* mysql* ruby* apach*
           
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
