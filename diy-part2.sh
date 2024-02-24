@@ -10,7 +10,8 @@
 
 
 ### perl-html-parser 
- 
+### imagemagick 
+### libssh2
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.2.100/g' package/base-files/files/bin/config_generate
@@ -45,8 +46,8 @@ mkdir ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/feeds/kenzo/luci-app-
 mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw
 /usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-cn/nlbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw/nlbwmon.po 
 #cp $GITHUB_WORKSPACE/*.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/lighttpd/patches/
-cp $GITHUB_WORKSPACE/patches/imagemagick.Makefile $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/imagemagick/Makefile
-cp $GITHUB_WORKSPACE/patches/libssh2.Makefile  $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/libssh2/Makefile
+#cp $GITHUB_WORKSPACE/patches/imagemagick.Makefile $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/imagemagick/Makefile
+#cp $GITHUB_WORKSPACE/patches/libssh2.Makefile  $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/libssh2/Makefile
 
 #cp $GITHUB_WORKSPACE/patches/Makefile.nginx $GITHUB_WORKSPACE/x-wrt/feeds/packages/net/nginx/Makefile
 #mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/libs/libxml2/patches
@@ -56,7 +57,7 @@ cp $GITHUB_WORKSPACE/patches/libssh2.Makefile  $GITHUB_WORKSPACE/x-wrt/package/f
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/libwebsockets.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/libwebsockets/patches/
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/Makefile.gnutls /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/Makefile
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/030-unistring-optional.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/patches/               
-cp $GITHUB_WORKSPACE/patches/Makefile.perl-html-parser $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/perl-html-parser/Makefile
+#cp $GITHUB_WORKSPACE/patches/Makefile.perl-html-parser $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/perl-html-parser/Makefile
 #cp $GITHUB_WORKSPACE/patches/*ipq4019*.dts $GITHUB_WORKSPACE/x-wrt/target/linux/ipq40xx/files/arch/arm/boot/dts/
 #cp $GITHUB_WORKSPACE/patches/Makefile.php8 $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/php8/Makefile
 #cp $GITHUB_WORKSPACE/patches/Makefile.python3-packages $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/python/python3-packages/Makefile
