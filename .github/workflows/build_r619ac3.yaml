@@ -21,8 +21,8 @@ on:
   #push:
    #branches: 
     #- master
- schedule:
-    - cron: "10 16 * * *"
+ #schedule:
+  #  - cron: "10 16 * * *"
   #release:
    # types: [published]
   #watch:
