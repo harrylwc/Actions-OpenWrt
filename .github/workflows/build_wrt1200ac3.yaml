@@ -169,6 +169,9 @@ jobs:
           sudo swapoff -a
           sudo rm -f /swapfile
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -f /usr/local/share/chromium/chrome-linux/chrome
+          sudo rm -f /opt/microsoft/msedge/msedge
+          sudo apt-get purge --auto-remove azure* openjdk* firefox* powershell* microsoft-edge* temurin* r-* php* nginx dotnet* ubuntu-gnome-desktop gnome-shell golang* google* mysql* ruby* apach* 
           df -kh
           #find /home/runner/work/_temp/ -name "*cache*"
      # - name: Run migrations
@@ -228,6 +231,8 @@ jobs:
       - name: Compile firmware
         run: |
           cd x-wrt
+          sudo mv dl /mnt/
+          ln -s /mnt/dl
           # rm dl/rrdtool*
           #wget https://oss.oetiker.ch/rrdtool/pub/archive/rrdtool-1.0.x/rrdtool-1.0.50.tar.gz
           #wget https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz
