@@ -11,7 +11,7 @@ name: Compile R619AC3 TVH OpenWrt Images
 
 on:
  repository_dispatch:
-    types: [r619ac_completed]
+    types: [mvebu_ipq40xx_ramips_completed]
  workflow_dispatch:    
     inputs:
       ssh:
