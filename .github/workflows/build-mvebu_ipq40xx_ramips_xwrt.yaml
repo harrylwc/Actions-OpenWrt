@@ -186,13 +186,14 @@ jobs:
         ln -s /mnt/dl
         #cp $CONFIG_FILE .config
         cp config.wrt1200ac.0 .config
-        cat config.tvh.ffmpeg >>.config
+        #cat config.tvh.ffmpeg >>.config
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "build config.wrt1200ac.0 success"
         cp config.r619ac.0 .config
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "build config.r619ac.0 success"
+        make clean
         cp config.newifi-d2.0 .config
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "build config.newifi-d2.0 success"
