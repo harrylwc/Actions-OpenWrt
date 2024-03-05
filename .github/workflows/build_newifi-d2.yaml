@@ -14,7 +14,7 @@ on:
    # branches: 
     #  - master
  repository_dispatch:
-    types: [ramips_completed]
+    types: [mvebu_ipq40xx_ramips_completed]
  workflow_dispatch:
  #schedule:
     # - cron: 30 15 * * *
