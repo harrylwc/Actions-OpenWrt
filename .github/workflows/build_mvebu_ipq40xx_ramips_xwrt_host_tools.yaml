@@ -6,7 +6,7 @@
 # Author: P3TER
 # Blog: https://p3terx.com
 #=================================================
-name: build mvebu_ipq40xx_ramips x-wrt
+name: build mvebu_ipq40xx_ramips host tools
 
 on:
 
