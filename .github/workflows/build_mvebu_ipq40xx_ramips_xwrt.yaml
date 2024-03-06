@@ -192,18 +192,37 @@ jobs:
         cp config.wrt1200ac.0 .config
         #cat config.tvh.ffmpeg >>.config
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "build config.wrt1200ac.0 success"
-        cp -f build_dir/target-*a9*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR1
+        make -j$(nproc) tools/compile 
+        make package/cleanup -j$(nproc) 
+        make toolchain/compile -j$(nproc) 
+        #make target/compile -j$(nproc)  
+        #make -C target/linux compile -j$(nproc)  
+        
+        # make -j$(nproc) || make -j1 || make -j1 V=s
+        #echo "build config.wrt1200ac.0 success"
+        #cp -f build_dir/target-*a9*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR1
         cp config.r619ac.0 .config
-        make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "build config.r619ac.0 success"
-        cp -f build_dir/target-*a7*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR2
-        make clean
+        #make -j$(nproc) || make -j1 || make -j1 V=s
+        #echo "build config.r619ac.0 success"
+        make -j$(nproc) tools/compile                                                                                                                                                                              
+        make package/cleanup -j$(nproc)                                                                                                                                                                            
+        make toolchain/compile -j$(nproc)                                                                                                                                                                          
+        #make target/compile -j$(nproc)                                                                                                                                                                            
+        #make -C target/linux compile -j$(nproc)      
+      
+        #cp -f build_dir/target-*a7*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR2
+        #make clean
+        
         cp config.newifi-d2.0 .config
-        make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "build config.newifi-d2.0 success"
-        cp -f build_dir/target-*mipsel*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR3
+        #make -j$(nproc) || make -j1 || make -j1 V=s
+        #echo "build config.newifi-d2.0 success"
+        #cp -f build_dir/target-*mipsel*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR3
+        make -j$(nproc) tools/compile                                                                                                                                                                              
+        make package/cleanup -j$(nproc)                                                                                                                                                                            
+        make toolchain/compile -j$(nproc)                                                                                                                                                                          
+        #make target/compile -j$(nproc)                                                                                                                                                                            
+        #make -C target/linux compile -j$(nproc)   
+ 
     - name: SSH connection for failure Debug
       if: ${{ failure() }}
       #uses: lhotari/action-upterm@v1
@@ -217,40 +236,6 @@ jobs:
       if: (!cancelled())
 
       run: df -hT
-
-    - name: Prepare artifact
-      run: |
-          # mkdir -p ./artifact/firmware
-          #mkdir -p ./artifact/package
-          #mkdir -p ./artifact/buildinfo
-          
-          #cp -f `find x-wrt/build_dir/target*a9*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR1
-          #cp -f `find x-wrt/build_dir/target*a7*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR2
-          #cp -f `find x-wrt/build_dir/target*mipsel*/linux*7621*/linux-*/ -name *.ko` $DRIVERS_DIR3
-          #cp -f x-wrt/build_dir/target*a9*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR1
-          #cp -f x-wrt/build_dir/target*a7*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR2    
-          #cp -f x-wrt/build_dir/target*mipsel*/linux*7621*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR3   
-         
-          #cp -f .config bin/
-          #cp -f myconfig/config.$ROUTER_MODEL.? bin/
-          #rm -rf $(find ./bin/targets/ -type d -name "packages")
-          #cp -rf $(find ./bin/targets/ -type f) ./artifact/firmware/
-          #cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
-          #cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
-          cat `find x-wrt/bin/targets/ -name version.buildinfo`|head -1|cut -c1-6> BUILD_VERSION
-          [ -s BUILD_VERSION ] && echo "BUILD_VERSION=_$(cat BUILD_VERSION)" >> $GITHUB_ENV
-          grep '^CONFIG_TARGET.*DEVICE.*=y' x-wrt/.config|head -1 | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
-          [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
-          echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
-          strings $DRIVERS_DIR3/pppoe.ko |grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
-          #strings $DRIVERS_DIR3/usbcore.ko |grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
-          [ -s KERNEL_VER ] && echo "KERNEL_VER=_$(cat KERNEL_VER)" >> $GITHUB_ENV
-    - name: Upload bin directory
-      uses: actions/upload-artifact@master
-      with:
-          name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
-           #OpenWrt_bin_${{ env.ROUTER_MODEL }}
-          path: x-wrt/bin
 
     - name: 整理编译好的固件
 
