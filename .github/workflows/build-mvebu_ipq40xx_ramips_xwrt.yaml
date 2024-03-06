@@ -181,6 +181,10 @@ jobs:
       id: compile
 
       run: |
+        
+        mkdir -p $DRIVERS_DIR1
+        mkdir -p $DRIVERS_DIR2
+        mkdir -p $DRIVERS_DIR3
         cd x-wrt
         sudo mv dl /mnt/
         ln -s /mnt/dl
@@ -190,13 +194,16 @@ jobs:
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "build config.wrt1200ac.0 success"
+        cp -f x-wrt/build_dir/target-*a9*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR1
         cp config.r619ac.0 .config
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "build config.r619ac.0 success"
+        cp -f x-wrt/build_dir/target-*a7*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR2
         make clean
         cp config.newifi-d2.0 .config
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "build config.newifi-d2.0 success"
+        cp -f x-wrt/build_dir/target-*mipsel*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR3
     - name: SSH connection for failure Debug
       if: ${{ failure() }}
       #uses: lhotari/action-upterm@v1
@@ -216,9 +223,7 @@ jobs:
           # mkdir -p ./artifact/firmware
           #mkdir -p ./artifact/package
           #mkdir -p ./artifact/buildinfo
-          mkdir -p $DRIVERS_DIR1
-          mkdir -p $DRIVERS_DIR2
-          mkdir -p $DRIVERS_DIR3
+          
           #cp -f `find x-wrt/build_dir/target*a9*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR1
           #cp -f `find x-wrt/build_dir/target*a7*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR2
           cp -f `find x-wrt/build_dir/target*mipsel*/linux*7621*/linux-*/ -name *.ko` $DRIVERS_DIR3
