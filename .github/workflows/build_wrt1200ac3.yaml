@@ -11,7 +11,7 @@ name: Compile WRT1200AC3 TVH OpenWrt Images
 
 on:
   repository_dispatch:
-    types: [wrt1200ac_completed]
+    types: [mvebu_ipq40xx_ramips_completed]
   workflow_dispatch:    
     inputs:
       ssh:
@@ -99,7 +99,7 @@ jobs:
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          target_device_arch_1="mvebu"
+          target_device_arch_1="mvebu_ipq40xx_ramips"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           #gcc_hash='37dab1b7'       
