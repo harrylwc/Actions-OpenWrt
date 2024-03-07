@@ -195,13 +195,15 @@ jobs:
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "build config.wrt1200ac.0 success"
         cp -f build_dir/target-*a9*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR1
-
+        sudo mv build_dir /mnt/
+        ln -s /mnt/build_dir
+        
         cp config.newifi-d2.0 .config
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "build config.newifi-d2.0 success"
         cp -f build_dir/target-*mipsel*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR3
         df -kh
-        make clean 
+        #make clean 
         
         cp config.r619ac.0 .config
         make -j$(nproc) || make -j1 || make -j1 V=s
