@@ -196,7 +196,7 @@ jobs:
         make package/cleanup -j$(nproc) 
         make toolchain/compile -j$(nproc) 
         #make target/compile -j$(nproc)  
-        make -C target/linux compile -j$(nproc)  
+        #make -C target/linux compile -j$(nproc)  
        
         # make -j$(nproc) || make -j1 || make -j1 V=s
         #echo "build config.wrt1200ac.0 success"
@@ -208,7 +208,7 @@ jobs:
         make package/cleanup -j$(nproc)                                                                                                                                                                            
         make toolchain/compile -j$(nproc)                                                                                                                                                                          
         #make target/compile -j$(nproc)                                                                                                                                                                            
-        make -C target/linux compile -j$(nproc)      
+        #make -C target/linux compile -j$(nproc)      
       
         #cp -f build_dir/target-*a7*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR2
         #make clean
@@ -221,7 +221,7 @@ jobs:
         make package/cleanup -j$(nproc)                                                                                                                                                                            
         make toolchain/compile -j$(nproc)                                                                                                                                                                          
         #make target/compile -j$(nproc)                                                                                                                                                                            
-        make -C target/linux compile -j$(nproc)   
+        #make -C target/linux compile -j$(nproc)   
  
     - name: SSH connection for failure Debug
       if: ${{ failure() }}
