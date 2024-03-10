@@ -269,6 +269,7 @@ jobs:
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
            cd x-wrt 
+           cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
            sudo rm -rf "$AGENT_TOOLSDIRECTORY"
            #sudo rm -rf $GITHUB_WORKSPACE/lede
            echo cpu core=$(nproc)
