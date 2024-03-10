@@ -237,6 +237,7 @@ jobs:
            echo cpu core=$(nproc)
            make -j$(nproc) || make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success"
+           cp -f bin/targets/ramips/mt7620/openwrt-ramips-mt7620*sysupgrade.bin bin/targets/ramips/drivers/
       - name: SSH connection for KERNEL MENU CONFIG
         if: env.KERNEL_MENUCONFIG == 'true'
           # uses: lhotari/action-upterm@v1
