@@ -205,7 +205,7 @@ jobs:
           cp $GITHUB_WORKSPACE/myconfig/config.ramips.0 $GITHUB_WORKSPACE/x-wrt/.config
           ls -alt $GITHUB_WORKSPACE/x-wrt/.config
           echo cpu core=$(nproc)
-          make -j$(nproc) || make -j1 V=s
+          #make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
           
           #     echo "======================="
@@ -226,7 +226,7 @@ jobs:
       - name: Compile again after .config updated or add kernel modules
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
-           cp -f $GITHUB_WORKSPACE/x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR
+           #cp -f $GITHUB_WORKSPACE/x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR
            cp $GITHUB_WORKSPACE/myconfig/config.ramips.2 $GITHUB_WORKSPACE/x-wrt/.config
            #cat myconfig/config.tvh.ffmpeg >> .config
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
