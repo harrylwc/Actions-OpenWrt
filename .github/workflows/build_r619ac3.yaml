@@ -302,7 +302,7 @@ jobs:
            #cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config 
            cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
            #cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
-          # cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
+           #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
            
            #cat myconfig/config.tvh.ffmpeg >> .config
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
