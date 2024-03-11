@@ -191,7 +191,7 @@ jobs:
         ln -s /mnt/dl
         #cp $CONFIG_FILE .config
         cp config.wrt1200ac.0 .config
-        cat config.tvh.ffmpeg >> .config
+        #cat config.tvh.ffmpeg >> .config
         #cat config.tvh.ffmpeg >>.config
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
@@ -201,7 +201,7 @@ jobs:
         ln -s /mnt/build_dir
         
         cp config.newifi-d2.0 .config
-        cat config.tvh.ffmpeg >> .config
+        #cat config.tvh.ffmpeg >> .config
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "build config.newifi-d2.0 success"
         cp -f build_dir/target-*mipsel*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR3
@@ -209,7 +209,7 @@ jobs:
         #make clean 
         
         cp config.r619ac.0 .config
-        cat config.tvh.ffmpeg >> .config
+        #cat config.tvh.ffmpeg >> .config
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "build config.r619ac.0 success"
         cp -f build_dir/target-*a7*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR2
