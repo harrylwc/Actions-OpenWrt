@@ -104,7 +104,7 @@ jobs:
           #mixkey: 'ramips'
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
-          #skip_saving: 'true'
+          skip_saving: 'true'
           
       - name: Space cleanup
         env:
