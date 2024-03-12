@@ -226,6 +226,7 @@ jobs:
         run: |
            #cp myconfig/config.newifi-d2.2 x-wrt/.config
            cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config         
+           cp patches/Makefile.python-bcrypt x-wrt/package/feeds/packages/python-bcrypt/Makefile 
            #cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
            #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
