@@ -37,7 +37,7 @@ env:
   KERNEL_CONFIG_DIR: x-wrt/target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: false
+  KERNEL_MENUCONFIG: true
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
   KERNEL_VERSION: '6.1'
@@ -186,8 +186,8 @@ jobs:
       - name: Compile firmware
         run: |
           cd x-wrt 
-          #cp config.ramips.2 .config
-          #make -j$(nproc) || make -j1 V=s
+          cp config.ramips.0 .config
+          make -j$(nproc) || make -j1 V=s
           #[ $? != 0 ] && make V=s || echo "zteq7 build success"
           #cp config.$ROUTER_MODEL.0 .config
           echo cpu core=$(nproc)
