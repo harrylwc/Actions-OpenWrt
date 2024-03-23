@@ -86,6 +86,8 @@ git clone https://github.com/tty228/luci-app-wechatpush /home/runner/work/Action
 mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package//luci-app-wechatpush/po/zh_Hant
 
 rm -r  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/kenzo/luci-app-serverchan/
+rm /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/kernel/mt76/patches/100-fix-build-on-linux-kernel-6.6.patch
+
 /usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hans/wechatpush.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
 sed -i 's/zh_Hans/zh_Hant/g' /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
 #cd /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/kenzo/luci-app-serverchan/po
