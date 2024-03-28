@@ -671,7 +671,6 @@ CONFIG_USE_MUSL=y
 CONFIG_SSP_SUPPORT=y
 CONFIG_BINUTILS_VERSION_2_42=y
 CONFIG_BINUTILS_VERSION="2.42"
-CONFIG_GCC_VERSION_13=y
 CONFIG_GCC_VERSION="13.2.0"
 CONFIG_LIBC="musl"
 CONFIG_TARGET_SUFFIX="musl"
@@ -6532,6 +6531,9 @@ CONFIG_PACKAGE_luci-app-smartdns=m
 # CONFIG_PACKAGE_luci-app-squid is not set
 # CONFIG_PACKAGE_luci-app-sshtunnel is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_libustream-mbedtls is not set
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_libustream-openssl=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_PACKAGE_libustream-wolfssl is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_NONE_Client is not set
 CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Libev_Client=y
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Client is not set
@@ -6631,6 +6633,7 @@ CONFIG_PACKAGE_luci-proto-ppp=y
 # 6. Libraries
 #
 CONFIG_PACKAGE_luci-lib-base=y
+CONFIG_PACKAGE_luci-lib-chartjs=m
 # CONFIG_PACKAGE_luci-lib-httpclient is not set
 # CONFIG_PACKAGE_luci-lib-httpprotoutils is not set
 CONFIG_PACKAGE_luci-lib-ip=y

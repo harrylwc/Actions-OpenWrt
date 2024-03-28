@@ -42,6 +42,7 @@ CONFIG_TARGET_mvebu=y
 # CONFIG_TARGET_realtek is not set
 # CONFIG_TARGET_rockchip is not set
 # CONFIG_TARGET_sifiveu is not set
+# CONFIG_TARGET_starfive is not set
 # CONFIG_TARGET_archs38 is not set
 # CONFIG_TARGET_omap is not set
 # CONFIG_TARGET_uml is not set
@@ -470,7 +471,6 @@ CONFIG_USE_MUSL=y
 CONFIG_SSP_SUPPORT=y
 CONFIG_BINUTILS_VERSION_2_42=y
 CONFIG_BINUTILS_VERSION="2.42"
-CONFIG_GCC_VERSION_13=y
 CONFIG_GCC_VERSION="13.2.0"
 CONFIG_LIBC="musl"
 CONFIG_TARGET_SUFFIX="muslgnueabi"
@@ -3139,7 +3139,6 @@ CONFIG_PACKAGE_kmod-gpio-button-hotplug=y
 # CONFIG_PACKAGE_kmod-hwmon-adt7410 is not set
 # CONFIG_PACKAGE_kmod-hwmon-adt7475 is not set
 # CONFIG_PACKAGE_kmod-hwmon-core is not set
-# CONFIG_PACKAGE_kmod-hwmon-coretemp is not set
 # CONFIG_PACKAGE_kmod-hwmon-dme1737 is not set
 # CONFIG_PACKAGE_kmod-hwmon-drivetemp is not set
 # CONFIG_PACKAGE_kmod-hwmon-g762 is not set
@@ -3166,6 +3165,7 @@ CONFIG_PACKAGE_kmod-gpio-button-hotplug=y
 # CONFIG_PACKAGE_kmod-hwmon-sch5627 is not set
 # CONFIG_PACKAGE_kmod-hwmon-sht21 is not set
 # CONFIG_PACKAGE_kmod-hwmon-sht3x is not set
+# CONFIG_PACKAGE_kmod-hwmon-tc654 is not set
 # CONFIG_PACKAGE_kmod-hwmon-tmp102 is not set
 # CONFIG_PACKAGE_kmod-hwmon-tmp103 is not set
 # CONFIG_PACKAGE_kmod-hwmon-tmp421 is not set
@@ -3487,6 +3487,7 @@ CONFIG_PACKAGE_kmod-mii=m
 # CONFIG_PACKAGE_kmod-mlxsw-minimal is not set
 # CONFIG_PACKAGE_kmod-mlxsw-pci is not set
 # CONFIG_PACKAGE_kmod-mlxsw-spectrum is not set
+# CONFIG_PACKAGE_kmod-mtk-t7xx is not set
 # CONFIG_PACKAGE_kmod-natsemi is not set
 # CONFIG_PACKAGE_kmod-ne2k-pci is not set
 CONFIG_PACKAGE_kmod-net-selftests=m
@@ -3747,6 +3748,8 @@ CONFIG_PACKAGE_kmod-sound-core=m
 # CONFIG_PACKAGE_kmod-chaoskey is not set
 # CONFIG_PACKAGE_kmod-usb-acm is not set
 # CONFIG_PACKAGE_kmod-usb-atm is not set
+# CONFIG_PACKAGE_kmod-usb-cdns is not set
+# CONFIG_PACKAGE_kmod-usb-cdns3 is not set
 # CONFIG_PACKAGE_kmod-usb-cm109 is not set
 CONFIG_PACKAGE_kmod-usb-core=y
 CONFIG_PACKAGE_kmod-usb-dwc2=m
@@ -6281,20 +6284,6 @@ CONFIG_PACKAGE_luci-app-opkg=y
 #
 # Configuration
 #
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Brook is not set
-CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Haproxy=y
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Hysteria is not set
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_NaiveProxy is not set
-CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Libev_Client=y
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Libev_Server is not set
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Rust_Client is not set
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Shadowsocks_Rust_Server is not set
-CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_ShadowsocksR_Libev_Client=y
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_ShadowsocksR_Libev_Server is not set
-CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_Simple_Obfs=y
-CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_SingBox=y
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_tuic_client is not set
-# CONFIG_PACKAGE_luci-app-passwall2_INCLUDE_V2ray_Plugin is not set
 # end of Configuration
 
 # CONFIG_PACKAGE_luci-app-pbr is not set
@@ -6318,6 +6307,9 @@ CONFIG_PACKAGE_luci-app-shadowsocks-libev=m
 # CONFIG_PACKAGE_luci-app-squid is not set
 # CONFIG_PACKAGE_luci-app-sshtunnel is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus is not set
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_libustream-mbedtls is not set
+CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_libustream-openssl=y
+# CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_PACKAGE_libustream-wolfssl is not set
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_NONE_Client is not set
 CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Libev_Client=y
 # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks_Rust_Client is not set
@@ -6420,6 +6412,7 @@ CONFIG_PACKAGE_luci-proto-ppp=y
 # 6. Libraries
 #
 CONFIG_PACKAGE_luci-lib-base=y
+CONFIG_PACKAGE_luci-lib-chartjs=m
 # CONFIG_PACKAGE_luci-lib-httpclient is not set
 CONFIG_PACKAGE_luci-lib-httpprotoutils=m
 CONFIG_PACKAGE_luci-lib-ip=y
@@ -8698,6 +8691,7 @@ CONFIG_PACKAGE_ethtool=m
 # CONFIG_PACKAGE_git-lfs is not set
 # CONFIG_PACKAGE_gnunet is not set
 # CONFIG_PACKAGE_gost is not set
+# CONFIG_PACKAGE_gping is not set
 # CONFIG_PACKAGE_gre is not set
 # CONFIG_PACKAGE_gsocket is not set
 # CONFIG_PACKAGE_hnet-full is not set
@@ -9756,6 +9750,7 @@ CONFIG_MC_CHARSET=y
 # CONFIG_PACKAGE_mpack is not set
 # CONFIG_PACKAGE_mpremote is not set
 # CONFIG_PACKAGE_mqttled is not set
+# CONFIG_PACKAGE_mstflint is not set
 # CONFIG_PACKAGE_mt-st is not set
 # CONFIG_PACKAGE_mt5311 is not set
 # CONFIG_PACKAGE_mv88e6xxx_dump is not set
