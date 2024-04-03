@@ -255,10 +255,10 @@ jobs:
           #wget https://oss.oetiker.ch/rrdtool/pub/archive/rrdtool-1.0.x/rrdtool-1.0.50.tar.gz
           #wget https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz
           #cd ../
-          cp $GITHUB_WORKSPACE/myconfig/config.r619ac.0 .config
-          echo cpu core=$(nproc)
-          make -j$(nproc) || make -j1 V=s
-          [ $? != 0 ] && make V=s || echo "build success"
+          #cp $GITHUB_WORKSPACE/myconfig/config.r619ac.0 .config
+          #echo cpu core=$(nproc)
+          #make -j$(nproc) || make -j1 V=s
+          #[ $? != 0 ] && make V=s || echo "build success"
           df -kh
           #rm `find $GITHUB_WORKSPACE/x-wrt/build_dir/ -name *.o`
           #du -a / | sort -n -r | head -n 20>/tmp/largefiles.txt
