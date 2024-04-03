@@ -234,7 +234,7 @@ jobs:
           sudo mv dl /mnt/
           ln -s /mnt/dl
           cp config.wrt1200ac.0 .config
-         # echo cpu core=$(nproc)
+          #echo cpu core=$(nproc)
           
           make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "build success"
