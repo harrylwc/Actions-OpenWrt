@@ -43,7 +43,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: false
+  KERNEL_MENUCONFIG: true
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
   #KERNEL_VERSION: '5.15'
@@ -249,17 +249,16 @@ jobs:
         run: |
           cp patches/110-mtd-limit-OTP-nvmem-to-non-nand-devices.patch x-wrt/target/linux/ipq40xx/patches-6.6/ 
           cd x-wrt
-           
           sudo mv dl /mnt/
           ln -s /mnt/dl
           # rm dl/rrdtool*
           #wget https://oss.oetiker.ch/rrdtool/pub/archive/rrdtool-1.0.x/rrdtool-1.0.50.tar.gz
           #wget https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz
           #cd ../
-          ##cp $GITHUB_WORKSPACE/myconfig/config.r619ac.2 .config
+          cp $GITHUB_WORKSPACE/myconfig/config.r619ac.0 .config
           echo cpu core=$(nproc)
-          #make -j$(nproc) || make -j1 V=s
-          #[ $? != 0 ] && make V=s || echo "build success"
+          make -j$(nproc) || make -j1 V=s
+          [ $? != 0 ] && make V=s || echo "build success"
           df -kh
           #rm `find $GITHUB_WORKSPACE/x-wrt/build_dir/ -name *.o`
           #du -a / | sort -n -r | head -n 20>/tmp/largefiles.txt
