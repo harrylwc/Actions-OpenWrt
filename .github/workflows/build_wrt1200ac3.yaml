@@ -46,7 +46,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   KERNEL_CONFIG_DIR: x-wrt/target/linux/mvebu
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: true
+  KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
   KERNEL_VERSION: '6.1'
@@ -233,11 +233,11 @@ jobs:
           cd x-wrt
           sudo mv dl /mnt/
           ln -s /mnt/dl
-          cp config.wrt1200ac.0 .config
+          #cp config.wrt1200ac.0 .config
           #echo cpu core=$(nproc)
           
-          make -j$(nproc) || make -j1 V=s
-          [ $? != 0 ] && make V=s || echo "build success"
+          #make -j$(nproc) || make -j1 V=s
+          #[ $? != 0 ] && make V=s || echo "build success"
           
           
       
