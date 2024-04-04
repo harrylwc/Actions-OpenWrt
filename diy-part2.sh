@@ -20,6 +20,7 @@ cp -r $GITHUB_WORKSPACE/package/* $GITHUB_WORKSPACE/x-wrt/package/
 cd $GITHUB_WORKSPACE/x-wrt/
 git clone https://github.com/tvheadend/tvheadend.git
 
+cp $GITHUB_WORKSPACE/patches/110-mtd-limit-OTP-nvmem-to-non-nand-devices.patch $GITHUB_WORKSPACE/x-wrt/target/linux/ipq40xx/patches-6.6
 cp -r $GITHUB_WORKSPACE/x-wrt/tvheadend/.git $GITHUB_WORKSPACE/x-wrt/package/tvheadend/files/
 sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/ramips/Makefile
 #sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.1/g' target/linux/mvebu/Makefile
