@@ -247,7 +247,7 @@ jobs:
            
       - name: Compile firmware
         run: |
-          cp patches/110-mtd-limit-OTP-nvmem-to-non-nand-devices.patch x-wrt/target/linux/ipq40xx/patches-6.6/ 
+          #cp patches/110-mtd-limit-OTP-nvmem-to-non-nand-devices.patch x-wrt/target/linux/ipq40xx/patches-6.6/ 
           cd x-wrt
           sudo mv dl /mnt/
           ln -s /mnt/dl
