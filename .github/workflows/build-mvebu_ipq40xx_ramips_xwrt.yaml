@@ -194,8 +194,7 @@ jobs:
         
         cp config.r619ac.0 .config
         #cat config.tvh.ffmpeg >> .config
-        make -j$(nproc) || ln -s  $GITHUB_WORKSPACE/x-wrt/build_dir/target-arm_cortex-a7*/linux-ipq40*/linux-6.6*/arch/arm/boot/dts/qcom/* $GITHUB_WORKSPACE/x-wrt/build_dir/target-arm_cortex-a7*/linux-ipq40*/linux-6.6*/arch/arm/boot/dts/      
-        ;make -j1$(nproc)  || make -j1 V=s
+        make -j$(nproc) || ln -s  $GITHUB_WORKSPACE/x-wrt/build_dir/target-arm_cortex-a7*/linux-ipq40*/linux-6.6*/arch/arm/boot/dts/qcom/* $GITHUB_WORKSPACE/x-wrt/build_dir/target-arm_cortex-a7*/linux-ipq40*/linux-6.6*/arch/arm/boot/dts/ ;make -j1$(nproc)  || make -j1 V=s
         echo "build config.r619ac.0 success"
         cp -f build_dir/target-*a7*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR2
         df -kh
