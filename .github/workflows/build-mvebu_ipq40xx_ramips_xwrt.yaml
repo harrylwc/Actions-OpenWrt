@@ -189,6 +189,17 @@ jobs:
         cd x-wrt
         sudo mv dl /mnt/
         ln -s /mnt/dl
+        sudo mv build_dir /mnt/
+        ln -s /mnt/build_dir
+        
+        ln -s  $GITHUB_WORKSPACE/x-wrt/build_dir/target-arm_cortex-a7*/linux-ipq40*/linux-6.6*/arch/arm/boot/dts/qcom/* $GITHUB_WORKSPACE/x-wrt/build_dir/target-arm_cortex-a7*/linux-ipq40*/linux-6.6*/arch/arm/boot/dts/      
+        cp config.r619ac.0 .config
+        #cat config.tvh.ffmpeg >> .config
+        make -j$(nproc) || make -j1 || make -j1 V=s
+        echo "build config.r619ac.0 success"
+        cp -f build_dir/target-*a7*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR2
+        df -kh
+        
         #cp $CONFIG_FILE .config
         cp config.newifi-d2.0 .config
         #cat config.tvh.ffmpeg >> .config
@@ -206,16 +217,8 @@ jobs:
         make -j$(nproc) || make -j1 || make -j1 V=s
         echo "build config.wrt1200ac.0 success"
         cp -f build_dir/target-*a9*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR1
-        sudo mv build_dir /mnt/
-        ln -s /mnt/build_dir
-        
-      
-        cp config.r619ac.0 .config
-        #cat config.tvh.ffmpeg >> .config
-        make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "build config.r619ac.0 success"
-        cp -f build_dir/target-*a7*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR2
-        df -kh
+
+
     - name: SSH connection for failure Debug
       if: ${{ failure() }}
       #uses: lhotari/action-upterm@v1
