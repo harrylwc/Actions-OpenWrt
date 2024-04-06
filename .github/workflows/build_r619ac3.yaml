@@ -47,7 +47,7 @@ env:
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
   #KERNEL_VERSION: '5.15'
-  KERNEL_VERSION: '6.6'                                                                            
+  KERNEL_VERSION: '6.1'                                                                            
   UPDATE_MULTI_CORE_FILE1: myconfig/sys.lua
   UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
   KERNEL_MODULE: myconfig/kernel_r619ac
@@ -317,7 +317,7 @@ jobs:
            #make kernel_menuconfig -j4
            echo cpu core=$(nproc)
            #ln -s /usr/bin/ccache /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/staging_dir/host/bin/ccache 
-           make -j$(nproc)||ln -s  $GITHUB_WORKSPACE/x-wrt/build_dir/target-arm_cortex-a7*/linux-ipq40*/linux-6.6*/arch/arm/boot/dts/qcom/* $GITHUB_WORKSPACE/x-wrt/build_dir/target-arm_cortex-a7*/linux-ipq40*/linux-6.6*/arch/arm/boot/dts/ ; make -j$(nproc)|| make -j1 V=s
+           make -j$(nproc)|| make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success" 
            cp -f bin/targets/ipq40xx/generic/openwrt-ipq40xx-generic-p2w_r619ac-128m-squashfs-sysupgrade.bin bin/targets/ipq40xx/drivers/  
            df -kh
