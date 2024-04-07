@@ -189,8 +189,7 @@ jobs:
         cd x-wrt
         sudo mv dl /mnt/
         ln -s /mnt/dl
-        sudo mv build_dir /mnt/
-        ln -s /mnt/build_dir
+        
         
         cp config.r619ac.0 .config
         #cat config.tvh.ffmpeg >> .config
@@ -198,7 +197,8 @@ jobs:
         echo "build config.r619ac.0 success"
         cp -f build_dir/target-*a7*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR2
         df -kh
-        
+        sudo mv build_dir /mnt/
+        ln -s /mnt/build_dir
         #cp $CONFIG_FILE .config
         cp config.newifi-d2.0 .config
         #cat config.tvh.ffmpeg >> .config
@@ -210,6 +210,7 @@ jobs:
         
         
         cp config.wrt1200ac.0 .config
+        
         #cat config.tvh.ffmpeg >> .config
         #cat config.tvh.ffmpeg >>.config
         echo -e "$(nproc) thread compile"
