@@ -80,7 +80,7 @@ git clone https://github.com/tty228/luci-app-wechatpush /home/runner/work/Action
 #/usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon/luci-app-wrtbwmon/po/zh_Hans/wrtbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon/luci-app-wrtbwmon/po/zh_Hant/wrtwmon.po
 mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package//luci-app-wechatpush/po/zh_Hant
 
-rm -r  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/kenzo/luci-app-serverchan/
+#rm -r  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/kenzo/luci-app-serverchan/
 #rm /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/kernel/mt76/patches/100-fix-build-on-linux-kernel-6.6.patch
 
 /usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hans/wechatpush.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
@@ -129,17 +129,17 @@ mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/x-wrt/package
 cd $GITHUB_WORKSPACE/x-wrt/
 #./scripts/feeds install -f luci-app-serverchan
 #wget -qO- https://patchwork.kernel.org/project/linux-wireless/patch/20220908173618.155291-2-hdegoede@redhat.com/raw/ > package/kernel/mac80211/patches/rt2x00/612-rt2x00-ap-assoc-invalid-queue-2.patch
-sed -i 's/set wireless.${name}.disabled=1/set wireless.${name}.disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
+#sed -i 's/set wireless.${name}.disabled=1/set wireless.${name}.disabled=0/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 #git apply --ignore-space-change --ignore-whitespace python_yaml.patch
 #git apply --ignore-space-change --ignore-whitespace libtins.patch
 #git apply --ignore-space-change --ignore-whitespace rule.patch
 git apply --ignore-space-change --ignore-whitespace netdata.patch                                                                                                                                                
-git apply --ignore-space-change --ignore-whitespace fs.patch
+#git apply --ignore-space-change --ignore-whitespace fs.patch
 #git apply --ignore-space-change --ignore-whitespace jq.patch
 git apply --ignore-space-change --ignore-whitespace ramips.patch
 git apply --ignore-space-change --ignore-whitespace common.patch
 git apply --ignore-space-change --ignore-whitespace revert_set_default_root.patch
-git apply --ignore-space-change --ignore-whitespace irqbalance.patch
+#git apply --ignore-space-change --ignore-whitespace irqbalance.patch
 #git apply --ignore-space-change --ignore-whitespace rrdtool.patch
 git apply --ignore-space-change --ignore-whitespace r619ac.patch
 #git apply --ignore-space-change --ignore-whitespace ocserv.patch
