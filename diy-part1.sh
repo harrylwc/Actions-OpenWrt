@@ -7,8 +7,8 @@
 # Author: P3TERX
 # Blog: https://p3terx.com
 #============================================================
-#git clone https://github.com/x-wrt/x-wrt
-git clone https://github.com/openwrt/openwrt x-wrt
+git clone https://github.com/x-wrt/x-wrt
+#git clone https://github.com/openwrt/openwrt x-wrt
 git clone https://github.com/coolsnowwolf/lede lede
 lede/scripts/feeds update -a
 
