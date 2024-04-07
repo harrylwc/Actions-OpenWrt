@@ -230,7 +230,7 @@ jobs:
            #cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
            #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
-           #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt 
            make -j$(nproc) || make -j1 V=s
