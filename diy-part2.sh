@@ -36,7 +36,7 @@ rm -r feeds/packages/multimedia/tvheadend
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applications/luci-app-nlbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 #rm -r $GITHUB_WORKSPACE/x-wrt/package/libs/gettext-full
 #cp -r $GITHUB_WORKSPACE/gettext-full $GITHUB_WORKSPACE/x-wrt/package/libs/
-
+cp $GITHUB_WORKSPACE/patches/socat.Makefile  $GITHUB_WORKSPACE/x-wrt/feeds/packages/net/socat/Makefile
 #cp $GITHUB_WORKSPACE/patches/999-workqueue.patch $GITHUB_WORKSPACE/x-wrt/target/linux/generic/backport-5.15/
 mkdir ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/feeds/kenzo/luci-app-easymesh/po/zh_Hant
 /usr/bin/opencc -i ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/feeds/kenzo/luci-app-easymesh/po/zh-cn/easymesh.po -o ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/feeds/kenzo/luci-app-easymesh/po/zh_Hant/easymesh.po
