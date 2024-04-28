@@ -35,7 +35,6 @@ CONFIG_HOST_OS_LINUX=y
 # CONFIG_TARGET_qoriq is not set
 # CONFIG_TARGET_imx is not set
 # CONFIG_TARGET_octeontx is not set
-# CONFIG_TARGET_oxnas is not set
 # CONFIG_TARGET_qualcommax is not set
 CONFIG_TARGET_ipq40xx=y
 # CONFIG_TARGET_ipq806x is not set
@@ -162,7 +161,6 @@ CONFIG_DEFAULT_uclient-fetch=y
 CONFIG_DEFAULT_urandom-seed=y
 CONFIG_DEFAULT_urngd=y
 CONFIG_DEFAULT_wpad-basic-mbedtls=y
-CONFIG_HAS_TESTING_KERNEL=y
 CONFIG_HAS_FPU=y
 CONFIG_AUDIO_SUPPORT=y
 CONFIG_GPIO_SUPPORT=y
@@ -233,7 +231,6 @@ CONFIG_DOWNLOAD_CHECK_CERTIFICATE=y
 #
 # General build options
 #
-CONFIG_TESTING_KERNEL=y
 # CONFIG_DISPLAY_SUPPORT is not set
 CONFIG_BUILD_PATENTED=y
 CONFIG_BUILD_NLS=y
@@ -521,6 +518,7 @@ CONFIG_SSP_SUPPORT=y
 CONFIG_BINUTILS_VERSION_2_42=y
 CONFIG_BINUTILS_VERSION="2.42"
 CONFIG_GCC_VERSION="13.2.0"
+CONFIG_GCC_USE_DEFAULT_VERSION=y
 CONFIG_LIBC="musl"
 CONFIG_TARGET_SUFFIX="muslgnueabi"
 # CONFIG_IB is not set
@@ -2827,12 +2825,14 @@ CONFIG_PACKAGE_libiwinfo-data=y
 # CONFIG_PACKAGE_ipq-wifi-prpl_haze is not set
 # CONFIG_PACKAGE_ipq-wifi-qnap_301w is not set
 # CONFIG_PACKAGE_ipq-wifi-redmi_ax6 is not set
+# CONFIG_PACKAGE_ipq-wifi-spectrum_sax1v1k is not set
 # CONFIG_PACKAGE_ipq-wifi-wallys_dr40x9 is not set
 # CONFIG_PACKAGE_ipq-wifi-xiaomi_ax3600 is not set
 # CONFIG_PACKAGE_ipq-wifi-xiaomi_ax9000 is not set
 # CONFIG_PACKAGE_ipq-wifi-yuncore_ax880 is not set
 # CONFIG_PACKAGE_ipq-wifi-yuncore_fap650 is not set
 # CONFIG_PACKAGE_ipq-wifi-yyets_le1 is not set
+# CONFIG_PACKAGE_ipq-wifi-zbtlink_zbt-z800ax is not set
 # CONFIG_PACKAGE_ipq-wifi-zte_mf269 is not set
 # CONFIG_PACKAGE_ipq-wifi-zte_mf287 is not set
 # CONFIG_PACKAGE_ipq-wifi-zte_mf287plus is not set
@@ -3217,6 +3217,7 @@ CONFIG_PACKAGE_kmod-gpio-button-hotplug=y
 CONFIG_PACKAGE_kmod-hwmon-core=y
 # CONFIG_PACKAGE_kmod-hwmon-dme1737 is not set
 # CONFIG_PACKAGE_kmod-hwmon-drivetemp is not set
+# CONFIG_PACKAGE_kmod-hwmon-emc2305 is not set
 # CONFIG_PACKAGE_kmod-hwmon-g762 is not set
 # CONFIG_PACKAGE_kmod-hwmon-gpiofan is not set
 # CONFIG_PACKAGE_kmod-hwmon-gsc is not set
@@ -3519,6 +3520,8 @@ CONFIG_PACKAGE_kmod-nft-tproxy=m
 # CONFIG_PACKAGE_kmod-bnx2 is not set
 # CONFIG_PACKAGE_kmod-bnx2x is not set
 # CONFIG_PACKAGE_kmod-dm9000 is not set
+# CONFIG_PACKAGE_kmod-dsa-mv88e6xxx is not set
+# CONFIG_PACKAGE_kmod-dsa-tag-dsa is not set
 # CONFIG_PACKAGE_kmod-dummy is not set
 # CONFIG_PACKAGE_kmod-e100 is not set
 # CONFIG_PACKAGE_kmod-e1000 is not set
@@ -5764,7 +5767,6 @@ CONFIG_PACKAGE_zlib=m
 # CONFIG_PACKAGE_luci-light is not set
 # CONFIG_PACKAGE_luci-nginx is not set
 # CONFIG_PACKAGE_luci-ssl is not set
-# CONFIG_PACKAGE_luci-ssl-nginx is not set
 # CONFIG_PACKAGE_luci-ssl-openssl is not set
 # end of 1. Collections
 
@@ -5881,7 +5883,6 @@ CONFIG_PACKAGE_luci-lua-runtime=m
 # CONFIG_PACKAGE_luci-app-ddns-go is not set
 # CONFIG_PACKAGE_luci-app-ddnsto is not set
 # CONFIG_PACKAGE_luci-app-design-config is not set
-# CONFIG_PACKAGE_luci-app-diag-core is not set
 # CONFIG_PACKAGE_luci-app-dnscrypt-proxy is not set
 # CONFIG_PACKAGE_luci-app-dnsfilter is not set
 # CONFIG_PACKAGE_luci-app-dockerman is not set
@@ -5914,6 +5915,7 @@ CONFIG_PACKAGE_luci-lua-runtime=m
 # CONFIG_PACKAGE_luci-app-ledtrig-switch is not set
 # CONFIG_PACKAGE_luci-app-ledtrig-usbport is not set
 # CONFIG_PACKAGE_luci-app-libreswan is not set
+# CONFIG_PACKAGE_luci-app-lldpd is not set
 # CONFIG_PACKAGE_luci-app-lorawan-basicstation is not set
 # CONFIG_PACKAGE_luci-app-lucky is not set
 # CONFIG_PACKAGE_luci-app-lxc is not set
@@ -7122,6 +7124,8 @@ CONFIG_PACKAGE_wpad-openssl=y
 # CONFIG_PACKAGE_fping is not set
 # CONFIG_PACKAGE_generate-ipv6-address is not set
 # CONFIG_PACKAGE_gensio-bin is not set
+# CONFIG_PACKAGE_geoip-shell is not set
+# CONFIG_PACKAGE_geoip-shell-iptables is not set
 # CONFIG_PACKAGE_geoipupdate is not set
 # CONFIG_PACKAGE_geth is not set
 # CONFIG_PACKAGE_gg is not set
@@ -7623,6 +7627,7 @@ CONFIG_PACKAGE_unzip=m
 #
 # SSL
 #
+# CONFIG_PACKAGE_gost_engine-util is not set
 # end of SSL
 
 #
@@ -8187,6 +8192,7 @@ CONFIG_PACKAGE_ubi-utils=y
 # CONFIG_PACKAGE_ucode-mod-bpf is not set
 CONFIG_PACKAGE_ucode-mod-html=m
 CONFIG_PACKAGE_ucode-mod-lua=m
+# CONFIG_PACKAGE_ucode-mod-uclient is not set
 # CONFIG_PACKAGE_ucode-mod-udebug is not set
 # CONFIG_PACKAGE_udebug-cli is not set
 # CONFIG_PACKAGE_udebugd is not set

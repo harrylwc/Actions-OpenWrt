@@ -35,7 +35,6 @@ CONFIG_HOST_OS_LINUX=y
 # CONFIG_TARGET_qoriq is not set
 # CONFIG_TARGET_imx is not set
 # CONFIG_TARGET_octeontx is not set
-# CONFIG_TARGET_oxnas is not set
 # CONFIG_TARGET_qualcommax is not set
 CONFIG_TARGET_ipq40xx=y
 # CONFIG_TARGET_ipq806x is not set
@@ -162,7 +161,6 @@ CONFIG_DEFAULT_uclient-fetch=y
 CONFIG_DEFAULT_urandom-seed=y
 CONFIG_DEFAULT_urngd=y
 CONFIG_DEFAULT_wpad-basic-mbedtls=y
-CONFIG_HAS_TESTING_KERNEL=y
 CONFIG_HAS_FPU=y
 CONFIG_AUDIO_SUPPORT=y
 CONFIG_GPIO_SUPPORT=y
@@ -233,7 +231,6 @@ CONFIG_DOWNLOAD_CHECK_CERTIFICATE=y
 #
 # General build options
 #
-CONFIG_TESTING_KERNEL=y
 # CONFIG_DISPLAY_SUPPORT is not set
 CONFIG_BUILD_PATENTED=y
 CONFIG_BUILD_NLS=y
@@ -2788,12 +2785,14 @@ CONFIG_PACKAGE_nginx-util=m
 # CONFIG_PACKAGE_ipq-wifi-prpl_haze is not set
 # CONFIG_PACKAGE_ipq-wifi-qnap_301w is not set
 # CONFIG_PACKAGE_ipq-wifi-redmi_ax6 is not set
+# CONFIG_PACKAGE_ipq-wifi-spectrum_sax1v1k is not set
 # CONFIG_PACKAGE_ipq-wifi-wallys_dr40x9 is not set
 # CONFIG_PACKAGE_ipq-wifi-xiaomi_ax3600 is not set
 # CONFIG_PACKAGE_ipq-wifi-xiaomi_ax9000 is not set
 # CONFIG_PACKAGE_ipq-wifi-yuncore_ax880 is not set
 # CONFIG_PACKAGE_ipq-wifi-yuncore_fap650 is not set
 # CONFIG_PACKAGE_ipq-wifi-yyets_le1 is not set
+# CONFIG_PACKAGE_ipq-wifi-zbtlink_zbt-z800ax is not set
 # CONFIG_PACKAGE_ipq-wifi-zte_mf269 is not set
 # CONFIG_PACKAGE_ipq-wifi-zte_mf287 is not set
 # CONFIG_PACKAGE_ipq-wifi-zte_mf287plus is not set
@@ -3493,6 +3492,8 @@ CONFIG_PACKAGE_kmod-nft-tproxy=m
 # CONFIG_PACKAGE_kmod-bnx2 is not set
 # CONFIG_PACKAGE_kmod-bnx2x is not set
 # CONFIG_PACKAGE_kmod-dm9000 is not set
+# CONFIG_PACKAGE_kmod-dsa-mv88e6xxx is not set
+# CONFIG_PACKAGE_kmod-dsa-tag-dsa is not set
 # CONFIG_PACKAGE_kmod-dummy is not set
 # CONFIG_PACKAGE_kmod-e100 is not set
 # CONFIG_PACKAGE_kmod-e1000 is not set
@@ -5906,7 +5907,8 @@ CONFIG_PACKAGE_libmcrypt=m
 CONFIG_PACKAGE_libmnl=y
 # CONFIG_PACKAGE_libmodbus is not set
 # CONFIG_PACKAGE_libmosquitto-nossl is not set
-# CONFIG_PACKAGE_libmosquitto-ssl is not set
+CONFIG_PACKAGE_libmosquitto-ssl=m
+# CONFIG_PACKAGE_libmosquittopp is not set
 CONFIG_PACKAGE_libmount=m
 # CONFIG_PACKAGE_libmpc is not set
 # CONFIG_PACKAGE_libmpdclient is not set
@@ -6197,7 +6199,6 @@ CONFIG_PACKAGE_luci-lib-docker=m
 CONFIG_PACKAGE_luci-light=y
 CONFIG_PACKAGE_luci-nginx=m
 CONFIG_PACKAGE_luci-ssl=m
-CONFIG_PACKAGE_luci-ssl-nginx=m
 CONFIG_PACKAGE_luci-ssl-openssl=y
 # end of 1. Collections
 
@@ -6314,7 +6315,6 @@ CONFIG_PACKAGE_luci-app-ddns=y
 # CONFIG_PACKAGE_luci-app-ddns-go is not set
 # CONFIG_PACKAGE_luci-app-ddnsto is not set
 # CONFIG_PACKAGE_luci-app-design-config is not set
-CONFIG_PACKAGE_luci-app-diag-core=m
 # CONFIG_PACKAGE_luci-app-dnscrypt-proxy is not set
 # CONFIG_PACKAGE_luci-app-dnsfilter is not set
 CONFIG_PACKAGE_luci-app-dockerman=m
@@ -6347,6 +6347,7 @@ CONFIG_PACKAGE_luci-app-https-dns-proxy=m
 # CONFIG_PACKAGE_luci-app-ledtrig-switch is not set
 CONFIG_PACKAGE_luci-app-ledtrig-usbport=m
 # CONFIG_PACKAGE_luci-app-libreswan is not set
+# CONFIG_PACKAGE_luci-app-lldpd is not set
 # CONFIG_PACKAGE_luci-app-lorawan-basicstation is not set
 # CONFIG_PACKAGE_luci-app-lucky is not set
 CONFIG_PACKAGE_luci-app-lxc=m
@@ -6869,40 +6870,6 @@ CONFIG_PACKAGE_luci-i18n-commands-zh-tw=y
 # CONFIG_PACKAGE_luci-i18n-ddns-vi is not set
 CONFIG_PACKAGE_luci-i18n-ddns-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-ddns-zh-tw=y
-# CONFIG_PACKAGE_luci-i18n-diag-core-ar is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-bg is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-bn is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-ca is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-cs is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-da is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-de is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-el is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-es is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-fi is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-fr is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-he is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-hi is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-hu is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-it is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-ja is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-ko is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-lt is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-mr is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-ms is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-nl is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-no is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-pl is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-pt is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-ro is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-ru is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-sk is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-sv is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-tr is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-uk is not set
-# CONFIG_PACKAGE_luci-i18n-diag-core-vi is not set
-CONFIG_PACKAGE_luci-i18n-diag-core-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-diag-core-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-dockerman-ar is not set
 # CONFIG_PACKAGE_luci-i18n-dockerman-bg is not set
 # CONFIG_PACKAGE_luci-i18n-dockerman-bn is not set
@@ -8167,6 +8134,8 @@ CONFIG_PACKAGE_rsync=y
 # CONFIG_RSYNC_xattr is not set
 # CONFIG_RSYNC_acl is not set
 # CONFIG_RSYNC_zstd is not set
+# CONFIG_RSYNC_lz4 is not set
+# CONFIG_RSYNC_xxhash is not set
 # CONFIG_PACKAGE_rsyncd is not set
 CONFIG_PACKAGE_vsftpd=y
 # CONFIG_PACKAGE_vsftpd-alt is not set
@@ -9206,6 +9175,8 @@ CONFIG_PACKAGE_ethtool=y
 # CONFIG_PACKAGE_fping is not set
 # CONFIG_PACKAGE_generate-ipv6-address is not set
 # CONFIG_PACKAGE_gensio-bin is not set
+# CONFIG_PACKAGE_geoip-shell is not set
+# CONFIG_PACKAGE_geoip-shell-iptables is not set
 # CONFIG_PACKAGE_geoipupdate is not set
 # CONFIG_PACKAGE_geth is not set
 # CONFIG_PACKAGE_gg is not set
@@ -9777,6 +9748,7 @@ CONFIG_PACKAGE_sysfsutils=y
 #
 # SSL
 #
+# CONFIG_PACKAGE_gost_engine-util is not set
 # end of SSL
 
 #
