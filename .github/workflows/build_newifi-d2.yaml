@@ -185,10 +185,11 @@ jobs:
          
       - name: Compile firmware
         run: |
-          cd x-wrt 
-          cp config.newifi-d2.0 .config
-          make -j$(nproc) || make -j1 V=s
-          [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+          #cd x-wrt 
+          #cp config.newifi-d2.0 .config
+          #make -j$(nproc) || make -j1 V=s
+          #cd ../
+          #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
           #[ $? != 0 ] && make V=s || echo "zteq7 build success"
           #cp config.$ROUTER_MODEL.0 .config
           echo cpu core=$(nproc)
