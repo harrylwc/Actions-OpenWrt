@@ -185,9 +185,9 @@ jobs:
          
       - name: Compile firmware
         run: |
-          #cd x-wrt 
-          #cp config.newifi-d2.0 .config
-          #make -j$(nproc) || make -j1 V=s
+          cd x-wrt 
+          cp config.newifi-d2.0 .config
+          make -j$(nproc) || make -j1 V=s
           #[ $? != 0 ] && make V=s || echo "zteq7 build success"
           #cp config.$ROUTER_MODEL.0 .config
           echo cpu core=$(nproc)
