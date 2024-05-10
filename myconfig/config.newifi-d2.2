@@ -96,6 +96,7 @@ CONFIG_TARGET_ramips_mt7621=y
 # CONFIG_TARGET_ramips_mt7621_DEVICE_dlink_dap-x1860-a1 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_dlink_dir-1935-a1 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_dlink_dir-1960-a1 is not set
+# CONFIG_TARGET_ramips_mt7621_DEVICE_dlink_dir-2150-a1 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_dlink_dir-2640-a1 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_dlink_dir-2660-a1 is not set
 # CONFIG_TARGET_ramips_mt7621_DEVICE_dlink_dir-3040-a1 is not set
@@ -3722,6 +3723,7 @@ CONFIG_PACKAGE_kmod-phylink=m
 # CONFIG_PACKAGE_kmod-r6040 is not set
 # CONFIG_PACKAGE_kmod-r8101 is not set
 # CONFIG_PACKAGE_kmod-r8125 is not set
+# CONFIG_PACKAGE_kmod-r8126 is not set
 # CONFIG_PACKAGE_kmod-r8168 is not set
 # CONFIG_PACKAGE_kmod-r8169 is not set
 # CONFIG_PACKAGE_kmod-sfc is not set
@@ -4936,6 +4938,7 @@ CONFIG_PACKAGE_ucode-mod-math=y
 CONFIG_PACKAGE_ucode-mod-nl80211=y
 # CONFIG_PACKAGE_ucode-mod-resolv is not set
 CONFIG_PACKAGE_ucode-mod-rtnl=y
+# CONFIG_PACKAGE_ucode-mod-socket is not set
 # CONFIG_PACKAGE_ucode-mod-struct is not set
 CONFIG_PACKAGE_ucode-mod-ubus=y
 CONFIG_PACKAGE_ucode-mod-uci=y
@@ -6536,7 +6539,7 @@ CONFIG_PACKAGE_luci-app-qos=m
 # CONFIG_PACKAGE_luci-app-rp-pppoe-server is not set
 CONFIG_PACKAGE_luci-app-samba4=m
 # CONFIG_PACKAGE_luci-app-ser2net is not set
-CONFIG_PACKAGE_luci-app-shadowsocks-libev=m
+# CONFIG_PACKAGE_luci-app-shadowsocks-libev is not set
 # CONFIG_PACKAGE_luci-app-siitwizard is not set
 CONFIG_PACKAGE_luci-app-smartdns=m
 # CONFIG_PACKAGE_luci-app-sms-tool is not set
@@ -7324,40 +7327,6 @@ CONFIG_PACKAGE_luci-i18n-qos-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-samba4-vi is not set
 CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-samba4-zh-tw=m
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ar is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-bg is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-bn is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ca is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-cs is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-da is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-de is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-el is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-es is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-fi is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-fr is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-he is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-hi is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-hu is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-it is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ja is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ko is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-lt is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-mr is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ms is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-nl is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-no is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-pl is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-pt is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ro is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ru is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-sk is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-sv is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-tr is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-uk is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-vi is not set
-CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-smartdns-ar is not set
 # CONFIG_PACKAGE_luci-i18n-smartdns-bg is not set
 # CONFIG_PACKAGE_luci-i18n-smartdns-bn is not set
@@ -8601,12 +8570,12 @@ CONFIG_PACKAGE_nginx-ssl-util=m
 # CONFIG_PACKAGE_radicale2 is not set
 # CONFIG_PACKAGE_radicale2-examples is not set
 # CONFIG_PACKAGE_redsocks2 is not set
-CONFIG_PACKAGE_shadowsocks-libev-config=y
-CONFIG_PACKAGE_shadowsocks-libev-ss-local=y
-CONFIG_PACKAGE_shadowsocks-libev-ss-redir=y
-CONFIG_PACKAGE_shadowsocks-libev-ss-rules=m
-CONFIG_PACKAGE_shadowsocks-libev-ss-server=y
-CONFIG_PACKAGE_shadowsocks-libev-ss-tunnel=m
+# CONFIG_PACKAGE_shadowsocks-libev-config is not set
+# CONFIG_PACKAGE_shadowsocks-libev-ss-local is not set
+# CONFIG_PACKAGE_shadowsocks-libev-ss-redir is not set
+# CONFIG_PACKAGE_shadowsocks-libev-ss-rules is not set
+# CONFIG_PACKAGE_shadowsocks-libev-ss-server is not set
+# CONFIG_PACKAGE_shadowsocks-libev-ss-tunnel is not set
 # CONFIG_PACKAGE_shadowsocks-rust-sslocal is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssmanager is not set
 # CONFIG_PACKAGE_shadowsocks-rust-ssserver is not set
