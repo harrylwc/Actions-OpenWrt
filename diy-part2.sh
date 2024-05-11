@@ -52,9 +52,9 @@ mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-n
 #cp $GITHUB_WORKSPACE/patches/Makefile.nginx $GITHUB_WORKSPACE/x-wrt/feeds/packages/net/nginx/Makefile
 #mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/libs/libxml2/patches
 
-#cp $GITHUB_WORKSPACE/patches/10?-* $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches
-#cp $GITHUB_WORKSPACE/patches/Config.in.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Config.in
-#cp $GITHUB_WORKSPACE/patches/Makefile.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Makefile                                                                                                                                                                      
+cp $GITHUB_WORKSPACE/patches/10?-* $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches
+cp $GITHUB_WORKSPACE/patches/Config.in.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Config.in
+cp $GITHUB_WORKSPACE/patches/Makefile.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Makefile                                                                                                                                                                      
 
 #cp $GITHUB_WORKSPACE/patches/Makefile.xml2 /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/libs/libxml2/Makefile
 #cp $GITHUB_WORKSPACE/patches/iconv.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/libs/libxml2/patches/
