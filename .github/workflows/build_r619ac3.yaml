@@ -317,7 +317,8 @@ jobs:
            #make kernel_menuconfig -j4
            echo cpu core=$(nproc)
            #ln -s /usr/bin/ccache /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/staging_dir/host/bin/ccache 
-           make -j$(nproc)|| make -j1 V=s
+           make -j$(nproc)
+           #|| make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success" 
            cp -f bin/targets/ipq40xx/generic/openwrt-ipq40xx-generic-p2w_r619ac-128m-squashfs-sysupgrade.bin bin/targets/ipq40xx/drivers/  
            df -kh
