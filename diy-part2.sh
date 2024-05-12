@@ -37,7 +37,7 @@ ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applicat
 #rm -r $GITHUB_WORKSPACE/x-wrt/package/libs/gettext-full
 #cp -r $GITHUB_WORKSPACE/gettext-full $GITHUB_WORKSPACE/x-wrt/package/libs/
 #cp $GITHUB_WORKSPACE/patches/socat.Makefile  $GITHUB_WORKSPACE/x-wrt/feeds/packages/net/socat/Makefile
-
+cp $GITHUB_WORKSPACE/patches/Makefile.rust  $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/rust/Makefile
 #cp $GITHUB_WORKSPACE/patches/002-Support-POSIX-basename-from-musl-libc.patch $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/tini/patches/
 #mkdir $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/rtty/patches
 #cp $GITHUB_WORKSPACE/patches/0001-Support-POSIX-basename-from-musl-libc.patch $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/rtty/patches/
