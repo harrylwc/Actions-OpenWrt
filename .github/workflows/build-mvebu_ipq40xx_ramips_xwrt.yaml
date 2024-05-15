@@ -193,7 +193,8 @@ jobs:
         
         cp config.r619ac.0 .config
         #cat config.tvh.ffmpeg >> .config
-        make -j$(nproc) || make V=s -j1 
+        make -j$(nproc) 
+        #|| make V=s -j1 
         echo "build config.r619ac.0 success"
         cp -f build_dir/target-*a7*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR2
         df -kh
