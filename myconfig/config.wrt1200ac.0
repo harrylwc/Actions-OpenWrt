@@ -35,7 +35,6 @@ CONFIG_TARGET_mvebu=y
 # CONFIG_TARGET_layerscape is not set
 # CONFIG_TARGET_qoriq is not set
 # CONFIG_TARGET_imx is not set
-# CONFIG_TARGET_octeontx is not set
 # CONFIG_TARGET_qualcommax is not set
 # CONFIG_TARGET_ipq40xx is not set
 # CONFIG_TARGET_ipq806x is not set
@@ -7918,6 +7917,7 @@ CONFIG_PACKAGE_ubi-utils=y
 # CONFIG_PACKAGE_kmod-natflow is not set
 # CONFIG_PACKAGE_natflow-auth is not set
 # CONFIG_PACKAGE_natflow-boot is not set
+# CONFIG_PACKAGE_natflow-hostacl is not set
 # end of Fast Forward Stacks
 
 #

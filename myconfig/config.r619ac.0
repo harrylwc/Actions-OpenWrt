@@ -35,7 +35,6 @@ CONFIG_HOST_OS_LINUX=y
 # CONFIG_TARGET_layerscape is not set
 # CONFIG_TARGET_qoriq is not set
 # CONFIG_TARGET_imx is not set
-# CONFIG_TARGET_octeontx is not set
 # CONFIG_TARGET_qualcommax is not set
 CONFIG_TARGET_ipq40xx=y
 # CONFIG_TARGET_ipq806x is not set
@@ -495,8 +494,8 @@ CONFIG_EXTRA_BINUTILS_CONFIG_OPTIONS=""
 #
 # CONFIG_GCC_USE_VERSION_11 is not set
 # CONFIG_GCC_USE_VERSION_12 is not set
-CONFIG_GCC_USE_VERSION_13=y
-# CONFIG_GCC_USE_VERSION_14 is not set
+# CONFIG_GCC_USE_VERSION_13 is not set
+CONFIG_GCC_USE_VERSION_14=y
 # CONFIG_GCC_USE_GRAPHITE is not set
 CONFIG_EXTRA_GCC_CONFIG_OPTIONS=""
 # CONFIG_GCC_DEFAULT_PIE is not set
@@ -521,8 +520,8 @@ CONFIG_USE_MUSL=y
 CONFIG_SSP_SUPPORT=y
 CONFIG_BINUTILS_VERSION_2_42=y
 CONFIG_BINUTILS_VERSION="2.42"
-CONFIG_GCC_VERSION="13.3.0"
-CONFIG_GCC_USE_DEFAULT_VERSION=y
+CONFIG_GCC_VERSION_14=y
+CONFIG_GCC_VERSION="14.1.0"
 CONFIG_LIBC="musl"
 CONFIG_TARGET_SUFFIX="muslgnueabi"
 # CONFIG_IB is not set
@@ -8315,6 +8314,7 @@ CONFIG_PACKAGE_luci-app-wizard=m
 # CONFIG_PACKAGE_kmod-natflow is not set
 # CONFIG_PACKAGE_natflow-auth is not set
 # CONFIG_PACKAGE_natflow-boot is not set
+# CONFIG_PACKAGE_natflow-hostacl is not set
 # end of Fast Forward Stacks
 
 #
