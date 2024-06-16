@@ -8345,6 +8345,12 @@ CONFIG_PACKAGE_luci-app-macvlan=m
 # end of Mentohust
 
 #
+# NFC tools
+#
+# CONFIG_PACKAGE_xinfc is not set
+# end of NFC tools
+
+#
 # Natcap Support
 #
 CONFIG_PACKAGE_kmod-natcap=m
