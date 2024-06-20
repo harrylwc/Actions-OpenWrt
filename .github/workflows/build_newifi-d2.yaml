@@ -37,7 +37,7 @@ env:
   KERNEL_CONFIG_DIR: x-wrt/target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: false
+  KERNEL_MENUCONFIG: true
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
   KERNEL_VERSION: '6.6'
@@ -185,9 +185,10 @@ jobs:
          
       - name: Compile firmware
         run: |
-          #cd x-wrt 
-          #cp config.newifi-d2.0 .config
-          #make -j$(nproc) || make -j1 V=s
+          cd x-wrt 
+          cp config.newifi-d2.0 .config
+          make -j$(nproc) || make -j1 V=s
+          
           #cd ../
           #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
           #[ $? != 0 ] && make V=s || echo "zteq7 build success"
