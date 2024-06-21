@@ -1,0 +1,11 @@
+--- a/lib/vtls/mbedtls.c	2024-06-21 08:39:31.223347905 +0800
++++ b/lib/vtls/mbedtls.c	2024-06-21 08:52:55.560778080 +0800
+@@ -953,7 +953,7 @@
+   else if(ret) {
+     char errorbuf[128];
+     CURL_TRC_CF(data, cf, "TLS version %04X",
+-                mbedtls_ssl_get_version_number(&backend->ssl));
++                mbedtls_ssl_get_version(&backend->ssl));
+     mbedtls_strerror(ret, errorbuf, sizeof(errorbuf));
+     failf(data, "ssl_handshake returned: (-0x%04X) %s",
+           -ret, errorbuf);
