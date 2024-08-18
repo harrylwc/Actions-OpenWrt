@@ -525,6 +525,7 @@ CONFIG_KERNEL_IPV6_SEG6_LWTUNNEL=y
 CONFIG_KERNEL_PAGE_POOL=y
 # CONFIG_KERNEL_PAGE_POOL_STATS is not set
 # CONFIG_KERNEL_IP_PNP is not set
+# CONFIG_KERNEL_BTRFS_FS is not set
 
 #
 # Filesystem ACL and attr support options
@@ -648,7 +649,8 @@ CONFIG_TOOLCHAINOPTS=y
 # CONFIG_BINUTILS_USE_VERSION_2_39 is not set
 # CONFIG_BINUTILS_USE_VERSION_2_40 is not set
 # CONFIG_BINUTILS_USE_VERSION_2_41 is not set
-CONFIG_BINUTILS_USE_VERSION_2_42=y
+# CONFIG_BINUTILS_USE_VERSION_2_42 is not set
+CONFIG_BINUTILS_USE_VERSION_2_43=y
 CONFIG_EXTRA_BINUTILS_CONFIG_OPTIONS=""
 # CONFIG_DWARVES is not set
 
@@ -680,8 +682,8 @@ CONFIG_LIBC_USE_MUSL=y
 # CONFIG_HAS_PREBUILT_LLVM_TOOLCHAIN is not set
 CONFIG_USE_MUSL=y
 CONFIG_SSP_SUPPORT=y
-CONFIG_BINUTILS_VERSION_2_42=y
-CONFIG_BINUTILS_VERSION="2.42"
+CONFIG_BINUTILS_VERSION_2_43=y
+CONFIG_BINUTILS_VERSION="2.43"
 CONFIG_GCC_VERSION="13.3.0"
 CONFIG_GCC_USE_DEFAULT_VERSION=y
 CONFIG_LIBC="musl"
@@ -4217,6 +4219,10 @@ CONFIG_PACKAGE_kmod-rtw88-8822c=m
 # CONFIG_PACKAGE_kmod-rtw88-8822ce is not set
 CONFIG_PACKAGE_kmod-rtw88-8822cu=m
 CONFIG_PACKAGE_kmod-rtw88-usb=m
+# CONFIG_PACKAGE_kmod-rtw89-8851be is not set
+# CONFIG_PACKAGE_kmod-rtw89-8852ae is not set
+# CONFIG_PACKAGE_kmod-rtw89-8852be is not set
+# CONFIG_PACKAGE_kmod-rtw89-8852ce is not set
 # CONFIG_PACKAGE_kmod-wil6210 is not set
 # CONFIG_PACKAGE_kmod-wl12xx is not set
 # CONFIG_PACKAGE_kmod-wl18xx is not set
@@ -4301,6 +4307,7 @@ CONFIG_PACKAGE_lua-cjson=m
 # CONFIG_PACKAGE_lua-eco-mqtt is not set
 # CONFIG_PACKAGE_lua-eco-netlink is not set
 # CONFIG_PACKAGE_lua-eco-nl80211 is not set
+# CONFIG_PACKAGE_lua-eco-packet is not set
 # CONFIG_PACKAGE_lua-eco-sha1 is not set
 # CONFIG_PACKAGE_lua-eco-socket is not set
 # CONFIG_PACKAGE_lua-eco-ssh is not set
@@ -6377,7 +6384,7 @@ CONFIG_PACKAGE_zlib=y
 CONFIG_PACKAGE_luci=y
 CONFIG_PACKAGE_luci-light=y
 CONFIG_PACKAGE_luci-nginx=m
-CONFIG_PACKAGE_luci-ssl=m
+# CONFIG_PACKAGE_luci-ssl is not set
 CONFIG_PACKAGE_luci-ssl-openssl=y
 # end of 1. Collections
 
@@ -9265,9 +9272,9 @@ CONFIG_PACKAGE_vim=m
 # CONFIG_PACKAGE_gpgv2 is not set
 # CONFIG_PACKAGE_keyctl is not set
 # CONFIG_PACKAGE_keyutils is not set
-CONFIG_PACKAGE_px5g-mbedtls=m
+# CONFIG_PACKAGE_px5g-mbedtls is not set
 # CONFIG_PACKAGE_px5g-standalone is not set
-# CONFIG_PACKAGE_px5g-wolfssl is not set
+CONFIG_PACKAGE_px5g-wolfssl=m
 # CONFIG_PACKAGE_stoken is not set
 # end of Encryption
 
