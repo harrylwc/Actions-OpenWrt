@@ -1,0 +1,11 @@
+--- a/libs/libmutils/mutils_time.c	2016-05-18 01:31:15.000000000 +0800
++++ b/libs/libmutils/mutils_time.c	2024-08-18 18:19:01.933537807 +0800
+@@ -7,7 +7,7 @@
+ */
+ 
+ #include "mutils.h"
+-
++#include <sys/time.h>
+ /* returns 0 on success, -1 on failure */
+ int mutils_time_now(MutilsTime *mt)
+ {
