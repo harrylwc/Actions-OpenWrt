@@ -43,7 +43,7 @@ rm $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/rust/patches/0003-bump-libc-deps-
 cp $GITHUB_WORKSPACE/patches/Makefile.rust  $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/rust/Makefile
 cp $GITHUB_WORKSPACE/patches/0003-mutils_time.patch $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/mailsend/patches/
 #cp $GITHUB_WORKSPACE/patches/001-libutils-makefile.patch $GITHUB_WORKSPACE/x-wrt/feeds/packages/mail/mailsend/patches
-cp $GITHUB_WORKSPACE/patches/1.patch  ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/toolchain/binutils/patches/2.43/
+cp $GITHUB_WORKSPACE/patches/060-binutils.patch ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/multimedia/ffmpeg/patches/
 #cp $GITHUB_WORKSPACE/patches/002-Support-POSIX-basename-from-musl-libc.patch $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/tini/patches/
 #mkdir $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/rtty/patches
 #cp $GITHUB_WORKSPACE/patches/0001-Support-POSIX-basename-from-musl-libc.patch $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/rtty/patches/
