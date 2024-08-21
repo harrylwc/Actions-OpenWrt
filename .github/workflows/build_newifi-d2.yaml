@@ -231,9 +231,9 @@ jobs:
         run: |
            #cp myconfig/config.newifi-d2.2 x-wrt/.config
            cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config         
-           #cp patches/Makefile.ffmpeg x-wrt/feeds/packages/multimedia/ffmpeg/Makefile
-           #cp patches/030-h264-mips.patch x-wrt/feeds/packages/multimedia/ffmpeg/patches/
-           #cp patches/020-ioctl.patch x-wrt/feeds/packages/multimedia/ffmpeg/patches/ 
+           cp patches/Makefile.ffmpeg x-wrt/feeds/packages/multimedia/ffmpeg/Makefile
+           cp patches/030-h264-mips.patch x-wrt/feeds/packages/multimedia/ffmpeg/patches/
+           cp patches/020-ioctl.patch x-wrt/feeds/packages/multimedia/ffmpeg/patches/ 
            #cp -f patches/Makefile.python-bcrypt x-wrt/package/feeds/packages/python-bcrypt/Makefile 
            #cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
            #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
