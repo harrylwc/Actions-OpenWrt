@@ -89,6 +89,7 @@ ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/packages/net/
 #ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/target/linux/generic/hack-5.15/953-net-patch-linux-kernel-to-support-shortcut-fe.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/target/linux/generic/hack-5.15/
 git clone https://github.com/brvphoenix/wrtbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/wrtbwmon
 git clone https://github.com/muink/luci-app-netdata /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-netdata
+cp $GITHUB_WORKSPACE/patches/Makefile.netdata /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-netdata/Makefile
 git clone https://github.com/brvphoenix/luci-app-wrtbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon
 git clone https://github.com/tty228/luci-app-wechatpush /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package//luci-app-wechatpush
 
