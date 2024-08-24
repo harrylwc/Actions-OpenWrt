@@ -322,6 +322,7 @@ CONFIG_KERNEL_IPV6_SEG6_LWTUNNEL=y
 # CONFIG_KERNEL_XDP_SOCKETS is not set
 # CONFIG_KERNEL_PAGE_POOL is not set
 # CONFIG_KERNEL_IP_PNP is not set
+# CONFIG_KERNEL_BTRFS_FS is not set
 
 #
 # Filesystem ACL and attr support options
@@ -445,6 +446,7 @@ CONFIG_TOOLCHAINOPTS=y
 # CONFIG_BINUTILS_USE_VERSION_2_39 is not set
 # CONFIG_BINUTILS_USE_VERSION_2_40 is not set
 # CONFIG_BINUTILS_USE_VERSION_2_41 is not set
+# CONFIG_BINUTILS_USE_VERSION_2_42 is not set
 CONFIG_BINUTILS_USE_VERSION_2_43=y
 CONFIG_EXTRA_BINUTILS_CONFIG_OPTIONS=""
 # CONFIG_DWARVES is not set
@@ -1125,7 +1127,7 @@ CONFIG_BUSYBOX_DEFAULT_PIVOT_ROOT=y
 # CONFIG_BUSYBOX_DEFAULT_FEATURE_SETPRIV_DUMP is not set
 # CONFIG_BUSYBOX_DEFAULT_FEATURE_SETPRIV_CAPABILITIES is not set
 # CONFIG_BUSYBOX_DEFAULT_FEATURE_SETPRIV_CAPABILITY_NAMES is not set
-# CONFIG_BUSYBOX_DEFAULT_SETSID is not set
+CONFIG_BUSYBOX_DEFAULT_SETSID=y
 CONFIG_BUSYBOX_DEFAULT_SWAPON=y
 CONFIG_BUSYBOX_DEFAULT_FEATURE_SWAPON_DISCARD=y
 CONFIG_BUSYBOX_DEFAULT_FEATURE_SWAPON_PRI=y
@@ -3998,6 +4000,10 @@ CONFIG_PACKAGE_kmod-rtw88-8822c=m
 # CONFIG_PACKAGE_kmod-rtw88-8822ce is not set
 CONFIG_PACKAGE_kmod-rtw88-8822cu=m
 CONFIG_PACKAGE_kmod-rtw88-usb=m
+# CONFIG_PACKAGE_kmod-rtw89-8851be is not set
+# CONFIG_PACKAGE_kmod-rtw89-8852ae is not set
+# CONFIG_PACKAGE_kmod-rtw89-8852be is not set
+# CONFIG_PACKAGE_kmod-rtw89-8852ce is not set
 # CONFIG_PACKAGE_kmod-wil6210 is not set
 # CONFIG_PACKAGE_kmod-wl12xx is not set
 # CONFIG_PACKAGE_kmod-wl18xx is not set
@@ -4082,6 +4088,7 @@ CONFIG_PACKAGE_lua-cjson=m
 # CONFIG_PACKAGE_lua-eco-mqtt is not set
 # CONFIG_PACKAGE_lua-eco-netlink is not set
 # CONFIG_PACKAGE_lua-eco-nl80211 is not set
+# CONFIG_PACKAGE_lua-eco-packet is not set
 # CONFIG_PACKAGE_lua-eco-sha1 is not set
 # CONFIG_PACKAGE_lua-eco-socket is not set
 # CONFIG_PACKAGE_lua-eco-ssh is not set
@@ -6264,7 +6271,6 @@ CONFIG_PACKAGE_luci-app-dawn=m
 CONFIG_PACKAGE_luci-app-ddns=y
 # CONFIG_PACKAGE_luci-app-ddns-go is not set
 # CONFIG_PACKAGE_luci-app-ddnsto is not set
-# CONFIG_PACKAGE_luci-app-design-config is not set
 CONFIG_PACKAGE_luci-app-dnscrypt-proxy=m
 # CONFIG_PACKAGE_luci-app-dnsfilter is not set
 # CONFIG_PACKAGE_luci-app-docker is not set
@@ -6417,7 +6423,6 @@ CONFIG_PACKAGE_luci-theme-argon=y
 # CONFIG_PACKAGE_luci-theme-argone is not set
 # CONFIG_PACKAGE_luci-theme-atmaterial_new is not set
 CONFIG_PACKAGE_luci-theme-bootstrap=y
-# CONFIG_PACKAGE_luci-theme-design is not set
 # CONFIG_PACKAGE_luci-theme-ifit is not set
 CONFIG_PACKAGE_luci-theme-material=m
 # CONFIG_PACKAGE_luci-theme-opentopd is not set
@@ -7843,6 +7848,7 @@ CONFIG_PACKAGE_ddns-scripts=y
 # CONFIG_PACKAGE_ddns-scripts-nsupdate is not set
 # CONFIG_PACKAGE_ddns-scripts-one is not set
 # CONFIG_PACKAGE_ddns-scripts-pdns is not set
+# CONFIG_PACKAGE_ddns-scripts-porkbun is not set
 # CONFIG_PACKAGE_ddns-scripts-route53 is not set
 CONFIG_PACKAGE_ddns-scripts-services=y
 # CONFIG_PACKAGE_ddns-scripts-transip is not set
@@ -10122,4 +10128,4 @@ CONFIG_PACKAGE_urllogger=m
 # end of Font-Utils
 # end of Xorg
 
-CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng ddns-go ddnsto dns2socks dns2tcp filebrowser gn gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argone-config luci-app-bypass luci-app-clash luci-app-ddns-go luci-app-ddnsto luci-app-design-config luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-filebrowser luci-app-gost luci-app-homeproxy luci-app-ikoolproxy luci-app-istorex luci-app-lucky luci-app-mosdns luci-app-nlbwmon luci-app-openclash luci-app-partexp luci-app-passwall luci-app-passwall2 luci-app-quickstart luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-ttyd luci-app-unblockneteasemusic luci-lib-taskd luci-lib-xterm luci-theme-alpha luci-theme-argon luci-theme-argone luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mosdns naiveproxy pdnsd-alt quickstart redsocks2 shadow-tls shadowsocks-rust shadowsocksr-libev simple-obfs sing-box smartdns ssocks taskd tcping trojan trojan-go trojan-plus tuic-client ucl upx v2dat v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
+CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng ddns-go ddnsto dns2socks dns2tcp filebrowser gn gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argone-config luci-app-bypass luci-app-clash luci-app-ddns-go luci-app-ddnsto luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-filebrowser luci-app-gost luci-app-homeproxy luci-app-ikoolproxy luci-app-istorex luci-app-lucky luci-app-mosdns luci-app-nlbwmon luci-app-openclash luci-app-partexp luci-app-passwall luci-app-passwall2 luci-app-quickstart luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-ttyd luci-app-unblockneteasemusic luci-lib-taskd luci-lib-xterm luci-theme-alpha luci-theme-argon luci-theme-argone luci-theme-atmaterial_new luci-theme-ifit luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mosdns naiveproxy pdnsd-alt quickstart redsocks2 shadow-tls shadowsocks-rust shadowsocksr-libev simple-obfs sing-box smartdns ssocks taskd tcping trojan trojan-go trojan-plus tuic-client ucl upx v2dat v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
