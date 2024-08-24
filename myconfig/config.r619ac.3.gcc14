@@ -4282,7 +4282,7 @@ CONFIG_PACKAGE_php8-pecl-dio=m
 CONFIG_PACKAGE_php8-pecl-http=m
 CONFIG_PACKAGE_php8-pecl-imagick=m
 CONFIG_PACKAGE_php8-pecl-krb5=m
-CONFIG_PACKAGE_php8-pecl-mcrypt=m
+# CONFIG_PACKAGE_php8-pecl-mcrypt is not set
 CONFIG_PACKAGE_php8-pecl-raphf=m
 CONFIG_PACKAGE_php8-pecl-redis=m
 CONFIG_PACKAGE_php8-pecl-xdebug=m
@@ -5950,7 +5950,7 @@ CONFIG_PACKAGE_liblzo=m
 CONFIG_PACKAGE_libmagic=m
 CONFIG_PACKAGE_libmaxminddb=m
 # CONFIG_PACKAGE_libmbim is not set
-CONFIG_PACKAGE_libmcrypt=m
+# CONFIG_PACKAGE_libmcrypt is not set
 # CONFIG_PACKAGE_libmd is not set
 # CONFIG_PACKAGE_libmicrohttpd-no-ssl is not set
 # CONFIG_PACKAGE_libmicrohttpd-ssl is not set
@@ -7974,7 +7974,7 @@ CONFIG_PACKAGE_luci-i18n-wrtbwmon-zh-tw=y
 # CONFIG_PACKAGE_fdm is not set
 # CONFIG_PACKAGE_greyfix is not set
 CONFIG_PACKAGE_mailsend=m
-CONFIG_PACKAGE_mailsend-nossl=m
+# CONFIG_PACKAGE_mailsend-nossl is not set
 # CONFIG_PACKAGE_mblaze is not set
 CONFIG_PACKAGE_msmtp=y
 # CONFIG_PACKAGE_msmtp-mta is not set
