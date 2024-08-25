@@ -70,7 +70,7 @@ rm -rf $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/100-fix-gcc14-build.
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/Makefile.gnutls /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/Makefile
 #cp /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/patches/030-unistring-optional.patch /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/libs/gnutls/patches/               
 #cp $GITHUB_WORKSPACE/patches/*ipq4019*.dts $GITHUB_WORKSPACE/x-wrt/target/linux/ipq40xx/files/arch/arm/boot/dts/
-#cp $GITHUB_WORKSPACE/patches/Makefile.php8 $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/php8/Makefile
+cp $GITHUB_WORKSPACE/patches/Makefile.php8 $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/php8/Makefile
 #cp $GITHUB_WORKSPACE/patches/Makefile.python3-packages $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/python/python3-packages/Makefile
 
 #cp $GITHUB_WORKSPACE/patches/Makefile.ss /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/shadowsocks-libev/Makefile
