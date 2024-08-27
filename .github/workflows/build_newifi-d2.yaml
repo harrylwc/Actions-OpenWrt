@@ -16,8 +16,8 @@ on:
  repository_dispatch:
     types: [mvebu_ipq40xx_ramips_completed]
  workflow_dispatch:
- #schedule:
-    # - cron: 30 15 * * *
+ schedule:
+     - cron: 45 15 * * *
   #release:
    # types: [published]
  watch:
@@ -84,8 +84,8 @@ jobs:
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          target_device_arch_1="mvebu_ipq40xx_ramips"
-          #target_device_arch_1="ramips"
+          #target_device_arch_1="mvebu_ipq40xx_ramips"
+          target_device_arch_1="ramips"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           echo "gcc_hash="$gcc_hash
@@ -104,7 +104,7 @@ jobs:
           #mixkey: 'ramips'
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
-          skip_saving: 'true'
+          #skip_saving: 'true'
           
       - name: Space cleanup
         env:
