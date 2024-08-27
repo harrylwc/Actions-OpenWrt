@@ -266,9 +266,17 @@ jobs:
            cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
            #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
            #cp -f $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/usr/bin/apr-1-config $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/ 
+          
            mkdir -p $DRIVERS_DIR
-           #cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
-           
+           echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
+           echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
+           cd x-wrt  
+           make -j$(nproc)
+           cd ../
+           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR
+           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
+           #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
+ 
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
            cd x-wrt 
