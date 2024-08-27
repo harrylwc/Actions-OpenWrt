@@ -24,8 +24,8 @@ on:
   #push:
    #branches: 
     #- master
-  #schedule:
-   # - cron: "15 16 * * *"
+  schedule:
+    - cron: "45 15 * * *"
   #release:
    # types: [published]
   watch:
@@ -99,8 +99,8 @@ jobs:
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          target_device_arch_1="mvebu_ipq40xx_ramips"
-          #target_device_arch_2="ramips"
+          #target_device_arch_1="mvebu_ipq40xx_ramips"
+          target_device_arch_2="mvebu"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           #gcc_hash='37dab1b7'       
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
@@ -114,7 +114,7 @@ jobs:
           mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
-          skip_saving: 'true'
+          #skip_saving: 'true'
       - name: Clear Cache
         if: env.CLEARCACHE == 'true'
         run: |
