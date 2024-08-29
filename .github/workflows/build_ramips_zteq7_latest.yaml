@@ -14,10 +14,10 @@ on:
    # branches: 
     #  - master
  repository_dispatch:
-    types: [mvebu_ipq40xx_ramips_completed]
+    types: [ramips_completed]
  workflow_dispatch:
- schedule:
-     - cron: 00 20 * * *
+ #schedule:
+  #   - cron: 00 20 * * *
   #release:
    # types: [published]
  watch:
@@ -316,13 +316,13 @@ jobs:
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
-      - name: Send repository_dispatch
-        env:
-          PAT: ${{ secrets.GITHUB_TOKEN }} 
-        run: |
-          curl \
-          -X POST \
-          -H "Authorization: token $PAT" \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
-          -d '{"event_type":"ramips_completed"}' 
+      #- name: Send repository_dispatch
+       # env:
+        #  PAT: ${{ secrets.GITHUB_TOKEN }} 
+        #run: |
+         # curl \
+          #-X POST \
+          #-H "Authorization: token $PAT" \
+          #-H "Accept: application/vnd.github.v3+json" \
+          #https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
+          #-d '{"event_type":"ramips_completed"}' 
