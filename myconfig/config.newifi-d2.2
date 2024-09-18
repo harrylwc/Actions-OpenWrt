@@ -41,6 +41,7 @@ CONFIG_TARGET_ramips=y
 # CONFIG_TARGET_realtek is not set
 # CONFIG_TARGET_rockchip is not set
 # CONFIG_TARGET_sifiveu is not set
+# CONFIG_TARGET_siflower is not set
 # CONFIG_TARGET_starfive is not set
 # CONFIG_TARGET_archs38 is not set
 # CONFIG_TARGET_omap is not set
@@ -684,7 +685,7 @@ CONFIG_LIBC_USE_MUSL=y
 CONFIG_USE_MUSL=y
 CONFIG_SSP_SUPPORT=y
 CONFIG_BINUTILS_VERSION_2_43=y
-CONFIG_BINUTILS_VERSION="2.43"
+CONFIG_BINUTILS_VERSION="2.43.1"
 CONFIG_GCC_VERSION_14=y
 CONFIG_GCC_VERSION="14.2.0"
 CONFIG_LIBC="musl"
@@ -4025,7 +4026,7 @@ CONFIG_PACKAGE_kmod-usb-net-huawei-cdc-ncm=m
 # CONFIG_PACKAGE_kmod-usb-net-mcs7830 is not set
 # CONFIG_PACKAGE_kmod-usb-net-pegasus is not set
 # CONFIG_PACKAGE_kmod-usb-net-pl is not set
-# CONFIG_PACKAGE_kmod-usb-net-qmi-wwan is not set
+CONFIG_PACKAGE_kmod-usb-net-qmi-wwan=m
 # CONFIG_PACKAGE_kmod-usb-net-rndis is not set
 CONFIG_PACKAGE_kmod-usb-net-rtl8150=m
 CONFIG_PACKAGE_kmod-usb-net-rtl8152=m
@@ -4652,7 +4653,7 @@ CONFIG_PACKAGE_python3-attrs=m
 # CONFIG_PACKAGE_python3-babel is not set
 CONFIG_PACKAGE_python3-base=y
 # CONFIG_PACKAGE_python3-base-src is not set
-#CONFIG_PACKAGE_python3-bcrypt=m
+# CONFIG_PACKAGE_python3-bcrypt=m
 # CONFIG_PACKAGE_python3-bcrypt-src is not set
 # CONFIG_PACKAGE_python3-bidict is not set
 # CONFIG_PACKAGE_python3-ble2mqtt is not set
@@ -8696,9 +8697,9 @@ CONFIG_PACKAGE_hostapd-utils=m
 CONFIG_WPA_MSG_MIN_PRIORITY=3
 CONFIG_WPA_WOLFSSL=y
 CONFIG_DRIVER_11AC_SUPPORT=y
-# CONFIG_DRIVER_11AX_SUPPORT is not set
+CONFIG_DRIVER_11AX_SUPPORT=y
 # CONFIG_WPA_ENABLE_WEP is not set
-# CONFIG_WPA_MBO_SUPPORT is not set
+CONFIG_WPA_MBO_SUPPORT=y
 # CONFIG_PACKAGE_wpa-supplicant-basic is not set
 # CONFIG_PACKAGE_wpa-supplicant-mbedtls is not set
 # CONFIG_PACKAGE_wpa-supplicant-mesh-mbedtls is not set
@@ -10154,9 +10155,9 @@ CONFIG_PACKAGE_luci-app-wizard=m
 #
 # Fast Forward Stacks
 #
-CONFIG_PACKAGE_kmod-natflow=y
+CONFIG_PACKAGE_kmod-natflow=m
 CONFIG_PACKAGE_natflow-auth=m
-CONFIG_PACKAGE_natflow-boot=y
+CONFIG_PACKAGE_natflow-boot=m
 # CONFIG_PACKAGE_natflow-hostacl is not set
 # end of Fast Forward Stacks
 
@@ -10254,10 +10255,10 @@ CONFIG_PACKAGE_mbed-hmac-sha1=m
 # end of mbed tools
 
 # CONFIG_PACKAGE_initramfs-upgrade-fw is not set
-# CONFIG_PACKAGE_kmod-qmi-wwan-q is not set
-# CONFIG_PACKAGE_kmod-rtw8852cu is not set
+CONFIG_PACKAGE_kmod-qmi-wwan-q=m
+CONFIG_PACKAGE_kmod-rtw8852cu=m
 # CONFIG_PACKAGE_quectel-cm is not set
-# CONFIG_PACKAGE_sendip is not set
+CONFIG_PACKAGE_sendip=m
 # CONFIG_PACKAGE_telnetd-test is not set
 CONFIG_PACKAGE_urllogger=m
 # CONFIG_PACKAGE_vhusbd-online is not set
