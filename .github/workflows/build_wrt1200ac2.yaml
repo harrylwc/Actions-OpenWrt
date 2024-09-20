@@ -101,7 +101,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
         run: |
           #target_device_arch_1="mvebu_ipq40xx_ramips"
-          target_device_arch_1="mvebu"
+          target_device_arch_1="mvebu_openwrt"
           #target_device_arch_2="mvebu"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           #gcc_hash='37dab1b7'       
@@ -328,7 +328,7 @@ jobs:
       - name: Upload bin directory
         uses: actions/upload-artifact@master
         with:
-          name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
+          name: OpenWrt_snapshots_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
            #OpenWrt_bin_${{ env.ROUTER_MODEL }}
           path: x-wrt/bin
       - name: SSH connection for failure Debug
