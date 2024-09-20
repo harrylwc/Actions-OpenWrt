@@ -7,26 +7,29 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile WRT1200AC2 TVH OpenWrt Images  
+name: Compile WRT1200AC TVH OpenWrt offical Images  
 
 on:
- # repository_dispatch:
-    #types: [wrt1200ac_completed]
-   workflow_dispatch:    
+  repository_dispatch:
+    types: [mvebu_ipq40xx_ramips_completed]
+  workflow_dispatch:    
     inputs:
       ssh:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
+        
+       
+  
   #push:
    #branches: 
     #- master
-  #schedule:
-   # - cron: "30 11 * * *"
+  schedule:
+    - cron: "45 15 * * *"
   #release:
    # types: [published]
-  #watch:
-   # types: started
+  watch:
+    types: started
 
   #workflow_dispatch:    
     
@@ -34,7 +37,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: wrt1200ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.2
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.3
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.wrt1200ac'
@@ -46,11 +49,11 @@ env:
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
-  KERNEL_VERSION: '6.1'
+  KERNEL_VERSION: '6.6'
   #KERNEL_VERSION: '5.15'                                                                            
   UPDATE_MULTI_CORE_FILE1: myconfig/sys.lua
   UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
-  KERNEL_MODULE: myconfig/kernel_modules.txt
+  KERNEL_MODULE: myconfig/kernel_wrt1200ac
   FEEDS_CONF: feeds.conf.default
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
@@ -58,13 +61,13 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
-  target_device_arch_1: mvebu
   CLEARCACHE: true
+  
 jobs:
 
   build_openwrt:
     ###@####
-    name: Build WRT1200AC  TVH firmware
+    name: Build WRT1200AC TVH offical firmware
     runs-on: ubuntu-latest
     #continue-on-error: true 
     #runs-on: ubuntu-22.10
@@ -76,16 +79,18 @@ jobs:
           ref: master
           fetch-depth: 0
       - name: Check CPU model
-        run: | 
+        run: |                                                    
           cat /proc/cpuinfo|grep model                            
           cat /proc/cpuinfo|grep proc
+          echo cpu core=$(nproc)
           free
-         
+  
       - name: Update feeds & Load custom configuration
         run: |
           #cat /proc/cpuinfo|grep model
           #cat /proc/cpuinfo|grep proce
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
+          sed -i 's/github.com/x-wrt/x-wrt/git.openwrt.org/openwrt/openwrt.git/g' $GITHUB_WORKSPACE/$DIY_P1_SH
           $GITHUB_WORKSPACE/$DIY_P1_SH
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -95,8 +100,9 @@ jobs:
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          #target_device_arch_1="mvebu"
-          #target_device_arch_2="ramips"
+          #target_device_arch_1="mvebu_ipq40xx_ramips"
+          target_device_arch_1="mvebu"
+          #target_device_arch_2="mvebu"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           #gcc_hash='37dab1b7'       
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
@@ -111,14 +117,13 @@ jobs:
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
-          clean: true
-        
       - name: Clear Cache
         if: env.CLEARCACHE == 'true'
-        run: |                                                    
+        run: |
           gh extension install actions/gh-actions-cache
           REPO=${{ github.repository }}
           BRANCH="master"
+          target_device_arch_1="mvebu"  
           echo "Fetching list of cache key"
           cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1|tail -1 )
           no_of_cache=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1|cut -f 1|wc -l)
@@ -127,7 +132,7 @@ jobs:
           then
           cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1|tail -1 )
           echo "Current caches "$cacheKeysForPR
-          ## Setting this to not fail the workflow while deleting cache keys. 
+          ## Setting this to not fail the workflow while deleting cache keys.
           set +e
           echo "Deleting caches..."
           for cacheKey in $cacheKeysForPR
@@ -138,7 +143,8 @@ jobs:
           done
           fi
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
@@ -154,10 +160,20 @@ jobs:
           #sudo -E apt-get update
           #sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libfuse-dev libz-dev patch python3 unzip zlib1g-dev lib32gcc-s1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler antlr3 gperf swig libtinfo5 --fix-missing
           sudo -E apt-get -y autoremove --purge
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"          
           #sudo pip install ply 
           #sudo -E python3 -m pip install --upgrade pip 
           #sudo -E pip install --no-cache-dir --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org pip setuptools
           sudo -E apt-get clean
+          sudo swapoff -a
+          sudo rm -f /swapfile
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -f /usr/local/share/chromium/chrome-linux/chrome
+          sudo rm -f /opt/microsoft/msedge/msedge
+          sudo apt-get purge --auto-remove azure* openjdk* firefox* powershell* microsoft-edge* temurin* r-* php* nginx dotnet* ubuntu-gnome-desktop gnome-shell golang* google* mysql* ruby* apach* 
           df -kh
           #find /home/runner/work/_temp/ -name "*cache*"
      # - name: Run migrations
@@ -190,6 +206,13 @@ jobs:
        #   sed -i 's/^[ \t]*//g' ./.config
         #  make defconfig
 
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+        # this might remove tools that are actually needed,
+        # if set to "true" but frees about 6 GB
+          tool-cache: false
+
       - name: Make download
         run: |
           cd x-wrt 
@@ -210,22 +233,15 @@ jobs:
       - name: Compile firmware
         run: |
           cd x-wrt
-          # rm dl/rrdtool*
-          #wget https://oss.oetiker.ch/rrdtool/pub/archive/rrdtool-1.0.x/rrdtool-1.0.50.tar.gz
-          #wget https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz
-          #cd ../
-          make -j$(nproc) || make -j1 V=s
-          [ $? != 0 ] && make V=s || echo "build success"
+          sudo mv dl /mnt/
+          ln -s /mnt/dl
+          #cp config.wrt1200ac.0 .config
+          #echo cpu core=$(nproc)
           
-          #make V=99 2>&1 |tee build.log
-          #     echo "======================="
-          #echo "Space usage:"
-          #echo "======================="
-          df -kh
-          #echo "======================="
-          #du -h ./ --max-depth=1
-          #du -h ~/work/x-wrt --max-depth=1 || true
-
+          #make -j$(nproc) || make -j1 V=s
+          #[ $? != 0 ] && make V=s || echo "build success"
+          
+          
       
       -  name: SSH connection for failure Debug
          if: ${{ failure() }}
@@ -247,20 +263,38 @@ jobs:
       - name: Compile again after .config updated or add kernel modules
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
-           #cp $GITHUB_WORKSPACE/lede/target/linux/generic/backport-5.10/35?*.patch $GITHUB_WORKSPACE/x-wrt/target/linux/generic/backport-5.10/
-           #cp $GITHUB_WORKSPACE/lede/package/kernel/linux/modules/fs.mk $GITHUB_WORKSPACE/x-wrt/package/kernel/linux/modules/ 
            
-           #cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config 
            cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
-           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
-           ##cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
-           
-           #cat myconfig/config.tvh.ffmpeg >> .config
+           #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
+           #cp -f $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/usr/bin/apr-1-config $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/ 
+          
+           mkdir -p $DRIVERS_DIR
+           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
+           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
+           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y/g' x-wrt/.config
+           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y/g' x-wrt/.config
+           cd x-wrt  
+           make -j$(nproc)
+           cd ../
+           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR
+           chmod 755 $DRIVERS_DIR/busybox                            
+           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
+           #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
+ 
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
            cd x-wrt 
-           #make kernel_menuconfig -j2
-           make -j$(nproc) || make -j1 
+           
+           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+           #sudo rm -rf $GITHUB_WORKSPACE/lede
+           echo cpu core=$(nproc)
+           #make kernel_menuconfig -j4
+           #ln -s /usr/bin/ccache /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/staging_dir/host/bin/ccache 
+           #make V=s
+           make -j$(nproc)
+           #|| make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success" 
+           cp -f bin/targets/mvebu/cortexa9/openwrt-mvebu-cortexa9-linksys_wrt1200ac-squashfs-sysupgrade.bin bin/targets/mvebu/drivers/                                                               
            df -kh
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
