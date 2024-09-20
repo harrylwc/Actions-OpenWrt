@@ -90,7 +90,7 @@ jobs:
           #cat /proc/cpuinfo|grep model
           #cat /proc/cpuinfo|grep proce
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
-          sed -i 's/github.com/x-wrt/x-wrt/git.openwrt.org/openwrt/openwrt.git/g' $GITHUB_WORKSPACE/$DIY_P1_SH
+          sed -i 's/github.com\/x-wrt\/x-wrt/git.openwrt.org\/openwrt\/openwrt.git x-wrt/g' $GITHUB_WORKSPACE/$DIY_P1_SH
           $GITHUB_WORKSPACE/$DIY_P1_SH
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
