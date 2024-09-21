@@ -13,7 +13,7 @@ cp -r $GITHUB_WORKSPACE/x-wrt/tvheadend/.git $GITHUB_WORKSPACE/x-wrt/package/tvh
 rm -r feeds/packages/multimedia/tvheadend
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applications/luci-app-nlbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
 rm $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/rust/patches/0003-bump-libc-deps-to-0.2.146.patch
-
+cp $GITHUB_WORKSPACE/patches/swconfig* $GITHUB_WORKSPACE/x-wrt/target/linux/generic/files/drivers/net/phy/
 cp $GITHUB_WORKSPACE/patches/Makefile.rust  $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/rust/Makefile
 cp $GITHUB_WORKSPACE/patches/0003-mutils_time.patch $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/mailsend/patches/
 cp $GITHUB_WORKSPACE/patches/060-binutils.patch $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/
