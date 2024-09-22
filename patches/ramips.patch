@@ -1,5 +1,5 @@
 diff --git a/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts b/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts
-index 19e349528cc..531435bd5b5 100644
+index 19e349528cc..d8bc04d7465 100644
 --- a/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts
 +++ b/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dts
 @@ -23,34 +23,19 @@
@@ -50,7 +50,7 @@ index 19e349528cc..531435bd5b5 100644
 +       mediatek,portmap = "wllll";
  };
 diff --git a/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dtsi b/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dtsi
-index 8b9d1470216..0ce419791b4 100644
+index 8b9d1470216..d5665b106bb 100644
 --- a/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dtsi
 +++ b/target/linux/ramips/dts/mt7620a_lenovo_newifi-y1.dtsi
 @@ -15,7 +15,7 @@
@@ -95,15 +95,15 @@ index 0fb52e154e5..5ecc1c5ee50 100644
         ;;
  lenovo,newifi-y1s)
 diff --git a/target/linux/ramips/mt7620/base-files/etc/board.d/02_network b/target/linux/ramips/mt7620/base-files/etc/board.d/02_network
-index cf8086ab3b8..13eef381cfc 100644
+index cf8086ab3b8..8296b656fde 100644
 --- a/target/linux/ramips/mt7620/base-files/etc/board.d/02_network
 +++ b/target/linux/ramips/mt7620/base-files/etc/board.d/02_network
-@@ -205,7 +205,7 @@ ramips_setup_interfaces()
+@@ -201,7 +201,7 @@ ramips_setup_interfaces()
+        lenovo,newifi-y1|\
+        xiaomi,miwifi-mini)
+                ucidef_add_switch "switch0" \
+-                       "0:lan:2" "1:lan:1" "4:wan" "6@eth0"
++                       "1:lan:1" "2:lan:2" "3:lan:3" "4:lan:4" "0:wan" "6@eth0"
                 ;;
         lenovo,newifi-y1s)
                 ucidef_add_switch "switch0" \
--                       "1:lan:4" "2:lan:3" "4:lan:2" "5:lan:1" "0:wan" "6@eth0"
-+                       "1:lan:1" "2:lan:2" "3:lan:3" "4:lan:4" "0:wan" "6@eth0"
-                ;;
-        linksys,e1700|\
-        netis,wf2770|\
