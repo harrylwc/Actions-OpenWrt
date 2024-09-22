@@ -3,12 +3,12 @@ git clone https://github.com/coolsnowwolf/lede lede
 lede/scripts/feeds update -a
 
 cd x-wrt
-rm target/linux/ramips/dts/mt7620a.dtsi
-rm target/linux/ramips/dts/mt7620n.dtsi
-rm target/linux/ramips/mt7620/target.mk
-wget https://raw.githubusercontent.com/openwrt/openwrt/main/target/linux/ramips/dts/mt7620a.dtsi -O target/linux/ramips/dts/mt7620a.dtsi
-wget https://raw.githubusercontent.com/openwrt/openwrt/main/target/linux/ramips/dts/mt7620n.dtsi -O target/linux/ramips/dts/mt7620n.dtsi
-wget https://raw.githubusercontent.com/openwrt/openwrt/main/target/linux/ramips/mt7620/target.mk -O target/linux/ramips/mt7620/target.mk
+#rm target/linux/ramips/dts/mt7620a.dtsi
+#rm target/linux/ramips/dts/mt7620n.dtsi
+#rm target/linux/ramips/mt7620/target.mk
+#wget https://raw.githubusercontent.com/openwrt/openwrt/main/target/linux/ramips/dts/mt7620a.dtsi -O target/linux/ramips/dts/mt7620a.dtsi
+#wget https://raw.githubusercontent.com/openwrt/openwrt/main/target/linux/ramips/dts/mt7620n.dtsi -O target/linux/ramips/dts/mt7620n.dtsi
+#wget https://raw.githubusercontent.com/openwrt/openwrt/main/target/linux/ramips/mt7620/target.mk -O target/linux/ramips/mt7620/target.mk
 
 
 ln -s $GITHUB_WORKSPACE/lede/package/lean $GITHUB_WORKSPACE/x-wrt/package/lean
