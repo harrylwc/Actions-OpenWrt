@@ -30,7 +30,7 @@ on:
   #workflow_dispatch:    
 
 env:
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.ramips.2.openwrt
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.ramips.2.x-wrt
   #####change model here ####@# 
   REPO_URL: https://github.com/x-wrt/x-wrt
   #https://github.com/openwrt/openwrt.git
@@ -83,7 +83,7 @@ jobs:
       - name: Update feeds & Load custom configuration
         run: |
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
-          sed -i 's/github.com\/x-wrt\/x-wrt/git.openwrt.org\/openwrt\/openwrt.git x-wrt/g' $GITHUB_WORKSPACE/$DIY_P1_SH
+          #sed -i 's/github.com\/x-wrt\/x-wrt/git.openwrt.org\/openwrt\/openwrt.git x-wrt/g' $GITHUB_WORKSPACE/$DIY_P1_SH
           $GITHUB_WORKSPACE/$DIY_P1_SH
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -97,7 +97,7 @@ jobs:
 
         run: |
           #target_device_arch_1="mvebu_ipq40xx_ramips"
-          target_device_arch_1="ramips_openwrt"
+          target_device_arch_1="ramips"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           echo "gcc_hash="$gcc_hash
