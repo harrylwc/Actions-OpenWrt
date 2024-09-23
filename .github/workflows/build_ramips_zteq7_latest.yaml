@@ -240,10 +240,10 @@ jobs:
            echo cpu core=$(nproc)
            make -j$(nproc) || make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success"
-           cp $GITHUB_WORKSPACE/myconfig/config.ramips.3 $GITHUB_WORKSPACE/x-wrt/.config 
-           cp -f $GITHUB_WORKSPACE/x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
-           make -j$(nproc) || make -j1 V=s
-           [ $? != 0 ] && make V=s || echo "build success"
+           #cp $GITHUB_WORKSPACE/myconfig/config.ramips.3 $GITHUB_WORKSPACE/x-wrt/.config 
+           #cp -f $GITHUB_WORKSPACE/x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
+           #make -j$(nproc) || make -j1 V=s
+           #[ $? != 0 ] && make V=s || echo "build success"
            
            cp -f bin/targets/ramips/mt7620/openwrt-ramips-mt7620*sysupgrade.bin bin/targets/ramips/drivers/
       - name: SSH connection for KERNEL MENU CONFIG
