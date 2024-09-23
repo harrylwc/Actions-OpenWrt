@@ -188,7 +188,6 @@ jobs:
 
       - name: Make download
         run: |
-          
           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config 
           cd x-wrt
           make download -j8 || make download -j1 V=s
@@ -203,8 +202,8 @@ jobs:
       
       - name: Compile firmware
         run: |
+          cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
           cd x-wrt
-          cp $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
           ls -alt $GITHUB_WORKSPACE/x-wrt/.config
           echo cpu core=$(nproc)
           #make -j$(nproc) || make -j1 V=s
