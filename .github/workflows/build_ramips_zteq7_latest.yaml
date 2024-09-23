@@ -190,6 +190,8 @@ jobs:
 
       - name: Make download
         run: |
+          
+          cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config 
           cd x-wrt
           make download -j8 || make download -j1 V=s
           rm -rf $(find ./dl/ -size -1024c)
