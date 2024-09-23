@@ -13,8 +13,8 @@ on:
   #push:
    # branches: 
     #  - master
- repository_dispatch:
-    types: [ramips_completed]
+ #repository_dispatch:
+    #types: [ramips_completed]
  workflow_dispatch:
  #schedule:
   #   - cron: 00 20 * * *
@@ -97,7 +97,7 @@ jobs:
 
         run: |
           #target_device_arch_1="mvebu_ipq40xx_ramips"
-          target_device_arch_1="ramips"
+          target_device_arch_1="ramips_openwrt"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           echo "gcc_hash="$gcc_hash
