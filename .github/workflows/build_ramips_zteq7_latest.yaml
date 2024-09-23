@@ -30,7 +30,7 @@ on:
   #workflow_dispatch:    
 
 env:
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.ramips.2.openwrt
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.ramips.2.x-wrt
   #####change model here ####@# 
   REPO_URL: https://github.com/x-wrt/x-wrt
   #https://github.com/openwrt/openwrt.git
@@ -60,7 +60,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
-  target_device_arch_1: ramips_openwrt
+  target_device_arch_1: ramips
   CLEARCACHE: true
 jobs:
 
@@ -83,7 +83,7 @@ jobs:
       - name: Update feeds & Load custom configuration
         run: |
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
-          sed -i 's/github.com\/x-wrt\/x-wrt/git.openwrt.org\/openwrt\/openwrt.git x-wrt/g' $GITHUB_WORKSPACE/$DIY_P1_SH
+          #sed -i 's/github.com\/x-wrt\/x-wrt/git.openwrt.org\/openwrt\/openwrt.git x-wrt/g' $GITHUB_WORKSPACE/$DIY_P1_SH
           $GITHUB_WORKSPACE/$DIY_P1_SH
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -205,7 +205,6 @@ jobs:
         run: |
           cd x-wrt
           cp $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
-          #cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.openwrt $GITHUB_WORKSPACE/x-wrt/.config
           ls -alt $GITHUB_WORKSPACE/x-wrt/.config
           echo cpu core=$(nproc)
           #make -j$(nproc) || make -j1 V=s
