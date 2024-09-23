@@ -107,16 +107,14 @@ jobs:
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
 
- 
       - name: Cache1
-        uses: HiGarfield/cachewrtbuild@main				#klever1988/cachewrtbuild@main 
+        uses: HiGarfield/cachewrtbuild@main                             #klever1988/cachewrtbuild@main
         with:
           ccache: 'true'
           mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
-          #mixkey: 'ramips'
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
-         # skip_saving: 'true'
+          #skip_saving: 'true'
       - name: Clear Cache
         if: env.CLEARCACHE == 'true'
         run: |                                                                              
