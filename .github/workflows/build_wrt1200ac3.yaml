@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile WRT1200AC3 TVH OpenWrt Images  
+name: Compile WRT1200AC3 TVH x-wrt Images  
 
 on:
   repository_dispatch:
@@ -67,7 +67,7 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build WRT1200AC  TVH firmware
+    name: Build WRT1200AC TVH x-wrt firmware
     runs-on: ubuntu-latest
     #continue-on-error: true 
     #runs-on: ubuntu-22.10

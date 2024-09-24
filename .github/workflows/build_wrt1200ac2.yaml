@@ -67,7 +67,7 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build WRT1200AC TVH offical firmware
+    name: Build WRT1200AC TVH openwrt offical firmware
     runs-on: ubuntu-latest
     #continue-on-error: true 
     #runs-on: ubuntu-22.10
