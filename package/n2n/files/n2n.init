@@ -55,9 +55,6 @@ start_instance() {
                 procd_set_param respawn
                 procd_close_instance
 
-                iptables -I FORWARD -i "$tunname" -j ACCEPT -m comment --comment 'n2n edge eth'
-                iptables -I FORWARD -o "$tunname" -j ACCEPT -m comment --comment 'n2n edge eth'
-                [ "$masquerade" = "0" ] || iptables -t nat -I POSTROUTING -o "$tunname" -j MASQUERADE -m comment --comment 'n2n edge net'
         ;;
         supernode)
                 local enabled
@@ -78,7 +75,6 @@ start_instance() {
                 procd_set_param respawn
                 procd_close_instance
 
-                iptables -I INPUT -p udp --dport $port -j ACCEPT -m comment --comment 'n2n supernode port'
         ;;
         route)
                 local enabled
@@ -106,15 +102,11 @@ stop_instance() {
                 config_get tunname "$cfg" 'tunname'
                 config_get_bool masquerade "$cfg" 'masquerade' '0'
 
-                iptables -D FORWARD -i "$tunname" -j ACCEPT -m comment --comment 'n2n edge eth' 2>/dev/null
-                iptables -D FORWARD -o "$tunname" -j ACCEPT -m comment --comment 'n2n edge eth' 2>/dev/null
-                iptables -t nat -D POSTROUTING -o "$tunname" -j MASQUERADE -m comment --comment 'n2n edge net' 2>"/dev/null"
         ;;
         supernode)
                 local port
                 config_get port "$cfg" 'port'
 
-                iptables -D INPUT -p udp --dport "$port" -j ACCEPT -m comment --comment 'n2n supernode port' 2>"/dev/null"
         ;;
         esac
 }
