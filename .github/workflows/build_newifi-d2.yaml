@@ -183,12 +183,12 @@ jobs:
          TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
          TELEGRAM_CHAT_ID: 1373335316
          
-      - name: Compile firmware
+      - name: Compile zte q7 firmware
         run: |
           #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
           cd x-wrt 
-          #cp config.newifi-d2.0 .config
-          #make -j$(nproc) || make -j1 V=s
+          cp config.ramip2.2.x-wrt .config
+          make -j$(nproc) || make -j1 V=s
           #make kernel_menuconfig
           #sleep 3600
           #cd ../
@@ -197,8 +197,8 @@ jobs:
           #cp config.$ROUTER_MODEL.0 .config
           echo cpu core=$(nproc)
           #make -j$(nproc) || make -j1 V=s
-          #[ $? != 0 ] && make V=s || echo "zteq7 build success"
-          #cp -f bin/targets/ramips/mt7621/openwrt-ramips-mt7621-d-team_newifi-d2-squashfs-sysupgrade.bin bin/targets/ramips/drivers/
+          [ $? != 0 ] && make V=s || echo "zteq7 build success"
+          cp -f bin/targets/ramips/mt7620/openwrt-ramips-*squashfs-sysupgrade.bin bin/targets/ramips/drivers/
          
           #     echo "======================="
           #echo "Space usage:"
