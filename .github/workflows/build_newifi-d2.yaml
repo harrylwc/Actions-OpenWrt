@@ -194,12 +194,7 @@ jobs:
           ln -s /mnt/dl
           sudo mv bin /mnt/
           ln -s /mnt/bin .
-          cd x-wrt
-          sudo mv dl /mnt/
-          ln -s /mnt/dl
-          sudo mv bin /mnt/
-          ln -s /mnt/bin .
- 
+          
           cp config.ramips.2.x-wrt .config
           make -j$(nproc) || make -j1 V=s
           #make kernel_menuconfig
