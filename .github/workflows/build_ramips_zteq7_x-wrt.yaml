@@ -67,7 +67,8 @@ jobs:
   build_openwrt:
     ###@####
     name: Build ZTEQ7 & CooWIFI lastest x-wrt firmware
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04 
+    #runs-on: ubuntu-latest
     #if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
