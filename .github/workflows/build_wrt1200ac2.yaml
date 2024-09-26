@@ -68,8 +68,9 @@ jobs:
   build_openwrt:
     ###@####
     name: Build WRT1200AC TVH openwrt offical firmware
-    runs-on: ubuntu-latest
-    #continue-on-error: true 
+    runs-on: ubuntu-22.10
+    #runs-on: ubuntu-latest
+    continue-on-error: true 
     #runs-on: ubuntu-22.10
     #if: github.event.repository.owner.id == github.event.sender.id
     steps:
