@@ -125,6 +125,8 @@ jobs:
           BRANCH="master"
           target_device_arch_1="mvebu_openwrt"  
           echo "Fetching list of cache key"
+          cache_of_this_arch=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1)
+          echo "Cache lists of this Arch " $cache_of_this_arch
           cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1|tail -1 )
           no_of_cache=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1|cut -f 1|wc -l)
           echo no of cache found = $no_of_cache
