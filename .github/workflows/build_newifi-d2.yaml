@@ -57,7 +57,9 @@ jobs:
   build_openwrt:
     ###@####
     name: Build newifi-d2 kernel TVH firmware
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-23.10
+    continue-on-error: true
+    #runs-on: ubuntu-latest
     #if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
