@@ -69,6 +69,7 @@ jobs:
     ###@####
     name: Build WRT1200AC TVH x-wrt firmware
     runs-on: ubuntu-23.10
+    continue-on-error: true
     #runs-on: ubuntu-latest
     #continue-on-error: true 
     #runs-on: ubuntu-22.10
