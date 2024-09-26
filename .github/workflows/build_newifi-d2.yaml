@@ -59,7 +59,7 @@ jobs:
     name: Build newifi-d2 kernel TVH firmware
 
     runs-on: ubuntu-22.04
-    continue-on-error: true
+    #continue-on-error: true
     #runs-on: ubuntu-latest
     #if: github.event.repository.owner.id == github.event.sender.id
     steps:
@@ -190,6 +190,16 @@ jobs:
         run: |
           #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
           cd x-wrt 
+          sudo mv dl /mnt/
+          ln -s /mnt/dl
+          sudo mv bin /mnt/
+          ln -s /mnt/bin .
+          cd x-wrt
+          sudo mv dl /mnt/
+          ln -s /mnt/dl
+          sudo mv bin /mnt/
+          ln -s /mnt/bin .
+ 
           cp config.ramips.2.x-wrt .config
           make -j$(nproc) || make -j1 V=s
           #make kernel_menuconfig
