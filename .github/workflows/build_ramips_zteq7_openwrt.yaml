@@ -122,13 +122,15 @@ jobs:
           REPO=${{ github.repository }}
           BRANCH="master"
           #target_device_arch_1="ramips_openwrt"  
+          for arch in mvebu mvebu_openwrt ipq40xx ramips
+          do
           echo "Fetching list of cache key"
-          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1|tail -1 )
-          no_of_cache=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1|cut -f 1|wc -l)
+          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $arch| cut -f 1|tail -1 )
+          no_of_cache=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $arch|cut -f 1|wc -l)
           echo no of cache found = $no_of_cache
           if [ "$no_of_cache" -gt 1 ]
           then
-          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1|tail -1 )
+          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $arch| cut -f 1|tail -1 )
           echo "Current caches "$cacheKeysForPR
           ## Setting this to not fail the workflow while deleting cache keys. 
           set +e
@@ -140,6 +142,7 @@ jobs:
             echo "Done"
           done
           fi
+          done
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}    
       - name: Space cleanup
