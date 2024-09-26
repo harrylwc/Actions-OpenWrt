@@ -122,7 +122,7 @@ jobs:
           REPO=${{ github.repository }}
           BRANCH="master"
           #target_device_arch_1="ramips_openwrt"  
-          for arch in mvebu mvebu_openwrt ipq40xx ramips
+          for arch in mvebu- mvebu_openwrt- ipq40xx- ramips-
           do
           cache_of_this_arch=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $arch)
           echo "Cache lists of this Arch " $arch
