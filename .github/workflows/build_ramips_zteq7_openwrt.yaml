@@ -124,6 +124,8 @@ jobs:
           #target_device_arch_1="ramips_openwrt"  
           for arch in mvebu mvebu_openwrt ipq40xx ramips
           do
+          cache_of_this_arch=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $arch)
+          echo "Cache lists of this Arch " $arch
           echo "Fetching list of cache key"
           cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $arch| cut -f 1|tail -1 )
           no_of_cache=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $arch|cut -f 1|wc -l)
