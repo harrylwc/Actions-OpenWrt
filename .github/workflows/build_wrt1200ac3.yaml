@@ -116,30 +116,30 @@ jobs:
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
+
+
+
       - name: Clear Cache
         if: env.CLEARCACHE == 'true'
         run: |
           gh extension install actions/gh-actions-cache
           REPO=${{ github.repository }}
           BRANCH="master"
-          target_device_arch_1="mvebu"  
-          echo "Fetching list of cache key"
-          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1|tail -1 )
-          no_of_cache=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1|cut -f 1|wc -l)
+          #target_device_arch_1="ipq40xx"
+          #echo "Fetching list of cache key"
+          list_of_caches=$(gh actions-cache  --sort created-at list -R $REPO -B $BRANCH -L 100| cut -f 1)
+          echo $list_of_caches
+          no_of_cache=$(gh actions-cache list -R $REPO -B $BRANCH -L 100|wc -l)
           echo no of cache found = $no_of_cache
-          if [ "$no_of_cache" -gt 1 ]
+          if [ "$no_of_cache" -gt 7 ]
           then
-          cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $target_device_arch_1| cut -f 1|tail -1 )
-          echo "Current caches "$cacheKeysForPR
+          cacheKey=$(gh actions-cache  --sort created-at list -R $REPO -B $BRANCH -L 100| cut -f 1|tail -1 )
           ## Setting this to not fail the workflow while deleting cache keys.
           set +e
           echo "Deleting caches..."
-          for cacheKey in $cacheKeysForPR
-          do
-            gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
-            echo $cacheKey
-            echo "Done"
-          done
+          gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
+          echo $cacheKey
+          echo "Done"
           fi
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
