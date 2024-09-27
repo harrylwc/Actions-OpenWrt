@@ -13,19 +13,15 @@ on:
   #push:
    # branches: 
     #  - master
- repository_dispatch:
+
+  repository_dispatch:
     types: [ramips_completed]
- workflow_dispatch:
- #schedule:
-  #   - cron: 00 20 * * *
-  #release:
-   # types: [published]
- watch:
-     types: started
- # release:
-  #  types: [published]
-  #watch:
-   # types: started
+  workflow_dispatch:    
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
 
   #workflow_dispatch:    
 
