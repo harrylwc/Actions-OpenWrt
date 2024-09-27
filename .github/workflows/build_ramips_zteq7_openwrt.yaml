@@ -48,7 +48,7 @@ env:
   MAKEMENU_CONFIG: false
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: false
-  
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
   KERNEL_VERSION: '6.6'
   UPDATE_MULTI_CORE_FILE1: myconfig/sys.lua
   UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
@@ -129,7 +129,7 @@ jobs:
           echo "Fetching list of cache key"
           #cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $arch| cut -f 1|tail -1 )
           no_of_cache=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $arch|cut -f 1|wc -l)
-          echo no of cache found = $no_of_cache
+          #echo no of cache found = $no_of_cache
           if [ "$no_of_cache" -gt 1 ]
           then
           cacheKeysForPR=$(gh actions-cache list -R $REPO -B $BRANCH -L 100 |grep $arch| cut -f 1|tail -1 )
