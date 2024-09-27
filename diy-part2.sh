@@ -79,6 +79,7 @@ git apply --ignore-space-change --ignore-whitespace ramips.patch
 git apply --ignore-space-change --ignore-whitespace common.patch
 #git apply --ignore-space-change --ignore-whitespace revert_set_default_root.patch
 git apply --ignore-space-change --ignore-whitespace r619ac.patch
+cp reset_user_to_root.patch feeds/luci/
 cd feeds/luci
 git apply -R --ignore-space-change --ignore-whitespace reset_user_to_root.patch 
 cd ../../
