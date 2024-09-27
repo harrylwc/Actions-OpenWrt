@@ -127,7 +127,7 @@ jobs:
           echo no of cache found = $no_of_cache
           if [ "$no_of_cache" -gt 7 ]
           then
-          cacheKeysForPR=$(gh actions-cache  --sort created-at list -R $REPO -B $BRANCH -L 100| cut -f 1|tail -1 )
+          cacheKey=$(gh actions-cache  --sort created-at list -R $REPO -B $BRANCH -L 100| cut -f 1|tail -1 )
           ## Setting this to not fail the workflow while deleting cache keys.
           set +e
           echo "Deleting caches..."
