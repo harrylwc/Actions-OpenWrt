@@ -16,10 +16,13 @@ on:
  repository_dispatch:
     types: [mvebu_ipq40xx_ramips_completed]
  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
  schedule:
      - cron: 45 15 * * *
-  #release:
-   # types: [published]
  watch:
      types: started
 
