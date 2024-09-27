@@ -72,10 +72,14 @@ echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
 
 mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 cd $GITHUB_WORKSPACE/x-wrt/
+git apply -R --ignore-space-change --ignore-whitespace revert_set_default_root.patch 
 #git apply --ignore-space-change --ignore-whitespace netdata.patch                                                                                                                                                
 git apply --ignore-space-change --ignore-whitespace ramips.patch
 git apply --ignore-space-change --ignore-whitespace common.patch
-git apply --ignore-space-change --ignore-whitespace revert_set_default_root.patch
+#git apply --ignore-space-change --ignore-whitespace revert_set_default_root.patch
 git apply --ignore-space-change --ignore-whitespace r619ac.patch
+cd feeds/luci
+git apply -R --ignore-space-change --ignore-whitespace reset_user_to_root.patch 
+cd ../../
 exit 0
 

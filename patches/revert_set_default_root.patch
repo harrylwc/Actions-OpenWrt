@@ -1,35 +1,46 @@
+From a6880ddcf384e6ab3cbb1214fc7a51c992375f2d Mon Sep 17 00:00:00 2001
+From: Chen Minqiang <ptpt52@gmail.com>
+Date: Fri, 15 Oct 2021 17:00:38 +0800
+Subject: [PATCH] default web luci login change to admin
+
+---
+ package/base-files/files/etc/passwd   | 1 +
+ package/base-files/files/etc/shadow   | 1 +
+ package/system/rpcd/files/rpcd.config | 4 ++--
+ 3 files changed, 4 insertions(+), 2 deletions(-)
+
 diff --git a/package/base-files/files/etc/passwd b/package/base-files/files/etc/passwd
-index 5272ef9..1d06a80 100644
+index 1d06a803615f4..5272ef9732c46 100644
 --- a/package/base-files/files/etc/passwd
 +++ b/package/base-files/files/etc/passwd
-@@ -1,5 +1,4 @@
+@@ -1,4 +1,5 @@
  root:x:0:0:root:/root:/bin/ash
--admin:x:0:0:root:/root:/bin/false
++admin:x:0:0:root:/root:/bin/false
  daemon:*:1:1:daemon:/var:/bin/false
  ftp:*:55:55:ftp:/home/ftp:/bin/false
  network:*:101:101:network:/var:/bin/false
 diff --git a/package/base-files/files/etc/shadow b/package/base-files/files/etc/shadow
-index 4e30290..39bdb9c 100644
+index 39bdb9c90a323..4e302907eeb00 100644
 --- a/package/base-files/files/etc/shadow
 +++ b/package/base-files/files/etc/shadow
-@@ -1,5 +1,4 @@
+@@ -1,4 +1,5 @@
  root:::0:99999:7:::
--admin:::0:99999:7:::
++admin:::0:99999:7:::
  daemon:*:0:0:99999:7:::
  ftp:*:0:0:99999:7:::
  network:*:0:0:99999:7:::
 diff --git a/package/system/rpcd/files/rpcd.config b/package/system/rpcd/files/rpcd.config
-index 35594bd..176c643 100644
+index 176c643f17284..35594bd2cb04a 100644
 --- a/package/system/rpcd/files/rpcd.config
 +++ b/package/system/rpcd/files/rpcd.config
 @@ -3,8 +3,8 @@ config rpcd
-        option timeout 30
+ 	option timeout 30
  
  config login
--       option username 'admin'
--       option password '$p$admin'
-+       option username 'root'
-+       option password '$p$root'
-        list read '*'
-        list write '*'
-
+-	option username 'root'
+-	option password '$p$root'
++	option username 'admin'
++	option password '$p$admin'
+ 	list read '*'
+ 	list write '*'
+ 

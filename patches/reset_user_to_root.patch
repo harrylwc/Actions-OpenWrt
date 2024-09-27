@@ -1,0 +1,135 @@
+From 6c84a1b29591644cc20de3e527610c5b5bc5e419 Mon Sep 17 00:00:00 2001
+From: Chen Minqiang <ptpt52@gmail.com>
+Date: Tue, 25 Oct 2022 09:07:30 +0800
+Subject: [PATCH] change web luci user to admin
+
+---
+ modules/luci-base/po/zh_Hans/base.po                         | 5 +++++
+ modules/luci-base/root/usr/share/rpcd/ucode/luci             | 2 +-
+ modules/luci-base/ucode/dispatcher.uc                        | 2 +-
+ modules/luci-mod-rpc/luasrc/controller/rpc.lua               | 2 +-
+ .../htdocs/luci-static/resources/view/system/password.js     | 2 +-
+ .../ucode/template/themes/bootstrap/header.ut                | 4 ++--
+ .../ucode/template/themes/material/header.ut                 | 4 ++--
+ .../ucode/template/themes/openwrt2020/header.ut              | 4 ++--
+ 8 files changed, 15 insertions(+), 10 deletions(-)
+
+diff --git a/modules/luci-base/po/zh_Hans/base.po b/modules/luci-base/po/zh_Hans/base.po
+index 03e1848400..6489002447 100644
+--- a/modules/luci-base/po/zh_Hans/base.po
++++ b/modules/luci-base/po/zh_Hans/base.po
+@@ -10237,6 +10237,11 @@ msgid ""
+ "protect the web interface."
+ msgstr "尚未设置密码。请为 root 用户设置密码以保护主机并启用。"
+ 
++msgid ""
++"There is no password set on this router. Please configure a admin password to "
++"protect the web interface."
++msgstr "尚未设置密码。请为 admin 用户设置密码以保护主机并启用。"
++
+ #: protocols/luci-proto-ipv6/htdocs/luci-static/resources/protocol/6rd.js:49
+ msgid "This IPv4 address of the relay"
+ msgstr "中继的 IPv4 地址"
+diff --git a/modules/luci-base/root/usr/share/rpcd/ucode/luci b/modules/luci-base/root/usr/share/rpcd/ucode/luci
+index 93ce1dd3b9..1ca5e044cd 100644
+--- a/modules/luci-base/root/usr/share/rpcd/ucode/luci
++++ b/modules/luci-base/root/usr/share/rpcd/ucode/luci
+@@ -392,7 +392,7 @@ const methods = {
+ 	},
+ 
+ 	setPassword: {
+-		args: { username: 'root', password: 'password' },
++		args: { username: 'admin', password: 'password' },
+ 		call: function(request) {
+ 			const u = shellquote(request.args.username);
+ 			const p = shellquote(request.args.password);
+diff --git a/modules/luci-base/ucode/dispatcher.uc b/modules/luci-base/ucode/dispatcher.uc
+index 2cb8cc2f6c..92f5b37d48 100644
+--- a/modules/luci-base/ucode/dispatcher.uc
++++ b/modules/luci-base/ucode/dispatcher.uc
+@@ -926,7 +926,7 @@ dispatch = function(_http, path) {
+ 					http.status(403, 'Forbidden');
+ 					http.header('X-LuCI-Login-Required', 'yes');
+ 
+-					let scope = { duser: 'root', fuser: user };
++					let scope = { duser: 'admin', fuser: user };
+ 					let theme_sysauth = `themes/${basename(runtime.env.media)}/sysauth`;
+ 
+ 					if (runtime.is_ucode_template(theme_sysauth) || runtime.is_lua_template(theme_sysauth)) {
+diff --git a/modules/luci-mod-rpc/luasrc/controller/rpc.lua b/modules/luci-mod-rpc/luasrc/controller/rpc.lua
+index 37a976035e..516c80df95 100644
+--- a/modules/luci-mod-rpc/luasrc/controller/rpc.lua
++++ b/modules/luci-mod-rpc/luasrc/controller/rpc.lua
+@@ -42,7 +42,7 @@ function index()
+ 	local ctrl = require "luci.controller.rpc"
+ 
+ 	local rpc = node("rpc")
+-	rpc.sysauth = "root"
++	rpc.sysauth = "admin"
+ 	rpc.sysauth_authenticator = ctrl.authenticator
+ 	rpc.notemplate = true
+ 
+diff --git a/modules/luci-mod-system/htdocs/luci-static/resources/view/system/password.js b/modules/luci-mod-system/htdocs/luci-static/resources/view/system/password.js
+index c470c0479d..42ba7f8444 100644
+--- a/modules/luci-mod-system/htdocs/luci-static/resources/view/system/password.js
++++ b/modules/luci-mod-system/htdocs/luci-static/resources/view/system/password.js
+@@ -86,7 +86,7 @@ return view.extend({
+ 				return;
+ 			}
+ 
+-			return callSetPassword('root', formData.password.pw1).then(function(success) {
++			return callSetPassword('admin', formData.password.pw1).then(function(success) {
+ 				if (success)
+ 					ui.addNotification(null, E('p', _('The system password has been successfully changed.')), 'info');
+ 				else
+diff --git a/themes/luci-theme-bootstrap/ucode/template/themes/bootstrap/header.ut b/themes/luci-theme-bootstrap/ucode/template/themes/bootstrap/header.ut
+index ed47d7da62..0ce03debb5 100644
+--- a/themes/luci-theme-bootstrap/ucode/template/themes/bootstrap/header.ut
++++ b/themes/luci-theme-bootstrap/ucode/template/themes/bootstrap/header.ut
+@@ -60,10 +60,10 @@
+ 		</header>
+ 
+ 		<div id="maincontent" class="container">
+-			{% if (getuid() == 0 && getspnam('root')?.pwdp === ''): %}
++			{% if (getuid() == 0 && getspnam('admin')?.pwdp === ''): %}
+ 				<div class="alert-message warning">
+ 					<h4>{{ _('No password set!') }}</h4>
+-					<p>{{ _('There is no password set on this router. Please configure a root password to protect the web interface.') }}</p>
++					<p>{{ _('There is no password set on this router. Please configure a admin password to protect the web interface.') }}</p>
+ 					{% if (dispatcher.lookup("admin/system/admin")): %}
+ 					  <div class="right"><a class="btn" href="{{ dispatcher.build_url("admin/system/admin") }}">{{ _('Go to password configuration...') }}</a></div>
+ 					{% endif %}
+diff --git a/themes/luci-theme-material/ucode/template/themes/material/header.ut b/themes/luci-theme-material/ucode/template/themes/material/header.ut
+index b0c48b4736..7114648301 100644
+--- a/themes/luci-theme-material/ucode/template/themes/material/header.ut
++++ b/themes/luci-theme-material/ucode/template/themes/material/header.ut
+@@ -73,10 +73,10 @@
+ 		<div class="darkMask"></div>
+ 		<div id="maincontent">
+ 			<div class="container">
+-				{% if (getuid() == 0 && getspnam('root')?.pwdp === '' && ctx.authsession): %}
++				{% if (getuid() == 0 && getspnam('admin')?.pwdp === '' && ctx.authsession): %}
+ 					<div class="alert-message warning">
+ 						<h4>{{ _('No password set!') }}</h4>
+-						<p>{{ _('There is no password set on this router. Please configure a root password to protect the web interface.') }}</p>
++						<p>{{ _('There is no password set on this router. Please configure a admin password to protect the web interface.') }}</p>
+ 						{% if (dispatcher.lookup("admin/system/admin")): %}
+ 						  <div class="right"><a class="btn" href="{{ dispatcher.build_url("admin/system/admin") }}">{{ _('Go to password configuration...') }}</a></div>
+ 						{% endif %}
+diff --git a/themes/luci-theme-openwrt-2020/ucode/template/themes/openwrt2020/header.ut b/themes/luci-theme-openwrt-2020/ucode/template/themes/openwrt2020/header.ut
+index 3857bce723..28f5fcf95b 100644
+--- a/themes/luci-theme-openwrt-2020/ucode/template/themes/openwrt2020/header.ut
++++ b/themes/luci-theme-openwrt-2020/ucode/template/themes/openwrt2020/header.ut
+@@ -49,10 +49,10 @@
+ 	<div id="mainmenu"></div>
+ 
+ 	<div id="maincontent">
+-		{% if (getuid() == 0 && getspnam('root')?.pwdp === '' && join('-', ctx.request_path) != 'admin-system-admin'): %}
++		{% if (getuid() == 0 && getspnam('admin')?.pwdp === '' && join('-', ctx.request_path) != 'admin-system-admin'): %}
+ 		<div class="alert-message warning">
+ 			<h4>{{ _('No password set!') }}</h4>
+-			<p>{{ _('There is no password set on this router. Please configure a root password to protect the web interface.') }}</p>
++			<p>{{ _('There is no password set on this router. Please configure a admin password to protect the web interface.') }}</p>
+ 			{% if (dispatcher.lookup("admin/system/admin")): %}
+ 				<div class="right"><a class="btn" href="{{ dispatcher.build_url("admin/system/admin") }}">{{ _('Go to password configuration...') }}</a></div>
+ 			{% endif %}
