@@ -246,6 +246,8 @@ jobs:
         run: |
           #cp patches/110-mtd-limit-OTP-nvmem-to-non-nand-devices.patch x-wrt/target/linux/ipq40xx/patches-6.6/ 
           cd x-wrt
+          sudo mv build_dir /mnt
+          ln -s /mnt/build_dir .
           sudo mv dl /mnt/
           ln -s /mnt/dl .
           sudo mv bin /mnt/
@@ -319,8 +321,7 @@ jobs:
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
            cd x-wrt 
-           sudo mv build_dir /mnt
-           ln -s /mnt/build_dir .
+
            sudo rm -rf /usr/share/dotnet
            sudo rm -rf /opt/ghc
            sudo rm -rf "/usr/local/share/boost"
