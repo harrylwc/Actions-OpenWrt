@@ -246,7 +246,7 @@ jobs:
         run: |
           #cp patches/110-mtd-limit-OTP-nvmem-to-non-nand-devices.patch x-wrt/target/linux/ipq40xx/patches-6.6/ 
           cd x-wrt
-          [ -d "build_dir" ] && sudo mv build_dir /mnt/|| mkdir /mnt/build_dir
+          [ -d "build_dir" ] && sudo mv build_dir /mnt/|| sudo mkdir /mnt/build_dir
           ln -s /mnt/build_dir .
           sudo mv dl /mnt/
           ln -s /mnt/dl .
