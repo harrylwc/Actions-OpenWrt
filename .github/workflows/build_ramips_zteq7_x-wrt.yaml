@@ -13,8 +13,8 @@ on:
   #push:
    # branches: 
     #  - master
- #repository_dispatch:
-    #types: [ramips_completed]
+ repository_dispatch:
+    types: [ramips_completed]
  workflow_dispatch:
  #schedule:
   #   - cron: 00 20 * * *
