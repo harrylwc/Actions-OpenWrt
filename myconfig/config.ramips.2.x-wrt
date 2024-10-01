@@ -7540,10 +7540,10 @@ CONFIG_OPENVPN_openssl_ENABLE_PORT_SHARE=y
 CONFIG_OPENVPN_openssl_ENABLE_SMALL=y
 # CONFIG_PACKAGE_openvpn-wolfssl is not set
 CONFIG_PACKAGE_pptpd=m
-CONFIG_PACKAGE_softethervpn-base=m
-CONFIG_PACKAGE_softethervpn-bridge=m
-CONFIG_PACKAGE_softethervpn-client=m
-CONFIG_PACKAGE_softethervpn-server=m
+# CONFIG_PACKAGE_softethervpn-base is not set
+# CONFIG_PACKAGE_softethervpn-bridge is not set
+# CONFIG_PACKAGE_softethervpn-client is not set
+# CONFIG_PACKAGE_softethervpn-server is not set
 CONFIG_PACKAGE_softethervpn5-bridge=m
 CONFIG_PACKAGE_softethervpn5-client=m
 CONFIG_PACKAGE_softethervpn5-libs=m
