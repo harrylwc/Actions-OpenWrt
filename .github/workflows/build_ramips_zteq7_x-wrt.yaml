@@ -49,7 +49,7 @@ env:
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: false
   
-  KERNEL_VERSION: '6.6'
+  KERNEL_VERSION: '6.6'v
   UPDATE_MULTI_CORE_FILE1: myconfig/sys.lua
   UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
   KERNEL_MODULE: myconfig/kernel_modules.txt
@@ -240,7 +240,8 @@ jobs:
            cd x-wrt
            ls -alt $GITHUB_WORKSPACE/x-wrt/.config
            echo cpu core=$(nproc)
-           make -j$(nproc) || make -j1 V=s
+           make -j$(nproc) 
+           #|| make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success"
            #cp $GITHUB_WORKSPACE/myconfig/config.ramips.3 $GITHUB_WORKSPACE/x-wrt/.config 
            #cp -f $GITHUB_WORKSPACE/x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
