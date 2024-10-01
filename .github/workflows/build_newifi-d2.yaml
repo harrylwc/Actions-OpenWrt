@@ -203,10 +203,15 @@ jobs:
           make download -j8 || make download -j1 V=s
           rm -rf $(find ./dl/ -size -1024c)
           df -h
-      #- name: Setup upterm session
-        #if: env.MAKEMENU_CONFIG == 'true'
-        #uses: lhotari/action-upterm@v1
-            # - name: SSH connection for failure Debug
+
+
+      - name: SSH链接管理
+        uses: P3TERX/ssh2actions@v1.0.0
+        if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+        env:
+         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+         TELEGRAM_CHAT_ID: 1373335316     
+         
             
       - name: SSH connection for make menuconfig    
         if: env.MAKEMENU_CONFIG == 'true'
@@ -215,7 +220,7 @@ jobs:
          TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
          TELEGRAM_CHAT_ID: 1373335316
          
-      - name: Compile zte q7 firmware
+      - name: Compile firmware
         run: |
           #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
           cd x-wrt 
@@ -232,10 +237,11 @@ jobs:
           #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
           #[ $? != 0 ] && make V=s || echo "zteq7 build success"
           #cp config.$ROUTER_MODEL.0 .config
-          echo cpu core=$(nproc)
+          #echo cpu core=$(nproc)
           #make -j$(nproc) || make -j1 V=s
           [ $? != 0 ] && make V=s || echo "zteq7 build success"
           cp -f bin/targets/ramips/mt7620/openwrt-ramips-*squashfs-sysupgrade.bin bin/targets/ramips/drivers/
+          mv bin/ bin_mt7620
          
           #     echo "======================="
           #echo "Space usage:"
