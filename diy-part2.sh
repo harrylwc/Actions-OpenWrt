@@ -33,7 +33,7 @@ do
         y=`echo $x|sed 's/zh_Hans/zh_Hants/g'`                                                                                                                                                                     
         y=`echo $x|sed 's/zh-cn/zh_Hants/g'`                                                                                           
         /usr/bin/opencc -i $x -o $y                                                                                                        
-        #echo $y                                                                                                                                                                                                   
+ls -alt $y                                                                                                                                                                                                   
 done                                                                                                                
 done     
 
@@ -47,7 +47,7 @@ do
         y=`echo $x|sed 's/zh_Hans/zh_Hants/g'`                                                                                                                                                                     
         y=`echo $x|sed 's/zh-cn/zh_Hants/g'`                                                                                           
         /usr/bin/opencc -i $x -o $y                                                                                                        
-        #echo $y                                                                                                                                                                                                   
+ls -alt $y                                                                                                                                                                                                    
 done                                                                                                                
 done     
 
@@ -61,7 +61,7 @@ do
         y=`echo $x|sed 's/zh_Hans/zh_Hants/g'`                                                                                                                                                                     
         y=`echo $x|sed 's/zh-cn/zh_Hants/g'`                                                                                           
         /usr/bin/opencc -i $x -o $y                                                                                                        
-        #echo $y                                                                                                                                                                                                   
+ls -alt $y                                                                                                                                                                                                 
 done                                                                                                                
 done     
 
