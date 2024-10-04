@@ -27,35 +27,7 @@ cp $GITHUB_WORKSPACE/patches/030-h264-mips.patch $GITHUB_WORKSPACE/x-wrt/feeds/p
 #mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw
 #/usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-cn/nlbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw/nlbwmon.po 
 
-for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/ -name po`
-do
-        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ] 
-        then
-        mkdir $i/zh_Hants
-        for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
-              do
-                y=`echo $x|sed -e 's/zh-cn/zh_Hants/g' -e 's/zh_Hans/zh_Hants/g'`
-                /usr/bin/opencc -i $x -o $y
-        #echo $y
-                ls -alt $y
-        done
-        fi
-done
 
-for i in `find $GITHUB_WORKSPACE/x-wrt/package/ -name po`
-do
-        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ] 
-        then
-        mkdir $i/zh_Hants
-        for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
-              do
-                y=`echo $x|sed -e 's/zh-cn/zh_Hants/g' -e 's/zh_Hans/zh_Hants/g'`
-                /usr/bin/opencc -i $x -o $y
-        #echo $y
-                ls -alt $y
-        done
-        fi
-done
 
 cp $GITHUB_WORKSPACE/patches/10?-* $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches
 cp $GITHUB_WORKSPACE/patches/Config.in.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Config.in
@@ -98,7 +70,39 @@ fi
 if [ $TVH == true ]; then CONFIG_FILE=$CONFIG_FILE0; cp $CONFIG_FILE $myconfig; cat myconfig/config.tvh.ffmpeg >> $myconfig; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE $myconfig; fi
 echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
 
+for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/ -name po`
+do
+        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ] 
+        then
+        mkdir $i/zh_Hants
+        for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
+              do
+                y=`echo $x|sed -e 's/zh-cn/zh_Hants/g' -e 's/zh_Hans/zh_Hants/g'`
+                /usr/bin/opencc -i $x -o $y
+        #echo $y
+               
+        done
+        fi
+done
+ttl=`find $GITHUB_WORKSPACE/x-wrt/feeds/ -name *.po|grep zh_Hants|wc -l`
+echo "Total zh_Hants in feeds directory = $ttl"
 
+for i in `find $GITHUB_WORKSPACE/x-wrt/package/ -name po`
+do
+        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ] 
+        then
+        mkdir $i/zh_Hants
+        for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
+              do
+                y=`echo $x|sed -e 's/zh-cn/zh_Hants/g' -e 's/zh_Hans/zh_Hants/g'`
+                /usr/bin/opencc -i $x -o $y
+        #echo $y
+             
+        done
+        fi
+done
+ttl=`find $GITHUB_WORKSPACE/x-wrt/package/ -name *.po|grep zh_Hants|wc -l`
+echo "Total zh_Hants in package directory = $ttl"
 
 mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 cd $GITHUB_WORKSPACE/x-wrt/
