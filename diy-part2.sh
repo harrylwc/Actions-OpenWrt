@@ -74,11 +74,12 @@ for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/ -name po`
 do
         if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ] 
         then
-        mkdir $i/zh_Hants
+        mkdir $i/zh-tw
         for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
               do
-                y=`echo $x|sed -e 's/zh-cn/zh_Hants/g' -e 's/zh_Hans/zh_Hants/g'`
+                y=`echo $x|sed -e 's/zh-cn/zh-tw/g' -e 's/zh_Hans/zh-tw/g'`
                 /usr/bin/opencc -i $x -o $y
+        ln -s $i/zh-tw $i/zh_Hants
         #echo $y
                
         done
@@ -89,17 +90,19 @@ echo "Total zh_Hants in feeds directory = $ttl"
 
 for i in `find $GITHUB_WORKSPACE/x-wrt/package/ -name po`
 do
-        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ] 
+        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ]
         then
-        mkdir $i/zh_Hants
+        mkdir $i/zh-tw
         for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
               do
-                y=`echo $x|sed -e 's/zh-cn/zh_Hants/g' -e 's/zh_Hans/zh_Hants/g'`
+                y=`echo $x|sed -e 's/zh-cn/zh-tw/g' -e 's/zh_Hans/zh-tw/g'`
                 /usr/bin/opencc -i $x -o $y
+        ln -s $i/zh-tw $i/zh_Hants
         #echo $y
-             
+
         done
         fi
+
 done
 ttl=`find $GITHUB_WORKSPACE/x-wrt/package/ -name *.po|grep zh_Hants|wc -l`
 echo "Total zh_Hants in package directory = $ttl"
