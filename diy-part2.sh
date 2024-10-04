@@ -27,7 +27,8 @@ cp $GITHUB_WORKSPACE/patches/030-h264-mips.patch $GITHUB_WORKSPACE/x-wrt/feeds/p
 
 for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/ -name po`
 do
-        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ]
+        if [ ! -d "$i/zh_Hants" ] 
+#|| [ ! -d "$i/zh-tw" ]
         then
  	mkdir $i/zh_Hants
  	for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
@@ -42,7 +43,8 @@ done
 
 for i in `find $GITHUB_WORKSPACE/x-wrt/package/ -name po`                                                                                                                                                            
 do                                                                                                                                                                                                                 
-        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ]                                                                                                                                                           
+        if [ ! -d "$i/zh_Hants" ]
+# || [ ! -d "$i/zh-tw" ]                                                                                                                                                           
         then                                                                                                                                                                                                       
         mkdir $i/zh_Hants                                                                                                                                                                                          
         for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`                                                                                                                                                     
