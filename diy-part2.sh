@@ -24,47 +24,36 @@ cp $GITHUB_WORKSPACE/patches/030-h264-mips.patch $GITHUB_WORKSPACE/x-wrt/feeds/p
 
 #mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw
 #/usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-cn/nlbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw/nlbwmon.po 
-for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/kenzo -name po`                                                                                                           
-do                                                                                                                  
- [ -d $i/zh_Hants ] || mkdir $i/zh_Hants                                                                                                                           
- for x in `find $i|grep "zh-cn|zh_Hans"|grep "\.po"`                                                                                                         
-     do                                                                                                                                                   
-   #echo $x                                                                                                              
-        y=`echo $x|sed 's/zh_Hans/zh_Hants/g'`                                                                                                                                                                     
-        y=`echo $x|sed 's/zh-cn/zh_Hants/g'`                                                                                           
-        /usr/bin/opencc -i $x -o $y                                                                                                        
-ls -alt $y                                                                                                                                                                                                   
-done                                                                                                                
-done     
 
+for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/ -name po`
+do
+        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ]
+        then
+ 	mkdir $i/zh_Hants
+ 	for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
+              do
+                y=`echo $x|sed 's/zh_Hans/zh_Hants/g'`
+                y=`echo $x|sed 's/zh-cn/zh_Hants/g'`
+        	/usr/bin/opencc -i $x -o $y
+                ls -alt $y
+ 	done
+      	fi
+done
 
-for i in `find $GITHUB_WORKSPACE/x-wrt/package/openwrt-packages/  -name po`                                                                                                           
-do                                                                                                                  
- [ -d $i/zh_Hants ] || mkdir $i/zh_Hants                                                                                                                           
- for x in `find $i|grep "zh-cn|zh_Hans"|grep "\.po"`                                                                                                         
-     do                                                                                                                                                   
-   #echo $x                                                                                                              
-        y=`echo $x|sed 's/zh_Hans/zh_Hants/g'`                                                                                                                                                                     
-        y=`echo $x|sed 's/zh-cn/zh_Hants/g'`                                                                                           
-        /usr/bin/opencc -i $x -o $y                                                                                                        
-ls -alt $y                                                                                                                                                                                                    
-done                                                                                                                
-done     
-
-
-for i in `find $GITHUB_WORKSPACE/x-wrt/package/small/ -name po`                                                                                                           
-do                                                                                                                  
- [ -d $i/zh_Hants ] || mkdir $i/zh_Hants                                                                                                                           
- for x in `find $i|grep "zh-cn|zh_Hans"|grep "\.po"`                                                                                                         
-     do                                                                                                                                                   
-   #echo $x                                                                                                              
-        y=`echo $x|sed 's/zh_Hans/zh_Hants/g'`                                                                                                                                                                     
-        y=`echo $x|sed 's/zh-cn/zh_Hants/g'`                                                                                           
-        /usr/bin/opencc -i $x -o $y                                                                                                        
-ls -alt $y                                                                                                                                                                                                 
-done                                                                                                                
-done     
-
+for i in `find $GITHUB_WORKSPACE/x-wrt/package/ -name po`                                                                                                                                                            
+do                                                                                                                                                                                                                 
+        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ]                                                                                                                                                           
+        then                                                                                                                                                                                                       
+        mkdir $i/zh_Hants                                                                                                                                                                                          
+        for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`                                                                                                                                                     
+              do                                                                                                                                                                                                   
+                y=`echo $x|sed 's/zh_Hans/zh_Hants/g'`                                                                                                                                                             
+                y=`echo $x|sed 's/zh-cn/zh_Hants/g'`                                                                                                                                                               
+                /usr/bin/opencc -i $x -o $y                                                                                                                                                                        
+                ls -alt $y                                                                                                                                                                                         
+        done                                                                                                                                                                                                       
+        fi                                                                                                                                                                                                         
+done 
 
 cp $GITHUB_WORKSPACE/patches/10?-* $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches
 cp $GITHUB_WORKSPACE/patches/Config.in.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Config.in
