@@ -27,35 +27,33 @@ cp $GITHUB_WORKSPACE/patches/030-h264-mips.patch $GITHUB_WORKSPACE/x-wrt/feeds/p
 
 for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/ -name po`
 do
-        if [ ! -d "$i/zh_Hants" ] 
-#|| [ ! -d "$i/zh-tw" ]
+        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ] 
         then
- 	mkdir $i/zh_Hants
- 	for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
+        mkdir $i/zh_Hants
+        for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
               do
-                y=`echo $x|sed 's/zh_Hans/zh_Hants/g'`
-                y=`echo $x|sed 's/zh-cn/zh_Hants/g'`
-        	/usr/bin/opencc -i $x -o $y
+                y=`echo $x|sed -e 's/zh-cn/zh_Hants/g' -e 's/zh_Hans/zh_Hants/g'`
+                /usr/bin/opencc -i $x -o $y
+        #echo $y
                 ls -alt $y
- 	done
-      	fi
+        done
+        fi
 done
 
-for i in `find $GITHUB_WORKSPACE/x-wrt/package/ -name po`                                                                                                                                                            
-do                                                                                                                                                                                                                 
-        if [ ! -d "$i/zh_Hants" ]
-# || [ ! -d "$i/zh-tw" ]                                                                                                                                                           
-        then                                                                                                                                                                                                       
-        mkdir $i/zh_Hants                                                                                                                                                                                          
-        for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`                                                                                                                                                     
-              do                                                                                                                                                                                                   
-                y=`echo $x|sed 's/zh_Hans/zh_Hants/g'`                                                                                                                                                             
-                y=`echo $x|sed 's/zh-cn/zh_Hants/g'`                                                                                                                                                               
-                /usr/bin/opencc -i $x -o $y                                                                                                                                                                        
-                ls -alt $y                                                                                                                                                                                         
-        done                                                                                                                                                                                                       
-        fi                                                                                                                                                                                                         
-done 
+for i in `find $GITHUB_WORKSPACE/x-wrt/package/ -name po`
+do
+        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ] 
+        then
+        mkdir $i/zh_Hants
+        for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
+              do
+                y=`echo $x|sed -e 's/zh-cn/zh_Hants/g' -e 's/zh_Hans/zh_Hants/g'`
+                /usr/bin/opencc -i $x -o $y
+        #echo $y
+                ls -alt $y
+        done
+        fi
+done
 
 cp $GITHUB_WORKSPACE/patches/10?-* $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches
 cp $GITHUB_WORKSPACE/patches/Config.in.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Config.in
@@ -75,11 +73,9 @@ cp $GITHUB_WORKSPACE/patches/Makefile.netdata /home/runner/work/Actions-OpenWrt/
 git clone https://github.com/brvphoenix/luci-app-wrtbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon
 git clone https://github.com/tty228/luci-app-wechatpush /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package//luci-app-wechatpush
 
-mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package//luci-app-wechatpush/po/zh_Hant
-
-
-/usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hans/wechatpush.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
-sed -i 's/zh_Hans/zh_Hant/g' /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
+#mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package//luci-app-wechatpush/po/zh_Hant
+#/usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hans/wechatpush.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
+#sed -i 's/zh_Hans/zh_Hant/g' /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
 
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
 cp $GITHUB_WORKSPACE/patches/Makefile.vlmcsd $GITHUB_WORKSPACE/x-wrt/package/vlmcsd/Makefile
