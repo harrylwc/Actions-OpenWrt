@@ -72,40 +72,37 @@ echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
 
 for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/ -name po`
 do
-        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ] 
+        if [ ! -d "$i/zh_Hant" ] || [ ! -d "$i/zh-tw" ] 
         then
-        mkdir $i/zh-tw
+        mkdir $i/zh_Hant
         for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
               do
-                y=`echo $x|sed -e 's/zh-cn/zh-tw/g' -e 's/zh_Hans/zh-tw/g'`
+                y=`echo $x|sed -e 's/zh-cn/zh_Hant/g' -e 's/zh_Hans/zh_Hant/g'`
                 /usr/bin/opencc -i $x -o $y
-        ln -s $i/zh-tw $i/zh_Hants
         #echo $y
                
         done
         fi
 done
-ttl=`find $GITHUB_WORKSPACE/x-wrt/feeds/ -name *.po|grep zh_Hants|wc -l`
-echo "Total zh_Hants in feeds directory = $ttl"
+ttl=`find $GITHUB_WORKSPACE/x-wrt/feeds/ -name *.po|grep zh_Hant|wc -l`
+echo "Total zh_Hant in feeds directory = $ttl"
 
 for i in `find $GITHUB_WORKSPACE/x-wrt/package/ -name po`
 do
-        if [ ! -d "$i/zh_Hants" ] || [ ! -d "$i/zh-tw" ]
+        if [ ! -d "$i/zh_Hant" ] || [ ! -d "$i/zh-tw" ] 
         then
-        mkdir $i/zh-tw
+        mkdir $i/zh_Hant
         for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
               do
-                y=`echo $x|sed -e 's/zh-cn/zh-tw/g' -e 's/zh_Hans/zh-tw/g'`
+                y=`echo $x|sed -e 's/zh-cn/zh_Hant/g' -e 's/zh_Hans/zh_Hant/g'`
                 /usr/bin/opencc -i $x -o $y
-        ln -s $i/zh-tw $i/zh_Hants
         #echo $y
-
+             
         done
         fi
-
 done
-ttl=`find $GITHUB_WORKSPACE/x-wrt/package/ -name *.po|grep zh_Hants|wc -l`
-echo "Total zh_Hants in package directory = $ttl"
+ttl=`find $GITHUB_WORKSPACE/x-wrt/package/ -name *.po|grep zh_Hant|wc -l`
+echo "Total zh_Hant in package directory = $ttl"
 
 mv $GITHUB_WORKSPACE/patches/800-custom-hk.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 cd $GITHUB_WORKSPACE/x-wrt/
