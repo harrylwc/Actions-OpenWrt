@@ -296,44 +296,13 @@ jobs:
       - name: Compile again after .config updated or add kernel modules
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
-           #sudo rm -r $GITHUB_WORKSPACE/x-wrt/dl
-           #cp $GITHUB_WORKSPACE/lede/target/linux/generic/backport-5.10/35?*.patch $GITHUB_WORKSPACE/x-wrt/target/linux/generic/backport-5.10/
-           #cp $GITHUB_WORKSPACE/lede/package/kernel/linux/modules/fs.mk $GITHUB_WORKSPACE/x-wrt/package/kernel/linux/modules/ 
-           #cp myconfig/config.r619ac.2 x-wrt/.config
-           #cp -f $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/usr/bin/apr-1-config $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/ 
-           #cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config 
-           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
+           cp myconfig/config.r619ac.0 x-wrt/.config
 
-           mkdir -p $DRIVERS_DIR
-           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
-           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
-           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y/g' x-wrt/.config
-           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y/g' x-wrt/.config                    
            cd x-wrt 
-           make -j$(nproc)                                                                                           
-           cd ../ 
-           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
-           chmod 755 $DRIVERS_DIR/busybox 
-           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config                                                                    
-           #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
-           
-           #cat myconfig/config.tvh.ffmpeg >> .config
-           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
-           #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
-           cd x-wrt 
-
-           sudo rm -rf /usr/share/dotnet
-           sudo rm -rf /opt/ghc
-           sudo rm -rf "/usr/local/share/boost"
-           sudo rm -rf "$AGENT_TOOLSDIRECTORY" 
-           #sudo rm -rf $GITHUB_WORKSPACE/lede
-           #make kernel_menuconfig -j4
-           echo cpu core=$(nproc)
-           #ln -s /usr/bin/ccache /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/staging_dir/host/bin/ccache 
-           make -j$(nproc)
+           make -j$(nproc) || make -j1 V=s                                                                                          
            #|| make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success" 
-           cp -f bin/targets/ipq40xx/generic/openwrt-ipq40xx-generic-p2w_r619ac-128m-squashfs-sysupgrade.bin bin/targets/ipq40xx/drivers/  
+           #cp -f bin/targets/ipq40xx/generic/openwrt-ipq40xx-generic-p2w_r619ac-128m-squashfs-sysupgrade.bin bin/targets/ipq40xx/drivers/  
            df -kh
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
@@ -414,3 +383,13 @@ jobs:
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
+      - name: Send repository_dispatch
+        env:                   
+         PAT: ${{ secrets.GITHUB_TOKEN }}       
+        run: |         
+         curl \             
+         -X POST \                             
+         -H "Authorization: token $PAT" \          
+         -H "Accept: application/vnd.github.v3+json" \
+         https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
+         -d '{"event_type":"ipq40xx_completed"}'
