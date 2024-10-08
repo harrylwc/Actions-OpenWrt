@@ -20,7 +20,6 @@ sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 git pull
 git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
-rm -r x-wrt/feeds/luci/applications/luci-app-filebrowser/
 ./scripts/feeds update -a
 ./scripts/feeds install -f -a
 rm -rf package/openwrt-packages/luci-app-wechatpush
@@ -30,4 +29,4 @@ sudo timedatectl set-timezone "$TZ"
 sudo chown $USER:$GROUPS /workdir
 mkdir -p ../$DRIVERS_DIR 
 ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
-rm -r x-wrt/feeds/luci/applications/luci-app-filebrowser/
+rm -r $GITHUB_WORKSPACE/x-wrt/feeds//luci/applications/luci-app-filebrowser/
