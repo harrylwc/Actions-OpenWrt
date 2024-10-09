@@ -29,4 +29,4 @@ sudo timedatectl set-timezone "$TZ"
 sudo chown $USER:$GROUPS /workdir
 mkdir -p ../$DRIVERS_DIR 
 ln -sf /workdir/x-wrt $GITHUB_WORKSPACE/x-wrt
-rm -r $GITHUB_WORKSPACE/x-wrt/feeds//luci/applications/luci-app-filebrowser/
+#rm -r $GITHUB_WORKSPACE/x-wrt/feeds//luci/applications/luci-app-filebrowser/
