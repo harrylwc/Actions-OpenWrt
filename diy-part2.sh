@@ -69,7 +69,7 @@ cp -f $KERNEL_CONFIG.5.15 $KERNEL_CONFIG;cp myconfig/config.$ROUTER_MODEL.0.5_15
 fi
 if [ $TVH == true ]; then CONFIG_FILE=$CONFIG_FILE0; cp $CONFIG_FILE $myconfig; cat myconfig/config.tvh.ffmpeg >> $myconfig; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE $myconfig; fi
 echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
-
+rm -rf  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/luci/applications/luci-app-filebrowser
 for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/ -name po`
 do
         if [ ! -d "$i/zh_Hant" ] || [ ! -d "$i/zh-tw" ] 
