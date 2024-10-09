@@ -296,7 +296,7 @@ jobs:
       - name: Compile again after .config updated or add kernel modules
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
-           cp myconfig/config.r619ac.2 x-wrt/.config
+           cp myconfig/config.r619ac.0 x-wrt/.config
 
            cd x-wrt 
            make -j$(nproc) || make -j1 V=s                                                                                          
