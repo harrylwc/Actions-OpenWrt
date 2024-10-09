@@ -16,10 +16,14 @@ git clone https://github.com/kenzok8/openwrt-packages.git /home/runner/work/Acti
 git clone https://github.com/kenzok8/small.git /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/small
 
 
-sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.defaulto
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 git pull
 git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
+rm -rf `find  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds -name *filebrowser*`
+rm -rf `find  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package -name *filebrowser*`
+
+git clone https://github.com/xiaozhuai/luci-app-filebrowser  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-filebrowser
 ./scripts/feeds update -a
 ./scripts/feeds install -f -a
 rm -rf package/openwrt-packages/luci-app-wechatpush
