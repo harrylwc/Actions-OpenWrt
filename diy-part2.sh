@@ -70,6 +70,8 @@ fi
 if [ $TVH == true ]; then CONFIG_FILE=$CONFIG_FILE0; cp $CONFIG_FILE $myconfig; cat myconfig/config.tvh.ffmpeg >> $myconfig; else CONFIG_FILE=$CONFIG_FILE2 && cp $CONFIG_FILE $myconfig; fi
 echo `ls -alt $myconfig`;echo `ls -alt myconfig/config.$ROUTER_MODEL.?`
 #rm -rf  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/luci/applications/luci-app-filebrowser
+/usr/bin/opencc -i $GITHUB_WORKSPACE/x-wrt/package/openwrt-packages/luci-app-fileassistant/luasrc/view/fileassistant.htm -o $GITHUB_WORKSPACE/x-wrt/package/openwrt-packages/luci-app-fileassistant/luasrc/view/fileassistant.htm
+
 for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/ -name po`
 do
         if [ ! -d "$i/zh_Hant" ] || [ ! -d "$i/zh-tw" ] 
