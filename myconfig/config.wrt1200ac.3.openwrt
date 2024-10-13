@@ -5753,7 +5753,7 @@ CONFIG_PACKAGE_boost-system=y
 # CONFIG_PACKAGE_czmq is not set
 # CONFIG_PACKAGE_davici is not set
 # CONFIG_PACKAGE_dtndht is not set
-# CONFIG_PACKAGE_getdns is not set
+CONFIG_PACKAGE_getdns=m
 # CONFIG_PACKAGE_giflib is not set
 CONFIG_PACKAGE_glib2=m
 # CONFIG_PACKAGE_google-authenticator-libpam is not set
@@ -8851,7 +8851,7 @@ CONFIG_PACKAGE_mosdns=m
 # CONFIG_PACKAGE_pdns-recursor is not set
 # CONFIG_PACKAGE_pdns-tools is not set
 # CONFIG_PACKAGE_pdnsd-alt is not set
-# CONFIG_PACKAGE_stubby is not set
+CONFIG_PACKAGE_stubby=m
 # CONFIG_PACKAGE_tor-hs is not set
 # CONFIG_PACKAGE_torsocks is not set
 # CONFIG_PACKAGE_unbound-anchor is not set
