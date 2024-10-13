@@ -1,6 +1,8 @@
---- a/db.txt	2023-05-06 07:55:03.000000000 +0800
-+++ b/db.txt	2023-05-06 08:08:52.611401822 +0800
-@@ -753,11 +753,8 @@
+diff --git a/db.txt b/db.txt
+index a9a9ba4..2229c7a 100644
+--- a/db.txt
++++ b/db.txt
+@@ -813,11 +813,8 @@ country GY:
  # https://www.ofca.gov.hk/filemanager/ofca/en/content_401/hkca1081.pdf (6 GHz)
  country HK: DFS-ETSI
  	(2400 - 2483.5 @ 40), (36)
@@ -12,5 +14,5 @@
 +	(5140 - 5860 @ 160), (30)
 +	(5925 - 6425 @ 160), (20)
  
- country HN: DFS-FCC
- 	(2402 - 2482 @ 40), (20)
+ # Source:
+ # https://www.conatel.gob.hn/doc/Regulacion/resoluciones/2023/NR05-23.pdf
