@@ -232,7 +232,7 @@ jobs:
            cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config 
            
            #cp $GITHUB_WORKSPACE/myconfig/config.ramips.2 $GITHUB_WORKSPACE/x-wrt/.config
-           cp $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch  $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/ 
+           #cp $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch  $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/ 
            #cat myconfig/config.tvh.ffmpeg >> .config
            #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
