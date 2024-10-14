@@ -145,7 +145,7 @@ jobs:
         run: |
           apt list --installed
           #/usr/bin/tar -xf /home/runner/work/_temp/1a144490-77f9-4c00-ae54-698cee23f6b0/cache.tgz -P -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt -z
-          ls -alt ${{ github.workspace }}/x-wrt/staging_dir/*
+          #ls -alt ${{ github.workspace }}/x-wrt/staging_dir/*
           docker rmi `docker images -q`
           #sudo apt remove firefox powershell microsoft-edge* temurin* php* nginx dotnet* ubuntu-gnome-desktop gnome-shell golang* google* mysql* ruby* apach* r-*
           
