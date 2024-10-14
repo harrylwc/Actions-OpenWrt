@@ -23,7 +23,7 @@ git apply -R --ignore-space-change 2.patch
 git apply -R --ignore-space-change 3.patch
 git apply -R --ignore-space-change 4.patch
 git apply -R --ignore-space-change 5.patch
-
+cat package/network/services/ppp/Makefile|grep PKG_VERSION
 
 #rm target/linux/ramips/dts/mt7620a.dtsi
 #rm target/linux/ramips/dts/mt7620n.dtsi
@@ -38,7 +38,7 @@ git clone https://github.com/kenzok8/openwrt-packages.git /home/runner/work/Acti
 git clone https://github.com/kenzok8/small.git /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/small
 
 
-sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.defaulto
+sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 git pull
 git clone https://github.com/jerrykuku/luci-theme-argon package/luci-theme-argon
