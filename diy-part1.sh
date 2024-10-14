@@ -23,7 +23,7 @@ git apply -R --ignore-space-change 2.patch
 git apply -R --ignore-space-change 3.patch
 git apply -R --ignore-space-change 4.patch
 git apply -R --ignore-space-change 5.patch
-cat package/network/services/ppp/Makefile|grep PKG_VERSION
+cat package/network/services/ppp/Makefile
 
 #rm target/linux/ramips/dts/mt7620a.dtsi
 #rm target/linux/ramips/dts/mt7620n.dtsi
