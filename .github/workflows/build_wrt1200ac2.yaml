@@ -236,7 +236,7 @@ jobs:
           ln -s /mnt/build_dir .
           sudo mv dl /mnt/
           ln -s /mnt/dl .
-          sudo mv bin /mnt/
+          [ -d "bin" ] && sudo mv bin /mnt/ || ( mkdir bin;sudo mv bin /mnt/ )
           ln -s /mnt/bin .
           
           #cp config.wrt1200ac.0 .config
