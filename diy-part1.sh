@@ -17,13 +17,18 @@ wget https://github.com/openwrt/openwrt/commit/7eb6bf1ac9798f07577f7c2e0ef12f622
 wget https://github.com/openwrt/openwrt/commit/8766a92766962f7267bf44851aaacd3588249473.patch -O 3.patch
 wget https://github.com/openwrt/openwrt/commit/3e668c6d02ed637620bde27c66c0bdeedf18f54f.patch -O 4.patch
 wget https://github.com/openwrt/openwrt/commit/9cecf2b16e0ea8560e50ef6719938bd80b963704.patch -O 5.patch
+wget https://github.com/x-wrt/packages/commit/ad9d5a3eef961dcf2bef0e5486898c823786e53c.patch -O feeds/packages/6.patch
 
 git apply -R --ignore-space-change 1.patch
 git apply -R --ignore-space-change 2.patch
 git apply -R --ignore-space-change 3.patch
 git apply -R --ignore-space-change 4.patch
 git apply -R --ignore-space-change 5.patch
-cat package/network/services/ppp/Makefile
+cd feeds/packages/
+git apply -R --ignore-space-change 6.patch
+cd ../../
+
+cat package/network/services/ppp/Makefile|grep PKG_RELEASE_VERSION:=
 
 #rm target/linux/ramips/dts/mt7620a.dtsi
 #rm target/linux/ramips/dts/mt7620n.dtsi
