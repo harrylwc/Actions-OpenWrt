@@ -3,14 +3,28 @@ git clone https://github.com/coolsnowwolf/lede lede
 lede/scripts/feeds update -a
 
 cd x-wrt
-git revert eb05baff7fb330de43632d638c34ba544f472935 >result.txt
-git revert 7eb6bf1ac9798f07577f7c2e0ef12f622efc6315>>result.txt
-git revert 8766a92766962f7267bf44851aaacd3588249473>>result.txt
-git revert 3e668c6d02ed637620bde27c66c0bdeedf18f54f>>result.txt
-git revert 9cecf2b16e0ea8560e50ef6719938bd80b963704>>result.txt
-echo "git revert result====="
-cat result.txt
-echo "==========="
+#git revert eb05baff7fb330de43632d638c34ba544f472935 >result.txt
+#git revert 7eb6bf1ac9798f07577f7c2e0ef12f622efc6315>>result.txt
+#git revert 8766a92766962f7267bf44851aaacd3588249473>>result.txt
+#git revert 3e668c6d02ed637620bde27c66c0bdeedf18f54f>>result.txt
+#git revert 9cecf2b16e0ea8560e50ef6719938bd80b963704>>result.txt
+#echo "git revert result====="
+#cat result.txt
+#echo "==========="
+
+wget https://github.com/openwrt/openwrt/commit/eb05baff7fb330de43632d638c34ba544f472935.patch 1.patch
+wget https://github.com/openwrt/openwrt/commit/7eb6bf1ac9798f07577f7c2e0ef12f622efc6315.patch 2.patch
+wget https://github.com/openwrt/openwrt/commit/8766a92766962f7267bf44851aaacd3588249473.patch 3.patch
+wget https://github.com/openwrt/openwrt/commit/3e668c6d02ed637620bde27c66c0bdeedf18f54f.patch 4.patch
+wget https://github.com/openwrt/openwrt/commit/9cecf2b16e0ea8560e50ef6719938bd80b963704.patch 5.patch
+
+git apply -R --ignore-space-change 1.patch
+git apply -R --ignore-space-change 2.patch
+git apply -R --ignore-space-change 3.patch
+git apply -R --ignore-space-change 4.patch
+git apply -R --ignore-space-change 5.patch
+
+
 #rm target/linux/ramips/dts/mt7620a.dtsi
 #rm target/linux/ramips/dts/mt7620n.dtsi
 #rm target/linux/ramips/mt7620/target.mk
