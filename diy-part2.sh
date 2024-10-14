@@ -109,7 +109,7 @@ echo "Total zh_Hant in package directory = $ttl"
 cd /tmp/                                                                                                                                            
 wget https://raw.githubusercontent.com/x-wrt/x-wrt/refs/heads/master/package/firmware/wireless-regdb/patches/600-custom-change-txpower-and-dfs.patch
 wget https://raw.githubusercontent.com/x-wrt/x-wrt/refs/heads/master/package/firmware/wireless-regdb/patches/500-world-regd-5GHz.patch
-mv /tmp/?00.*.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/       
+mv /tmp/*.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/       
 mv $GITHUB_WORKSPACE/patches/400-custom_hk-change-txpower-and-dfs.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 
 cd $GITHUB_WORKSPACE/x-wrt/
