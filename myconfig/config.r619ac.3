@@ -542,6 +542,7 @@ CONFIG_FEED_luci=y
 CONFIG_FEED_routing=y
 CONFIG_FEED_telephony=y
 CONFIG_FEED_x=y
+CONFIG_FEED_kenzo=y
 CONFIG_FEED_small=y
 
 #
@@ -6912,7 +6913,9 @@ CONFIG_PACKAGE_luci-i18n-adblock-fast-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-adblock-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-adblock-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-adguardhome-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-adguardhome-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-aria2-ar is not set
 # CONFIG_PACKAGE_luci-i18n-aria2-bg is not set
 # CONFIG_PACKAGE_luci-i18n-aria2-bn is not set
@@ -7155,6 +7158,7 @@ CONFIG_PACKAGE_luci-i18n-cshark-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-ddns-fi is not set
 # CONFIG_PACKAGE_luci-i18n-ddns-fr is not set
 CONFIG_PACKAGE_luci-i18n-ddns-go-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-ddns-go-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-ddns-he is not set
 # CONFIG_PACKAGE_luci-i18n-ddns-hi is not set
 # CONFIG_PACKAGE_luci-i18n-ddns-hu is not set
@@ -7179,6 +7183,7 @@ CONFIG_PACKAGE_luci-i18n-ddns-go-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-ddns-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-ddns-zh-tw=y
 CONFIG_PACKAGE_luci-i18n-ddnsto-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-ddnsto-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-docker-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-docker-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-dockerman-ar is not set
@@ -7216,7 +7221,9 @@ CONFIG_PACKAGE_luci-i18n-docker-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-dockerman-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-easymesh-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-easymesh-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-eqos-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-eqos-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-example-ar is not set
 # CONFIG_PACKAGE_luci-i18n-example-bg is not set
 # CONFIG_PACKAGE_luci-i18n-example-bn is not set
@@ -7873,6 +7880,7 @@ CONFIG_PACKAGE_luci-i18n-privoxy-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-qos-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-qos-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-quickstart-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-quickstart-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-samba4-ar is not set
 # CONFIG_PACKAGE_luci-i18n-samba4-bg is not set
 # CONFIG_PACKAGE_luci-i18n-samba4-bn is not set
@@ -11113,4 +11121,4 @@ CONFIG_PACKAGE_urllogger=m
 # end of Font-Utils
 # end of Xorg
 
-CONFIG_OVERRIDE_PKGS="adguardhome alist brook chinadns-ng dns2socks dns2tcp gn hysteria ipt2socks lua-neturl luci-app-alist luci-app-bypass luci-app-dockerman luci-app-homeproxy luci-app-mihomo luci-app-mosdns luci-app-nlbwmon luci-app-openclash luci-app-passwall luci-app-passwall2 luci-app-smartdns luci-app-ssr-plus luci-app-ttyd mentohust microsocks mihomo mosdns naiveproxy pdnsd-alt redsocks2 shadow-tls shadowsocks-rust shadowsocksr-libev simple-obfs sing-box smartdns ssocks tcping trojan trojan-go trojan-plus tuic-client ucl upx v2dat v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
+CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng ddns-go ddnsto dns2socks dns2tcp gn gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argone-config luci-app-bypass luci-app-clash luci-app-ddns-go luci-app-ddnsto luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-gost luci-app-homeproxy luci-app-ikoolproxy luci-app-istorex luci-app-lucky luci-app-mihomo luci-app-mosdns luci-app-nlbwmon luci-app-openclash luci-app-partexp luci-app-passwall luci-app-passwall2 luci-app-quickstart luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-ttyd luci-app-unblockneteasemusic luci-lib-taskd luci-lib-xterm luci-theme-alpha luci-theme-argon luci-theme-argone luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mihomo mosdns naiveproxy pdnsd-alt quickstart redsocks2 shadow-tls shadowsocks-rust shadowsocksr-libev simple-obfs sing-box smartdns ssocks taskd tcping trojan trojan-go trojan-plus tuic-client ucl upx v2dat v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
