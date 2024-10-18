@@ -50,7 +50,7 @@ git clone https://github.com/tty228/luci-app-wechatpush /home/runner/work/Action
 #mkdir /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package//luci-app-wechatpush/po/zh_Hant
 #/usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hans/wechatpush.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
 #sed -i 's/zh_Hans/zh_Hant/g' /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
-
+sed -i 's/llvm=true/llvm=false/g' $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/rust/Makefile
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
 cp $GITHUB_WORKSPACE/patches/Makefile.vlmcsd $GITHUB_WORKSPACE/x-wrt/package/vlmcsd/Makefile
 cd $GITHUB_WORKSPACE/ 
@@ -96,7 +96,7 @@ do
         mkdir $i/zh_Hant
         for x in `find $i|grep -E "zh-cn|zh_Hans"|grep "\.po"`
               do
-                y=`echo $x|sed -e 's/zh-cn/zh_Hant/g' -e 's/zh_Hans/zh_Hant/g'`
+                y=`echo $x| -e 's/zh-cn/zh_Hant/g' -e 's/zh_Hans/zh_Hant/g'`
                 /usr/bin/opencc -i $x -o $y
         #echo $y
              
