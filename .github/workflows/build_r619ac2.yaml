@@ -249,7 +249,8 @@ jobs:
            [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            cd x-wrt 
            #make kernel_menuconfig -j2
-           make -j$(nproc) || make -j1 
+           make -j$(nproc)|| make V=s -j1 2>&1 | tee make.txt
+           tail -100 make.txt
            [ $? != 0 ] && make V=s || echo "build success"
            sudo rm -rf $GITHUB_WORKSPACE/lede
            df -kh
