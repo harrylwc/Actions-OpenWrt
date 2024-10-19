@@ -39,6 +39,8 @@ git clone https://github.com/muink/luci-app-netspeedtest.git /home/runner/work/A
 
 #rm -rf `find  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds -name *filebrowser*`
 #rm -rf `find  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package -name *filebrowser*`
+rm -r ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/luci/applications/luci-app-shadowsocks-libev/                                                           
+cp -r 
 ./scripts/feeds update -a
 
 rm -rf `find  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds -name *filebrowser*`
