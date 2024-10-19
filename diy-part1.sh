@@ -49,7 +49,7 @@ git clone https://github.com/xiaozhuai/luci-app-filebrowser  /home/runner/work/A
 ./scripts/feeds install -a -f
 
 rm -rf  $GITHUB_WORKSPACE/x-wrt/feeds/luci/applications/luci-app-shadowsocks-libev/                                                       
-#cp -r $GITHUB_WORKSPACE/x-wrt/package/luci-app-shadowsocks-libev $GITHUB_WORKSPACE/x-wrt/feeds/luci/applications/        
+cp -r $GITHUB_WORKSPACE/x-wrt/package/luci-app-shadowsocks-libev $GITHUB_WORKSPACE/x-wrt/feeds/luci/applications/        
 
 ./scripts/feeds update -a  
 ./scripts/feeds install -a -f  
