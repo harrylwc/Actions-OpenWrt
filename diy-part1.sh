@@ -39,8 +39,6 @@ git clone https://github.com/muink/luci-app-netspeedtest.git /home/runner/work/A
 
 #rm -rf `find  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds -name *filebrowser*`
 #rm -rf `find  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package -name *filebrowser*`
-rm -rf  $GITHUB_WORKSPACE/x-wrt/feeds/luci/applications/luci-app-shadowsocks-libev/                                                           
-#cp -r $GITHUB_WORKSPACE/x-wrt/package/luci-app-shadowsocks-libev $GITHUB_WORKSPACE/x-wrt/feeds/luci/applications/                                                                                                                                                                         
 ./scripts/feeds update -a
 
 rm -rf `find  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds -name *filebrowser*`
@@ -49,6 +47,12 @@ rm -rf  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/luci/appli
 
 git clone https://github.com/xiaozhuai/luci-app-filebrowser  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/luci/applications/luci-app-filebrowser
 ./scripts/feeds install -a -f
+
+rm -rf  $GITHUB_WORKSPACE/x-wrt/feeds/luci/applications/luci-app-shadowsocks-libev/                                                       
+#cp -r $GITHUB_WORKSPACE/x-wrt/package/luci-app-shadowsocks-libev $GITHUB_WORKSPACE/x-wrt/feeds/luci/applications/        
+
+./scripts/feeds update -a  
+./scripts/feeds install -a -f  
 
 wget https://github.com/x-wrt/packages/commit/ad9d5a3eef961dcf2bef0e5486898c823786e53c.patch -O feeds/packages/6.patch
 cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/                                                                                                
