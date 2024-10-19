@@ -11,7 +11,7 @@ name: Compile WRT1200AC3 TVH x-wrt Images
 
 on:
   repository_dispatch:
-    types: [mvebu_ipq40xx_ramips_completed]
+    types: [mvebu_completed]
   workflow_dispatch:    
     inputs:
       ssh:
@@ -24,8 +24,8 @@ on:
   #push:
    #branches: 
     #- master
-  schedule:
-    - cron: "45 15 * * *"
+  #schedule:
+    #- cron: "45 15 * * *"
   #release:
    # types: [published]
   watch:
