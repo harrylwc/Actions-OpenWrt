@@ -107,10 +107,10 @@ done
 ttl=`find $GITHUB_WORKSPACE/x-wrt/package/ -name *.po|grep zh_Hant|wc -l`
 echo "Total zh_Hant in package directory = $ttl"
 
-for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/x/ -name po`    
+for i in `find $GITHUB_WORKSPACE/x-wrt/feeds/x/ -name *.po|grep cn`    
 do 
-print $i
-/usr/bin/opencc -i $i -o $i                                                                                                                                                                        
+       # echo $i
+        /usr/bin/opencc -i $i -o $i                                                                                                                                                                        
 done
 
 cd /tmp/                                                                                                                                            
