@@ -285,7 +285,7 @@ jobs:
            #ln -s /usr/bin/ccache /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/staging_dir/host/bin/ccache 
            #make V=s
            [ $? != 0 ] && make V=s || echo "build success" 
-           
+           cd x-wrt
            cp -f bin/targets/mvebu/cortexa9/openwrt-mvebu-cortexa9-linksys_wrt1200ac-squashfs-sysupgrade.bin bin/targets/mvebu/drivers/                                                               
            df -kh
       - name: SSH connection for failure Debug
