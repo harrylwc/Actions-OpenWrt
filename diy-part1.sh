@@ -1,4 +1,7 @@
 git clone https://github.com/x-wrt/x-wrt
+git checkout 610ea1b9994 #x-wrt
+#git checkout 0a2ed285e4 #openwrt 
+
 git clone https://github.com/coolsnowwolf/lede lede
 lede/scripts/feeds update -a
 
