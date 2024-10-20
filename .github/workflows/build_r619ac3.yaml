@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile R619AC3 TVH OpenWrt Images  
+name: Compile R619AC3 TVH x-wrt Images  
 
 on:
  repository_dispatch:
@@ -64,7 +64,7 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build R619AC  TVH firmware
+    name: Build R619AC x-wrt TVH firmware
     #runs-on: ubuntu-latest
     #continue-on-error: true 
     runs-on: ubuntu-22.04
