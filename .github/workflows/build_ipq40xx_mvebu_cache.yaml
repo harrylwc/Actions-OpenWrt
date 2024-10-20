@@ -30,7 +30,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: wrt1200ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.0
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac..0.openwrt
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.wrt1200ac'
@@ -232,7 +232,7 @@ jobs:
           [ -d "bin" ] && sudo mv bin /mnt/ || ( mkdir bin;sudo mv bin /mnt/ )
           ln -s /mnt/bin .
           
-          cp config.r619ac.0 .config
+          cp config.r619ac.0.openwrt  .config
           #echo cpu core=$(nproc)
           
           make -j$(nproc) || make -j1 V=s
