@@ -1,0 +1,1415 @@
+From 74c8fa31a667634247d0dc16f65a0196e6421597 Mon Sep 17 00:00:00 2001
+From: jbsky <webmaster@jbsky.fr>
+Date: Fri, 9 Aug 2024 11:55:47 +0200
+Subject: [PATCH 01/10] Makefile: Add .rej & .orig in clean
+
+Signed-off-by: Julien Blais <webmaster@jbsky.fr>
+---
+ Makefile | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/Makefile b/Makefile
+index 444742a5..6c5b4968 100644
+--- a/Makefile
++++ b/Makefile
+@@ -29,3 +29,5 @@ clean:
+ 	find . -name ".*.o.cmd" -exec rm -f {} \;
+ 	find . -name "*.o" -exec rm -f {} \;
+ 	find . -name "*.o.d" -exec rm -f {} \;
++	find . -name "*.orig" -exec rm -f {} \;
++	find . -name "*.rej" -exec rm -f {} \;
+
+From 63e6e2294cb237e86b3e04d5a91739c277ed005e Mon Sep 17 00:00:00 2001
+From: Julien BLAIS <jblais.atos@lfdj.com>
+Date: Thu, 20 Jun 2024 13:03:35 +0200
+Subject: [PATCH 02/10] Add rx_decrypt feature
+
+Offset correction for monitoring impacts performance.
+The purpose of this patch is to activate this feature if and only if a monitor card is active.
+
+Feature status is added to debugfs.
+
+Signed-off-by: Julien Blais <webmaster@jbsky.fr>
+---
+ core.c             |  1 +
+ core.h             |  2 +-
+ debugfs.c          | 55 ++++++++++++++++++++++++++++++++++++++++++++++
+ hif/pcie/8864/rx.c | 18 ++++++++-------
+ hif/pcie/8997/rx.c | 18 ++++++++-------
+ mac80211.c         | 22 +++++++++++++++++++
+ 6 files changed, 99 insertions(+), 17 deletions(-)
+
+diff --git a/core.c b/core.c
+index 6c5b57bc..d8e334f0 100644
+--- a/core.c
++++ b/core.c
+@@ -1028,6 +1028,7 @@ struct ieee80211_hw *mwl_alloc_hw(int bus_type,
+ 	priv->hif.ops = ops;
+ 	priv->hif.priv = (char *)priv + ALIGN(sizeof(*priv), NETDEV_ALIGN);
+ 	priv->debug_ampdu = false;
++	priv->rx_decrypt = false;
+ 	priv->ampdu_num = mwl_hif_get_ampdu_num(hw);
+ 	priv->ampdu =
+ 		kzalloc(priv->ampdu_num * sizeof(*priv->ampdu), GFP_KERNEL);
+diff --git a/core.h b/core.h
+index 5ce1c3d7..9f1d61d4 100644
+--- a/core.h
++++ b/core.h
+@@ -355,7 +355,7 @@ struct mwl_priv {
+ 	u32 ra_tx_attempt[2][6];
+ 
+ 	bool debug_ampdu;
+-	bool decrypt_rx;
++	bool rx_decrypt;
+ 	bool rate_adapt_mode;
+ 	bool dwds_stamode;
+ 	bool optimization_level;
+diff --git a/debugfs.c b/debugfs.c
+index fb28cb04..ce4eebda 100644
+--- a/debugfs.c
++++ b/debugfs.c
+@@ -432,6 +432,59 @@ static ssize_t mwl_debugfs_info_read(struct file *file, char __user *ubuf,
+ 	return ret;
+ }
+ 
++static ssize_t mwl_debugfs_rx_decrypt_read(struct file *file, char __user *ubuf,
++					   size_t count, loff_t *ppos) {
++	struct mwl_priv *priv = (struct mwl_priv *)file->private_data;
++	unsigned long page = get_zeroed_page(GFP_KERNEL);
++	char *p = (char *)page;
++	int len = 0, size = PAGE_SIZE;
++	ssize_t ret;
++
++	if (!p)
++		return -ENOMEM;
++
++	len += scnprintf(p + len, size - len, "%5s\n", priv->rx_decrypt ? "true" : "false");
++
++	ret = simple_read_from_buffer(ubuf, count, ppos, p, len);
++	free_page(page);
++
++	return ret;
++
++}
++
++static ssize_t mwl_debugfs_rx_decrypt_write(struct file *file,
++					  const char __user *ubuf,
++					  size_t count, loff_t *ppos)
++{
++	struct mwl_priv *priv = (struct mwl_priv *)file->private_data;
++	unsigned long addr = get_zeroed_page(GFP_KERNEL);
++	char *buf = (char *)addr;
++	size_t buf_size = min_t(size_t, count, PAGE_SIZE - 1);
++	int value;
++	ssize_t ret;
++
++	if (!buf)
++		return -ENOMEM;
++
++	if (copy_from_user(buf, ubuf, buf_size)) {
++		ret = -EFAULT;
++		goto err;
++	}
++
++	if (kstrtoint(buf, 0, &value)) {
++		ret = -EINVAL;
++		goto err;
++	}
++
++	priv->rx_decrypt = value ? true : false;
++
++	ret = count;
++
++err:
++	free_page(addr);
++	return ret;
++}
++
+ static ssize_t mwl_debugfs_tx_status_read(struct file *file, char __user *ubuf,
+ 					  size_t count, loff_t *ppos)
+ {
+@@ -2105,6 +2158,7 @@ MWLWIFI_DEBUGFS_FILE_READ_OPS(device_pwrtbl);
+ MWLWIFI_DEBUGFS_FILE_READ_OPS(txpwrlmt);
+ MWLWIFI_DEBUGFS_FILE_OPS(ampdu);
+ MWLWIFI_DEBUGFS_FILE_OPS(tx_amsdu);
++MWLWIFI_DEBUGFS_FILE_OPS(rx_decrypt);
+ MWLWIFI_DEBUGFS_FILE_OPS(dump_hostcmd);
+ MWLWIFI_DEBUGFS_FILE_OPS(heartbeat);
+ MWLWIFI_DEBUGFS_FILE_OPS(dfs_test);
+@@ -2134,6 +2188,7 @@ void mwl_debugfs_init(struct ieee80211_hw *hw)
+ 
+ 	MWLWIFI_DEBUGFS_ADD_FILE(info);
+ 	MWLWIFI_DEBUGFS_ADD_FILE(tx_status);
++	MWLWIFI_DEBUGFS_ADD_FILE(rx_decrypt);
+ 	MWLWIFI_DEBUGFS_ADD_FILE(rx_status);
+ 	MWLWIFI_DEBUGFS_ADD_FILE(vif);
+ 	MWLWIFI_DEBUGFS_ADD_FILE(sta);
+diff --git a/hif/pcie/8864/rx.c b/hif/pcie/8864/rx.c
+index c0e8bc8c..0db3a6e7 100644
+--- a/hif/pcie/8864/rx.c
++++ b/hif/pcie/8864/rx.c
+@@ -481,15 +481,17 @@ void pcie_8864_rx_recv(unsigned long data)
+ 			}
+ 		}
+ 
+-		if (status->flag & RX_FLAG_DECRYPTED) {
+-			monitor_skb = skb_copy(prx_skb, GFP_ATOMIC);
+-			if (monitor_skb) {
+-				IEEE80211_SKB_RXCB(monitor_skb)->flag |= RX_FLAG_ONLY_MONITOR;
+-				((struct ieee80211_hdr *)monitor_skb->data)->frame_control &= ~__cpu_to_le16(IEEE80211_FCTL_PROTECTED);
+-
+-				ieee80211_rx(hw, monitor_skb);
++		if(priv->rx_decrypt) {
++			if (status->flag & RX_FLAG_DECRYPTED) {
++				monitor_skb = skb_copy(prx_skb, GFP_ATOMIC);
++				if (monitor_skb) {
++					IEEE80211_SKB_RXCB(monitor_skb)->flag |= RX_FLAG_ONLY_MONITOR;
++					((struct ieee80211_hdr *)monitor_skb->data)->frame_control &= ~__cpu_to_le16(IEEE80211_FCTL_PROTECTED);
++
++					ieee80211_rx(hw, monitor_skb);
++				}
++				status->flag |= RX_FLAG_SKIP_MONITOR;
+ 			}
+-			status->flag |= RX_FLAG_SKIP_MONITOR;
+ 		}
+ 
+ 		ieee80211_rx(hw, prx_skb);
+diff --git a/hif/pcie/8997/rx.c b/hif/pcie/8997/rx.c
+index 3355c4d7..8c69762d 100644
+--- a/hif/pcie/8997/rx.c
++++ b/hif/pcie/8997/rx.c
+@@ -482,15 +482,17 @@ void pcie_8997_rx_recv(unsigned long data)
+ 			}
+ 		}
+ 
+-		if (status->flag & RX_FLAG_DECRYPTED) {
+-			monitor_skb = skb_copy(prx_skb, GFP_ATOMIC);
+-			if (monitor_skb) {
+-				IEEE80211_SKB_RXCB(monitor_skb)->flag |= RX_FLAG_ONLY_MONITOR;
+-				((struct ieee80211_hdr *)monitor_skb->data)->frame_control &= ~__cpu_to_le16(IEEE80211_FCTL_PROTECTED);
+-
+-				ieee80211_rx(hw, monitor_skb);
++		if(priv->rx_decrypt) {
++			if (status->flag & RX_FLAG_DECRYPTED) {
++				monitor_skb = skb_copy(prx_skb, GFP_ATOMIC);
++				if (monitor_skb) {
++					IEEE80211_SKB_RXCB(monitor_skb)->flag |= RX_FLAG_ONLY_MONITOR;
++					((struct ieee80211_hdr *)monitor_skb->data)->frame_control &= ~__cpu_to_le16(IEEE80211_FCTL_PROTECTED);
++
++					ieee80211_rx(hw, monitor_skb);
++				}
++				status->flag |= RX_FLAG_SKIP_MONITOR;
+ 			}
+-			status->flag |= RX_FLAG_SKIP_MONITOR;
+ 		}
+ 
+ 		ieee80211_rx(hw, prx_skb);
+diff --git a/mac80211.c b/mac80211.c
+index 00e32ad1..f8ab66bf 100644
+--- a/mac80211.c
++++ b/mac80211.c
+@@ -183,6 +183,9 @@ static int mwl_mac80211_add_interface(struct ieee80211_hw *hw,
+ 	u32 macids_supported;
+ 	int macid;
+ 
++	if (vif->type == NL80211_IFTYPE_MONITOR)
++		priv->rx_decrypt = true;
++
+ 	switch (vif->type) {
+ 	case NL80211_IFTYPE_AP:
+ 	case NL80211_IFTYPE_MESH_POINT:
+@@ -258,6 +261,25 @@ static void mwl_mac80211_remove_vif(struct mwl_priv *priv,
+ 	if (!priv->macids_used)
+ 		return;
+ 
++	/* mac80211 suppress 1 monitor interface */
++	if (vif->type == NL80211_IFTYPE_MONITOR) {
++		int counter = 0;
++		struct ieee80211_vif *_vif;
++		spin_lock_bh(&priv->vif_lock);
++		list_for_each_entry(mwl_vif, &priv->vif_list, list) {
++			_vif = container_of((void *)mwl_vif, struct ieee80211_vif,
++					drv_priv);
++
++			if (_vif->type == NL80211_IFTYPE_MONITOR)
++				counter++;
++		}
++		spin_unlock_bh(&priv->vif_lock);
++		/* but if existe more than 1,
++		   so 1 interface is still activ*/
++		if (counter <= 1)
++			priv->rx_decrypt = false;
++	}
++
+ 	mwl_hif_tx_del_pkts_via_vif(priv->hw, vif);
+ 
+ 	priv->macids_used &= ~(1 << mwl_vif->macid);
+
+From f76905cb3edb38752b54c236bf4cec7ad9502bce Mon Sep 17 00:00:00 2001
+From: jbsky <webmaster@jbsky.fr>
+Date: Fri, 9 Aug 2024 12:11:11 +0200
+Subject: [PATCH 03/10] Napi replaces tasklet
+
+The aim is to improve interoperability with ethernet control, which is also scheduled by napi.
+Rx process AMSDU packet with napi
+
+Signed-off-by: Julien Blais <webmaster@jbsky.fr>
+---
+ hif/pcie/8864/rx.c | 72 +++++++++++++++++++++++++---------------------
+ hif/pcie/8864/rx.h |  2 +-
+ hif/pcie/8997/rx.c | 72 +++++++++++++++++++++++++---------------------
+ hif/pcie/8997/rx.h |  2 +-
+ hif/pcie/dev.h     |  3 ++
+ hif/pcie/pcie.c    | 38 +++++++++++-------------
+ 6 files changed, 99 insertions(+), 90 deletions(-)
+
+diff --git a/hif/pcie/8864/rx.c b/hif/pcie/8864/rx.c
+index 0db3a6e7..781377b9 100644
+--- a/hif/pcie/8864/rx.c
++++ b/hif/pcie/8864/rx.c
+@@ -240,13 +240,11 @@ static inline void pcie_rx_status(struct mwl_priv *priv,
+ 	}
+ }
+ 
+-static inline bool pcie_rx_process_mesh_amsdu(struct mwl_priv *priv,
++static inline int pcie_rx_process_amsdu(struct mwl_priv *priv,
+ 					     struct sk_buff *skb,
+ 					     struct ieee80211_rx_status *status)
+ {
+ 	struct ieee80211_hdr *wh;
+-	struct mwl_sta *sta_info;
+-	struct ieee80211_sta *sta;
+ 	u8 *qc;
+ 	int wh_len;
+ 	int len;
+@@ -254,25 +252,18 @@ static inline bool pcie_rx_process_mesh_amsdu(struct mwl_priv *priv,
+ 	u8 *data;
+ 	u16 frame_len;
+ 	struct sk_buff *newskb;
++	int work_done;
++	struct pcie_priv *pcie_priv = priv->hif.priv;
+ 
+ 	wh = (struct ieee80211_hdr *)skb->data;
+ 
+-	spin_lock_bh(&priv->sta_lock);
+-	list_for_each_entry(sta_info, &priv->sta_list, list) {
+-		sta = container_of((void *)sta_info, struct ieee80211_sta,
+-				   drv_priv[0]);
+-		if (ether_addr_equal(sta->addr, wh->addr2)) {
+-			if (!sta_info->is_mesh_node) {
+-				spin_unlock_bh(&priv->sta_lock);
+-				return false;
+-			}
+-		}
+-	}
+-	spin_unlock_bh(&priv->sta_lock);
+-
+ 	qc = ieee80211_get_qos_ctl(wh);
+ 	*qc &= ~IEEE80211_QOS_CTL_A_MSDU_PRESENT;
+ 
++	if(priv->rx_decrypt)
++		if(status->flag & RX_FLAG_DECRYPTED)
++			status->flag |= RX_FLAG_SKIP_MONITOR;
++
+ 	wh_len = ieee80211_hdrlen(wh->frame_control);
+ 	len = wh_len;
+ 	data = skb->data;
+@@ -302,12 +293,23 @@ static inline bool pcie_rx_process_mesh_amsdu(struct mwl_priv *priv,
+ 		else
+ 			status->flag &= ~RX_FLAG_AMSDU_MORE;
+ 		memcpy(IEEE80211_SKB_RXCB(newskb), status, sizeof(*status));
+-		ieee80211_rx(priv->hw, newskb);
++		ieee80211_rx_napi(priv->hw, NULL, newskb, &pcie_priv->napi);
++		work_done++;
+ 	}
+ 
+-	dev_kfree_skb_any(skb);
++	if(priv->rx_decrypt) {
++		if (status->flag & RX_FLAG_DECRYPTED) {
++
++			status->flag &= ~RX_FLAG_SKIP_MONITOR;
++			status->flag |= RX_FLAG_ONLY_MONITOR;
++			((struct ieee80211_hdr *)skb->data)->frame_control &= ~__cpu_to_le16(IEEE80211_FCTL_PROTECTED);
++			ieee80211_rx_napi(priv->hw, NULL, skb, &pcie_priv->napi);
++		}
++	}
++	else
++		dev_kfree_skb_any(skb);
+ 
+-	return true;
++	return work_done;
+ }
+ 
+ static inline int pcie_rx_refill(struct mwl_priv *priv,
+@@ -378,11 +380,11 @@ void pcie_8864_rx_deinit(struct ieee80211_hw *hw)
+ 	pcie_rx_ring_free(priv);
+ }
+ 
+-void pcie_8864_rx_recv(unsigned long data)
++int pcie_8864_poll_napi(struct napi_struct *napi, int budget)
+ {
+-	struct ieee80211_hw *hw = (struct ieee80211_hw *)data;
+-	struct mwl_priv *priv = hw->priv;
+-	struct pcie_priv *pcie_priv = priv->hif.priv;
++	struct pcie_priv *pcie_priv = container_of(napi, struct pcie_priv, napi);
++	struct mwl_priv *priv = pcie_priv->mwl_priv;
++	struct ieee80211_hw *hw = priv->hw;
+ 	struct pcie_desc_data *desc;
+ 	struct pcie_rx_hndl *curr_hndl;
+ 	int work_done = 0;
+@@ -399,14 +401,12 @@ void pcie_8864_rx_recv(unsigned long data)
+ 	curr_hndl = desc->pnext_rx_hndl;
+ 
+ 	if (!curr_hndl) {
+-		pcie_mask_int(pcie_priv, MACREG_A2HRIC_BIT_RX_RDY, true);
+-		pcie_priv->is_rx_schedule = false;
+ 		wiphy_warn(hw->wiphy, "busy or no receiving packets\n");
+-		return;
++		goto end_poll;
+ 	}
+ 
+ 	while ((curr_hndl->pdesc->rx_control == EAGLE_RXD_CTRL_DMA_OWN) &&
+-	       (work_done < pcie_priv->recv_limit)) {
++	       (work_done < budget)) {
+ 		prx_skb = curr_hndl->psk_buff;
+ 		if (!prx_skb)
+ 			goto out;
+@@ -476,8 +476,8 @@ void pcie_8864_rx_recv(unsigned long data)
+ 				*qc |= 7;
+ 
+ 			if ((*qc & IEEE80211_QOS_CTL_A_MSDU_PRESENT) && (ieee80211_has_a4(wh->frame_control))) {
+-				if (pcie_rx_process_mesh_amsdu(priv, prx_skb, status))
+-					goto out;
++				work_done += pcie_rx_process_amsdu(priv, prx_skb, status);
++				goto out;
+ 			}
+ 		}
+ 
+@@ -488,13 +488,13 @@ void pcie_8864_rx_recv(unsigned long data)
+ 					IEEE80211_SKB_RXCB(monitor_skb)->flag |= RX_FLAG_ONLY_MONITOR;
+ 					((struct ieee80211_hdr *)monitor_skb->data)->frame_control &= ~__cpu_to_le16(IEEE80211_FCTL_PROTECTED);
+ 
+-					ieee80211_rx(hw, monitor_skb);
++					ieee80211_rx_napi(hw, NULL, monitor_skb, &pcie_priv->napi);
+ 				}
+ 				status->flag |= RX_FLAG_SKIP_MONITOR;
+ 			}
+ 		}
+ 
+-		ieee80211_rx(hw, prx_skb);
++		ieee80211_rx_napi(hw, NULL, prx_skb, &pcie_priv->napi);
+ out:
+ 		pcie_rx_refill(priv, curr_hndl);
+ 		curr_hndl->pdesc->rx_control = EAGLE_RXD_CTRL_DRIVER_OWN;
+@@ -504,6 +504,12 @@ void pcie_8864_rx_recv(unsigned long data)
+ 	}
+ 
+ 	desc->pnext_rx_hndl = curr_hndl;
+-	pcie_mask_int(pcie_priv, MACREG_A2HRIC_BIT_RX_RDY, true);
+-	pcie_priv->is_rx_schedule = false;
++
++end_poll:
++	if (work_done < budget) {
++		napi_complete(napi);
++		priv->hif.ops->irq_enable(hw);
++		pcie_mask_int(pcie_priv, MACREG_A2HRIC_BIT_RX_RDY, true);
++	}
++	return work_done;
+ }
+diff --git a/hif/pcie/8864/rx.h b/hif/pcie/8864/rx.h
+index 3c590bcc..611069c6 100644
+--- a/hif/pcie/8864/rx.h
++++ b/hif/pcie/8864/rx.h
+@@ -20,6 +20,6 @@
+ 
+ int pcie_8864_rx_init(struct ieee80211_hw *hw);
+ void pcie_8864_rx_deinit(struct ieee80211_hw *hw);
+-void pcie_8864_rx_recv(unsigned long data);
++int pcie_8864_poll_napi(struct napi_struct *napi, int budget);
+ 
+ #endif /* _8864_RX_H_ */
+diff --git a/hif/pcie/8997/rx.c b/hif/pcie/8997/rx.c
+index 8c69762d..6b2d0e05 100644
+--- a/hif/pcie/8997/rx.c
++++ b/hif/pcie/8997/rx.c
+@@ -240,13 +240,11 @@ static inline void pcie_rx_status(struct mwl_priv *priv,
+ 	}
+ }
+ 
+-static inline bool pcie_rx_process_mesh_amsdu(struct mwl_priv *priv,
++static inline int pcie_rx_process_amsdu(struct mwl_priv *priv,
+ 					     struct sk_buff *skb,
+ 					     struct ieee80211_rx_status *status)
+ {
+ 	struct ieee80211_hdr *wh;
+-	struct mwl_sta *sta_info;
+-	struct ieee80211_sta *sta;
+ 	u8 *qc;
+ 	int wh_len;
+ 	int len;
+@@ -254,25 +252,18 @@ static inline bool pcie_rx_process_mesh_amsdu(struct mwl_priv *priv,
+ 	u8 *data;
+ 	u16 frame_len;
+ 	struct sk_buff *newskb;
++	int work_done;
++	struct pcie_priv *pcie_priv = priv->hif.priv;
+ 
+ 	wh = (struct ieee80211_hdr *)skb->data;
+ 
+-	spin_lock_bh(&priv->sta_lock);
+-	list_for_each_entry(sta_info, &priv->sta_list, list) {
+-		sta = container_of((void *)sta_info, struct ieee80211_sta,
+-				   drv_priv[0]);
+-		if (ether_addr_equal(sta->addr, wh->addr2)) {
+-			if (!sta_info->is_mesh_node) {
+-				spin_unlock_bh(&priv->sta_lock);
+-				return false;
+-			}
+-		}
+-	}
+-	spin_unlock_bh(&priv->sta_lock);
+-
+ 	qc = ieee80211_get_qos_ctl(wh);
+ 	*qc &= ~IEEE80211_QOS_CTL_A_MSDU_PRESENT;
+ 
++	if(priv->rx_decrypt)
++		if(status->flag & RX_FLAG_DECRYPTED)
++			status->flag |= RX_FLAG_SKIP_MONITOR;
++
+ 	wh_len = ieee80211_hdrlen(wh->frame_control);
+ 	len = wh_len;
+ 	data = skb->data;
+@@ -302,12 +293,23 @@ static inline bool pcie_rx_process_mesh_amsdu(struct mwl_priv *priv,
+ 		else
+ 			status->flag &= ~RX_FLAG_AMSDU_MORE;
+ 		memcpy(IEEE80211_SKB_RXCB(newskb), status, sizeof(*status));
+-		ieee80211_rx(priv->hw, newskb);
++		ieee80211_rx_napi(priv->hw, NULL, newskb, &pcie_priv->napi);
++		work_done++;
+ 	}
+ 
+-	dev_kfree_skb_any(skb);
++	if(priv->rx_decrypt) {
++		if (status->flag & RX_FLAG_DECRYPTED) {
++
++			status->flag &= ~RX_FLAG_SKIP_MONITOR;
++			status->flag |= RX_FLAG_ONLY_MONITOR;
++			((struct ieee80211_hdr *)skb->data)->frame_control &= ~__cpu_to_le16(IEEE80211_FCTL_PROTECTED);
++			ieee80211_rx_napi(priv->hw, NULL, skb, &pcie_priv->napi);
++		}
++	}
++	else
++		dev_kfree_skb_any(skb);
+ 
+-	return true;
++	return work_done;
+ }
+ 
+ static inline int pcie_rx_refill(struct mwl_priv *priv,
+@@ -378,11 +380,11 @@ void pcie_8997_rx_deinit(struct ieee80211_hw *hw)
+ 	pcie_rx_ring_free(priv);
+ }
+ 
+-void pcie_8997_rx_recv(unsigned long data)
++int pcie_8997_poll_napi(struct napi_struct *napi, int budget)
+ {
+-	struct ieee80211_hw *hw = (struct ieee80211_hw *)data;
+-	struct mwl_priv *priv = hw->priv;
+-	struct pcie_priv *pcie_priv = priv->hif.priv;
++	struct pcie_priv *pcie_priv = container_of(napi, struct pcie_priv, napi);
++	struct mwl_priv *priv = pcie_priv->mwl_priv;
++	struct ieee80211_hw *hw = priv->hw;
+ 	struct pcie_desc_data *desc;
+ 	struct pcie_rx_hndl *curr_hndl;
+ 	int work_done = 0;
+@@ -399,14 +401,12 @@ void pcie_8997_rx_recv(unsigned long data)
+ 	curr_hndl = desc->pnext_rx_hndl;
+ 
+ 	if (!curr_hndl) {
+-		pcie_mask_int(pcie_priv, MACREG_A2HRIC_BIT_RX_RDY, true);
+-		pcie_priv->is_rx_schedule = false;
+ 		wiphy_warn(hw->wiphy, "busy or no receiving packets\n");
+-		return;
++		goto end_poll;
+ 	}
+ 
+ 	while ((curr_hndl->pdesc->rx_control == EAGLE_RXD_CTRL_DMA_OWN) &&
+-	       (work_done < pcie_priv->recv_limit)) {
++	       (work_done < budget)) {
+ 		prx_skb = curr_hndl->psk_buff;
+ 		if (!prx_skb)
+ 			goto out;
+@@ -477,8 +477,8 @@ void pcie_8997_rx_recv(unsigned long data)
+ 				*qc |= 7;
+ 
+ 			if ((*qc & IEEE80211_QOS_CTL_A_MSDU_PRESENT) && (ieee80211_has_a4(wh->frame_control))) {
+-				if (pcie_rx_process_mesh_amsdu(priv, prx_skb, status))
+-					goto out;
++				work_done += pcie_rx_process_amsdu(priv, prx_skb, status);
++				goto out;
+ 			}
+ 		}
+ 
+@@ -489,13 +489,13 @@ void pcie_8997_rx_recv(unsigned long data)
+ 					IEEE80211_SKB_RXCB(monitor_skb)->flag |= RX_FLAG_ONLY_MONITOR;
+ 					((struct ieee80211_hdr *)monitor_skb->data)->frame_control &= ~__cpu_to_le16(IEEE80211_FCTL_PROTECTED);
+ 
+-					ieee80211_rx(hw, monitor_skb);
++					ieee80211_rx_napi(hw, NULL, monitor_skb, &pcie_priv->napi);
+ 				}
+ 				status->flag |= RX_FLAG_SKIP_MONITOR;
+ 			}
+ 		}
+ 
+-		ieee80211_rx(hw, prx_skb);
++		ieee80211_rx_napi(hw, NULL, prx_skb, &pcie_priv->napi);
+ out:
+ 		pcie_rx_refill(priv, curr_hndl);
+ 		curr_hndl->pdesc->rx_control = EAGLE_RXD_CTRL_DRIVER_OWN;
+@@ -505,6 +505,12 @@ void pcie_8997_rx_recv(unsigned long data)
+ 	}
+ 
+ 	desc->pnext_rx_hndl = curr_hndl;
+-	pcie_mask_int(pcie_priv, MACREG_A2HRIC_BIT_RX_RDY, true);
+-	pcie_priv->is_rx_schedule = false;
++
++end_poll:
++	if (work_done < budget) {
++		napi_complete(napi);
++		priv->hif.ops->irq_enable(hw);
++		pcie_mask_int(pcie_priv, MACREG_A2HRIC_BIT_RX_RDY, true);
++	}
++	return work_done;
+ }
+diff --git a/hif/pcie/8997/rx.h b/hif/pcie/8997/rx.h
+index dc7f3399..c7e195fd 100644
+--- a/hif/pcie/8997/rx.h
++++ b/hif/pcie/8997/rx.h
+@@ -20,6 +20,6 @@
+ 
+ int pcie_8997_rx_init(struct ieee80211_hw *hw);
+ void pcie_8997_rx_deinit(struct ieee80211_hw *hw);
+-void pcie_8997_rx_recv(unsigned long data);
++int pcie_8997_poll_napi(struct napi_struct *napi, int budget);
+ 
+ #endif /* _8997_RX_H_ */
+diff --git a/hif/pcie/dev.h b/hif/pcie/dev.h
+index 2f8c3663..3affbd7b 100644
+--- a/hif/pcie/dev.h
++++ b/hif/pcie/dev.h
+@@ -583,6 +583,9 @@ struct pcie_priv {
+ 	spinlock_t int_mask_lock ____cacheline_aligned_in_smp;
+ 	struct tasklet_struct tx_task;
+ 	struct tasklet_struct tx_done_task;
++	/* NAPI */
++	struct net_device napi_dev;
++	struct napi_struct napi;
+ 	struct tasklet_struct rx_task;
+ 	unsigned int tx_head_room;
+ 	int txq_limit;
+diff --git a/hif/pcie/pcie.c b/hif/pcie/pcie.c
+index e55811f4..99de3121 100644
+--- a/hif/pcie/pcie.c
++++ b/hif/pcie/pcie.c
+@@ -215,9 +215,9 @@ static int pcie_init_8997(struct ieee80211_hw *hw)
+ 		     (void *)pcie_8997_tx_done, (unsigned long)hw);
+ 	tasklet_disable(&pcie_priv->tx_done_task);
+ 	spin_lock_init(&pcie_priv->tx_desc_lock);
+-	tasklet_init(&pcie_priv->rx_task,
+-		     (void *)pcie_8997_rx_recv, (unsigned long)hw);
+-	tasklet_disable(&pcie_priv->rx_task);
++	init_dummy_netdev(&pcie_priv->napi_dev);
++	netif_napi_add(&pcie_priv->napi_dev, &pcie_priv->napi,
++		       pcie_8997_poll_napi);
+ 	pcie_priv->txq_limit = PCIE_TX_QUEUE_LIMIT;
+ 	pcie_priv->txq_wake_threshold = PCIE_TX_WAKE_Q_THRESHOLD;
+ 	pcie_priv->is_tx_done_schedule = false;
+@@ -312,8 +312,8 @@ static int pcie_init_8864(struct ieee80211_hw *hw)
+ 	tasklet_init(&pcie_priv->tx_done_task, (void *)pcie_8864_tx_done, (unsigned long)hw);
+ 	tasklet_disable(&pcie_priv->tx_done_task);
+ 	spin_lock_init(&pcie_priv->tx_desc_lock);
+-	tasklet_init(&pcie_priv->rx_task, (void *)pcie_8864_rx_recv, (unsigned long)hw);
+-	tasklet_disable(&pcie_priv->rx_task);
++	init_dummy_netdev(&pcie_priv->napi_dev);
++	netif_napi_add(&pcie_priv->napi_dev, &pcie_priv->napi, pcie_8864_poll_napi);
+ 	pcie_priv->txq_limit = PCIE_TX_QUEUE_LIMIT;
+ 	pcie_priv->txq_wake_threshold = PCIE_TX_WAKE_Q_THRESHOLD;
+ 	pcie_priv->is_tx_done_schedule = false;
+@@ -402,7 +402,6 @@ static void pcie_deinit_8997(struct ieee80211_hw *hw)
+ 
+ 	pcie_8997_rx_deinit(hw);
+ 	pcie_8997_tx_deinit(hw);
+-	tasklet_kill(&pcie_priv->rx_task);
+ 	tasklet_kill(&pcie_priv->tx_done_task);
+ 	tasklet_kill(&pcie_priv->tx_task);
+ 	pcie_reset(hw);
+@@ -415,7 +414,6 @@ static void pcie_deinit_8864(struct ieee80211_hw *hw)
+ 
+ 	pcie_8864_rx_deinit(hw);
+ 	pcie_8864_tx_deinit(hw);
+-	tasklet_kill(&pcie_priv->rx_task);
+ 	tasklet_kill(&pcie_priv->tx_done_task);
+ 	tasklet_kill(&pcie_priv->tx_task);
+ 	pcie_reset(hw);
+@@ -446,7 +444,7 @@ static void pcie_enable_data_tasks(struct ieee80211_hw *hw)
+ 
+ 	tasklet_enable(&pcie_priv->tx_task);
+ 	tasklet_enable(&pcie_priv->tx_done_task);
+-	tasklet_enable(&pcie_priv->rx_task);
++	napi_enable(&pcie_priv->napi);
+ }
+ 
+ static void pcie_disable_data_tasks(struct ieee80211_hw *hw)
+@@ -456,7 +454,8 @@ static void pcie_disable_data_tasks(struct ieee80211_hw *hw)
+ 
+ 	tasklet_disable(&pcie_priv->tx_task);
+ 	tasklet_disable(&pcie_priv->tx_done_task);
+-	tasklet_disable(&pcie_priv->rx_task);
++	napi_synchronize(&pcie_priv->napi);
++	napi_disable(&pcie_priv->napi);
+ }
+ 
+ static int pcie_exec_cmd(struct ieee80211_hw *hw, unsigned short cmd)
+@@ -536,14 +535,11 @@ static irqreturn_t pcie_isr_8864(struct ieee80211_hw *hw)
+ 		}
+ 
+ 		if (int_status & MACREG_A2HRIC_BIT_RX_RDY) {
+-			if (!pcie_priv->is_rx_schedule) {
+-				pcie_mask_int(pcie_priv,
+-					      MACREG_A2HRIC_BIT_RX_RDY, false);
+-				tasklet_schedule(&pcie_priv->rx_task);
+-				pcie_priv->is_rx_schedule = true;
+-			}
++			pcie_mask_int(pcie_priv,
++				      MACREG_A2HRIC_BIT_RX_RDY, false);
++			priv->hif.ops->irq_disable(hw);
++			napi_schedule(&pcie_priv->napi);
+ 		}
+-
+ 		if (int_status & MACREG_A2HRIC_BIT_RADAR_DETECT) {
+ 			wiphy_info(hw->wiphy, "radar detected by firmware\n");
+ 			ieee80211_radar_detected(hw);
+@@ -583,12 +579,10 @@ static irqreturn_t pcie_isr_8997(struct ieee80211_hw *hw)
+ 		}
+ 
+ 		if (int_status & MACREG_A2HRIC_BIT_RX_RDY) {
+-			if (!pcie_priv->is_rx_schedule) {
+-				pcie_mask_int(pcie_priv,
+-					      MACREG_A2HRIC_BIT_RX_RDY, false);
+-				tasklet_schedule(&pcie_priv->rx_task);
+-				pcie_priv->is_rx_schedule = true;
+-			}
++			pcie_mask_int(pcie_priv,
++				      MACREG_A2HRIC_BIT_RX_RDY, false);
++			priv->hif.ops->irq_disable(hw);
++			napi_schedule(&pcie_priv->napi);
+ 		}
+ 
+ 		if (int_status & MACREG_A2HRIC_BIT_RADAR_DETECT) {
+
+From 5e69434964bad88ed3cdca0f6e87013cbc16cead Mon Sep 17 00:00:00 2001
+From: jbsky <webmaster@jbsky.fr>
+Date: Tue, 16 Jul 2024 14:25:59 +0200
+Subject: [PATCH 04/10] clean code
+
+Signed-off-by: Julien Blais <webmaster@jbsky.fr>
+---
+ hif/pcie/8864/tx.c | 9 ---------
+ hif/pcie/8997/tx.c | 9 ---------
+ 2 files changed, 18 deletions(-)
+
+diff --git a/hif/pcie/8864/tx.c b/hif/pcie/8864/tx.c
+index 148ec570..c252a019 100644
+--- a/hif/pcie/8864/tx.c
++++ b/hif/pcie/8864/tx.c
+@@ -244,23 +244,14 @@ static inline void pcie_tx_skb(struct mwl_priv *priv, int desc_num,
+ 	struct pcie_tx_ctrl *tx_ctrl;
+ 	struct pcie_tx_hndl *tx_hndl = NULL;
+ 	struct pcie_tx_desc *tx_desc;
+-	struct ieee80211_sta *sta;
+-	struct ieee80211_vif *vif;
+-	struct mwl_vif *mwl_vif;
+ 	struct pcie_dma_data *dma_data;
+ 	struct ieee80211_hdr *wh;
+ 	dma_addr_t dma;
+ 	int tailpad = 0;
+ 	struct ieee80211_key_conf *k_conf;
+ 
+-	if (WARN_ON(!tx_skb))
+-		return;
+-
+ 	tx_info = IEEE80211_SKB_CB(tx_skb);
+ 	tx_ctrl = (struct pcie_tx_ctrl *)tx_info->driver_data;
+-	sta = (struct ieee80211_sta *)tx_ctrl->sta;
+-	vif = (struct ieee80211_vif *)tx_info->control.vif;
+-	mwl_vif = mwl_dev_get_vif(vif);
+ 	k_conf = (struct ieee80211_key_conf *)tx_info->control.hw_key;
+ 
+ 	if (k_conf) {
+diff --git a/hif/pcie/8997/tx.c b/hif/pcie/8997/tx.c
+index beb118b5..7e2b53c5 100644
+--- a/hif/pcie/8997/tx.c
++++ b/hif/pcie/8997/tx.c
+@@ -171,9 +171,6 @@ static inline void pcie_tx_skb(struct mwl_priv *priv,
+ 	struct ieee80211_tx_info *tx_info;
+ 	struct pcie_tx_ctrl *tx_ctrl;
+ 	struct pcie_tx_desc *tx_desc;
+-	struct ieee80211_sta *sta;
+-	struct ieee80211_vif *vif;
+-	struct mwl_vif *mwl_vif;
+ 	struct pcie_pfu_dma_data *pfu_dma_data;
+ 	struct pcie_dma_data *dma_data;
+ 	struct ieee80211_hdr *wh;
+@@ -184,14 +181,8 @@ static inline void pcie_tx_skb(struct mwl_priv *priv,
+ 	struct pcie_data_buf *data_buf;
+ 	const u32 num_tx_buffs = PCIE_MAX_TXRX_BD << PCIE_TX_START_PTR;
+ 
+-	if (WARN_ON(!tx_skb))
+-		return;
+-
+ 	tx_info = IEEE80211_SKB_CB(tx_skb);
+ 	tx_ctrl = (struct pcie_tx_ctrl *)tx_info->driver_data;
+-	sta = (struct ieee80211_sta *)tx_ctrl->sta;
+-	vif = (struct ieee80211_vif *)tx_info->control.vif;
+-	mwl_vif = mwl_dev_get_vif(vif);
+ 	k_conf = (struct ieee80211_key_conf *)tx_info->control.hw_key;
+ 
+ 	if (k_conf) {
+
+From a6ff70074b8c6a4aa6584606dfbd9d9a580e268f Mon Sep 17 00:00:00 2001
+From: jbsky <webmaster@jbsky.fr>
+Date: Fri, 2 Aug 2024 22:05:12 +0200
+Subject: [PATCH 05/10] Reworking ISR
+
+Here, we trust the hardware to send an interrupt to the kernel instead of simulating the interrupt.
+Following best practice, we disable interrupts during ISR and re-enable them when RX/TX jobs are completed.
+
+Signed-off-by: Julien Blais <webmaster@jbsky.fr>
+---
+ debugfs.c          |  1 -
+ hif/pcie/8864/rx.c |  9 ++++-----
+ hif/pcie/8864/tx.c | 18 +++++++++++++-----
+ hif/pcie/8864/tx.h |  1 +
+ hif/pcie/8997/rx.c | 11 +++++------
+ hif/pcie/8997/tx.c | 15 ++++++++++-----
+ hif/pcie/8997/tx.h |  2 +-
+ hif/pcie/dev.h     |  1 -
+ hif/pcie/pcie.c    | 36 ++++++++++++------------------------
+ 9 files changed, 46 insertions(+), 48 deletions(-)
+
+diff --git a/debugfs.c b/debugfs.c
+index ce4eebda..89cecac9 100644
+--- a/debugfs.c
++++ b/debugfs.c
+@@ -425,7 +425,6 @@ static ssize_t mwl_debugfs_info_read(struct file *file, char __user *ubuf,
+ 	len += scnprintf(p + len, size - len,
+ 			 "use_short_preamble: %s\n", priv->use_short_preamble ? "enable" : "disable");
+ 	len += mwl_hif_get_info(priv->hw, p + len, size - len);
+-
+ 	ret = simple_read_from_buffer(ubuf, count, ppos, p, len);
+ 	free_page(page);
+ 
+diff --git a/hif/pcie/8864/rx.c b/hif/pcie/8864/rx.c
+index 781377b9..e20054ad 100644
+--- a/hif/pcie/8864/rx.c
++++ b/hif/pcie/8864/rx.c
+@@ -408,7 +408,7 @@ int pcie_8864_poll_napi(struct napi_struct *napi, int budget)
+ 	while ((curr_hndl->pdesc->rx_control == EAGLE_RXD_CTRL_DMA_OWN) &&
+ 	       (work_done < budget)) {
+ 		prx_skb = curr_hndl->psk_buff;
+-		if (!prx_skb)
++		if (unlikely(!prx_skb))
+ 			goto out;
+ 		dma_unmap_single(&(pcie_priv->pdev)->dev,
+ 				 le32_to_cpu(curr_hndl->pdesc->pphys_buff_data),
+@@ -416,13 +416,13 @@ int pcie_8864_poll_napi(struct napi_struct *napi, int budget)
+ 				 DMA_FROM_DEVICE);
+ 		pkt_len = le16_to_cpu(curr_hndl->pdesc->pkt_len);
+ 
+-		if (skb_tailroom(prx_skb) < pkt_len) {
++		if (unlikely(skb_tailroom(prx_skb) < pkt_len)) {
+ 			dev_kfree_skb_any(prx_skb);
+ 			goto out;
+ 		}
+ 
+-		if (curr_hndl->pdesc->channel !=
+-		    hw->conf.chandef.chan->hw_value) {
++		if (unlikely(curr_hndl->pdesc->channel !=
++		    hw->conf.chandef.chan->hw_value)) {
+ 			dev_kfree_skb_any(prx_skb);
+ 			goto out;
+ 		}
+@@ -509,7 +509,6 @@ int pcie_8864_poll_napi(struct napi_struct *napi, int budget)
+ 	if (work_done < budget) {
+ 		napi_complete(napi);
+ 		priv->hif.ops->irq_enable(hw);
+-		pcie_mask_int(pcie_priv, MACREG_A2HRIC_BIT_RX_RDY, true);
+ 	}
+ 	return work_done;
+ }
+diff --git a/hif/pcie/8864/tx.c b/hif/pcie/8864/tx.c
+index c252a019..913deaa7 100644
+--- a/hif/pcie/8864/tx.c
++++ b/hif/pcie/8864/tx.c
+@@ -424,6 +424,9 @@ static void pcie_non_pfu_tx_done(struct mwl_priv *priv)
+ 
+ 	spin_lock_bh(&pcie_priv->tx_desc_lock);
+ 	while (num--) {
++		if (!pcie_priv->fw_desc_cnt[num])
++			continue;
++
+ 		desc = &pcie_priv->desc_data[num];
+ 		tx_hndl = desc->pstale_tx_hndl;
+ 		tx_desc = tx_hndl->pdesc;
+@@ -495,11 +498,7 @@ static void pcie_non_pfu_tx_done(struct mwl_priv *priv)
+ 	}
+ 	spin_unlock_bh(&pcie_priv->tx_desc_lock);
+ 
+-	if (pcie_priv->is_tx_done_schedule) {
+-		pcie_mask_int(pcie_priv, MACREG_A2HRIC_BIT_TX_DONE, true);
+-		tasklet_schedule(&pcie_priv->tx_task);
+-		pcie_priv->is_tx_done_schedule = false;
+-	}
++	tasklet_schedule(&pcie_priv->tx_task);
+ }
+ 
+ int pcie_8864_tx_init(struct ieee80211_hw *hw)
+@@ -610,6 +609,15 @@ void pcie_8864_tx_skbs(unsigned long data)
+ 	spin_unlock_bh(&pcie_priv->tx_desc_lock);
+ }
+ 
++void pcie_8864_tx_done_task(unsigned long data)
++{
++	struct ieee80211_hw *hw = (struct ieee80211_hw *)data;
++	struct mwl_priv *priv = hw->priv;
++
++	pcie_non_pfu_tx_done(priv);
++	priv->hif.ops->irq_enable(hw);
++}
++
+ void pcie_8864_tx_done(unsigned long data)
+ {
+ 	struct ieee80211_hw *hw = (struct ieee80211_hw *)data;
+diff --git a/hif/pcie/8864/tx.h b/hif/pcie/8864/tx.h
+index 6b5e375f..93901ad2 100644
+--- a/hif/pcie/8864/tx.h
++++ b/hif/pcie/8864/tx.h
+@@ -22,6 +22,7 @@ int pcie_8864_tx_init(struct ieee80211_hw *hw);
+ void pcie_8864_tx_deinit(struct ieee80211_hw *hw);
+ void pcie_8864_tx_skbs(unsigned long data);
+ void pcie_8864_tx_done(unsigned long data);
++void pcie_8864_tx_done_task(unsigned long data);
+ void pcie_8864_tx_xmit(struct ieee80211_hw *hw,
+ 		       struct ieee80211_tx_control *control,
+ 		       struct sk_buff *skb);
+diff --git a/hif/pcie/8997/rx.c b/hif/pcie/8997/rx.c
+index 6b2d0e05..297eaaef 100644
+--- a/hif/pcie/8997/rx.c
++++ b/hif/pcie/8997/rx.c
+@@ -110,7 +110,7 @@ static int pcie_rx_ring_init(struct mwl_priv *priv)
+ 			dma = dma_map_single(&(pcie_priv->pdev)->dev,
+ 					     rx_hndl->psk_buff->data,
+ 					     desc->rx_buf_size,
+-                         DMA_FROM_DEVICE);
++					     DMA_FROM_DEVICE);
+ 			if (dma_mapping_error(&(pcie_priv->pdev)->dev, dma)) {
+ 				wiphy_err(priv->hw->wiphy,
+ 					  "failed to map pci memory!\n");
+@@ -408,7 +408,7 @@ int pcie_8997_poll_napi(struct napi_struct *napi, int budget)
+ 	while ((curr_hndl->pdesc->rx_control == EAGLE_RXD_CTRL_DMA_OWN) &&
+ 	       (work_done < budget)) {
+ 		prx_skb = curr_hndl->psk_buff;
+-		if (!prx_skb)
++		if (unlikely(!prx_skb))
+ 			goto out;
+ 		dma_unmap_single(&(pcie_priv->pdev)->dev,
+ 				 le32_to_cpu(curr_hndl->pdesc->pphys_buff_data),
+@@ -416,13 +416,13 @@ int pcie_8997_poll_napi(struct napi_struct *napi, int budget)
+ 				 DMA_FROM_DEVICE);
+ 		pkt_len = le16_to_cpu(curr_hndl->pdesc->pkt_len);
+ 
+-		if (skb_tailroom(prx_skb) < pkt_len) {
++		if (unlikely(skb_tailroom(prx_skb) < pkt_len)) {
+ 			dev_kfree_skb_any(prx_skb);
+ 			goto out;
+ 		}
+ 
+-		if (curr_hndl->pdesc->channel !=
+-		    hw->conf.chandef.chan->hw_value) {
++		if (unlikely(curr_hndl->pdesc->channel !=
++		    hw->conf.chandef.chan->hw_value)) {
+ 			dev_kfree_skb_any(prx_skb);
+ 			goto out;
+ 		}
+@@ -510,7 +510,6 @@ int pcie_8997_poll_napi(struct napi_struct *napi, int budget)
+ 	if (work_done < budget) {
+ 		napi_complete(napi);
+ 		priv->hif.ops->irq_enable(hw);
+-		pcie_mask_int(pcie_priv, MACREG_A2HRIC_BIT_RX_RDY, true);
+ 	}
+ 	return work_done;
+ }
+diff --git a/hif/pcie/8997/tx.c b/hif/pcie/8997/tx.c
+index 7e2b53c5..361b3070 100644
+--- a/hif/pcie/8997/tx.c
++++ b/hif/pcie/8997/tx.c
+@@ -450,11 +450,7 @@ static void pcie_pfu_tx_done(struct mwl_priv *priv)
+ 	}
+ 	spin_unlock_bh(&pcie_priv->tx_desc_lock);
+ 
+-	if (pcie_priv->is_tx_done_schedule) {
+-		pcie_mask_int(pcie_priv, MACREG_A2HRIC_BIT_TX_DONE, true);
+-		tasklet_schedule(&pcie_priv->tx_task);
+-		pcie_priv->is_tx_done_schedule = false;
+-	}
++	tasklet_schedule(&pcie_priv->tx_task);
+ }
+ 
+ int pcie_8997_tx_init(struct ieee80211_hw *hw)
+@@ -569,6 +565,15 @@ void pcie_8997_tx_done(unsigned long data)
+ 	pcie_pfu_tx_done(priv);
+ }
+ 
++void pcie_8997_tx_done_task(unsigned long data)
++{
++       struct ieee80211_hw *hw = (struct ieee80211_hw *)data;
++       struct mwl_priv *priv = hw->priv;
++
++       pcie_pfu_tx_done(priv);
++	priv->hif.ops->irq_enable(hw);
++}
++
+ void pcie_8997_tx_xmit(struct ieee80211_hw *hw,
+ 		       struct ieee80211_tx_control *control,
+ 		       struct sk_buff *skb)
+diff --git a/hif/pcie/8997/tx.h b/hif/pcie/8997/tx.h
+index 8551745b..39e03b0a 100644
+--- a/hif/pcie/8997/tx.h
++++ b/hif/pcie/8997/tx.h
+@@ -22,7 +22,7 @@ int pcie_8997_tx_init(struct ieee80211_hw *hw);
+ void pcie_8997_tx_deinit(struct ieee80211_hw *hw);
+ void pcie_8997_tx_skbs(unsigned long data);
+ void pcie_8997_tx_done(unsigned long data);
+-void pcie_8997_tx_flush_amsdu(unsigned long data);
++void pcie_8997_tx_done_task(unsigned long data);
+ void pcie_8997_tx_xmit(struct ieee80211_hw *hw,
+ 		       struct ieee80211_tx_control *control,
+ 		       struct sk_buff *skb);
+diff --git a/hif/pcie/dev.h b/hif/pcie/dev.h
+index 3affbd7b..e2bedabe 100644
+--- a/hif/pcie/dev.h
++++ b/hif/pcie/dev.h
+@@ -99,7 +99,6 @@ enum {
+ 			     MACREG_A2HRIC_BIT_RADAR_DETECT | \
+ 			     MACREG_A2HRIC_BIT_CHAN_SWITCH | \
+ 			     MACREG_A2HRIC_BIT_TX_WATCHDOG | \
+-			     MACREG_A2HRIC_BIT_QUE_EMPTY | \
+ 			     MACREG_A2HRIC_BA_WATCHDOG | \
+ 			     MACREG_A2HRIC_CONSEC_TXFAIL)
+ 
+diff --git a/hif/pcie/pcie.c b/hif/pcie/pcie.c
+index 99de3121..aeb6cf00 100644
+--- a/hif/pcie/pcie.c
++++ b/hif/pcie/pcie.c
+@@ -212,7 +212,7 @@ static int pcie_init_8997(struct ieee80211_hw *hw)
+ 		     (void *)pcie_8997_tx_skbs, (unsigned long)hw);
+ 	tasklet_disable(&pcie_priv->tx_task);
+ 	tasklet_init(&pcie_priv->tx_done_task,
+-		     (void *)pcie_8997_tx_done, (unsigned long)hw);
++		     (void *)pcie_8997_tx_done_task, (unsigned long)hw);
+ 	tasklet_disable(&pcie_priv->tx_done_task);
+ 	spin_lock_init(&pcie_priv->tx_desc_lock);
+ 	init_dummy_netdev(&pcie_priv->napi_dev);
+@@ -220,9 +220,7 @@ static int pcie_init_8997(struct ieee80211_hw *hw)
+ 		       pcie_8997_poll_napi);
+ 	pcie_priv->txq_limit = PCIE_TX_QUEUE_LIMIT;
+ 	pcie_priv->txq_wake_threshold = PCIE_TX_WAKE_Q_THRESHOLD;
+-	pcie_priv->is_tx_done_schedule = false;
+ 	pcie_priv->recv_limit = PCIE_RECEIVE_LIMIT;
+-	pcie_priv->is_rx_schedule = false;
+ 
+ 	rc = pcie_8997_tx_init(hw);
+ 	if (rc) {
+@@ -309,16 +307,14 @@ static int pcie_init_8864(struct ieee80211_hw *hw)
+ 	spin_lock_init(&pcie_priv->int_mask_lock);
+ 	tasklet_init(&pcie_priv->tx_task, (void *)pcie_8864_tx_skbs, (unsigned long)hw);
+ 	tasklet_disable(&pcie_priv->tx_task);
+-	tasklet_init(&pcie_priv->tx_done_task, (void *)pcie_8864_tx_done, (unsigned long)hw);
++	tasklet_init(&pcie_priv->tx_done_task, (void *)pcie_8864_tx_done_task, (unsigned long)hw);
+ 	tasklet_disable(&pcie_priv->tx_done_task);
+ 	spin_lock_init(&pcie_priv->tx_desc_lock);
+ 	init_dummy_netdev(&pcie_priv->napi_dev);
+ 	netif_napi_add(&pcie_priv->napi_dev, &pcie_priv->napi, pcie_8864_poll_napi);
+ 	pcie_priv->txq_limit = PCIE_TX_QUEUE_LIMIT;
+ 	pcie_priv->txq_wake_threshold = PCIE_TX_WAKE_Q_THRESHOLD;
+-	pcie_priv->is_tx_done_schedule = false;
+ 	pcie_priv->recv_limit = PCIE_RECEIVE_LIMIT;
+-	pcie_priv->is_rx_schedule = false;
+ 
+ 	rc = pcie_8864_tx_init(hw);
+ 	if (rc) {
+@@ -526,27 +522,25 @@ static irqreturn_t pcie_isr_8864(struct ieee80211_hw *hw)
+ 		       pcie_priv->iobase1 + MACREG_REG_A2H_INTERRUPT_CAUSE);
+ 
+ 		if (int_status & MACREG_A2HRIC_BIT_TX_DONE) {
+-			if (!pcie_priv->is_tx_done_schedule) {
+-				pcie_mask_int(pcie_priv,
+-					      MACREG_A2HRIC_BIT_TX_DONE, false);
+-				tasklet_schedule(&pcie_priv->tx_done_task);
+-				pcie_priv->is_tx_done_schedule = true;
+-			}
++			priv->hif.ops->irq_disable(hw);
++			tasklet_schedule(&pcie_priv->tx_done_task);
+ 		}
+ 
+ 		if (int_status & MACREG_A2HRIC_BIT_RX_RDY) {
+-			pcie_mask_int(pcie_priv,
+-				      MACREG_A2HRIC_BIT_RX_RDY, false);
+ 			priv->hif.ops->irq_disable(hw);
+ 			napi_schedule(&pcie_priv->napi);
+ 		}
++
+ 		if (int_status & MACREG_A2HRIC_BIT_RADAR_DETECT) {
+ 			wiphy_info(hw->wiphy, "radar detected by firmware\n");
+ 			ieee80211_radar_detected(hw);
+ 		}
+ 
+-		if (int_status & MACREG_A2HRIC_BIT_CHAN_SWITCH) ieee80211_queue_work(hw, &priv->chnl_switch_handle);
+-		if (int_status & MACREG_A2HRIC_BIT_TX_WATCHDOG) ieee80211_queue_work(hw, &priv->watchdog_ba_handle);
++		if (int_status & MACREG_A2HRIC_BIT_CHAN_SWITCH)
++			ieee80211_queue_work(hw, &priv->chnl_switch_handle);
++
++		if (int_status & MACREG_A2HRIC_BIT_TX_WATCHDOG)
++			ieee80211_queue_work(hw, &priv->watchdog_ba_handle);
+ 	}
+ 
+ 	return IRQ_HANDLED;
+@@ -570,17 +564,11 @@ static irqreturn_t pcie_isr_8997(struct ieee80211_hw *hw)
+ 		       pcie_priv->iobase1 + MACREG_REG_A2H_INTERRUPT_CAUSE);
+ 
+ 		if (int_status & MACREG_A2HRIC_BIT_TX_DONE) {
+-			if (!pcie_priv->is_tx_done_schedule) {
+-				pcie_mask_int(pcie_priv,
+-					      MACREG_A2HRIC_BIT_TX_DONE, false);
+-				tasklet_schedule(&pcie_priv->tx_done_task);
+-				pcie_priv->is_tx_done_schedule = true;
+-			}
++			priv->hif.ops->irq_disable(hw);
++			tasklet_schedule(&pcie_priv->tx_done_task);
+ 		}
+ 
+ 		if (int_status & MACREG_A2HRIC_BIT_RX_RDY) {
+-			pcie_mask_int(pcie_priv,
+-				      MACREG_A2HRIC_BIT_RX_RDY, false);
+ 			priv->hif.ops->irq_disable(hw);
+ 			napi_schedule(&pcie_priv->napi);
+ 		}
+
+From 999d291d1239de8dd10104b7b8173e3e4f65ea9d Mon Sep 17 00:00:00 2001
+From: jbsky <webmaster@jbsky.fr>
+Date: Wed, 29 May 2024 21:48:50 +0200
+Subject: [PATCH 06/10] Remove skb_get(done_skb) in txdone
+
++ clean code
+
+Signed-off-by: Julien Blais <webmaster@jbsky.fr>
+---
+ hif/pcie/8864/tx.c | 35 +++++++++++++----------------------
+ hif/pcie/8997/tx.c | 31 +++++++++++++------------------
+ 2 files changed, 26 insertions(+), 40 deletions(-)
+
+diff --git a/hif/pcie/8864/tx.c b/hif/pcie/8864/tx.c
+index 913deaa7..d63fcf00 100644
+--- a/hif/pcie/8864/tx.c
++++ b/hif/pcie/8864/tx.c
+@@ -454,40 +454,31 @@ static void pcie_non_pfu_tx_done(struct mwl_priv *priv)
+ 			tx_hndl->psk_buff = NULL;
+ 			wmb(); /*Data Memory Barrier*/
+ 
+-			skb_get(done_skb);
+-
+ 			dma_data = (struct pcie_dma_data *)done_skb->data;
+ 			wh = &dma_data->wh;
+ 			if (ieee80211_is_nullfunc(wh->frame_control) ||
+ 			    ieee80211_is_qos_nullfunc(wh->frame_control)) {
+ 				dev_kfree_skb_any(done_skb);
+-				done_skb = NULL;
+ 				goto next;
+ 			}
+ 
+ 			info = IEEE80211_SKB_CB(done_skb);
+ 			if (ieee80211_is_data(wh->frame_control) ||
+-			    ieee80211_is_data_qos(wh->frame_control)) {
+-					pcie_tx_prepare_info(priv, rate, info);
+-			} else {
++			    ieee80211_is_data_qos(wh->frame_control))
++				pcie_tx_prepare_info(priv, rate, info);
++			else
+ 				pcie_tx_prepare_info(priv, 0, info);
+-			}
+ 
+-			if (done_skb) {
+-				/* Remove H/W dma header */
+-				hdrlen = ieee80211_hdrlen(
+-					dma_data->wh.frame_control);
+-				if (ieee80211_is_qos_nullfunc(dma_data->wh.frame_control) ||
+-				   ieee80211_is_data_qos(dma_data->wh.frame_control)) {
+-					memmove(dma_data->data - hdrlen, &dma_data->wh, hdrlen - IEEE80211_QOS_CTL_LEN);
+-					*((__le16 *)(dma_data->data - IEEE80211_QOS_CTL_LEN)) = tx_desc->qos_ctrl;
+-				} else
+-					memmove(dma_data->data - hdrlen, &dma_data->wh, hdrlen);
+-				skb_pull(done_skb, sizeof(*dma_data) - hdrlen);
+-				ieee80211_tx_status(priv->hw, done_skb);
+-				dev_kfree_skb_any(done_skb);
+-				done_skb = NULL;
+-			}
++			/* Remove H/W dma header */
++			hdrlen = ieee80211_hdrlen(
++				dma_data->wh.frame_control);
++			if (ieee80211_is_data_qos(dma_data->wh.frame_control)) {
++				memmove(dma_data->data - hdrlen, &dma_data->wh, hdrlen - IEEE80211_QOS_CTL_LEN);
++				*((__le16 *)(dma_data->data - IEEE80211_QOS_CTL_LEN)) = tx_desc->qos_ctrl;
++			} else
++				memmove(dma_data->data - hdrlen, &dma_data->wh, hdrlen);
++			skb_pull(done_skb, sizeof(*dma_data) - hdrlen);
++			ieee80211_tx_status(priv->hw, done_skb);
+ next:
+ 			tx_hndl = tx_hndl->pnext;
+ 			tx_desc = tx_hndl->pdesc;
+diff --git a/hif/pcie/8997/tx.c b/hif/pcie/8997/tx.c
+index 361b3070..bb495d2c 100644
+--- a/hif/pcie/8997/tx.c
++++ b/hif/pcie/8997/tx.c
+@@ -405,7 +405,6 @@ static void pcie_pfu_tx_done(struct mwl_priv *priv)
+ 			if (ieee80211_is_nullfunc(wh->frame_control) ||
+ 			    ieee80211_is_qos_nullfunc(wh->frame_control)) {
+ 				dev_kfree_skb_any(done_skb);
+-				done_skb = NULL;
+ 				goto next;
+ 			}
+ 
+@@ -418,25 +417,21 @@ static void pcie_pfu_tx_done(struct mwl_priv *priv)
+ 			}
+ 
+ 			if (ieee80211_is_data(wh->frame_control) ||
+-			    ieee80211_is_data_qos(wh->frame_control)) {
+-					pcie_tx_prepare_info(priv, rate, info);
+-			} else {
++			    ieee80211_is_data_qos(wh->frame_control))
++				pcie_tx_prepare_info(priv, rate, info);
++			else
+ 				pcie_tx_prepare_info(priv, 0, info);
+-			}
+ 
+-			if (done_skb) {
+-				/* Remove H/W dma header */
+-				hdrlen = ieee80211_hdrlen(
+-					dma_data->wh.frame_control);
+-				if (ieee80211_is_qos_nullfunc(dma_data->wh.frame_control) ||
+-				   ieee80211_is_data_qos(dma_data->wh.frame_control)) {
+-					memmove(dma_data->data - hdrlen, &dma_data->wh, hdrlen - IEEE80211_QOS_CTL_LEN);
+-					*((__le16 *)(dma_data->data - IEEE80211_QOS_CTL_LEN)) = tx_desc->qos_ctrl;
+-				} else
+-					memmove(dma_data->data - hdrlen, &dma_data->wh, hdrlen);
+-				skb_pull(done_skb, sizeof(*pfu_dma) - hdrlen);
+-				ieee80211_tx_status(priv->hw, done_skb);
+-			}
++			/* Remove H/W dma header */
++			hdrlen = ieee80211_hdrlen(
++				dma_data->wh.frame_control);
++			if (ieee80211_is_data_qos(dma_data->wh.frame_control)) {
++				memmove(dma_data->data - hdrlen, &dma_data->wh, hdrlen - IEEE80211_QOS_CTL_LEN);
++				*((__le16 *)(dma_data->data - IEEE80211_QOS_CTL_LEN)) = tx_desc->qos_ctrl;
++			} else
++				memmove(dma_data->data - hdrlen, &dma_data->wh, hdrlen);
++			skb_pull(done_skb, sizeof(*pfu_dma) - hdrlen);
++			ieee80211_tx_status(priv->hw, done_skb);
+ 		}
+ next:
+ 		memset(data_buf, 0, sizeof(*data_buf));
+
+From c13a9d32b61852b001c4f06e9a900f3928cd990d Mon Sep 17 00:00:00 2001
+From: jbsky <webmaster@jbsky.fr>
+Date: Mon, 24 Jun 2024 20:56:33 +0200
+Subject: [PATCH 07/10] Deletes the driver's ability to modify the debit table.
+
+We let mac80211 manage this data for us.
+
+Signed-off-by: Julien Blais <webmaster@jbsky.fr>
+---
+ hif/pcie/8864/tx.c     |  3 ---
+ hif/pcie/8964/tx_ndp.c |  3 ---
+ hif/pcie/8997/tx.c     |  3 ---
+ utils.h                | 31 -------------------------------
+ 4 files changed, 40 deletions(-)
+
+diff --git a/hif/pcie/8864/tx.c b/hif/pcie/8864/tx.c
+index d63fcf00..05b6021c 100644
+--- a/hif/pcie/8864/tx.c
++++ b/hif/pcie/8864/tx.c
+@@ -725,9 +725,6 @@ void pcie_8864_tx_xmit(struct ieee80211_hw *hw,
+ 			tid = (capab & IEEE80211_ADDBA_PARAM_TID_MASK) >> 2;
+ 			index = utils_tid_to_ac(tid);
+ 		}
+-
+-		if (unlikely(ieee80211_is_assoc_req(wh->frame_control)))
+-			utils_add_basic_rates(hw->conf.chandef.chan->band, skb);
+ 	}
+ 
+ 	index = SYSADPT_TX_WMM_QUEUES - index - 1;
+diff --git a/hif/pcie/8964/tx_ndp.c b/hif/pcie/8964/tx_ndp.c
+index 899d2493..9e9845b1 100644
+--- a/hif/pcie/8964/tx_ndp.c
++++ b/hif/pcie/8964/tx_ndp.c
+@@ -563,9 +563,6 @@ void pcie_tx_xmit_ndp(struct ieee80211_hw *hw,
+ 			index = utils_tid_to_ac(tid);
+ 		}
+ 
+-		if (unlikely(ieee80211_is_assoc_req(wh->frame_control)))
+-			utils_add_basic_rates(hw->conf.chandef.chan->band, skb);
+-
+ 		if (ieee80211_is_probe_req(wh->frame_control) ||
+ 		    ieee80211_is_probe_resp(wh->frame_control))
+ 			tx_que_priority = PROBE_RESPONSE_TXQNUM;
+diff --git a/hif/pcie/8997/tx.c b/hif/pcie/8997/tx.c
+index bb495d2c..fd997c5e 100644
+--- a/hif/pcie/8997/tx.c
++++ b/hif/pcie/8997/tx.c
+@@ -677,9 +677,6 @@ void pcie_8997_tx_xmit(struct ieee80211_hw *hw,
+ 			tid = (capab & IEEE80211_ADDBA_PARAM_TID_MASK) >> 2;
+ 			index = utils_tid_to_ac(tid);
+ 		}
+-
+-		if (unlikely(ieee80211_is_assoc_req(wh->frame_control)))
+-			utils_add_basic_rates(hw->conf.chandef.chan->band, skb);
+ 	}
+ 
+ 	index = SYSADPT_TX_WMM_QUEUES - index - 1;
+diff --git a/utils.h b/utils.h
+index b7b1cbb7..e9f739cf 100644
+--- a/utils.h
++++ b/utils.h
+@@ -67,37 +67,6 @@ static inline int utils_tid_to_ac(u8 tid)
+ 	return -1;
+ }
+ 
+-static inline void utils_add_basic_rates(int band, struct sk_buff *skb)
+-{
+-	struct ieee80211_mgmt *mgmt;
+-	int len;
+-	u8 *pos;
+-
+-	mgmt = (struct ieee80211_mgmt *)skb->data;
+-	len = skb->len - ieee80211_hdrlen(mgmt->frame_control);
+-	len -= 4;
+-	pos = (u8 *)cfg80211_find_ie(WLAN_EID_SUPP_RATES,
+-				     mgmt->u.assoc_req.variable,
+-				     len);
+-	if (pos) {
+-		pos++;
+-		len = *pos++;
+-		while (len) {
+-			if (band == NL80211_BAND_2GHZ) {
+-				if ((*pos == 2) || (*pos == 4) ||
+-				    (*pos == 11) || (*pos == 22))
+-					*pos |= 0x80;
+-			} else {
+-				if ((*pos == 12) || (*pos == 24) ||
+-				    (*pos == 48))
+-					*pos |= 0x80;
+-			}
+-			pos++;
+-			len--;
+-		}
+-	}
+-}
+-
+ static inline int utils_assign_stnid(struct mwl_priv *priv, int macid, u16 aid)
+ {
+ 	int stnid;
+
+From bcaf47636e18ef4aeeb04d4814b99a2ffce657a1 Mon Sep 17 00:00:00 2001
+From: Rosen Penev <rosenp@gmail.com>
+Date: Wed, 10 Apr 2024 17:15:48 -0700
+Subject: [PATCH 08/10] coccinelle: add missing unlock
+
+Found with mini_lock.cocci
+
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
+---
+ hif/fwcmd.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/hif/fwcmd.c b/hif/fwcmd.c
+index fbd5df80..aa8df6ac 100644
+--- a/hif/fwcmd.c
++++ b/hif/fwcmd.c
+@@ -1498,8 +1498,10 @@ int mwl_fwcmd_set_cfg_data(struct ieee80211_hw *hw, u16 type)
+ 	parsed_len = mwl_fwcmd_parse_cal_cfg(priv->cal_data->data,
+ 						 priv->cal_data->size,
+ 						 pcmd->data);
+-	if (parsed_len == -EINVAL)
++	if (parsed_len == -EINVAL) {
++		mutex_unlock(&priv->fwcmd_mutex);
+ 		return -EIO;
++	}
+ 	pcmd->data_len = parsed_len;
+ 	pcmd->cmd_hdr.cmd = cpu_to_le16(HOSTCMD_CMD_SET_CFG);
+ 	pcmd->cmd_hdr.len = cpu_to_le16(sizeof(*pcmd) +
+
+From 189ea3c12f9adc33bc4e5b263a8e30fa867d110f Mon Sep 17 00:00:00 2001
+From: Robert Marko <robert.marko@sartura.hr>
+Date: Fri, 5 Mar 2021 11:47:59 +0100
+Subject: [PATCH 09/10] mwlwifi: fix PCIe DT node null pointer dereference
+
+pci_bus_to_OF_node() used to get the PCI bus DT node
+returns node if found or NULL if none is found.
+
+Since the return of pci_bus_to_OF_node() is not checked in
+the DT node name print it will cause a null pointer
+dereference and crash the kernel.
+
+So first check whether the node is not NULL and then print.
+
+Signed-off-by: Robert Marko <robert.marko@sartura.hr>
+---
+ hif/pcie/pcie.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/hif/pcie/pcie.c b/hif/pcie/pcie.c
+index aeb6cf00..81dbfe53 100644
+--- a/hif/pcie/pcie.c
++++ b/hif/pcie/pcie.c
+@@ -667,7 +667,8 @@ static struct device_node *pcie_get_device_node(struct ieee80211_hw *hw)
+ 	struct device_node *dev_node;
+ 
+ 	dev_node = pci_bus_to_OF_node(pcie_priv->pdev->bus);
+-	wiphy_info(priv->hw->wiphy, "device node: %s\n", dev_node->full_name);
++	if (dev_node)
++		wiphy_info(priv->hw->wiphy, "device node: %s\n", dev_node->full_name);
+ 
+ 	return dev_node;
+ }
+
+From a916e193e14933ec3b02c1bda7c1bb5e1ff15a0a Mon Sep 17 00:00:00 2001
+From: jbsky <webmaster@jbsky.fr>
+Date: Fri, 9 Aug 2024 15:14:49 +0200
+Subject: [PATCH 10/10] Change driver version to 10.4.11.0
+
+---
+ hif/pcie/dev.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hif/pcie/dev.h b/hif/pcie/dev.h
+index e2bedabe..f7173e07 100644
+--- a/hif/pcie/dev.h
++++ b/hif/pcie/dev.h
+@@ -27,7 +27,7 @@
+ #include <net/mac80211.h>
+ 
+ #define PCIE_DRV_NAME    KBUILD_MODNAME
+-#define PCIE_DRV_VERSION "10.4.10.0"
++#define PCIE_DRV_VERSION "10.4.11.0"
+ 
+ #define PCIE_MIN_BYTES_HEADROOM   64
+ #define PCIE_MIN_TX_HEADROOM_KF2  96
