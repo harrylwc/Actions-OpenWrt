@@ -16,6 +16,7 @@ rm $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/rust/patches/0003-bump-libc-deps-
 cp $GITHUB_WORKSPACE/patches/swconfig* $GITHUB_WORKSPACE/x-wrt/target/linux/generic/files/drivers/net/phy/
 cp $GITHUB_WORKSPACE/patches/Makefile.rust  $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/rust/Makefile
 cp $GITHUB_WORKSPACE/patches/Makefile.ruby  $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/ruby/Makefile
+cp $GITHUB_WORKSPACE/patches/422.patch $GITHUB_WORKSPACE/patches/x-wrt/package/kernel/mwlwifi/patches/
 
 cp $GITHUB_WORKSPACE/patches/0003-mutils_time.patch $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/mailsend/patches/
 cp $GITHUB_WORKSPACE/patches/060-binutils.patch $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/
