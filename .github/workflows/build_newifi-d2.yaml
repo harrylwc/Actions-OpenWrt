@@ -223,11 +223,14 @@ jobs:
       - name: Compile firmware
         run: |
           #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
-          cd x-wrt 
+          cd x-wrt
+          [ -d "build_dir" ] && sudo mv build_dir /mnt/ || ( mkdir build_dir;sudo mv build_dir /mnt/ )
+          ln -s /mnt/build_dir .
           sudo mv dl /mnt/
-          ln -s /mnt/dl
-          [ -d "bin" ] && sudo mv bin /mnt/ || ( mkdir bin;sudo mv bin /mnt/ )  
+          ln -s /mnt/dl .
+          [ -d "bin" ] && sudo mv bin /mnt/ || ( mkdir bin;sudo mv bin /mnt/ )
           ln -s /mnt/bin .
+
           
           cp config.ramips.2.x-wrt .config
           make -j$(nproc) || make -j1 V=s
