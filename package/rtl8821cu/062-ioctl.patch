@@ -1,0 +1,123 @@
+--- a/os_dep/linux/ioctl_cfg80211.c
++++ b/os_dep/linux/ioctl_cfg80211.c
+@@ -464,8 +464,8 @@
+ 		 *  called by others with block-tx.
+ 		 */
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0))
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 3, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 131))
+ 		cfg80211_ch_switch_started_notify(adapter->pnetdev, &chdef, 0, 0, false, 0);
+ #else
+ 		cfg80211_ch_switch_started_notify(adapter->pnetdev, &chdef, 0, 0, false);
+@@ -483,8 +483,8 @@
+ 	if (!rtw_cfg80211_allow_ch_switch_notify(adapter))
+ 		goto exit;
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 19, 2))
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 3, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 131))
+ 	cfg80211_ch_switch_notify(adapter->pnetdev, &chdef, 0, 0);
+ #else
+ 	cfg80211_ch_switch_notify(adapter->pnetdev, &chdef, 0);
+@@ -506,7 +506,7 @@
+ 	}
+ 
+ 	ctype = rtw_chbw_to_nl80211_channel_type(ch, bw, offset, ht);
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 19, 2))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ 	cfg80211_ch_switch_notify(adapter->pnetdev, freq, ctype, 0);
+ #else
+ 	cfg80211_ch_switch_notify(adapter->pnetdev, freq, ctype);
+@@ -1159,7 +1159,7 @@
+ 		#endif
+ 
+ 		#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 12, 0)
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 0, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ 		roam_info.links[0].bssid = cur_network->network.MacAddress;
+ #else
+ 		roam_info.bssid = cur_network->network.MacAddress;
+@@ -1923,7 +1923,7 @@
+ }
+ 
+ static int cfg80211_rtw_add_key(struct wiphy *wiphy, struct net_device *ndev
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ 	, int link_id
+ #endif
+ 	, u8 key_index
+@@ -2088,7 +2088,7 @@
+ }
+ 
+ static int cfg80211_rtw_get_key(struct wiphy *wiphy, struct net_device *ndev
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ 	, int link_id
+ #endif
+ 	, u8 keyid
+@@ -2279,7 +2279,7 @@
+ }
+ 
+ static int cfg80211_rtw_del_key(struct wiphy *wiphy, struct net_device *ndev,
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ 	int link_id,
+ #endif
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37)) || defined(COMPAT_KERNEL_RELEASE)
+@@ -2303,7 +2303,7 @@
+ 
+ static int cfg80211_rtw_set_default_key(struct wiphy *wiphy,
+ 	struct net_device *ndev,
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ 	int link_id,
+ #endif
+ 	u8 key_index
+@@ -2355,7 +2355,7 @@
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 30))
+ int cfg80211_rtw_set_default_mgmt_key(struct wiphy *wiphy,
+ 	struct net_device *ndev,
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 1, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ 	int link_id,
+ #endif
+ 	u8 key_index)
+@@ -5474,7 +5474,7 @@
+ 	return ret;
+ }
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 19, 2))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ static int cfg80211_rtw_stop_ap(struct wiphy *wiphy, struct net_device *ndev,
+ 		unsigned int link_id)
+ #else
+@@ -6860,7 +6860,7 @@
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 8, 0))
+ static int cfg80211_rtw_get_channel(struct wiphy *wiphy,
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 19, 2))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ 	struct wireless_dev *wdev, unsigned int link_id,
+ #else
+ 	struct wireless_dev *wdev,
+@@ -8508,7 +8508,7 @@
+ #else
+ 	u8 *peer,
+ #endif
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 5, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 131))
+ 	int link_id,
+ #endif
+ 	u8 action_code,
+@@ -10809,7 +10809,7 @@
+ 	rtw_cfg80211_indicate_scan_done(adapter, _TRUE);
+ 
+ 	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 11, 0)) || defined(COMPAT_KERNEL_RELEASE)
+-	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 19, 2))
++	#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ 	if (wdev->links[0].client.current_bss) {
+ 	#else
+ 	if (wdev->current_bss) {
