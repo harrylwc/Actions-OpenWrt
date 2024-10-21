@@ -42,7 +42,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: true
+  KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: false
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
   KERNEL_VERSION: '6.6'
