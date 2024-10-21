@@ -26,7 +26,7 @@ on:
   #workflow_dispatch:    
 
 env:
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.ramips.2.openwrt
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.ramips.2.5.15
   #####change model here ####@# 
   REPO_URL: https://github.com/x-wrt/x-wrt
   #https://github.com/openwrt/openwrt.git
