@@ -1,5 +1,13 @@
 git clone https://github.com/x-wrt/x-wrt
-git checkout 610ea1b9994 #x-wrt
+
+echo "Job name is $GITHUB_JOB"
+if $GITHUB_JOB |grep openwrt
+git checkout 0a2ed285e4
+else
+ git checkout 610ea1b9994
+fi
+
+#git checkout 610ea1b9994 #x-wrt
 #git checkout 0a2ed285e4 #openwrt 
 
 git clone https://github.com/coolsnowwolf/lede lede
