@@ -1,19 +1,21 @@
 git clone https://github.com/x-wrt/x-wrt
 
-echo "Job name is $GITHUB_JOB"
-if $GITHUB_JOB |grep openwrt
-git checkout 0a2ed285e4
-else
- git checkout 610ea1b9994
-fi
-
-#git checkout 610ea1b9994 #x-wrt
-#git checkout 0a2ed285e4 #openwrt 
 
 git clone https://github.com/coolsnowwolf/lede lede
 lede/scripts/feeds update -a
 
 cd x-wrt
+
+echo "Job name is $GITHUB_JOB"
+#git checkout 610ea1b9994 #x-wrt
+#git checkout 0a2ed285e4 #openwrt
+
+if echo $GITHUB_WORKFLOW_REF |grep openwrt
+then
+        git checkout 0a2ed285e4
+else
+        git checkout 610ea1b9994
+fi
 
 wget https://github.com/openwrt/openwrt/commit/eb05baff7fb330de43632d638c34ba544f472935.patch -O 1.patch
 wget https://github.com/openwrt/openwrt/commit/7eb6bf1ac9798f07577f7c2e0ef12f622efc6315.patch -O 2.patch
