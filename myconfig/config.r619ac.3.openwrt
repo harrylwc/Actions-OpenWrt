@@ -9198,53 +9198,49 @@ CONFIG_LIGHTTPD_PCRE2=y
 # CONFIG_LIGHTTPD_CRYPTOLIB_NETTLE is not set
 # CONFIG_LIGHTTPD_CRYPTOLIB_GNUTLS is not set
 # CONFIG_LIGHTTPD_CRYPTOLIB_MBEDTLS is not set
-CONFIG_LIGHTTPD_CRYPTOLIB_OPENSSL=y
-# CONFIG_LIGHTTPD_CRYPTOLIB_WOLFSSL is not set
-CONFIG_LIGHTTPD_LOGROTATE=y
+# CONFIG_LIGHTTPD_CRYPTOLIB_OPENSSL is not set
+CONFIG_LIGHTTPD_CRYPTOLIB_WOLFSSL=y
+# CONFIG_LIGHTTPD_LOGROTATE is not set
 CONFIG_PACKAGE_lighttpd-mod-access=y
 CONFIG_PACKAGE_lighttpd-mod-accesslog=y
-CONFIG_PACKAGE_lighttpd-mod-ajp13=m
+# CONFIG_PACKAGE_lighttpd-mod-ajp13 is not set
 CONFIG_PACKAGE_lighttpd-mod-alias=y
 CONFIG_PACKAGE_lighttpd-mod-auth=y
-CONFIG_PACKAGE_lighttpd-mod-authn_dbi=m
+# CONFIG_PACKAGE_lighttpd-mod-authn_dbi is not set
 CONFIG_PACKAGE_lighttpd-mod-authn_file=y
-CONFIG_PACKAGE_lighttpd-mod-authn_gssapi=m
-CONFIG_PACKAGE_lighttpd-mod-authn_ldap=m
-CONFIG_PACKAGE_lighttpd-mod-authn_pam=m
-CONFIG_PACKAGE_lighttpd-mod-authn_sasl=m
-CONFIG_PACKAGE_lighttpd-mod-cgi=m
+# CONFIG_PACKAGE_lighttpd-mod-authn_gssapi is not set
+# CONFIG_PACKAGE_lighttpd-mod-authn_ldap is not set
+# CONFIG_PACKAGE_lighttpd-mod-authn_pam is not set
+# CONFIG_PACKAGE_lighttpd-mod-authn_sasl is not set
+CONFIG_PACKAGE_lighttpd-mod-cgi=y
 CONFIG_PACKAGE_lighttpd-mod-deflate=y
-CONFIG_PACKAGE_lighttpd-mod-evhost=m
+# CONFIG_PACKAGE_lighttpd-mod-evhost is not set
 CONFIG_PACKAGE_lighttpd-mod-expire=y
-CONFIG_PACKAGE_lighttpd-mod-extforward=m
+# CONFIG_PACKAGE_lighttpd-mod-extforward is not set
 CONFIG_PACKAGE_lighttpd-mod-fastcgi=y
-CONFIG_PACKAGE_lighttpd-mod-gnutls=m
+# CONFIG_PACKAGE_lighttpd-mod-gnutls is not set
 CONFIG_PACKAGE_lighttpd-mod-magnet=m
-CONFIG_PACKAGE_lighttpd-mod-maxminddb=m
-CONFIG_PACKAGE_lighttpd-mod-mbedtls=m
-CONFIG_PACKAGE_lighttpd-mod-nss=m
+# CONFIG_PACKAGE_lighttpd-mod-maxminddb is not set
+# CONFIG_PACKAGE_lighttpd-mod-mbedtls is not set
+# CONFIG_PACKAGE_lighttpd-mod-nss is not set
 CONFIG_PACKAGE_lighttpd-mod-openssl=y
-CONFIG_PACKAGE_lighttpd-mod-proxy=m
+CONFIG_PACKAGE_lighttpd-mod-proxy=y
 CONFIG_PACKAGE_lighttpd-mod-redirect=m
 CONFIG_PACKAGE_lighttpd-mod-rewrite=m
-CONFIG_PACKAGE_lighttpd-mod-rrdtool=m
+# CONFIG_PACKAGE_lighttpd-mod-rrdtool is not set
 CONFIG_PACKAGE_lighttpd-mod-scgi=m
 CONFIG_PACKAGE_lighttpd-mod-setenv=y
 CONFIG_PACKAGE_lighttpd-mod-simple_vhost=m
-CONFIG_PACKAGE_lighttpd-mod-sockproxy=m
+# CONFIG_PACKAGE_lighttpd-mod-sockproxy is not set
 CONFIG_PACKAGE_lighttpd-mod-ssi=m
 CONFIG_PACKAGE_lighttpd-mod-status=m
 CONFIG_PACKAGE_lighttpd-mod-userdir=m
-CONFIG_PACKAGE_lighttpd-mod-vhostdb=m
-CONFIG_PACKAGE_lighttpd-mod-vhostdb_dbi=m
-CONFIG_PACKAGE_lighttpd-mod-vhostdb_ldap=m
-CONFIG_PACKAGE_lighttpd-mod-vhostdb_mysql=m
-CONFIG_PACKAGE_lighttpd-mod-vhostdb_pgsql=m
+# CONFIG_PACKAGE_lighttpd-mod-vhostdb is not set
 CONFIG_PACKAGE_lighttpd-mod-webdav=m
-CONFIG_PACKAGE_lighttpd-mod-webdav_min=m
+# CONFIG_PACKAGE_lighttpd-mod-webdav_min is not set
 CONFIG_PACKAGE_lighttpd-mod-wolfssl=m
-CONFIG_PACKAGE_lighttpd-mod-wstunnel=m
-CONFIG_PACKAGE_microsocks=m
+# CONFIG_PACKAGE_lighttpd-mod-wstunnel is not set
+# CONFIG_PACKAGE_microsocks is not set
 # CONFIG_PACKAGE_naiveproxy is not set
 CONFIG_PACKAGE_nginx-full=m
 CONFIG_PACKAGE_nginx-mod-brotli=m
