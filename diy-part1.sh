@@ -10,13 +10,13 @@ echo "Job name is $GITHUB_JOB"
 #git checkout 610ea1b9994 #x-wrt
 #git checkout 0a2ed285e4 #openwrt
 
-if echo $GITHUB_WORKFLOW_REF |grep openwrt
-then
+#if echo $GITHUB_WORKFLOW_REF |grep openwrt
+#then
         git checkout 424210b #KERNEL 5.15.81
         #0a2ed285e4
 #else
         #git checkout 610ea1b9994
-fi
+#fi
 
 wget https://github.com/openwrt/openwrt/commit/eb05baff7fb330de43632d638c34ba544f472935.patch -O 1.patch
 wget https://github.com/openwrt/openwrt/commit/7eb6bf1ac9798f07577f7c2e0ef12f622efc6315.patch -O 2.patch
