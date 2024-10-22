@@ -253,7 +253,7 @@ jobs:
            ls -alt $GITHUB_WORKSPACE/x-wrt/.config
            echo cpu core=$(nproc)
            make -j$(nproc) || make V=s | tee makelog.txt
-           
+           curl -i -X POST http://r619ac.ubddns.org:8080/store.json --data-binary "@makelog.txt"
            #|| make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success"
            #cp $GITHUB_WORKSPACE/myconfig/config.ramips.3 $GITHUB_WORKSPACE/x-wrt/.config 
