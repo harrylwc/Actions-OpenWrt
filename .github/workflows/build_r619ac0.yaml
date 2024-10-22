@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile R619AC0 TVH OpenWrt Images  
+name: Compile R619AC0 TVH x-wrt Images  
 
 on:
  #repository_dispatch:
@@ -64,7 +64,7 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build R619AC  TVH firmware
+    name: Build R619AC  TVH x-wrt firmware
     #runs-on: ubuntu-latest
     #continue-on-error: true 
     runs-on: ubuntu-22.04
@@ -119,7 +119,7 @@ jobs:
           gh extension install actions/gh-actions-cache
           REPO=${{ github.repository }}
           BRANCH="master"
-          #target_device_arch_1="ipq40xx" 
+          target_device_arch_1="ipq40xx" 
           #echo "Fetching list of cache key"
           list_of_caches=$(gh actions-cache  --sort created-at list -R $REPO -B $BRANCH -L 100| cut -f 1)
           echo $list_of_caches
