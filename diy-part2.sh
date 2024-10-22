@@ -30,10 +30,10 @@ cp $GITHUB_WORKSPACE/patches/030-h264-mips.patch $GITHUB_WORKSPACE/x-wrt/feeds/p
 
 
 
-#cp $GITHUB_WORKSPACE/patches/10?-* $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches
-#cp $GITHUB_WORKSPACE/patches/Config.in.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Config.in
-#cp $GITHUB_WORKSPACE/patches/Makefile.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Makefile                                                                                                                                                                      
-#rm -rf $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/100-fix-gcc14-build.patch
+cp $GITHUB_WORKSPACE/patches/10?-* $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches
+cp $GITHUB_WORKSPACE/patches/Config.in.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Config.in
+cp $GITHUB_WORKSPACE/patches/Makefile.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Makefile                                                                                                                                                                      
+rm -rf $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/100-fix-gcc14-build.patch
 
 
 
