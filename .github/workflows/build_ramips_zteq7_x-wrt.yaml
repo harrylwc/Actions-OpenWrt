@@ -15,7 +15,12 @@ on:
     #  - master
 # repository_dispatch:
  #   types: [ramips_completed]
- workflow_dispatch:
+ workflow_dispatch:    
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
  #schedule:
   #   - cron: 00 20 * * *
   #release:
@@ -201,7 +206,13 @@ jobs:
         env:
          TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
          TELEGRAM_CHAT_ID: 1373335316
-      
+      - name: SSH链接管理
+        uses: P3TERX/ssh2actions@v1.0.0
+        if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+        env:
+         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+         TELEGRAM_CHAT_ID: 1373335316     
+         
       - name: Compile firmware
         run: |
           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
