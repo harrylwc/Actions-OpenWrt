@@ -151,7 +151,7 @@ index b6294b6..a5071c2 100644
  	#else
  	if (wdev->current_bss) {
 diff --git a/os_dep/linux/os_intfs.c b/os_dep/linux/os_intfs.c
-index 8610688..7d5c78e 100644
+index 8610688..785a86b 100644
 --- a/os_dep/linux/os_intfs.c
 +++ b/os_dep/linux/os_intfs.c
 @@ -17,7 +17,7 @@
@@ -161,6 +161,15 @@ index 8610688..7d5c78e 100644
 -#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 8, 0))
 +#if (LINUX_VERSION_CODE >= KERNEL_VERSION(6, 6, 39))
  #define strlcpy strscpy
+ #endif
+ 
+@@ -31,7 +31,7 @@ MODULE_VERSION(DRIVERVERSION);
+  * This declaration was created to resolve an error on Rockchip.
+  * You can modify or add flags in the fs/Makefile.
+  */
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 10, 0)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 97)
+ 	MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);
  #endif
  
 @@ -2148,10 +2148,10 @@ int rtw_os_ndev_register(_adapter *adapter, const char *name)
@@ -175,6 +184,69 @@ index 8610688..7d5c78e 100644
 +	netif_napi_add(ndev, &adapter->napi, rtw_recv_napi_poll);
  #endif
  #endif /* CONFIG_RTW_NAPI */
+ 
+@@ -4540,7 +4540,7 @@ static int route_dump(u32 *gw_addr , int *gw_index)
+ 	struct msghdr msg;
+ 	struct iovec iov;
+ 	struct sockaddr_nl nladdr;
+-	#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0))
++	#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 97))
+ 	mm_segment_t oldfs;
+ 	#endif
+ 	char *pg;
+@@ -4581,7 +4581,7 @@ static int route_dump(u32 *gw_addr , int *gw_index)
+ 	msg.msg_controllen = 0;
+ 	msg.msg_flags = MSG_DONTWAIT;
+ 
+-	#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0))
++	#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 97))
+ 	oldfs = get_fs();
+ 	set_fs(KERNEL_DS);
+ 	#endif
+@@ -4590,7 +4590,7 @@ static int route_dump(u32 *gw_addr , int *gw_index)
+ #else
+ 	err = sock_sendmsg(sock, &msg, sizeof(req));
+ #endif
+-	#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0))
++	#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 97))
+ 	set_fs(oldfs);
+ 	#endif
+ 
+@@ -4617,7 +4617,7 @@ restart:
+ 		iov_iter_init(&msg.msg_iter, READ, &iov, 1, PAGE_SIZE);
+ #endif
+ 
+-		#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0))
++		#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 97))
+ 		oldfs = get_fs();
+ 		set_fs(KERNEL_DS);
+ 		#endif
+@@ -4626,7 +4626,7 @@ restart:
+ #else
+ 		err = sock_recvmsg(sock, &msg, PAGE_SIZE, MSG_DONTWAIT);
+ #endif
+-		#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0))
++		#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 97))
+ 		set_fs(oldfs);
+ 		#endif
+ 
+@@ -4699,7 +4699,7 @@ done:
+ 		msg.msg_controllen = 0;
+ 		msg.msg_flags = MSG_DONTWAIT;
+ 
+-		#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0))
++		#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 97))
+ 		oldfs = get_fs();
+ 		set_fs(KERNEL_DS);
+ 		#endif
+@@ -4708,7 +4708,7 @@ done:
+ #else
+ 		err = sock_sendmsg(sock, &msg, sizeof(req));
+ #endif
+-		#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 10, 0))
++		#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 97))
+ 		set_fs(oldfs);
+ 		#endif
  
 diff --git a/os_dep/osdep_service.c b/os_dep/osdep_service.c
 index fc56358..9d6c179 100644
