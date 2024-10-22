@@ -125,7 +125,7 @@ git apply -R --ignore-space-change --ignore-whitespace revert_set_default_root.p
 #git apply -R --ignore-space-change --ignore-whitespace mtk_eth_soc1.patch
 #git apply -R --ignore-space-change --ignore-whitespace mtk_eth_soc.patch
 #git apply --ignore-space-change --ignore-whitespace netdata.patch                                                                                                                                                
-git apply --ignore-space-change --ignore-whitespace ramips.patch
+git apply --ignore-space-change --ignore-whitespace ramips5.15.patch
 git apply --ignore-space-change --ignore-whitespace common.patch
 #git apply --ignore-space-change --ignore-whitespace revert_set_default_root.patch
 git apply --ignore-space-change --ignore-whitespace r619ac.patch
