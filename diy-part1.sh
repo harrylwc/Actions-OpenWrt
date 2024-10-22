@@ -13,7 +13,8 @@ echo "Job name is $GITHUB_JOB"
 #if echo $GITHUB_WORKFLOW_REF |grep openwrt
 #then
       # git checkout 424210b #KERNEL 5.15.81
-     git checkout 0eed96ca5d #kernel 5.4.152
+     git checkout 22.03_b202210282250 #5.15.167 
+	#git checkout 0eed96ca5d #kernel 5.4.152
      #   0a2ed285e4
 #else
         #git checkout 610ea1b9994
@@ -74,8 +75,8 @@ cp -r $GITHUB_WORKSPACE/package/luci-app-shadowsocks-libev $GITHUB_WORKSPACE/x-w
 ./scripts/feeds update -a  
 ./scripts/feeds install -a -f  
 
-cd x-wrt/feeds;mv luci luci.bak;git clone https://github.com/x-wrt/luci
-cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/
+#cd x-wrt/feeds;mv luci luci.bak;git clone https://github.com/x-wrt/luci
+#cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/
 
 wget https://github.com/x-wrt/packages/commit/ad9d5a3eef961dcf2bef0e5486898c823786e53c.patch -O feeds/packages/6.patch
 cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/                                                                                                
