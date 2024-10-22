@@ -96,16 +96,15 @@ jobs:
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          target_device_arch_1="ipq40xx_mvebu"
-          #target_device_arch_1="ipq40xx"
-          #target_device_arch_1="mvebu"
+          #target_device_arch_1="mvebu_ipq40xx_ramips"
+          #target_device_arch_1="mvebu_openwrt"
+          target_device_arch_2="ipq40xx_mvebu"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           #gcc_hash='37dab1b7'       
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
-     
       - name: Cache1
         uses: HiGarfield/cachewrtbuild@main 				#klever1988/cachewrtbuild@main 
         with:
