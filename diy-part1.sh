@@ -13,8 +13,10 @@ echo "Job name is $GITHUB_JOB"
 #if echo $GITHUB_WORKFLOW_REF |grep openwrt
 #then
       # git checkout 424210b #KERNEL 5.15.81
-     git checkout 22.03_b202210282250 #5.15.167 
-	#git checkout 0eed96ca5d #kernel 5.4.152
+     git checkout 22.03_b202210282250 #5.15.74
+#git checkout aa8299ee4f75e90795e58b4cc548bb2f7fe0c391 #5.4.175	
+
+#git checkout 0eed96ca5d #kernel 5.4.152
      #   0a2ed285e4
 #else
         #git checkout 610ea1b9994
