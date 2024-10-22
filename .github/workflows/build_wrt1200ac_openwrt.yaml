@@ -102,7 +102,7 @@ jobs:
         run: |
           #target_device_arch_1="mvebu_ipq40xx_ramips"
           #target_device_arch_1="mvebu_openwrt"
-          target_device_arch_2="ipq40xx_mvebu"
+          target_device_arch_1="ipq40xx_mvebu"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           #gcc_hash='37dab1b7'       
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
