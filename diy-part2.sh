@@ -117,8 +117,8 @@ done
 cd /tmp/                                                                                                                                            
 wget https://raw.githubusercontent.com/x-wrt/x-wrt/refs/heads/master/package/firmware/wireless-regdb/patches/600-custom-change-txpower-and-dfs.patch
 wget https://raw.githubusercontent.com/x-wrt/x-wrt/refs/heads/master/package/firmware/wireless-regdb/patches/500-world-regd-5GHz.patch
-mv /tmp/*.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/       
-mv $GITHUB_WORKSPACE/patches/400-custom_hk-change-txpower-and-dfs.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
+cp /tmp/*.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/       
+cp $GITHUB_WORKSPACE/patches/400-custom_hk-change-txpower-and-dfs.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 
 cd $GITHUB_WORKSPACE/x-wrt/
 git apply -R --ignore-space-change --ignore-whitespace revert_set_default_root.patch 
