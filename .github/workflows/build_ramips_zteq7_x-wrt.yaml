@@ -252,7 +252,8 @@ jobs:
            cd x-wrt
            ls -alt $GITHUB_WORKSPACE/x-wrt/.config
            echo cpu core=$(nproc)
-           make -j$(nproc) 
+           make -j$(nproc) || make V=s | tee makelog.txt
+           
            #|| make -j1 V=s
            [ $? != 0 ] && make V=s || echo "build success"
            #cp $GITHUB_WORKSPACE/myconfig/config.ramips.3 $GITHUB_WORKSPACE/x-wrt/.config 
