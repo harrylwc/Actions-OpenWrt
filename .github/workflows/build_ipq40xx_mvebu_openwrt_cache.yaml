@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile ipq40xx mvebu cache 
+name: Compile ipq40xx mvebu openwrt cache 
 
 on:
  #repository_dispatch:
@@ -60,7 +60,7 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build ipq40xx mvebu cache
+    name: Build ipq40xx mvebu openwrt cache
     runs-on: ubuntu-22.04
     #4runs-on: ubuntu-latest
     #continue-on-error: true 
