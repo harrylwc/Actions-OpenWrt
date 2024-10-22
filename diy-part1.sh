@@ -18,7 +18,8 @@ echo "Job name is $GITHUB_JOB"
 #else
         #git checkout 610ea1b9994
 #fi
-cd feeds/luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/ 
+cd feeds;mv luci luci.bak;git clone https://github.com/x-wrt/luci
+cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/ 
 
 
 wget https://github.com/openwrt/openwrt/commit/eb05baff7fb330de43632d638c34ba544f472935.patch -O 1.patch
