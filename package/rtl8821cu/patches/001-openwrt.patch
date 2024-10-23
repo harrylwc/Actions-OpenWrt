@@ -1,3 +1,16 @@
+diff --git a/Makefile b/Makefile
+index 8b9c95a..da50de1 100644
+--- a/Makefile
++++ b/Makefile
+@@ -78,7 +78,7 @@ CONFIG_GSPI_HCI = n
+ ######################### Features ############################
+ CONFIG_AP_MODE = y
+ CONFIG_P2P = y
+-CONFIG_MP_INCLUDED = n
++CONFIG_MP_INCLUDED = y
+ CONFIG_POWER_SAVING = y
+ CONFIG_IPS_MODE = default
+ CONFIG_LPS_MODE = default
 diff --git a/os_dep/linux/ioctl_cfg80211.c b/os_dep/linux/ioctl_cfg80211.c
 index b6294b6..55c9882 100644
 --- a/os_dep/linux/ioctl_cfg80211.c
@@ -169,7 +182,7 @@ index b6294b6..55c9882 100644
  	#else
  	if (wdev->current_bss) {
 diff --git a/os_dep/linux/os_intfs.c b/os_dep/linux/os_intfs.c
-index 8610688..8164241 100644
+index 8610688..8e9a37c 100644
 --- a/os_dep/linux/os_intfs.c
 +++ b/os_dep/linux/os_intfs.c
 @@ -17,7 +17,7 @@
@@ -190,6 +203,15 @@ index 8610688..8164241 100644
  	MODULE_IMPORT_NS(VFS_internal_I_am_really_a_filesystem_and_am_NOT_a_driver);
  #endif
  
+@@ -1647,7 +1647,7 @@ static int rtw_net_set_mac_address(struct net_device *pnetdev, void *addr)
+ 	}
+ 
+ 	_rtw_memcpy(adapter_mac_addr(padapter), sa->sa_data, ETH_ALEN); /* set mac addr to adapter */
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ 	eth_hw_addr_set(pnetdev, sa->sa_data);
+ #else
+ 	_rtw_memcpy(pnetdev->dev_addr, sa->sa_data, ETH_ALEN); /* set mac addr to net_device */
 @@ -2148,7 +2148,7 @@ int rtw_os_ndev_register(_adapter *adapter, const char *name)
  	u8 rtnl_lock_needed = rtw_rtnl_lock_needed(dvobj);
  
@@ -199,6 +221,15 @@ index 8610688..8164241 100644
  	netif_napi_add_weight(ndev, &adapter->napi, rtw_recv_napi_poll, RTL_NAPI_WEIGHT);
  #else
  	netif_napi_add(ndev, &adapter->napi, rtw_recv_napi_poll, RTL_NAPI_WEIGHT);
+@@ -2172,7 +2172,7 @@ int rtw_os_ndev_register(_adapter *adapter, const char *name)
+ 	/* alloc netdev name */
+ 	rtw_init_netdev_name(ndev, name);
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ 	eth_hw_addr_set(ndev, adapter_mac_addr(adapter));
+ #else
+ 	_rtw_memcpy(ndev->dev_addr, adapter_mac_addr(adapter), ETH_ALEN);
 @@ -4540,7 +4540,7 @@ static int route_dump(u32 *gw_addr , int *gw_index)
  	struct msghdr msg;
  	struct iovec iov;
@@ -261,6 +292,19 @@ index 8610688..8164241 100644
 +		#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 97))
  		set_fs(oldfs);
  		#endif
+ 
+diff --git a/os_dep/linux/rtw_proc.c b/os_dep/linux/rtw_proc.c
+index 1b0d362..4613b83 100644
+--- a/os_dep/linux/rtw_proc.c
++++ b/os_dep/linux/rtw_proc.c
+@@ -37,7 +37,7 @@ inline struct proc_dir_entry *get_rtw_drv_proc(void)
+ #if (LINUX_VERSION_CODE < KERNEL_VERSION(3, 10, 0))
+ #define PDE_DATA(inode) PDE((inode))->data
+ #define proc_get_parent_data(inode) PDE((inode))->parent->data
+-#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 17, 0))
++#elif (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 15, 82))
+ #define PDE_DATA(inode) pde_data(inode)
+ #endif
  
 diff --git a/os_dep/osdep_service.c b/os_dep/osdep_service.c
 index fc56358..9d6c179 100644
