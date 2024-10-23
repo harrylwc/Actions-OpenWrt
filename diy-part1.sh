@@ -13,11 +13,19 @@ echo "Job name is $GITHUB_JOB"
 #if echo $GITHUB_WORKFLOW_REF |grep openwrt
 #then
       # git checkout 424210b #KERNEL 5.15.81
-   #  git checkout 0eed96ca5d #kernel 5.4.152
+###########git checkout 22.03_b202210282250 #5.15.74
+
+git checkout 9.0_b202110300939 #5.4.155 
+
+#git checkout 0eed96ca5d #kernel 5.4.152
      #   0a2ed285e4
 #else
         #git checkout 610ea1b9994
 #fi
+
+#cd feeds;mv luci luci.bak;git clone https://github.com/x-wrt/luci
+#cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/ 
+
 
 wget https://github.com/openwrt/openwrt/commit/eb05baff7fb330de43632d638c34ba544f472935.patch -O 1.patch
 wget https://github.com/openwrt/openwrt/commit/7eb6bf1ac9798f07577f7c2e0ef12f622efc6315.patch -O 2.patch
@@ -63,11 +71,15 @@ rm -rf  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/luci/appli
 git clone https://github.com/xiaozhuai/luci-app-filebrowser  /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/luci/applications/luci-app-filebrowser
 ./scripts/feeds install -a -f
 
+
 rm -rf  $GITHUB_WORKSPACE/x-wrt/feeds/luci/applications/luci-app-shadowsocks-libev/                                                       
 cp -r $GITHUB_WORKSPACE/package/luci-app-shadowsocks-libev $GITHUB_WORKSPACE/x-wrt/feeds/luci/applications/        
 
 ./scripts/feeds update -a  
 ./scripts/feeds install -a -f  
+
+#cd x-wrt/feeds;mv luci luci.bak;git clone https://github.com/x-wrt/luci
+#cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/
 
 wget https://github.com/x-wrt/packages/commit/ad9d5a3eef961dcf2bef0e5486898c823786e53c.patch -O feeds/packages/6.patch
 cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/                                                                                                
