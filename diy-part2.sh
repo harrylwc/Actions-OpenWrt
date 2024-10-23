@@ -30,10 +30,10 @@ cp $GITHUB_WORKSPACE/patches/030-h264-mips.patch $GITHUB_WORKSPACE/x-wrt/feeds/p
 
 
 
-#cp $GITHUB_WORKSPACE/patches/10?-* $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches
-#cp $GITHUB_WORKSPACE/patches/Config.in.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Config.in
-#cp $GITHUB_WORKSPACE/patches/Makefile.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Makefile                                                                                                                                                                      
-#rm -rf $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/100-fix-gcc14-build.patch
+cp $GITHUB_WORKSPACE/patches/10?-* $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches
+cp $GITHUB_WORKSPACE/patches/Config.in.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Config.in
+cp $GITHUB_WORKSPACE/patches/Makefile.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Makefile                                                                                                                                                                      
+rm -rf $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/100-fix-gcc14-build.patch
 
 
 
@@ -115,17 +115,17 @@ do
 done
 
 cd /tmp/                                                                                                                                            
-#wget https://raw.githubusercontent.com/x-wrt/x-wrt/refs/heads/master/package/firmware/wireless-regdb/patches/600-custom-change-txpower-and-dfs.patch
+wget https://raw.githubusercontent.com/x-wrt/x-wrt/refs/heads/master/package/firmware/wireless-regdb/patches/600-custom-change-txpower-and-dfs.patch
 wget https://raw.githubusercontent.com/x-wrt/x-wrt/refs/heads/master/package/firmware/wireless-regdb/patches/500-world-regd-5GHz.patch
 mv /tmp/*.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/       
-cp $GITHUB_WORKSPACE/patches/*kernel5.4.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
+mv $GITHUB_WORKSPACE/patches/400-custom_hk-change-txpower-and-dfs.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 
 cd $GITHUB_WORKSPACE/x-wrt/
 git apply -R --ignore-space-change --ignore-whitespace revert_set_default_root.patch 
 #git apply -R --ignore-space-change --ignore-whitespace mtk_eth_soc1.patch
 #git apply -R --ignore-space-change --ignore-whitespace mtk_eth_soc.patch
 #git apply --ignore-space-change --ignore-whitespace netdata.patch                                                                                                                                                
-git apply --ignore-space-change --ignore-whitespace ramips5.15.patch
+git apply --ignore-space-change --ignore-whitespace ramips.patch
 git apply --ignore-space-change --ignore-whitespace common.patch
 #git apply --ignore-space-change --ignore-whitespace revert_set_default_root.patch
 git apply --ignore-space-change --ignore-whitespace r619ac.patch
