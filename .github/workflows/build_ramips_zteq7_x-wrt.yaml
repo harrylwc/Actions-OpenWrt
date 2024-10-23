@@ -331,6 +331,34 @@ jobs:
         #name: OpenWrt_firmware
         #path: ./bin/targets/
 
+      - name: Upload bin directory if failure
+        uses: actions/upload-artifact@master
+        if:  failure() 
+        with:
+          name: OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
+           #OpenWrt_bin_${{ env.ROUTER_MODEL }}_failure
+          path: x-wrt/bin
+
+
+            #- name: Deliver buildinfo
+            #uses: actions/upload-artifact@v2
+            #with:
+            #name: OpenWrt_buildinfo
+            #path: ./artifact/buildinfo/
+
+            
+            #- name: Deliver package
+            #uses: actions/upload-artifact@v2
+            #with:
+            #name: OpenWrt_package
+            #path: ./artifact/package/
+
+            #- name: Deliver firmware
+            #uses: actions/upload-artifact@v2
+        #with:
+        #name: OpenWrt_firmware
+        #path: ./bin/targets/
+
       - name: Upload release asset
         if: github.event == 'release'
         uses: svenstaro/upload-release-action@v2
