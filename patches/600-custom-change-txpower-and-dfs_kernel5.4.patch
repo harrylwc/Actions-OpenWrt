@@ -1,5 +1,6 @@
---- a/db.txt    2024-10-23 12:12:52.915320757 +0800
-+++ b/db.txt    2024-10-23 12:15:21.450443514 +0800
+--- a/db.txt	2024-10-24 00:21:59.125738425 +0800
++++ b/db.txt	2024-10-24 00:24:04.246937017 +0800
+@@ -1595,14 +1595,12 @@
  country US: DFS-FCC
  	(2400 - 2472 @ 40), (30)
  	# 5.15 ~ 5.25 GHz: 30 dBm for master mode, 23 dBm for clients
@@ -12,7 +13,7 @@
  	# happy and be able to use channel 144.
 -	(5470 - 5730 @ 160), (23), DFS
 -	(5730 - 5850 @ 80), (30), AUTO-BW
-+ 	(5470 - 5850 @ 160), (30)	
++	(5470 - 5850 @ 160), (30)	
  	# https://www.federalregister.gov/documents/2021/05/03/2021-08802/use-of-the-5850-5925-ghz-band
  	# max. 33 dBm AP @ 20MHz, 36 dBm AP @ 40Mhz+, 6 dB less for clients
  	(5850 - 5895 @ 40), (27), NO-OUTDOOR, AUTO-BW, NO-IR
