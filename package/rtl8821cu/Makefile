@@ -63,6 +63,7 @@ EXTRA_CFLAGS:= \
 	-DCONFIG_IOCTL_CFG80211 \
 	-DCONFIG_CONCURRENT_MODE \
         -msoft-float \
+        -Wno-incompatible-pointer-types \
 	-DBUILD_OPENWRT
 
 ifeq ($(ARCH),arm)
