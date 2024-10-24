@@ -1,5 +1,10 @@
+<<<<<<< HEAD
+--- a/os_dep/linux/recv_linux.c
++++ b/os_dep/linux/recv_linux.c
+=======
 --- a/os_dep/linux/recv_linux.c	2022-05-10 05:59:06.649642377 +0800
 +++ b/os_dep/linux/recv_linux.c	2022-05-10 06:00:12.382265941 +0800
+>>>>>>> 62057bd62242f55fc964d7d8c3c6d0b5c978ef10
 @@ -405,7 +405,7 @@
  			So, we should prevent cloned SKB go into napi_gro_receive.
  		*/
