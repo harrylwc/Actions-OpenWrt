@@ -17,11 +17,10 @@ echo "Job name is $GITHUB_JOB"
 #git1 checkout 22.03_b202210282250 #5.15.74
 #git1 checkout 9.0_b202110300939 #5.4.155
 
-#git checkout 9.0_b202110300939 #5.4.155;git checkout 0eed96ca5d8
+#git checkout 9.0_b202110300939 #5.4.155
 
-#git checkout v21.02.7
-
-git checkout 0eed96ca5d8 
+git checkout v21.02.7
+#git checkout 0eed96ca5d8 
 cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.openwrt
 cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 x-wrt/.config
 
