@@ -36,6 +36,10 @@ git checkout 9.0_b202110300939 #5.4.155
 #cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/ 
 
 
+wget https://github.com/x-wrt/packages/commit/d4d6515dd40e43138d0a6b8cc046b8e89ce1cf6c.patch -O 7.patch
+wget https://github.com/x-wrt/packages/commit/58c11c1422fdb4bff4fed08757b8f374d346f974.patch -O 8.patch
+wget https://github.com/x-wrt/packages/commit/9be1307e2daba23b023c8ce652e968452f0f697c.patch -O 9.patch
+
 #wget https://github.com/openwrt/openwrt/commit/eeb59f87a18843c541277a6236b4f2b6e41889e9 -O 0.patch
 #wget https://github.com/openwrt/openwrt/commit/eb05baff7fb330de43632d638c34ba544f472935.patch -O 1.patch
 #wget https://github.com/openwrt/openwrt/commit/7eb6bf1ac9798f07577f7c2e0ef12f622efc6315.patch -O 2.patch
