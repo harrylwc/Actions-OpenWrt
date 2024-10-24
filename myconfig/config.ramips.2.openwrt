@@ -3725,7 +3725,7 @@ CONFIG_PACKAGE_kmod-macvlan=m
 # CONFIG_PACKAGE_kmod-mhi-net is not set
 # CONFIG_PACKAGE_kmod-mhi-wwan-ctrl is not set
 # CONFIG_PACKAGE_kmod-mhi-wwan-mbim is not set
-# CONFIG_PACKAGE_kmod-mii is not set
+CONFIG_PACKAGE_kmod-mii=m
 # CONFIG_PACKAGE_kmod-mlx4-core is not set
 # CONFIG_PACKAGE_kmod-mlx5-core is not set
 # CONFIG_PACKAGE_kmod-mlxfw is not set
@@ -4010,7 +4010,7 @@ CONFIG_PACKAGE_kmod-usb-net=m
 # CONFIG_PACKAGE_kmod-usb-net-asix is not set
 # CONFIG_PACKAGE_kmod-usb-net-asix-ax88179 is not set
 # CONFIG_PACKAGE_kmod-usb-net-cdc-eem is not set
-# CONFIG_PACKAGE_kmod-usb-net-cdc-ether is not set
+CONFIG_PACKAGE_kmod-usb-net-cdc-ether=m
 # CONFIG_PACKAGE_kmod-usb-net-cdc-mbim is not set
 CONFIG_PACKAGE_kmod-usb-net-cdc-ncm=m
 # CONFIG_PACKAGE_kmod-usb-net-cdc-subset is not set
