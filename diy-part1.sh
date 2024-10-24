@@ -18,9 +18,9 @@ echo "Job name is $GITHUB_JOB"
 #git1 checkout 9.0_b202110300939 #5.4.155
 
 #git checkout 9.0_b202110300939 #5.4.155
-#git checkout v21.02.7 ; cp $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_kernel_v21.02.7.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_kernel5.4.patch
+git checkout v21.02.7 ; cp $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_kernel_v21.02.7.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_kernel5.4.patch
 
-git checkout v21.02.1 # 5.4.154 ; cp $GITHUB_WORKSPACE/patches/Makefile.ccache.4.2.1 $GITHUB_WORKSPACE/x-wrt/tools/ccache/ ; cp $GITHUB_WORKSPACE/myconfig/config.ramips.v21.02.1 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4
+#git checkout v21.02.1 # 5.4.154 ; cp $GITHUB_WORKSPACE/patches/Makefile.ccache.4.2.1 $GITHUB_WORKSPACE/x-wrt/tools/ccache/ ; cp $GITHUB_WORKSPACE/myconfig/config.ramips.v21.02.1 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4
 #git checkout 0eed96ca5d8 
 cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.openwrt
 cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 x-wrt/.config
