@@ -12,7 +12,7 @@ PKG_NAME:=rtl8821cu
 PKG_RELEASE:=1
 
 #PKG_SOURCE_URL:=https://github.com/brektrou/rtl8821CU.git
-PKG_SOURCE_URL:=https://github.com/morrownr/8821cu-20210118.git
+PKG_SOURCE_URL:=https://github.com/morrownr/8821cu-20210916.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_DATE:=2022-05-05
 PKG_SOURCE_VERSION:=dbf14ccac4551686df28485e4db46277298c0f85
