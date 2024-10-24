@@ -19,6 +19,30 @@ echo "Job name is $GITHUB_JOB"
         #git checkout 610ea1b9994
 #fi
 
+#git1 checkout 22.03_b202210282250 #5.15.74
+#git1 checkout 9.0_b202110300939 #5.4.155
+
+#git checkout 9.0_b202110300939 #5.4.155
+
+#git checkout v21.02.7
+#git checkout 0eed96ca5d8 
+#cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.openwrt
+#cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 x-wrt/.config
+
+
+#git checkout 0eed96ca5d #kernel 5.4.152
+     #   0a2ed285e4
+#else
+        #git checkout 610ea1b9994
+#fi
+
+#cd feeds;mv luci luci.bak;git clone https://github.com/x-wrt/luci
+#cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/ 
+
+
+
+
+
 
 #rm target/linux/ramips/dts/mt7620a.dtsi
 #rm target/linux/ramips/dts/mt7620n.dtsi
