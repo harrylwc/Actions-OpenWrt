@@ -17,13 +17,13 @@ echo "Job name is $GITHUB_JOB"
 #git1 checkout 22.03_b202210282250 #5.15.74
 #git1 checkout 9.0_b202110300939 #5.4.155
 
-git checkout 9.0_b202110300939 #5.4.155
+#git checkout 9.0_b202110300939 #5.4.155
 
-#git checkout v21.02.7 ; cp $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_kernel_v21.02.7.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_kernel5.4.patch
-# git checkout v21.02.1 # 5.4.154;cp $GITHUB_WORKSPACE/myconfig/config.ramips.v21.02.1 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4
+git checkout v21.02.7 ; cp $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_kernel_v21.02.7.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_kernel5.4.patch
+#git checkout v21.02.1 # 5.4.154;cp $GITHUB_WORKSPACE/myconfig/config.ramips.v21.02.1 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4
 #git checkout 0eed96ca5d8 
-#cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.openwrt
-#cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 x-wrt/.config
+cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.openwrt
+cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 x-wrt/.config
 
 
 #git checkout 0eed96ca5d #kernel 5.4.152
@@ -103,9 +103,10 @@ cp -r $GITHUB_WORKSPACE/package/luci-app-shadowsocks-libev $GITHUB_WORKSPACE/x-w
 #cd x-wrt/feeds;mv luci luci.bak;git clone https://github.com/x-wrt/luci
 #cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/
 
-wget https://github.com/x-wrt/packages/commit/ad9d5a3eef961dcf2bef0e5486898c823786e53c.patch -O feeds/packages/6.patch
-cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/                                                                                                
-git apply -R --ignore-space-change 6.patch                                                                                                
+#wget https://github.com/x-wrt/packages/commit/ad9d5a3eef961dcf2bef0e5486898c823786e53c.patch -O feeds/packages/6.patch
+#cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/                                                                                                
+#git apply -R --ignore-space-change 6.patch                                                                                                
+
 cd $GITHUB_WORKSPACE/x-wrt    
 
 rm -rf package/openwrt-packages/luci-app-wechatpush
