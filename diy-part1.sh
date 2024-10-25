@@ -52,7 +52,7 @@ git apply -R --ignore-space-change 9.patch
 cd $GITHUB_WORKSPACE/x-wrt/
 
 
-wget https://github.com/openwrt/openwrt/commit/eeb59f87a18843c541277a6236b4f2b6e41889e9 -O 0.patch
+wget https://github.com/openwrt/openwrt/commit/eeb59f87a18843c541277a6236b4f2b6e41889e9.patch -O 0.patch
 wget https://github.com/openwrt/openwrt/commit/eb05baff7fb330de43632d638c34ba544f472935.patch -O 1.patch
 wget https://github.com/openwrt/openwrt/commit/7eb6bf1ac9798f07577f7c2e0ef12f622efc6315.patch -O 2.patch
 wget https://github.com/openwrt/openwrt/commit/8766a92766962f7267bf44851aaacd3588249473.patch -O 3.patch
