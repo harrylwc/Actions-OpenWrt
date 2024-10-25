@@ -102,9 +102,9 @@ cp -r $GITHUB_WORKSPACE/package/luci-app-shadowsocks-libev $GITHUB_WORKSPACE/x-w
 #cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/
 
 #wget https://github.com/x-wrt/packages/commit/ad9d5a3eef961dcf2bef0e5486898c823786e53c.patch -O feeds/packages/6.patch
-cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/                                                                                                
-wget https://github.com/openwrt/packages/commit/2455bc08b400126c1ce7f425a77eb7cda6940a23.patch -O 11.patch                                        
-wget https://github.com/openwrt/packages/commit/706675cbce94245bd247c7602968d931f1257ce6.patch -O 12.patch     
+#cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/                                                                                                
+#wget https://github.com/openwrt/packages/commit/2455bc08b400126c1ce7f425a77eb7cda6940a23.patch -O 11.patch                                        
+#wget https://github.com/openwrt/packages/commit/706675cbce94245bd247c7602968d931f1257ce6.patch -O 12.patch     
 
 git apply -R --ignore-space-change 11.patch
 git apply -R --ignore-space-change 12.patch
