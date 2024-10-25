@@ -237,8 +237,9 @@ jobs:
            cd x-wrt
            ls -alt $GITHUB_WORKSPACE/x-wrt/.config
            echo cpu core=$(nproc)
-           make -j$(nproc) || make -j1 V=s
-           [ $? != 0 ] && make V=s || echo "build success"
+           make -j$(nproc) 
+           #|| make -j1 V=s
+           #[ $? != 0 ] && make V=s || echo "build success"
            #cp $GITHUB_WORKSPACE/myconfig/config.ramips.3 $GITHUB_WORKSPACE/x-wrt/.config 
            #cp -f $GITHUB_WORKSPACE/x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
            #make -j$(nproc) || make -j1 V=s
