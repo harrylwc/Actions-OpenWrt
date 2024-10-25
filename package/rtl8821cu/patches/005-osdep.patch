@@ -1,7 +1,7 @@
-diff --git a/os_dep/linux/osdep_service.c b/os_dep/linux/osdep_service.c
+diff --git a/os_dep/osdep_service.c b/os_dep/osdep_service.c
 index 494016c..f9f494d 100644
---- a/os_dep/linux/osdep_service.c
-+++ b/os_dep/linux/osdep_service.c
+--- a/os_dep/osdep_service.c
++++ b/os_dep/osdep_service.c
 @@ -2914,7 +2914,9 @@ u64 rtw_division64(u64 x, u64 y)
  inline u32 rtw_random32(void)
  {
