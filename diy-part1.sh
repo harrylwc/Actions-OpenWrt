@@ -37,6 +37,7 @@ cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 $GITHUB_WORKSPACE/x-wrt/
 #cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/ 
 
 
+
 #wget https://github.com/openwrt/openwrt/commit/eeb59f87a18843c541277a6236b4f2b6e41889e9 -O 0.patch
 #wget https://github.com/openwrt/openwrt/commit/eb05baff7fb330de43632d638c34ba544f472935.patch -O 1.patch
 #wget https://github.com/openwrt/openwrt/commit/7eb6bf1ac9798f07577f7c2e0ef12f622efc6315.patch -O 2.patch
@@ -101,7 +102,13 @@ cp -r $GITHUB_WORKSPACE/package/luci-app-shadowsocks-libev $GITHUB_WORKSPACE/x-w
 #cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/
 
 #wget https://github.com/x-wrt/packages/commit/ad9d5a3eef961dcf2bef0e5486898c823786e53c.patch -O feeds/packages/6.patch
-#cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/                                                                                                
+cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/                                                                                                
+wget https://github.com/openwrt/packages/commit/2455bc08b400126c1ce7f425a77eb7cda6940a23.patch -O 11.patch                                        
+wget https://github.com/openwrt/packages/commit/706675cbce94245bd247c7602968d931f1257ce6.patch -O 12.patch     
+
+git apply -R --ignore-space-change 11.patch
+git apply -R --ignore-space-change 12.patch
+
 #git apply -R --ignore-space-change 6.patch                                                                                                
 cd $GITHUB_WORKSPACE/x-wrt    
 
