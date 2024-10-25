@@ -3157,6 +3157,7 @@ CONFIG_PACKAGE_nginx-util=m
 # CONFIG_PACKAGE_mt7981-wo-firmware is not set
 # CONFIG_PACKAGE_mt7986-wo-firmware is not set
 # CONFIG_PACKAGE_mt7988-2p5g-phy-firmware is not set
+# CONFIG_PACKAGE_mt7988-wo-firmware is not set
 # CONFIG_PACKAGE_mwifiex-pcie-firmware is not set
 # CONFIG_PACKAGE_mwifiex-sdio-firmware is not set
 # CONFIG_PACKAGE_mwl8k-firmware is not set
@@ -3176,6 +3177,7 @@ CONFIG_PACKAGE_r8152-firmware=m
 # CONFIG_PACKAGE_rtl8192ce-firmware is not set
 # CONFIG_PACKAGE_rtl8192cu-firmware is not set
 # CONFIG_PACKAGE_rtl8192de-firmware is not set
+# CONFIG_PACKAGE_rtl8192du-firmware is not set
 # CONFIG_PACKAGE_rtl8192eu-firmware is not set
 # CONFIG_PACKAGE_rtl8192se-firmware is not set
 # CONFIG_PACKAGE_rtl8723au-firmware is not set
@@ -3707,6 +3709,8 @@ CONFIG_PACKAGE_kmod-nft-tproxy=y
 # CONFIG_PACKAGE_kmod-bnx2x is not set
 # CONFIG_PACKAGE_kmod-dm9000 is not set
 # CONFIG_PACKAGE_kmod-dsa is not set
+# CONFIG_PACKAGE_kmod-dsa-b53 is not set
+# CONFIG_PACKAGE_kmod-dsa-b53-mdio is not set
 # CONFIG_PACKAGE_kmod-dsa-mv88e6xxx is not set
 # CONFIG_PACKAGE_kmod-dsa-qca8k is not set
 # CONFIG_PACKAGE_kmod-dsa-tag-dsa is not set
@@ -3734,7 +3738,7 @@ CONFIG_PACKAGE_kmod-ifb=m
 # CONFIG_PACKAGE_kmod-mhi-net is not set
 # CONFIG_PACKAGE_kmod-mhi-wwan-ctrl is not set
 # CONFIG_PACKAGE_kmod-mhi-wwan-mbim is not set
-# CONFIG_PACKAGE_kmod-mii is not set
+CONFIG_PACKAGE_kmod-mii=m
 # CONFIG_PACKAGE_kmod-mlx4-core is not set
 # CONFIG_PACKAGE_kmod-mlx5-core is not set
 # CONFIG_PACKAGE_kmod-mlxfw is not set
@@ -3784,8 +3788,6 @@ CONFIG_PACKAGE_kmod-ifb=m
 # CONFIG_PACKAGE_kmod-spi-ks8995 is not set
 # CONFIG_PACKAGE_kmod-swconfig is not set
 # CONFIG_PACKAGE_kmod-switch-ar8xxx is not set
-# CONFIG_PACKAGE_kmod-switch-bcm53xx is not set
-# CONFIG_PACKAGE_kmod-switch-bcm53xx-mdio is not set
 # CONFIG_PACKAGE_kmod-switch-ip17xx is not set
 # CONFIG_PACKAGE_kmod-switch-rtl8306 is not set
 # CONFIG_PACKAGE_kmod-switch-rtl8366-smi is not set
@@ -4022,7 +4024,7 @@ CONFIG_PACKAGE_kmod-usb-net=m
 # CONFIG_PACKAGE_kmod-usb-net-asix is not set
 # CONFIG_PACKAGE_kmod-usb-net-asix-ax88179 is not set
 # CONFIG_PACKAGE_kmod-usb-net-cdc-eem is not set
-# CONFIG_PACKAGE_kmod-usb-net-cdc-ether is not set
+CONFIG_PACKAGE_kmod-usb-net-cdc-ether=m
 # CONFIG_PACKAGE_kmod-usb-net-cdc-mbim is not set
 CONFIG_PACKAGE_kmod-usb-net-cdc-ncm=m
 # CONFIG_PACKAGE_kmod-usb-net-cdc-subset is not set
@@ -4214,6 +4216,7 @@ CONFIG_PACKAGE_kmod-rt2x00-mmio=y
 # CONFIG_PACKAGE_kmod-rtl8192ce is not set
 # CONFIG_PACKAGE_kmod-rtl8192cu is not set
 # CONFIG_PACKAGE_kmod-rtl8192de is not set
+# CONFIG_PACKAGE_kmod-rtl8192du is not set
 # CONFIG_PACKAGE_kmod-rtl8192se is not set
 # CONFIG_PACKAGE_kmod-rtl8723be is not set
 # CONFIG_PACKAGE_kmod-rtl8723bs is not set
@@ -6149,8 +6152,8 @@ CONFIG_PACKAGE_luci-app-nft-qos=m
 # CONFIG_PACKAGE_luci-app-openthread is not set
 # CONFIG_PACKAGE_luci-app-openvpn is not set
 # CONFIG_PACKAGE_luci-app-openwisp is not set
-CONFIG_PACKAGE_luci-app-opkg=y
 # CONFIG_PACKAGE_luci-app-p910nd is not set
+CONFIG_PACKAGE_luci-app-package-manager=y
 # CONFIG_PACKAGE_luci-app-pagekitec is not set
 # CONFIG_PACKAGE_luci-app-partexp is not set
 # CONFIG_PACKAGE_luci-app-passwall is not set
@@ -6378,7 +6381,6 @@ CONFIG_PACKAGE_luci-i18n-argon-config-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-argon-config-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-argone-config-es is not set
 CONFIG_PACKAGE_luci-i18n-argone-config-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-argone-config-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-banip-ar is not set
 # CONFIG_PACKAGE_luci-i18n-banip-bg is not set
 # CONFIG_PACKAGE_luci-i18n-banip-bn is not set
@@ -6619,9 +6621,7 @@ CONFIG_PACKAGE_luci-i18n-ddns-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-dsl-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-dsl-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-eqos-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-eqos-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-filebrowser-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-filetransfer-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-firewall-ar is not set
 # CONFIG_PACKAGE_luci-i18n-firewall-bg is not set
@@ -6692,41 +6692,41 @@ CONFIG_PACKAGE_luci-i18n-firewall-zh-tw=y
 # CONFIG_PACKAGE_luci-i18n-nft-qos-vi is not set
 CONFIG_PACKAGE_luci-i18n-nft-qos-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-nft-qos-zh-tw=m
-# CONFIG_PACKAGE_luci-i18n-opkg-ar is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-bg is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-bn is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ca is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-cs is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-da is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-de is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-el is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-es is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-fi is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-fr is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-he is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-hi is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-hu is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-it is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ja is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ko is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-lt is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-mr is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ms is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-nl is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-no is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-pl is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-pt is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ro is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ru is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-sk is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-sv is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-tr is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-uk is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ur is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-vi is not set
-CONFIG_PACKAGE_luci-i18n-opkg-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-opkg-zh-tw=y
+# CONFIG_PACKAGE_luci-i18n-package-manager-ar is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-bg is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-bn is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ca is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-cs is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-da is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-de is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-el is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-es is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-fi is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-fr is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-he is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-hi is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-hu is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-it is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ja is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ko is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-lt is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-mr is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ms is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-nl is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-no is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-pl is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-pt is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-pt-br is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ro is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ru is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-sk is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-sv is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-tr is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-uk is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ur is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-vi is not set
+CONFIG_PACKAGE_luci-i18n-package-manager-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-package-manager-zh-tw=y
 # CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ar is not set
 # CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-bg is not set
 # CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-bn is not set
@@ -7746,6 +7746,7 @@ CONFIG_PACKAGE_cgi-io=y
 # CONFIG_PACKAGE_nginx-mod-lua-resty-lrucache is not set
 CONFIG_PACKAGE_nginx-mod-luci=m
 # CONFIG_PACKAGE_nginx-mod-naxsi is not set
+# CONFIG_PACKAGE_nginx-mod-njs is not set
 # CONFIG_PACKAGE_nginx-mod-rtmp is not set
 # CONFIG_PACKAGE_nginx-mod-stream is not set
 # CONFIG_PACKAGE_nginx-mod-ts is not set
@@ -9267,4 +9268,4 @@ CONFIG_PACKAGE_lua-ipops=m
 # end of Font-Utils
 # end of Xorg
 
-CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng ddns-go ddnsto dns2socks dns2tcp gn gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argone-config luci-app-bypass luci-app-clash luci-app-ddns-go luci-app-ddnsto luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-gost luci-app-homeproxy luci-app-ikoolproxy luci-app-istorex luci-app-lucky luci-app-mihomo luci-app-mosdns luci-app-nlbwmon luci-app-openclash luci-app-partexp luci-app-passwall luci-app-passwall2 luci-app-quickstart luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-ttyd luci-app-unblockneteasemusic luci-lib-taskd luci-lib-xterm luci-theme-alpha luci-theme-argon luci-theme-argone luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mihomo mosdns naiveproxy pdnsd-alt quickstart redsocks2 shadow-tls shadowsocks-rust shadowsocksr-libev simple-obfs sing-box smartdns ssocks taskd tcping trojan trojan-go trojan-plus tuic-client ucl upx v2dat v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
+CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng ddns-go ddnsto dns2socks dns2tcp gn gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argone-config luci-app-bypass luci-app-clash luci-app-ddns-go luci-app-ddnsto luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-gost luci-app-homeproxy luci-app-ikoolproxy luci-app-istorex luci-app-lucky luci-app-mihomo luci-app-mosdns luci-app-openclash luci-app-partexp luci-app-passwall luci-app-passwall2 luci-app-quickstart luci-app-shadowsocks-libev luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-unblockneteasemusic luci-lib-taskd luci-lib-xterm luci-theme-alpha luci-theme-argon luci-theme-argone luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mihomo mosdns naiveproxy pdnsd-alt quickstart redsocks2 shadow-tls shadowsocks-rust shadowsocksr-libev simple-obfs sing-box smartdns ssocks taskd tcping trojan trojan-go trojan-plus tuic-client ucl upx v2dat v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
