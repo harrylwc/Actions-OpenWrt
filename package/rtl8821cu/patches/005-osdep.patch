@@ -1,4 +1,4 @@
-diff --git a/osdep_service.c b/osdep_service.c
+diff --git a/os_dep/linux/osdep_service.c b/os_dep/linux/osdep_service.c
 index 494016c..f9f494d 100644
 --- a/osdep_service.c
 +++ b/osdep_service.c
