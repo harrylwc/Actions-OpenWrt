@@ -36,7 +36,7 @@ echo "Job name is $GITHUB_JOB"
 #cd luci; git checkout ea0e494;cd $GITHUB_WORKSPACE/x-wrt/ 
 
 
-cat package/network/services/ppp/Makefile|grep PKG_RELEASE_VERSION:=
+#cat package/network/services/ppp/Makefile|grep PKG_RELEASE_VERSION:=
 #rm target/linux/ramips/dts/mt7620a.dtsi
 #rm target/linux/ramips/dts/mt7620n.dtsi
 #rm target/linux/ramips/mt7620/target.mk
@@ -124,5 +124,5 @@ git apply -R --ignore-space-change 2.patch
 git apply -R --ignore-space-change 3.patch                                                                                                                                              
 git apply -R --ignore-space-change 4.patch                                                                                                                                              
 git apply -R --ignore-space-change 5.patch                                                      
-
+cat package/network/services/ppp/Makefile|grep PKG_RELEASE_VERSION:=
 #rm -r $GITHUB_WORKSPACE/x-wrt/feeds//luci/applications/luci-app-filebrowser/
