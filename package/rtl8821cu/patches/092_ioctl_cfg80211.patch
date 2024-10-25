@@ -1,5 +1,5 @@
---- a/os_dep/linux/ioctl_cfg80211.c	2024-10-25 14:44:00.668614225 +0800
-+++ b/os_dep/linux/ioctl_cfg80211.c	2024-10-25 14:55:56.000000000 +0800
+--- a/os_dep/linux/ioctl_cfg80211.c
++++ b/os_dep/linux/ioctl_cfg80211.c
 @@ -29,10 +29,10 @@
  
  #if (LINUX_VERSION_CODE >= KERNEL_VERSION(4, 0, 0))
@@ -54,7 +54,7 @@
  
  #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 19, 0))
  	if (started) {
--#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 239))
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 11, 0))
 +#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 155))
  
  		/* --- cfg80211_ch_switch_started_notfiy() ---
@@ -478,6 +478,15 @@
  		rtw_get_p2p_attr_content(p2p_ie, p2p_ielen, P2P_ATTR_CAPABILITY, (u8 *)&capability, &capability_len);
  
  	}
+@@ -8275,7 +8415,7 @@
+ 	return ret;
+ }
+ 
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0))
+ static void cfg80211_rtw_mgmt_frame_register(struct wiphy *wiphy,
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 6, 0))
+ 	struct wireless_dev *wdev,
 @@ -8308,13 +8448,13 @@
  		else
  			CLR_CFG80211_REPORT_MGMT(pwdev_priv, IEEE80211_STYPE_AUTH);
@@ -628,6 +637,15 @@
  #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 11, 0))
  #ifdef CONFIG_WIFI_MONITOR
  	/* Currently only for Monitor debugging */
+@@ -10447,7 +10600,7 @@
+ 
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37)) || defined(COMPAT_KERNEL_RELEASE)
+ 	.mgmt_tx = cfg80211_rtw_mgmt_tx,
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 8, 0))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 0))
+ 	.mgmt_frame_register = cfg80211_rtw_mgmt_frame_register,
+ #else
+ 	.update_mgmt_frame_registrations = cfg80211_rtw_update_mgmt_frame_register,
 @@ -10666,7 +10819,11 @@
  	rtw_cfg80211_indicate_scan_done(adapter, _TRUE);
  
