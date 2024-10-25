@@ -36,7 +36,7 @@ on:
 
 
 env:
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.ramips.2.kernel5.4
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.ramips.2.kernel5.15
   #####change model here ####@# 
   REPO_URL: https://github.com/x-wrt/x-wrt
   #https://github.com/openwrt/openwrt.git
