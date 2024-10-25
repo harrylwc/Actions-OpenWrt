@@ -37,9 +37,17 @@ echo "Job name is $GITHUB_JOB"
 
 
 cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/
+wget https://github.com/x-wrt/packages/commit/45fa8ff.patch -O 101.patch
+wget https://github.com/x-wrt/packages/commit/f6109f9.patch -O 102.patch
+wget https://github.com/x-wrt/packages/commit/2bbee3e.patch -O 103.patch
+
 wget https://github.com/openwrt/packages/commit/2455bc08b400126c1ce7f425a77eb7cda6940a23.patch -O 11.patch                                                       
 wget https://github.com/openwrt/packages/commit/706675cbce94245bd247c7602968d931f1257ce6.patch -O 12.patch                                                       
                                                                                                                                                                  
+git apply -R --ignore-space-change 101.patch   
+git apply -R --ignore-space-change 102.patch   
+git apply -R --ignore-space-change 103.patch   
+
 git apply -R --ignore-space-change 11.patch                                                                                                                      
 git apply -R --ignore-space-change 12.patch                                                                                                                      
                                                    
