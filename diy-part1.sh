@@ -74,7 +74,6 @@ git apply -R --ignore-space-change 4.patch
 git apply -R --ignore-space-change 5.patch
 
 cat package/network/services/ppp/Makefile|grep PKG_RELEASE_VERSION:=
-
 #rm target/linux/ramips/dts/mt7620a.dtsi
 #rm target/linux/ramips/dts/mt7620n.dtsi
 #rm target/linux/ramips/mt7620/target.mk
