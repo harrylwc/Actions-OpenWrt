@@ -2993,6 +2993,7 @@ CONFIG_PACKAGE_ath10k-firmware-qca4019-ct-htt=m
 # CONFIG_PACKAGE_mt7981-wo-firmware is not set
 # CONFIG_PACKAGE_mt7986-wo-firmware is not set
 # CONFIG_PACKAGE_mt7988-2p5g-phy-firmware is not set
+# CONFIG_PACKAGE_mt7988-wo-firmware is not set
 # CONFIG_PACKAGE_mwifiex-pcie-firmware is not set
 # CONFIG_PACKAGE_mwifiex-sdio-firmware is not set
 # CONFIG_PACKAGE_mwl8k-firmware is not set
@@ -3009,28 +3010,28 @@ CONFIG_PACKAGE_rt2800-usb-firmware=m
 # CONFIG_PACKAGE_rt73-usb-firmware is not set
 # CONFIG_PACKAGE_rtl8188eu-firmware is not set
 # CONFIG_PACKAGE_rtl8188fu-firmware is not set
-# CONFIG_PACKAGE_rtl8192ce-firmware is not set
-# CONFIG_PACKAGE_rtl8192cu-firmware is not set
-# CONFIG_PACKAGE_rtl8192de-firmware is not set
-# CONFIG_PACKAGE_rtl8192du-firmware is not set
+CONFIG_PACKAGE_rtl8192ce-firmware=m
+CONFIG_PACKAGE_rtl8192cu-firmware=m
+CONFIG_PACKAGE_rtl8192de-firmware=m
+CONFIG_PACKAGE_rtl8192du-firmware=m
 # CONFIG_PACKAGE_rtl8192eu-firmware is not set
-# CONFIG_PACKAGE_rtl8192se-firmware is not set
+CONFIG_PACKAGE_rtl8192se-firmware=m
 # CONFIG_PACKAGE_rtl8723au-firmware is not set
-# CONFIG_PACKAGE_rtl8723be-firmware is not set
+CONFIG_PACKAGE_rtl8723be-firmware=m
 # CONFIG_PACKAGE_rtl8723bu-firmware is not set
-# CONFIG_PACKAGE_rtl8723de-firmware is not set
+CONFIG_PACKAGE_rtl8723de-firmware=m
 # CONFIG_PACKAGE_rtl8761a-firmware is not set
 # CONFIG_PACKAGE_rtl8761b-firmware is not set
 # CONFIG_PACKAGE_rtl8761bu-firmware is not set
-# CONFIG_PACKAGE_rtl8821ae-firmware is not set
-CONFIG_PACKAGE_rtl8821ce-firmware=m
-# CONFIG_PACKAGE_rtl8822be-firmware is not set
+CONFIG_PACKAGE_rtl8821ae-firmware=m
+CONFIG_PACKAGE_rtl8821ce-firmware=y
+CONFIG_PACKAGE_rtl8822be-firmware=m
 CONFIG_PACKAGE_rtl8822ce-firmware=m
-# CONFIG_PACKAGE_rtl8851be-firmware is not set
-# CONFIG_PACKAGE_rtl8852ae-firmware is not set
-# CONFIG_PACKAGE_rtl8852be-firmware is not set
-# CONFIG_PACKAGE_rtl8852ce-firmware is not set
-# CONFIG_PACKAGE_rtl8922ae-firmware is not set
+CONFIG_PACKAGE_rtl8851be-firmware=m
+CONFIG_PACKAGE_rtl8852ae-firmware=m
+CONFIG_PACKAGE_rtl8852be-firmware=m
+CONFIG_PACKAGE_rtl8852ce-firmware=m
+CONFIG_PACKAGE_rtl8922ae-firmware=m
 # CONFIG_PACKAGE_ti-3410-firmware is not set
 # CONFIG_PACKAGE_ti-5052-firmware is not set
 # CONFIG_PACKAGE_vrx518_aca_fw is not set
@@ -3782,7 +3783,7 @@ CONFIG_PACKAGE_kmod-ikconfig=m
 # CONFIG_PACKAGE_kmod-lp is not set
 # CONFIG_PACKAGE_kmod-mhi-bus is not set
 # CONFIG_PACKAGE_kmod-mhi-pci-generic is not set
-# CONFIG_PACKAGE_kmod-mmc is not set
+CONFIG_PACKAGE_kmod-mmc=m
 CONFIG_PACKAGE_kmod-mtd-rw=m
 # CONFIG_PACKAGE_kmod-mtdoops is not set
 # CONFIG_PACKAGE_kmod-mtdram is not set
@@ -4080,37 +4081,55 @@ CONFIG_PACKAGE_kmod-rt2x00-lib=m
 # CONFIG_PACKAGE_RT2X00_LIB_DEBUGFS is not set
 # CONFIG_PACKAGE_RT2X00_DEBUG is not set
 CONFIG_PACKAGE_kmod-rt2x00-usb=m
-# CONFIG_PACKAGE_kmod-rtl8192ce is not set
-# CONFIG_PACKAGE_kmod-rtl8192cu is not set
-# CONFIG_PACKAGE_kmod-rtl8192de is not set
-# CONFIG_PACKAGE_kmod-rtl8192du is not set
-# CONFIG_PACKAGE_kmod-rtl8192se is not set
-# CONFIG_PACKAGE_kmod-rtl8723be is not set
-# CONFIG_PACKAGE_kmod-rtl8723bs is not set
-# CONFIG_PACKAGE_kmod-rtl8812au-ct is not set
-# CONFIG_PACKAGE_kmod-rtl8821ae is not set
-CONFIG_PACKAGE_kmod-rtl8821cu=m
-# CONFIG_PACKAGE_kmod-rtl8xxxu is not set
-CONFIG_PACKAGE_kmod-rtw88=m
+CONFIG_PACKAGE_kmod-rtl8192c-common=m
+CONFIG_PACKAGE_kmod-rtl8192ce=m
+CONFIG_PACKAGE_kmod-rtl8192cu=m
+CONFIG_PACKAGE_kmod-rtl8192d-common=m
+CONFIG_PACKAGE_kmod-rtl8192de=m
+CONFIG_PACKAGE_kmod-rtl8192du=m
+CONFIG_PACKAGE_kmod-rtl8192se=m
+CONFIG_PACKAGE_kmod-rtl8723-common=m
+CONFIG_PACKAGE_kmod-rtl8723be=m
+CONFIG_PACKAGE_kmod-rtl8723bs=m
+CONFIG_PACKAGE_kmod-rtl8812au-ct=m
+CONFIG_PACKAGE_kmod-rtl8821ae=m
+CONFIG_PACKAGE_kmod-rtl8xxxu=m
+CONFIG_PACKAGE_kmod-rtlwifi=m
+# CONFIG_PACKAGE_RTLWIFI_DEBUG is not set
+CONFIG_PACKAGE_kmod-rtlwifi-btcoexist=m
+CONFIG_PACKAGE_kmod-rtlwifi-pci=m
+CONFIG_PACKAGE_kmod-rtlwifi-usb=m
+CONFIG_PACKAGE_kmod-rtw88=y
 # CONFIG_PACKAGE_RTW88_DEBUG is not set
 # CONFIG_PACKAGE_RTW88_DEBUGFS is not set
-# CONFIG_PACKAGE_kmod-rtw88-8723de is not set
-# CONFIG_PACKAGE_kmod-rtw88-8723ds is not set
-# CONFIG_PACKAGE_kmod-rtw88-8723du is not set
-CONFIG_PACKAGE_kmod-rtw88-8821c=m
-# CONFIG_PACKAGE_kmod-rtw88-8821ce is not set
-CONFIG_PACKAGE_kmod-rtw88-8821cu=m
-# CONFIG_PACKAGE_kmod-rtw88-8822be is not set
-# CONFIG_PACKAGE_kmod-rtw88-8822bu is not set
+CONFIG_PACKAGE_kmod-rtw88-8723d=m
+CONFIG_PACKAGE_kmod-rtw88-8723de=m
+CONFIG_PACKAGE_kmod-rtw88-8723ds=m
+CONFIG_PACKAGE_kmod-rtw88-8723du=m
+CONFIG_PACKAGE_kmod-rtw88-8723x=m
+CONFIG_PACKAGE_kmod-rtw88-8821c=y
+CONFIG_PACKAGE_kmod-rtw88-8821ce=m
+CONFIG_PACKAGE_kmod-rtw88-8821cu=y
+CONFIG_PACKAGE_kmod-rtw88-8822b=m
+CONFIG_PACKAGE_kmod-rtw88-8822be=m
+CONFIG_PACKAGE_kmod-rtw88-8822bu=m
 CONFIG_PACKAGE_kmod-rtw88-8822c=m
-# CONFIG_PACKAGE_kmod-rtw88-8822ce is not set
+CONFIG_PACKAGE_kmod-rtw88-8822ce=m
 CONFIG_PACKAGE_kmod-rtw88-8822cu=m
-CONFIG_PACKAGE_kmod-rtw88-usb=m
-# CONFIG_PACKAGE_kmod-rtw89-8851be is not set
-# CONFIG_PACKAGE_kmod-rtw89-8852ae is not set
-# CONFIG_PACKAGE_kmod-rtw89-8852be is not set
-# CONFIG_PACKAGE_kmod-rtw89-8852ce is not set
-# CONFIG_PACKAGE_kmod-rtw89-8922ae is not set
+CONFIG_PACKAGE_kmod-rtw88-pci=m
+CONFIG_PACKAGE_kmod-rtw88-sdio=m
+CONFIG_PACKAGE_kmod-rtw88-usb=y
+CONFIG_PACKAGE_kmod-rtw89=m
+CONFIG_PACKAGE_RTW89_DEBUG=y
+CONFIG_PACKAGE_RTW89_DEBUGFS=y
+CONFIG_PACKAGE_RTW89_DEBUGMSG=y
+CONFIG_PACKAGE_kmod-rtw89-8851be=m
+CONFIG_PACKAGE_kmod-rtw89-8852ae=m
+CONFIG_PACKAGE_kmod-rtw89-8852b-common=m
+CONFIG_PACKAGE_kmod-rtw89-8852be=m
+CONFIG_PACKAGE_kmod-rtw89-8852ce=m
+CONFIG_PACKAGE_kmod-rtw89-8922ae=m
+CONFIG_PACKAGE_kmod-rtw89-pci=m
 # CONFIG_PACKAGE_kmod-wil6210 is not set
 # CONFIG_PACKAGE_kmod-wl12xx is not set
 # CONFIG_PACKAGE_kmod-wl18xx is not set
@@ -6567,6 +6586,7 @@ CONFIG_PACKAGE_luci-app-ledtrig-usbport=m
 # CONFIG_PACKAGE_luci-app-lorawan-basicstation is not set
 # CONFIG_PACKAGE_luci-app-lucky is not set
 CONFIG_PACKAGE_luci-app-lxc=m
+# CONFIG_PACKAGE_luci-app-mihomo is not set
 CONFIG_PACKAGE_luci-app-minidlna=m
 # CONFIG_PACKAGE_luci-app-mjpg-streamer is not set
 # CONFIG_PACKAGE_luci-app-mosdns is not set
@@ -6591,8 +6611,8 @@ CONFIG_PACKAGE_iptables-mod-extra=m
 # CONFIG_PACKAGE_luci-app-openthread is not set
 CONFIG_PACKAGE_luci-app-openvpn=m
 # CONFIG_PACKAGE_luci-app-openwisp is not set
-CONFIG_PACKAGE_luci-app-opkg=y
 # CONFIG_PACKAGE_luci-app-p910nd is not set
+CONFIG_PACKAGE_luci-app-package-manager=y
 # CONFIG_PACKAGE_luci-app-pagekitec is not set
 # CONFIG_PACKAGE_luci-app-partexp is not set
 # CONFIG_PACKAGE_luci-app-passwall is not set
@@ -7718,40 +7738,40 @@ CONFIG_PACKAGE_luci-i18n-olsr-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-openvpn-vi is not set
 CONFIG_PACKAGE_luci-i18n-openvpn-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-openvpn-zh-tw=m
-# CONFIG_PACKAGE_luci-i18n-opkg-ar is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-bg is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-bn is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ca is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-cs is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-da is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-de is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-el is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-es is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-fi is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-fr is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-he is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-hi is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-hu is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-it is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ja is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ko is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-lt is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-mr is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ms is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-nl is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-no is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-pl is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-pt is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ro is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ru is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-sk is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-sv is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-tr is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-uk is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-vi is not set
-CONFIG_PACKAGE_luci-i18n-opkg-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-opkg-zh-tw=y
+# CONFIG_PACKAGE_luci-i18n-package-manager-ar is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-bg is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-bn is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ca is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-cs is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-da is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-de is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-el is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-es is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-fi is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-fr is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-he is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-hi is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-hu is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-it is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ja is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ko is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-lt is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-mr is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ms is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-nl is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-no is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-pl is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-pt is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-pt-br is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ro is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ru is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-sk is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-sv is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-tr is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-uk is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-vi is not set
+CONFIG_PACKAGE_luci-i18n-package-manager-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-package-manager-zh-tw=y
 CONFIG_PACKAGE_luci-i18n-passwall2-zh-cn=m
 # CONFIG_PACKAGE_luci-i18n-pbr-ar is not set
 # CONFIG_PACKAGE_luci-i18n-pbr-bg is not set
@@ -9252,6 +9272,7 @@ CONFIG_PACKAGE_nginx-mod-lua-resty-core=m
 CONFIG_PACKAGE_nginx-mod-lua-resty-lrucache=m
 CONFIG_PACKAGE_nginx-mod-luci=m
 CONFIG_PACKAGE_nginx-mod-naxsi=m
+# CONFIG_PACKAGE_nginx-mod-njs is not set
 CONFIG_PACKAGE_nginx-mod-rtmp=m
 CONFIG_PACKAGE_nginx-mod-stream=m
 CONFIG_PACKAGE_nginx-mod-ts=m
@@ -9420,8 +9441,8 @@ CONFIG_PACKAGE_hostapd-utils=m
 CONFIG_WPA_MSG_MIN_PRIORITY=3
 CONFIG_WPA_WOLFSSL=y
 CONFIG_DRIVER_11AC_SUPPORT=y
-# CONFIG_DRIVER_11AX_SUPPORT is not set
-# CONFIG_DRIVER_11BE_SUPPORT is not set
+CONFIG_DRIVER_11AX_SUPPORT=y
+CONFIG_DRIVER_11BE_SUPPORT=y
 # CONFIG_WPA_ENABLE_WEP is not set
 CONFIG_WPA_MBO_SUPPORT=y
 # CONFIG_PACKAGE_wpa-supplicant-basic is not set
@@ -9631,6 +9652,7 @@ CONFIG_PACKAGE_libipset=y
 # CONFIG_PACKAGE_mdns-repeater is not set
 # CONFIG_PACKAGE_memcached is not set
 # CONFIG_PACKAGE_mentohust is not set
+# CONFIG_PACKAGE_mihomo is not set
 # CONFIG_PACKAGE_mii-tool is not set
 # CONFIG_PACKAGE_mikrotik-btest is not set
 # CONFIG_PACKAGE_mini_snmpd is not set
