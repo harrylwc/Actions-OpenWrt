@@ -19,8 +19,8 @@ echo "Job name is $GITHUB_JOB"
 #git1 checkout 9.0_b202110300939 #5.4.155
 
 git checkout 22.03_b202210282250 #5.15.74
-cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt
-cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4
+#cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt
+#cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4
 
 #git checkout v21.02.7;cp $GITHUB_WORKSPACE/myconfig/config.ramips.v21.02.7 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4; mv $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_v21.02.7.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch
 #git checkout v21.02.1 ;mv $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_v21.02.1.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch	;cp $GITHUB_WORKSPACE/myconfig/config.ramips.v21.02.1 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 ; cp $GITHUB_WORKSPACE/patches/Makefile.ccache.4.2.1 $GITHUB_WORKSPACE/x-wrt/tools/ccache/Makefile
@@ -40,9 +40,7 @@ cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt.kernel5.4 $GITHUB_WORKSPACE/
 
 #wget https://github.com/openwrt/openwrt/commit/eeb59f87a18843c541277a6236b4f2b6e41889e9 -O 0.patch
 #wget https://github.com/openwrt/openwrt/commit/eb05baff7fb330de43632d638c34ba544f472935.patch -O 1.patch
-##ýþýû#ýû#ýýþû
-ûûýýýýýýþþþþ
-wget https://github.com/openwrt/openwrt/commit/7eb6bf1ac9798f07577f7c2e0ef12f622efc6315.patch -O 2.patch
+#wget https://github.com/openwrt/openwrt/commit/7eb6bf1ac9798f07577f7c2e0ef12f622efc6315.patch -O 2.patch
 #wget https://github.com/openwrt/openwrt/commit/8766a92766962f7267bf44851aaacd3588249473.patch -O 3.patch
 #wget https://github.com/openwrt/openwrt/commit/3e668c6d02ed637620bde27c66c0bdeedf18f54f.patch -O 4.patch
 #wget https://github.com/openwrt/openwrt/commit/9cecf2b16e0ea8560e50ef6719938bd80b963704.patch -O 5.patch
