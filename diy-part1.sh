@@ -25,7 +25,7 @@ echo "Job name is $GITHUB_JOB"
 git checkout v21.02.7;cp $GITHUB_WORKSPACE/myconfig/config.ramips.v21.02.7 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4; mv $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_v21.02.7.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch
 #git checkout v21.02.1 ;mv $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_v21.02.1.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch	;cp $GITHUB_WORKSPACE/myconfig/config.ramips.v21.02.1 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 ; cp $GITHUB_WORKSPACE/patches/Makefile.ccache.4.2.1 $GITHUB_WORKSPACE/x-wrt/tools/ccache/Makefile
 
-#cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.openwrt
+cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.openwrt
 
 
      #   0a2ed285e4
