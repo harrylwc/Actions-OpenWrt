@@ -327,6 +327,8 @@ CONFIG_KERNEL_IPV6_SEG6_LWTUNNEL=y
 # CONFIG_KERNEL_NET_L3_MASTER_DEV is not set
 # CONFIG_KERNEL_XDP_SOCKETS is not set
 # CONFIG_KERNEL_PAGE_POOL is not set
+CONFIG_KERNEL_MPTCP=y
+CONFIG_KERNEL_MPTCP_IPV6=y
 # CONFIG_KERNEL_IP_PNP is not set
 # CONFIG_KERNEL_BTRFS_FS is not set
 
@@ -2746,7 +2748,7 @@ CONFIG_ZABBIX_POSTGRESQL=y
 # CONFIG_PACKAGE_jose is not set
 CONFIG_PACKAGE_libiwinfo-data=y
 # CONFIG_PACKAGE_libjose is not set
-# CONFIG_PACKAGE_nginx is not set
+CONFIG_PACKAGE_nginx=m
 # CONFIG_PACKAGE_nginx-mod-luci-ssl is not set
 CONFIG_PACKAGE_nginx-util=m
 # CONFIG_PACKAGE_tang is not set
@@ -2908,6 +2910,7 @@ CONFIG_PACKAGE_nginx-util=m
 # CONFIG_PACKAGE_mt7981-wo-firmware is not set
 # CONFIG_PACKAGE_mt7986-wo-firmware is not set
 # CONFIG_PACKAGE_mt7988-2p5g-phy-firmware is not set
+# CONFIG_PACKAGE_mt7988-wo-firmware is not set
 # CONFIG_PACKAGE_mwifiex-pcie-firmware is not set
 # CONFIG_PACKAGE_mwifiex-sdio-firmware is not set
 # CONFIG_PACKAGE_mwl8k-firmware is not set
@@ -3568,6 +3571,7 @@ CONFIG_PACKAGE_kmod-dnsresolver=m
 # CONFIG_PACKAGE_kmod-gre is not set
 # CONFIG_PACKAGE_kmod-gre6 is not set
 # CONFIG_PACKAGE_kmod-inet-diag is not set
+# CONFIG_PACKAGE_kmod-inet-mptcp-diag is not set
 # CONFIG_PACKAGE_kmod-ip6-tunnel is not set
 # CONFIG_PACKAGE_kmod-ipip is not set
 # CONFIG_PACKAGE_kmod-ipsec is not set
@@ -4146,7 +4150,63 @@ CONFIG_NODEJS_ICU_SMALL=y
 #
 # PHP8
 #
-# CONFIG_PACKAGE_php8 is not set
+CONFIG_PACKAGE_php8=m
+# CONFIG_PACKAGE_php8-cgi is not set
+# CONFIG_PACKAGE_php8-cli is not set
+# CONFIG_PACKAGE_php8-fastcgi is not set
+# CONFIG_PACKAGE_php8-fpm is not set
+# CONFIG_PACKAGE_php8-mod-bcmath is not set
+# CONFIG_PACKAGE_php8-mod-calendar is not set
+# CONFIG_PACKAGE_php8-mod-ctype is not set
+# CONFIG_PACKAGE_php8-mod-curl is not set
+# CONFIG_PACKAGE_php8-mod-dom is not set
+# CONFIG_PACKAGE_php8-mod-exif is not set
+# CONFIG_PACKAGE_php8-mod-fileinfo is not set
+# CONFIG_PACKAGE_php8-mod-filter is not set
+# CONFIG_PACKAGE_php8-mod-ftp is not set
+# CONFIG_PACKAGE_php8-mod-gd is not set
+# CONFIG_PACKAGE_php8-mod-gettext is not set
+# CONFIG_PACKAGE_php8-mod-gmp is not set
+# CONFIG_PACKAGE_php8-mod-iconv is not set
+# CONFIG_PACKAGE_php8-mod-imap is not set
+# CONFIG_PACKAGE_php8-mod-intl is not set
+# CONFIG_PACKAGE_php8-mod-ldap is not set
+# CONFIG_PACKAGE_php8-mod-mbstring is not set
+# CONFIG_PACKAGE_php8-mod-mysqli is not set
+# CONFIG_PACKAGE_php8-mod-mysqlnd is not set
+# CONFIG_PACKAGE_php8-mod-opcache is not set
+# CONFIG_PACKAGE_php8-mod-openssl is not set
+# CONFIG_PACKAGE_php8-mod-pcntl is not set
+# CONFIG_PACKAGE_php8-mod-pdo is not set
+# CONFIG_PACKAGE_php8-mod-pdo-mysql is not set
+# CONFIG_PACKAGE_php8-mod-pdo-pgsql is not set
+# CONFIG_PACKAGE_php8-mod-pdo-sqlite is not set
+# CONFIG_PACKAGE_php8-mod-pgsql is not set
+# CONFIG_PACKAGE_php8-mod-phar is not set
+# CONFIG_PACKAGE_php8-mod-session is not set
+# CONFIG_PACKAGE_php8-mod-shmop is not set
+# CONFIG_PACKAGE_php8-mod-simplexml is not set
+# CONFIG_PACKAGE_php8-mod-snmp is not set
+# CONFIG_PACKAGE_php8-mod-soap is not set
+# CONFIG_PACKAGE_php8-mod-sockets is not set
+# CONFIG_PACKAGE_php8-mod-sodium is not set
+# CONFIG_PACKAGE_php8-mod-sqlite3 is not set
+# CONFIG_PACKAGE_php8-mod-sysvmsg is not set
+# CONFIG_PACKAGE_php8-mod-sysvsem is not set
+# CONFIG_PACKAGE_php8-mod-sysvshm is not set
+# CONFIG_PACKAGE_php8-mod-tokenizer is not set
+# CONFIG_PACKAGE_php8-mod-xml is not set
+# CONFIG_PACKAGE_php8-mod-xmlreader is not set
+# CONFIG_PACKAGE_php8-mod-xmlwriter is not set
+# CONFIG_PACKAGE_php8-mod-zip is not set
+# CONFIG_PACKAGE_php8-pecl-dio is not set
+# CONFIG_PACKAGE_php8-pecl-http is not set
+# CONFIG_PACKAGE_php8-pecl-imagick is not set
+# CONFIG_PACKAGE_php8-pecl-krb5 is not set
+# CONFIG_PACKAGE_php8-pecl-mcrypt is not set
+# CONFIG_PACKAGE_php8-pecl-raphf is not set
+# CONFIG_PACKAGE_php8-pecl-redis is not set
+# CONFIG_PACKAGE_php8-pecl-xdebug is not set
 # end of PHP8
 
 #
@@ -5272,6 +5332,7 @@ CONFIG_PACKAGE_alsa-lib=m
 # CONFIG_PACKAGE_czmq is not set
 # CONFIG_PACKAGE_davici is not set
 # CONFIG_PACKAGE_dtndht is not set
+# CONFIG_PACKAGE_ell is not set
 # CONFIG_PACKAGE_getdns is not set
 # CONFIG_PACKAGE_giflib is not set
 # CONFIG_PACKAGE_glib2 is not set
@@ -5575,7 +5636,7 @@ CONFIG_PCRE2_JIT_ENABLED=y
 # CONFIG_PACKAGE_libpkcs11-spy is not set
 # CONFIG_PACKAGE_libpkgconf is not set
 # CONFIG_PACKAGE_libpng is not set
-# CONFIG_PACKAGE_libpopt is not set
+CONFIG_PACKAGE_libpopt=m
 # CONFIG_PACKAGE_libpri is not set
 # CONFIG_PACKAGE_libprotobuf-c is not set
 # CONFIG_PACKAGE_libpsl is not set
@@ -5936,8 +5997,8 @@ CONFIG_PACKAGE_luci-app-nft-qos=m
 # CONFIG_PACKAGE_luci-app-openthread is not set
 # CONFIG_PACKAGE_luci-app-openvpn is not set
 # CONFIG_PACKAGE_luci-app-openwisp is not set
-CONFIG_PACKAGE_luci-app-opkg=m
 # CONFIG_PACKAGE_luci-app-p910nd is not set
+CONFIG_PACKAGE_luci-app-package-manager=m
 # CONFIG_PACKAGE_luci-app-pagekitec is not set
 # CONFIG_PACKAGE_luci-app-partexp is not set
 # CONFIG_PACKAGE_luci-app-passwall is not set
@@ -6478,40 +6539,40 @@ CONFIG_PACKAGE_luci-i18n-nextdns-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-nft-qos-vi is not set
 CONFIG_PACKAGE_luci-i18n-nft-qos-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-nft-qos-zh-tw=m
-# CONFIG_PACKAGE_luci-i18n-opkg-ar is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-bg is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-bn is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ca is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-cs is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-da is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-de is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-el is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-es is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-fi is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-fr is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-he is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-hi is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-hu is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-it is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ja is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ko is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-lt is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-mr is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ms is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-nl is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-no is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-pl is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-pt is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ro is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-ru is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-sk is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-sv is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-tr is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-uk is not set
-# CONFIG_PACKAGE_luci-i18n-opkg-vi is not set
-CONFIG_PACKAGE_luci-i18n-opkg-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-opkg-zh-tw=m
+# CONFIG_PACKAGE_luci-i18n-package-manager-ar is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-bg is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-bn is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ca is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-cs is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-da is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-de is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-el is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-es is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-fi is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-fr is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-he is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-hi is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-hu is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-it is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ja is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ko is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-lt is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-mr is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ms is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-nl is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-no is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-pl is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-pt is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-pt-br is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ro is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-ru is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-sk is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-sv is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-tr is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-uk is not set
+# CONFIG_PACKAGE_luci-i18n-package-manager-vi is not set
+CONFIG_PACKAGE_luci-i18n-package-manager-zh-cn=m
+CONFIG_PACKAGE_luci-i18n-package-manager-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-qos-ar is not set
 # CONFIG_PACKAGE_luci-i18n-qos-bg is not set
 # CONFIG_PACKAGE_luci-i18n-qos-bn is not set
@@ -6824,9 +6885,9 @@ CONFIG_PACKAGE_yt-dlp=m
 # Download Manager
 #
 # CONFIG_PACKAGE_ariang is not set
-# CONFIG_PACKAGE_ariang-nginx is not set
+CONFIG_PACKAGE_ariang-nginx=m
 # CONFIG_PACKAGE_leech is not set
-# CONFIG_PACKAGE_webui-aria2 is not set
+CONFIG_PACKAGE_webui-aria2=m
 # end of Download Manager
 
 #
@@ -6854,13 +6915,18 @@ CONFIG_ARIA2_WEBSOCKET=y
 # CONFIG_PACKAGE_atftpd is not set
 # CONFIG_PACKAGE_croc is not set
 CONFIG_PACKAGE_curl=y
-# CONFIG_PACKAGE_lftp is not set
+CONFIG_PACKAGE_lftp=m
 # CONFIG_PACKAGE_ps3netsrv is not set
 # CONFIG_PACKAGE_rclone is not set
 # CONFIG_PACKAGE_rclone-config is not set
-# CONFIG_PACKAGE_rsync is not set
+CONFIG_PACKAGE_rsync=m
+# CONFIG_RSYNC_xattr is not set
+# CONFIG_RSYNC_acl is not set
+# CONFIG_RSYNC_zstd is not set
+# CONFIG_RSYNC_lz4 is not set
+# CONFIG_RSYNC_xxhash is not set
 # CONFIG_PACKAGE_rsyncd is not set
-# CONFIG_PACKAGE_vsftpd is not set
+CONFIG_PACKAGE_vsftpd=m
 # CONFIG_PACKAGE_vsftpd-alt is not set
 # CONFIG_PACKAGE_vsftpd-tls is not set
 # CONFIG_PACKAGE_wget-nossl is not set
@@ -7482,6 +7548,7 @@ CONFIG_PACKAGE_apache=m
 # CONFIG_PACKAGE_apache-mod-ldap is not set
 # CONFIG_PACKAGE_apache-mod-lua is not set
 # CONFIG_PACKAGE_apache-mod-md is not set
+# CONFIG_PACKAGE_apache-mod-php8 is not set
 # CONFIG_PACKAGE_apache-mod-proxy is not set
 # CONFIG_PACKAGE_apache-mod-proxy-html is not set
 # CONFIG_PACKAGE_apache-mod-session-crypto is not set
@@ -7849,6 +7916,8 @@ CONFIG_PACKAGE_iw=y
 # CONFIG_PACKAGE_mosquitto-client-ssl is not set
 # CONFIG_PACKAGE_mosquitto-nossl is not set
 # CONFIG_PACKAGE_mosquitto-ssl is not set
+# CONFIG_PACKAGE_mptcpd is not set
+# CONFIG_PACKAGE_mptcpize is not set
 # CONFIG_PACKAGE_mtr-json is not set
 # CONFIG_PACKAGE_mtr-nojson is not set
 # CONFIG_PACKAGE_natmap is not set
