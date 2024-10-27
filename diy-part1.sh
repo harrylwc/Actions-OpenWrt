@@ -17,7 +17,7 @@ echo "Job name is $GITHUB_JOB"
 #git1 checkout 22.03_b202210282250 #5.15.74
 #git1 checkout 9.0_b202110300939 #5.4.155
 
-#git checkout 22.03_b202210282250 #5.15.74
+git checkout 22.03_b202210282250 ;cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.15 $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt
 #git checkout 22.03_b202210282250 #5.15.74
 #cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt
 #cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4
@@ -25,7 +25,7 @@ echo "Job name is $GITHUB_JOB"
 #mv $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_v21.02.1.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch
 
 
-git checkout v21.02.7; mv $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_v21.02.7.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch 
+#git checkout v21.02.7; mv $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_v21.02.7.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch 
 #git checkout v21.02.1 ;mv $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs_v21.02.1.patch $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch;cp $GITHUB_WORKSPACE/myconfig/config.ramips.v21.02.1 $GITHUB_WORKSPACE/;cp myconfig/config.ramips.2.kernel5.4 ; cp $GITHUB_WORKSPACE/patches/Makefile.ccache.4.2.1 $GITHUB_WORKSPACE/x-wrt/tools/ccache/Makefile 
 
 #git checkout 0eed96ca5d8 
