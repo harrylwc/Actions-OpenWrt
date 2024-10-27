@@ -18,7 +18,7 @@ echo "Job name is $GITHUB_JOB"
 #git1 checkout 22.03_b202210282250 #5.15.74
 #git1 checkout 9.0_b202110300939 #5.4.155
 
-git checkout 22.03_b202210282250 #5.15.74
+git checkout 9.0_b202110300939 #5.4.155
 #cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt
 #cp $GITHUB_WORKSPACE/myconfig/config.ramips.2.x-wrt.kernel5.4 $GITHUB_WORKSPACE/myconfig/config.ramips.2.kernel5.4
 
