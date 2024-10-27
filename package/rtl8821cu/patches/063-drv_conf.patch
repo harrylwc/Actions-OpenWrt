@@ -1,0 +1,13 @@
+--- a/include/drv_conf.h
++++ b/include/drv_conf.h
+@@ -73,7 +73,9 @@
+ #endif
+ 
+ /* Default enable single wiphy if driver ver >= 5.9 */
+-#define RTW_SINGLE_WIPHY
++#ifndef RTW_SINGLE_WIPHY
++	#define RTW_SINGLE_WIPHY
++#endif
+ 
+ #ifdef CONFIG_RTW_ANDROID
+ 
