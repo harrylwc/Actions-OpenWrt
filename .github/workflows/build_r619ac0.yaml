@@ -299,9 +299,10 @@ jobs:
            cp myconfig/config.r619ac.0 x-wrt/.config
 
            cd x-wrt 
-           make -j$(nproc) || make -j1 V=s                                                                                          
+           make -j$(nproc) 
+           #|| make -j1 V=s                                                                                          
            #|| make -j1 V=s
-           [ $? != 0 ] && make V=s || echo "build success" 
+           #[ $? != 0 ] && make V=s || echo "build success" 
            #cp -f bin/targets/ipq40xx/generic/openwrt-ipq40xx-generic-p2w_r619ac-128m-squashfs-sysupgrade.bin bin/targets/ipq40xx/drivers/  
            df -kh
       - name: SSH connection for failure Debug
