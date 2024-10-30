@@ -21,8 +21,8 @@ on:
   #push:
    #branches: 
     #- master
- schedule:
-    - cron: "45 13 * * *"
+ #schedule:
+  #  - cron: "45 13 * * *"
 
   #workflow_dispatch:    
     
