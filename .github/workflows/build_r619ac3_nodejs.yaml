@@ -7,11 +7,11 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile mvebu openwrt cache 
+name: Compile R619AC3 TVH x-wrt Images  
 
 on:
  #repository_dispatch:
-  #  types: [ipq40xx_completed]
+    #types: [ipq40xx_completed]
  workflow_dispatch:    
     inputs:
       ssh:
@@ -21,32 +21,36 @@ on:
   #push:
    #branches: 
     #- master
- #schedule:
-  #  - cron: "45 13 * * *"
+ schedule:
+    - cron: "45 15 * * *"
+  #release:
+   # types: [published]
+  #watch:
+    #types: started
 
   #workflow_dispatch:    
     
 env:
   #####change model here ####@# 
-  ROUTER_MODEL: wrt1200ac
+  ROUTER_MODEL: r619ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.0.openwrt
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.3
   BUILD_KERNEL_MODULES: true
-  DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
-  KERNEL_CONFIG: 'myconfig/kernel_config.wrt1200ac'
-  #KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq4x00
+  DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
+  KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
+  KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq40xx
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
-  KERNEL_CONFIG_DIR: x-wrt/target/linux/mvebu
+  #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
-  KERNEL_VERSION: '6.6'
-  #KERNEL_VERSION: '5.15'                                                                            
+  #KERNEL_VERSION: '5.15'
+  KERNEL_VERSION: '6.6'                                                                            
   UPDATE_MULTI_CORE_FILE1: myconfig/sys.lua
   UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
-  KERNEL_MODULE: myconfig/kernel_wrt1200ac
+  KERNEL_MODULE: myconfig/kernel_r619ac
   FEEDS_CONF: feeds.conf.default
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
@@ -60,11 +64,10 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build mvebu openwrt cache
-    runs-on: ubuntu-22.04
-    #4runs-on: ubuntu-latest
+    name: Build R619AC x-wrt TVH firmware
+    #runs-on: ubuntu-latest
     #continue-on-error: true 
-    #runs-on: ubuntu-22.10
+    runs-on: ubuntu-22.04
     #if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
@@ -78,13 +81,11 @@ jobs:
           cat /proc/cpuinfo|grep proc
           echo cpu core=$(nproc)
           free
-  
       - name: Update feeds & Load custom configuration
         run: |
           #cat /proc/cpuinfo|grep model
           #cat /proc/cpuinfo|grep proce
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
-          sed -i 's/github.com\/x-wrt\/x-wrt/git.openwrt.org\/openwrt\/openwrt.git x-wrt/g' $GITHUB_WORKSPACE/$DIY_P1_SH
           $GITHUB_WORKSPACE/$DIY_P1_SH
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -94,15 +95,16 @@ jobs:
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
         run: |
-          #target_device_arch_1="mvebu_ipq40xx_ramips"
-          #target_device_arch_1="mvebu_openwrt"
-          target_device_arch_1="mvebu_openwrt"
+          target_device_arch_1="ipq40xx"
+          #target_device_arch_1="ipq40xx"
+          #target_device_arch_1="mvebu"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           #gcc_hash='37dab1b7'       
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
           mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
           #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}"
           echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
+     
       - name: Cache1
         uses: HiGarfield/cachewrtbuild@main 				#klever1988/cachewrtbuild@main 
         with:
@@ -111,14 +113,13 @@ jobs:
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
-
       - name: Clear Cache
         if: env.CLEARCACHE == 'true'
         run: |
           gh extension install actions/gh-actions-cache
           REPO=${{ github.repository }}
           BRANCH="master"
-          #target_device_arch_1="ipq40xx"
+          #target_device_arch_1="ipq40xx" 
           #echo "Fetching list of cache key"
           list_of_caches=$(gh actions-cache  --sort created-at list -R $REPO -B $BRANCH -L 100| cut -f 1)
           echo $list_of_caches
@@ -142,30 +143,41 @@ jobs:
           SSH_ACTIONS: true
           DEBIAN_FRONTEND: noninteractive
         run: |
+          apt list --installed
           #/usr/bin/tar -xf /home/runner/work/_temp/1a144490-77f9-4c00-ae54-698cee23f6b0/cache.tgz -P -C /home/runner/work/Actions-OpenWrt/Actions-OpenWrt -z
           #ls -alt ${{ github.workspace }}/x-wrt/staging_dir/*
           docker rmi `docker images -q`
+          #sudo apt remove firefox powershell microsoft-edge* temurin* php* nginx dotnet* ubuntu-gnome-desktop gnome-shell golang* google* mysql* ruby* apach* r-*
+          
           sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
           sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
           sudo -E apt-get update
           sudo -E apt-get -y install opencc ccache build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libfuse-dev libz-dev patch python3 unzip zlib1g-dev lib32gcc-s1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler antlr3 gperf swig libtinfo5
           #sudo -E apt-get update
           #sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libfuse-dev libz-dev patch python3 unzip zlib1g-dev lib32gcc-s1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler antlr3 gperf swig libtinfo5 --fix-missing
+          sudo apt-get purge --auto-remove azure* openjdk* firefox* powershell* microsoft-edge* temurin* r-* php* nginx dotnet* ubuntu-gnome-desktop gnome-shell golang* google* mysql* ruby* apach*
+          
           sudo -E apt-get -y autoremove --purge
-          sudo rm -rf /usr/share/dotnet
-          sudo rm -rf /opt/ghc
-          sudo rm -rf "/usr/local/share/boost"
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"          
           #sudo pip install ply 
           #sudo -E python3 -m pip install --upgrade pip 
           #sudo -E pip install --no-cache-dir --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org pip setuptools
           sudo -E apt-get clean
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo apt-get autoremove
+          sudo apt-get autoclean -y 
           sudo swapoff -a
           sudo rm -f /swapfile
-          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+          sudo rm -rf /usr/local/lib/android
+          sudo apt-get autoremove
+          sudo apt-get autoclean -y 
+          sudo swapoff -a
+          sudo rm -f /swapfile
           sudo rm -f /usr/local/share/chromium/chrome-linux/chrome
           sudo rm -f /opt/microsoft/msedge/msedge
-          sudo apt-get purge --auto-remove azure* openjdk* firefox* powershell* microsoft-edge* temurin* r-* php* nginx dotnet* ubuntu-gnome-desktop gnome-shell golang* google* mysql* ruby* apach* 
+          sudo rm -f /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/.git/objects/pack/pack-*.pack
           df -kh
           #find /home/runner/work/_temp/ -name "*cache*"
      # - name: Run migrations
@@ -197,13 +209,21 @@ jobs:
 
        #   sed -i 's/^[ \t]*//g' ./.config
         #  make defconfig
-
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
         with:
         # this might remove tools that are actually needed,
         # if set to "true" but frees about 6 GB
           tool-cache: false
+        
+        # all of these default to true, but feel free to set to
+        # "false" if necessary for your workflow
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: false
+          docker-images: true
+          swap-storage: true
 
       - name: Make download
         run: |
@@ -224,6 +244,7 @@ jobs:
            
       - name: Compile firmware
         run: |
+          #cp patches/110-mtd-limit-OTP-nvmem-to-non-nand-devices.patch x-wrt/target/linux/ipq40xx/patches-6.6/ 
           cd x-wrt
           [ -d "build_dir" ] && sudo mv build_dir /mnt/ || ( mkdir build_dir;sudo mv build_dir /mnt/ )
           ln -s /mnt/build_dir .
@@ -231,14 +252,29 @@ jobs:
           ln -s /mnt/dl .
           [ -d "bin" ] && sudo mv bin /mnt/ || ( mkdir bin;sudo mv bin /mnt/ )
           ln -s /mnt/bin .
-          
-          #cp config.r619ac.0.openwrt  .config
+          # rm dl/rrdtool*
+          #wget https://oss.oetiker.ch/rrdtool/pub/archive/rrdtool-1.0.x/rrdtool-1.0.50.tar.gz
+          #wget https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz
+          #cd ../
+          #cp $GITHUB_WORKSPACE/myconfig/config.r619ac.0 .config
           #echo cpu core=$(nproc)
-          
-          #make -j$(nproc) #|| make -j1 V=s
+          #make -j$(nproc) || make -j1 V=s
           #[ $? != 0 ] && make V=s || echo "build success"
+          df -kh
+          #rm `find $GITHUB_WORKSPACE/x-wrt/build_dir/ -name *.o`
+          #du -a / | sort -n -r | head -n 20>/tmp/largefiles.txt
+          #cat /tmp/largefiles.txt
           
-          
+          df -kh
+          #make V=99 2>&1 |tee build.log
+          #     echo "======================="
+          #echo "Space usage:"
+          #echo "======================="
+          df -kh
+          #echo "======================="
+          #du -h ./ --max-depth=1
+          #du -h ~/work/x-wrt --max-depth=1 || true
+          #sudo find build_dir/ -name *.o -exec rm {} + 
       
       -  name: SSH connection for failure Debug
          if: ${{ failure() }}
@@ -260,13 +296,44 @@ jobs:
       - name: Compile again after .config updated or add kernel modules
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
+           #sudo rm -r $GITHUB_WORKSPACE/x-wrt/dl
+           #cp $GITHUB_WORKSPACE/lede/target/linux/generic/backport-5.10/35?*.patch $GITHUB_WORKSPACE/x-wrt/target/linux/generic/backport-5.10/
+           #cp $GITHUB_WORKSPACE/lede/package/kernel/linux/modules/fs.mk $GITHUB_WORKSPACE/x-wrt/package/kernel/linux/modules/ 
+           #cp myconfig/config.r619ac.2 x-wrt/.config
+           #cp -f $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/usr/bin/apr-1-config $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/ 
+           #cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config 
            cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
+
            mkdir -p $DRIVERS_DIR
-           cd x-wrt  
-           make -j$(nproc) #|| make -j1 V=s
-            
-           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
+           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
+           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y/g' x-wrt/.config
+           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y/g' x-wrt/.config                    
+           cd x-wrt 
+           make -j$(nproc) #|| make -j1 V=s                                                                                   
+           cd ../ 
+           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
+           chmod 755 $DRIVERS_DIR/busybox 
+           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config                                                                    
+           #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
+           
+           #cat myconfig/config.tvh.ffmpeg >> .config
+           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
+           cd x-wrt 
+
+           sudo rm -rf /usr/share/dotnet
+           sudo rm -rf /opt/ghc
+           sudo rm -rf "/usr/local/share/boost"
+           sudo rm -rf "$AGENT_TOOLSDIRECTORY" 
+           #sudo rm -rf $GITHUB_WORKSPACE/lede
+           #make kernel_menuconfig -j4
            echo cpu core=$(nproc)
+           #ln -s /usr/bin/ccache /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/staging_dir/host/bin/ccache 
+           make -j$(nproc)
+           #|| make -j1 V=s
+           #[ $? != 0 ] && make V=s || echo "build success" 
+           cp -f bin/targets/ipq40xx/generic/openwrt-ipq40xx-generic-p2w_r619ac-128m-squashfs-sysupgrade.bin bin/targets/ipq40xx/drivers/  
            df -kh
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
@@ -281,8 +348,8 @@ jobs:
           #mkdir -p ./artifact/package
           #mkdir -p ./artifact/buildinfo
           #mkdir -p $DRIVERS_DIR
-          cp -f `find x-wrt/build_dir/target*a9*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR
-          #cp -f x-wrt/build_dir/target*a9*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
+          cp -rf `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko|grep -v oot` $DRIVERS_DIR
+          #cp -rf x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
           #cp -f .config bin/
           #cp -f myconfig/config.$ROUTER_MODEL.? bin/
           #rm -rf $(find ./bin/targets/ -type d -name "packages")
@@ -295,13 +362,13 @@ jobs:
           [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
           echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
           find x-wrt/bin/targets |grep kmod|tail -1|cut -d _ -f2|cut -d - -f1 > KERNEL_VER
-          #strings $DRIVERS_DIR/usbhid.ko |grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
+          #strings $DRIVERS_DIR/ext4.ko |grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
           #strings $DRIVERS_DIR/rtl8821cu.ko |grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
           [ -s KERNEL_VER ] && echo "KERNEL_VER=_$(cat KERNEL_VER)" >> $GITHUB_ENV
       - name: Upload bin directory
         uses: actions/upload-artifact@master
         with:
-          name: OpenWrt_snapshots_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
+          name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
            #OpenWrt_bin_${{ env.ROUTER_MODEL }}
           path: x-wrt/bin
       - name: SSH connection for failure Debug
@@ -348,13 +415,3 @@ jobs:
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
-      - name: Send repository_dispatch
-        env:
-         PAT: ${{ secrets.GITHUB_TOKEN }} 
-        run: |
-         curl \
-         -X POST \
-         -H "Authorization: token $PAT" \
-         -H "Accept: application/vnd.github.v3+json" \
-         https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
-         -d '{"event_type":"mvebu_openwrt_completed"}'           

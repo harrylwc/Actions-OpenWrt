@@ -7,22 +7,29 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile ipq40xx openwrt cache 
+name: Compile WRT1200AC3 TVH x-wrt Images  
 
 on:
- #repository_dispatch:
-  #  types: [ipq40xx_completed]
- workflow_dispatch:    
+  repository_dispatch:
+    types: [mvebu_completed]
+  workflow_dispatch:    
     inputs:
       ssh:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
+        
+       
+  
   #push:
    #branches: 
     #- master
- #schedule:
-    #- cron: "15 15 * * *"
+  schedule:
+    - cron: "45 15 * * *"
+  #release:
+   # types: [published]
+  watch:
+    types: started
 
   #workflow_dispatch:    
     
@@ -30,7 +37,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: wrt1200ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.0.openwrt
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.3
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.wrt1200ac'
@@ -60,11 +67,10 @@ jobs:
 
   build_openwrt:
     ###@####
-    name: Build ipq40xx openwrt cache
-    runs-on: ubuntu-22.04
-    #4runs-on: ubuntu-latest
+    name: Build WRT1200AC TVH x-wrt firmware
+    #runs-on: ubuntu-latest
     #continue-on-error: true 
-    #runs-on: ubuntu-22.10
+    runs-on: ubuntu-22.04
     #if: github.event.repository.owner.id == github.event.sender.id
     steps:
       - name: Checkout
@@ -84,7 +90,6 @@ jobs:
           #cat /proc/cpuinfo|grep model
           #cat /proc/cpuinfo|grep proce
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
-          sed -i 's/github.com\/x-wrt\/x-wrt/git.openwrt.org\/openwrt\/openwrt.git x-wrt/g' $GITHUB_WORKSPACE/$DIY_P1_SH
           $GITHUB_WORKSPACE/$DIY_P1_SH
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
@@ -95,8 +100,8 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
         run: |
           #target_device_arch_1="mvebu_ipq40xx_ramips"
-          #target_device_arch_1="mvebu_openwrt"
-          target_device_arch_1="ipq40xx_openwrt"
+          target_device_arch_1="mvebu"
+          #target_device_arch_2="mvebu"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
           #gcc_hash='37dab1b7'       
           ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
@@ -111,6 +116,8 @@ jobs:
           #prefix: ${{ env.WORKING_DIR }}
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
+
+
 
       - name: Clear Cache
         if: env.CLEARCACHE == 'true'
@@ -232,9 +239,11 @@ jobs:
           [ -d "bin" ] && sudo mv bin /mnt/ || ( mkdir bin;sudo mv bin /mnt/ )
           ln -s /mnt/bin .
           
+  
+          #cp config.wrt1200ac.0 .config
           #echo cpu core=$(nproc)
           
-          #make -j$(nproc) #|| make -j1 V=s
+          #make -j$(nproc) || make -j1 V=s
           #[ $? != 0 ] && make V=s || echo "build success"
           
           
@@ -259,13 +268,38 @@ jobs:
       - name: Compile again after .config updated or add kernel modules
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
+           
            cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
+           #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
+           #cp -f $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/usr/bin/apr-1-config $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/ 
+          
            mkdir -p $DRIVERS_DIR
+           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
+           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
+           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y/g' x-wrt/.config
+           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y/g' x-wrt/.config
            cd x-wrt  
            make -j$(nproc) #|| make -j1 V=s
-            
+           cd ../
+           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR
+           chmod 755 $DRIVERS_DIR/busybox                            
+           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
+           #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
+ 
+           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION 
+           cd x-wrt 
+           
            sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+           #sudo rm -rf $GITHUB_WORKSPACE/lede
            echo cpu core=$(nproc)
+           #make kernel_menuconfig -j4
+           #ln -s /usr/bin/ccache /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/staging_dir/host/bin/ccache 
+           #make V=s
+           make -j$(nproc)
+           #|| make -j1 V=s
+           #[ $? != 0 ] && make V=s || echo "build success" 
+           cp -f bin/targets/mvebu/cortexa9/openwrt-mvebu-cortexa9-linksys_wrt1200ac-squashfs-sysupgrade.bin bin/targets/mvebu/drivers/                                                               
            df -kh
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
@@ -280,8 +314,8 @@ jobs:
           #mkdir -p ./artifact/package
           #mkdir -p ./artifact/buildinfo
           #mkdir -p $DRIVERS_DIR
-          cp -f `find x-wrt/build_dir/target*a7*/linux*/linux-*/ -name *.ko` $DRIVERS_DIR
-          #cp -f x-wrt/build_dir/target*a9*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
+          cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko|grep -v oot` $DRIVERS_DIR
+          #cp -f x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
           #cp -f .config bin/
           #cp -f myconfig/config.$ROUTER_MODEL.? bin/
           #rm -rf $(find ./bin/targets/ -type d -name "packages")
@@ -300,7 +334,7 @@ jobs:
       - name: Upload bin directory
         uses: actions/upload-artifact@master
         with:
-          name: OpenWrt_snapshots_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
+          name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
            #OpenWrt_bin_${{ env.ROUTER_MODEL }}
           path: x-wrt/bin
       - name: SSH connection for failure Debug
@@ -347,13 +381,3 @@ jobs:
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
-      - name: Send repository_dispatch
-        env:
-         PAT: ${{ secrets.GITHUB_TOKEN }} 
-        run: |
-         curl \
-         -X POST \
-         -H "Authorization: token $PAT" \
-         -H "Accept: application/vnd.github.v3+json" \
-         https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
-         -d '{"event_type":"ipq40xx_openwrt_completed"}'           
