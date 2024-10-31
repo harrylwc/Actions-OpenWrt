@@ -10,8 +10,8 @@
 name: Compile R619AC3 TVH x-wrt Images  
 
 on:
- #repository_dispatch:
-    #types: [ipq40xx_completed]
+ repository_dispatch:
+    types: [ipq40xx_completed]
  workflow_dispatch:    
     inputs:
       ssh:
