@@ -249,7 +249,6 @@ jobs:
           sed -i 's/CONFIG_PACKAGE_node=m/#CONFIG_PACKAGE_node=m/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
           sed -i 's/CONFIG_NODEJS_ICU_SMALL=y/#CONFIG_NODEJS_ICU_SMALL=y/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
           sed -i 's/CONFIG_PACKAGE_node-npm=m/#CONFIG_PACKAGE_node-npm=m/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
-          cat $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE|grep node-npm 
           [ -d "build_dir" ] && sudo mv build_dir /mnt/ || ( mkdir build_dir;sudo mv build_dir /mnt/ )
           ln -s /mnt/build_dir .
           sudo mv dl /mnt/
@@ -307,7 +306,7 @@ jobs:
            #cp -f $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/usr/bin/apr-1-config $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/ 
            #cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config 
            cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
-
+           cat $GITHUB_WORKSPACE/x-wrt/.config|grep -i node
            mkdir -p $DRIVERS_DIR
            #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
            #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
