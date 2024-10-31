@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile R619AC3 TVH x-wrt Images  
+name: Compile R619AC3 TVH x-wrt nodejs Images  
 
 on:
  repository_dispatch:
