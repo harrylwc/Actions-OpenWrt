@@ -7,11 +7,11 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile WRT1200AC TVH OpenWrt offical Images  
+name: Compile WRT1200AC TVH nodejs OpenWrt offical Images  
 
 on:
-  #repository_dispatch:
-    #types: [mvebu_openwrt_completed]
+  repository_dispatch:
+    types: [mvebu_openwrt_completed]
   workflow_dispatch:    
     inputs:
       ssh:
@@ -231,10 +231,6 @@ jobs:
       - name: Compile firmware
         run: |
           cd x-wrt
-          sed -i 's/CONFIG_PACKAGE_node=m/#CONFIG_PACKAGE_node=m/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
-          sed -i 's/CONFIG_NODEJS_ICU_SMALL=y/#CONFIG_NODEJS_ICU_SMALL=y/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
-          sed -i 's/CONFIG_PACKAGE_node-npm=m/#CONFIG_PACKAGE_node-npm=m/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
- 
           [ -d "build_dir" ] && sudo mv build_dir /mnt/ || ( mkdir build_dir;sudo mv build_dir /mnt/ )
           ln -s /mnt/build_dir .
           sudo mv dl /mnt/
@@ -385,13 +381,3 @@ jobs:
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
-      - name: Send repository_dispatch
-        env:
-         PAT: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-         curl \
-         -X POST \
-         -H "Authorization: token $PAT" \
-         -H "Accept: application/vnd.github.v3+json" \
-         https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
-         -d '{"event_type":"mvebu_openwrt_completed"}'
