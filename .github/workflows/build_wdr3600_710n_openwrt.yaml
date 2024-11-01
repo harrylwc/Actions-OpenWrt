@@ -34,13 +34,13 @@ env:
   #https://github.com/openwrt/openwrt.git
   REPO_URL1: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: 'master'
-  ROUTER_MODEL: ramips
+  ROUTER_MODEL: ar79
   TVH: false
   BUILD_KERNEL_MODULES: true
-  DRIVERS_DIR: x-wrt/bin/targets/ramips/drivers
+  DRIVERS_DIR: x-wrt/bin/targets/ath79/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.ramips'
   #KERNEL_CONFIG_DIR: target/linux/ipq40xx
-  KERNEL_CONFIG_DIR: x-wrt/target/linux/ramips/mt7620
+  KERNEL_CONFIG_DIR: x-wrt/target/linux/ath79
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
@@ -58,7 +58,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
-  target_device_arch_1: ramips_openwrt
+  target_device_arch_1: ath79
   CLEARCACHE: true
 jobs:
 
@@ -94,7 +94,7 @@ jobs:
         working-directory: ${{ env.WORKING_DIR }}
 
         run: |
-          #target_device_arch_1="mvebu_ipq40xx_ramips"
+          target_device_arch_1="ath79"
           #target_device_arch_1="ramips_openwrt"
           #target_device_arch_2="ramips"
           gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
@@ -114,14 +114,13 @@ jobs:
           prefix: ${{ github.workspace }}/x-wrt
           #skip_saving: 'true'
 
-
       - name: Clear Cache
         if: env.CLEARCACHE == 'true'
         run: |
           gh extension install actions/gh-actions-cache
           REPO=${{ github.repository }}
           BRANCH="master"
-          #target_device_arch_1="ipq40xx"
+          #target_device_arch_1="ath79"
           #echo "Fetching list of cache key"
           list_of_caches=$(gh actions-cache  --sort created-at list -R $REPO -B $BRANCH -L 100| cut -f 1)
           echo $list_of_caches
