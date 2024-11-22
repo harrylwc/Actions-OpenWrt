@@ -1,0 +1,380 @@
+
+#
+# This is free software, lisence use MIT.
+# 
+# Copyright (C) 2019 P3TERX <https://p3terx.com>
+# Copyright (C) 2020 KFERMercer <KFER.Mercer@gmail.com>
+# 
+# <https://github.com/KFERMercer/OpenWrt-CI>
+#
+####@
+name: Compile ipq60xx lastest x-wrt Images  
+on:
+  #push:
+   # branches: 
+    #  - master
+# repository_dispatch:
+ #   types: [ramips_completed]
+ workflow_dispatch:    
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+ #schedule:
+  #   - cron: 00 20 * * *
+  #release:
+   # types: [published]
+ watch:
+     types: started
+ # release:
+  #  types: [published]
+  #watch:
+   # types: started
+
+  #workflow_dispatch:    
+
+
+env:
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.ipq60xx.3
+  #####change model here ####@# 
+  REPO_URL: https://github.com/x-wrt/x-wrt
+  #https://github.com/openwrt/openwrt.git
+  REPO_URL1: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: 'master'
+  ROUTER_MODEL: ipq60xx
+  TVH: false
+  BUILD_KERNEL_MODULES: true
+  DRIVERS_DIR: x-wrt/bin/targets/ipq60xx/drivers
+  KERNEL_CONFIG: 'myconfig/kernel_config.ramips'
+  #KERNEL_CONFIG_DIR: target/linux/ipq40xx
+  KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq60xx
+  #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
+  #KERNEL_CONFIG_DIR: target/linux/mvebu
+  MAKEMENU_CONFIG: false
+  KERNEL_MENUCONFIG: true
+  CPU_MULTI_CORE: false
+  
+  KERNEL_VERSION: '6.6'
+  UPDATE_MULTI_CORE_FILE1: myconfig/sys.lua
+  UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
+  KERNEL_MODULE: myconfig/kernel_modules.txt
+  FEEDS_CONF: feeds.conf.default
+  DIY_P1_SH: diy-part1.sh
+  DIY_P2_SH: diy-part2.sh
+  SSH_ACTIONS: true
+  UPLOAD_FIRMWARE: true
+  UPLOAD_WETRANSFER: false
+  TZ: Asia/Shanghai
+  target_device_arch_1: ramips
+  CLEARCACHE: true
+jobs:
+
+  build_openwrt:
+    ###@####
+    name: Build ipq60xx lastest x-wrt firmware
+    runs-on: ubuntu-22.04 
+    #runs-on: ubuntu-latest
+    #if: github.event.repository.owner.id == github.event.sender.id
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: master
+          fetch-depth: 0   
+      - name: Check CPU model
+        run: |                                                    
+          cat /proc/cpuinfo|grep model                            
+          cat /proc/cpuinfo|grep proc     
+          echo cpu core=$(nproc)
+      - name: Update feeds & Load custom configuration
+        run: |
+          chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
+          #sed -i 's/github.com\/x-wrt\/x-wrt/git.openwrt.org\/openwrt\/openwrt.git x-wrt/g' $GITHUB_WORKSPACE/$DIY_P1_SH
+          $GITHUB_WORKSPACE/$DIY_P1_SH
+          chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
+          $GITHUB_WORKSPACE/$DIY_P2_SH
+          sudo timedatectl set-timezone "$TZ"
+
+      - name: Generate cache mixkey
+
+        id: gen_cache_mixkey
+
+        working-directory: ${{ env.WORKING_DIR }}
+
+        run: |
+          target_device_arch_1="ipq60xx"
+          #target_device_arch_1="ipq60xx_openwrt"
+          #target_device_arch_2="ramips"
+          gcc_hash=$(gcc --version | sha256sum | awk '{print substr($1,1,8)}')
+          echo "gcc_hash="$gcc_hash
+          #gcc_hash='37dab1b7'       ###force cahche version
+          ldd_hash=$(ldd --version | sha256sum | awk '{print substr($1,1,8)}')
+          mixkey1="${target_device_arch_1}-${gcc_hash}-${ldd_hash}"
+          #mixkey2="${target_device_arch_2}-${gcc_hash}-${ldd_hash}
+          echo "mixkey1=$mixkey1" >> $GITHUB_OUTPUT
+
+      - name: Cache1
+        uses: HiGarfield/cachewrtbuild@main                             #klever1988/cachewrtbuild@main
+        with:
+          ccache: 'true'
+          mixkey: ${{ steps.gen_cache_mixkey.outputs.mixkey1 }}
+          #prefix: ${{ env.WORKING_DIR }}
+          prefix: ${{ github.workspace }}/x-wrt
+          #skip_saving: 'true'
+
+      - name: Clear Cache
+        if: env.CLEARCACHE == 'true'
+        run: |
+          gh extension install actions/gh-actions-cache
+          REPO=${{ github.repository }}
+          BRANCH="master"
+          #target_device_arch_1="ipq40xx"
+          #echo "Fetching list of cache key"
+          list_of_caches=$(gh actions-cache  --sort created-at list -R $REPO -B $BRANCH -L 100| cut -f 1)
+          echo $list_of_caches
+          no_of_cache=$(gh actions-cache list -R $REPO -B $BRANCH -L 100|wc -l)
+          echo no of cache found = $no_of_cache
+          if [ "$no_of_cache" -gt 6 ]
+          then
+          cacheKey=$(gh actions-cache  --sort created-at list -R $REPO -B $BRANCH -L 100| cut -f 1|tail -1 )
+          ## Setting this to not fail the workflow while deleting cache keys.
+          set +e
+          echo "Deleting caches..."
+          gh actions-cache delete $cacheKey -R $REPO -B $BRANCH --confirm
+          echo $cacheKey
+          echo "Done"
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+
+      - name: Space cleanup
+        env:
+          SSH_ACTIONS: true
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          #ls -alt ${{ github.workspace }}/x-wrt/staging_dir/*
+          docker rmi `docker images -q`
+          sudo rm -rf /usr/share/dotnet /etc/mysql /etc/php /etc/apt/sources.list.d /usr/local/lib/android
+          sudo -E apt-get -y purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* adoptopenjdk* mysql* php* mongodb* dotnet* moby* snapd* || true
+          sudo -E apt-get update
+          sudo -E apt-get -y install ccache build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 unzip zlib1g-dev libfuse-dev lib32gcc-s1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler antlr3 gperf swig libtinfo5
+          sudo -E apt-get -y autoremove --purge
+          sudo -E apt-get clean
+          df -kh
+     # - name: Run migrations
+      #  run: sh ./github/scripts/migrate.sh
+       # env:
+        # ENVIRONMENT_VARIABLE_NAME: ${{ secrets.ENVIRONMENT_VARIABLE_NAME }}
+          # echo 'HELLO_WORLD='${{ secrets.HELLO_WORLD }} >> .env // Code line 1
+    
+    #
+      #- name: Generate configuration file
+       #  run: |
+         
+          #rm -f ./.config*
+          #touch ./.config
+
+          #
+          # 在 cat >> .config <<EOF 到 EOF 之间粘贴你的编译配置, 需注意缩进关系
+          # 例如:
+
+          #cat >> .config <<EOF
+          #CONFIG_TARGET_IMAGES_GZIP=y
+          #CONFIG_KERNEL_BUILD_USER="OpenWrt-CI"
+          #CONFIG_KERNEL_BUILD_DOMAIN="Azure"
+          #EOF
+
+          #
+          # ===============================================================
+          # 
+
+       #   sed -i 's/^[ \t]*//g' ./.config
+        #  make defconfig
+
+      - name: Make download
+        run: |
+          cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config 
+          cd x-wrt
+          make download -j8 || make download -j1 V=s
+          rm -rf $(find ./dl/ -size -1024c)
+          df -h
+      - name: SSH connection for make menuconfig
+        if: env.MAKEMENU_CONFIG == 'true'
+        uses: P3TERX/ssh2actions@main
+        env:
+         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+         TELEGRAM_CHAT_ID: 1373335316
+      - name: SSH链接管理
+        uses: P3TERX/ssh2actions@v1.0.0
+        if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+        env:
+         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+         TELEGRAM_CHAT_ID: 1373335316     
+         
+      - name: Compile firmware
+        run: |
+          cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
+          cd x-wrt
+          ls -alt $GITHUB_WORKSPACE/x-wrt/.config
+          echo cpu core=$(nproc)
+          #make -j$(nproc) || make -j1 V=s
+          #[ $? != 0 ] && make V=s || echo "build success"
+          
+          #     echo "======================="
+          #echo "Space usage:"
+          #echo "======================="
+          df -kh
+          #echo "======================="
+      -  name: SSH connection for failure Debug
+         if: ${{ failure() }}
+         uses: P3TERX/ssh2actions@main
+         #uses: lhotari/action-upterm@v1
+         #uses: P3TERX/ssh2actions@main
+         env:
+          TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+          TELEGRAM_CHAT_ID: 1373335316
+ 
+
+      - name: Compile again after .config updated or add kernel modules
+        if: env.BUILD_KERNEL_MODULES == 'true'
+        run: |
+           #cp -f $GITHUB_WORKSPACE/x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR
+           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config 
+           
+           #cp $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch  $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/ 
+           #cat myconfig/config.tvh.ffmpeg >> .config
+           #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           #[ -e $KERNEL_MODULE ] && cat $KERNEL_MODULE >> $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
+           cd x-wrt
+           ls -alt $GITHUB_WORKSPACE/x-wrt/.config
+           echo cpu core=$(nproc)
+           make -j$(nproc) #| tee makelog.txt
+           #curl -i -X POST http://r619ac.ubddns.org:8080/store.json --data-binary "@makelog.txt"
+           #|| make -j1 V=s
+           [ $? != 0 ] && make V=s || echo "build success"
+           #cp $GITHUB_WORKSPACE/myconfig/config.ramips.3 $GITHUB_WORKSPACE/x-wrt/.config 
+           #cp -f $GITHUB_WORKSPACE/x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
+           #make -j$(nproc) || make -j1 V=s
+           #[ $? != 0 ] && make V=s || echo "build success"
+           
+           ##cp -f bin/targets/ramips/mt7620/openwrt-ramips-mt7620*sysupgrade.bin bin/targets/ramips/drivers/
+      - name: SSH connection for KERNEL MENU CONFIG
+        if: env.KERNEL_MENUCONFIG == 'true'
+          # uses: lhotari/action-upterm@v1
+        uses: P3TERX/ssh2actions@main
+        env:
+         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+         TELEGRAM_CHAT_ID: 1373335316
+         
+      - name: SSH connection for failure Debug
+        if: ${{ failure() }}
+        uses: P3TERX/ssh2actions@main
+        env:
+         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+         TELEGRAM_CHAT_ID: 1373335316
+      
+      - name: Prepare artifact
+        run: |
+          # mkdir -p ./artifact/firmware
+          #mkdir -p ./artifact/package
+          #mkdir -p ./artifact/buildinfo
+          mkdir -p $DRIVERS_DIR
+          cp `find x-wrt/build_dir/target*mipsel*/linux*/linux-*/ -name *.ko|grep -v oot ` $DRIVERS_DIR
+          #cp -f x-wrt/build_dir/target**mipsel*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
+          #cp -f .config bin/
+          #cp -f myconfig/config.$ROUTER_MODEL.? bin/
+          #rm -rf $(find ./bin/targets/ -type d -name "packages")
+          #cp -rf $(find ./bin/targets/ -type f) ./artifact/firmware/
+          #cp -rf $(find ./bin/packages/ -type f -name "*.ipk") ./artifact/package/
+          #cp -rf $(find ./bin/targets/ -type f -name "*.buildinfo" -o -name "*.manifest") ./artifact/buildinfo/
+          cat `find x-wrt/bin/targets/ -name version.buildinfo`|head -1> BUILD_VERSION
+          [ -s BUILD_VERSION ] && echo "BUILD_VERSION=_$(cat BUILD_VERSION)" >> $GITHUB_ENV
+ 
+          grep '^CONFIG_TARGET.*DEVICE.*=y' x-wrt/.config|head -1 | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+          [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
+          echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+          find x-wrt/bin/targets |grep kmod|tail -1|cut -d _ -f2|cut -d - -f1 > KERNEL_VER 
+          #strings $DRIVERS_DIR/usbcore.ko| grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
+          [ -s KERNEL_VER ] && echo "KERNEL_VER=_$(cat KERNEL_VER)" >> $GITHUB_ENV
+
+      - name: Upload bin directory
+        uses: actions/upload-artifact@master
+        with:
+          name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
+          path: ${{ github.workspace }}/x-wrt/bin
+      - name: SSH connection for failure Debug
+        if: ${{ failure() }}
+        uses: P3TERX/ssh2actions@main
+        env:
+         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+         TELEGRAM_CHAT_ID: 1373335316
+        
+            #- name: Deliver buildinfo
+            #uses: actions/upload-artifact@v2
+            #with:
+            #name: OpenWrt_buildinfo
+            #path: ./artifact/buildinfo/
+
+            
+            #- name: Deliver package
+            #uses: actions/upload-artifact@v2
+            #with:
+            #name: OpenWrt_package
+            #path: ./artifact/package/
+
+            #- name: Deliver firmware
+            #uses: actions/upload-artifact@v2
+        #with:
+        #name: OpenWrt_firmware
+        #path: ./bin/targets/
+
+      - name: Upload bin directory if failure
+        uses: actions/upload-artifact@master
+        if:  failure() 
+        with:
+          name: OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
+           #OpenWrt_bin_${{ env.ROUTER_MODEL }}_failure
+          path: x-wrt/bin
+
+
+            #- name: Deliver buildinfo
+            #uses: actions/upload-artifact@v2
+            #with:
+            #name: OpenWrt_buildinfo
+            #path: ./artifact/buildinfo/
+
+            
+            #- name: Deliver package
+            #uses: actions/upload-artifact@v2
+            #with:
+            #name: OpenWrt_package
+            #path: ./artifact/package/
+
+            #- name: Deliver firmware
+            #uses: actions/upload-artifact@v2
+        #with:
+        #name: OpenWrt_firmware
+        #path: ./bin/targets/
+
+      - name: Upload release asset
+        if: github.event == 'release'
+        uses: svenstaro/upload-release-action@v2
+    
+        with:
+          repo_token: ${{ secrets.YOURTOKEN }}
+          file: ./artifact/firmware/*
+          tag: ${{ github.ref }}
+          file_glob: true
+      #- name: Send repository_dispatch
+       # env:
+        #  PAT: ${{ secrets.GITHUB_TOKEN }} 
+        #run: |
+         # curl \
+          #-X POST \
+          #-H "Authorization: token $PAT" \
+          #-H "Accept: application/vnd.github.v3+json" \
+          #https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
+          #-d '{"event_type":"ramips_completed"}' 
