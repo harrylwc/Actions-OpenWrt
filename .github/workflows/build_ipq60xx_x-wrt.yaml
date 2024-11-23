@@ -215,8 +215,16 @@ jobs:
          
       - name: Compile firmware
         run: |
-          cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
           cd x-wrt
+          [ -d "build_dir" ] && sudo mv build_dir /mnt/ || ( mkdir build_dir;sudo mv build_dir /mnt/ )
+          ln -s /mnt/build_dir .
+          sudo mv dl /mnt/
+          ln -s /mnt/dl .
+          [ -d "bin" ] && sudo mv bin /mnt/ || ( mkdir bin;sudo mv bin /mnt/ )
+          ln -s /mnt/bin .
+
+          cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
+          
           ls -alt $GITHUB_WORKSPACE/x-wrt/.config
           echo cpu core=$(nproc)
           #make -j$(nproc) || make -j1 V=s
