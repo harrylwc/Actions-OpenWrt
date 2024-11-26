@@ -57,10 +57,10 @@ CONFIG_TARGET_qualcommax=y
 CONFIG_TARGET_qualcommax_ipq60xx=y
 # CONFIG_TARGET_qualcommax_ipq807x is not set
 # CONFIG_TARGET_MULTI_PROFILE is not set
-CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_cmiot_ax18=y
+# CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_cmiot_ax18 is not set
 # CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_glinet_gl-ax1800 is not set
 # CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_glinet_gl-axt1800 is not set
-# CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_jdcloud_re-cs-02 is not set
+CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_jdcloud_re-cs-02=y
 # CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_jdcloud_re-cs-07 is not set
 # CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_jdcloud_re-ss-01 is not set
 # CONFIG_TARGET_qualcommax_ipq60xx_DEVICE_linksys_mr7350 is not set
@@ -71,12 +71,13 @@ CONFIG_HAS_SUBTARGETS=y
 CONFIG_HAS_DEVICES=y
 CONFIG_TARGET_BOARD="qualcommax"
 CONFIG_TARGET_SUBTARGET="ipq60xx"
-CONFIG_TARGET_PROFILE="DEVICE_cmiot_ax18"
+CONFIG_TARGET_PROFILE="DEVICE_jdcloud_re-cs-02"
 CONFIG_TARGET_ARCH_PACKAGES="aarch64_cortex-a53"
 CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe -mcpu=cortex-a53"
 CONFIG_CPU_TYPE="cortex-a53"
 CONFIG_LINUX_6_1=y
 CONFIG_DEFAULT_ath11k-firmware-ipq6018=y
+CONFIG_DEFAULT_ath11k-firmware-qcn9074=y
 CONFIG_DEFAULT_automount=y
 CONFIG_DEFAULT_base-files=y
 CONFIG_DEFAULT_block-mount=y
@@ -95,12 +96,14 @@ CONFIG_DEFAULT_f2fsck=y
 CONFIG_DEFAULT_firewall=y
 CONFIG_DEFAULT_fstools=y
 CONFIG_DEFAULT_ip-full=y
+CONFIG_DEFAULT_ipq-wifi-jdcloud_ax6600=y
 CONFIG_DEFAULT_ipset=y
 CONFIG_DEFAULT_iptables=y
 CONFIG_DEFAULT_iptables-mod-extra=y
 CONFIG_DEFAULT_iptables-mod-tproxy=y
 CONFIG_DEFAULT_iwinfo=y
 CONFIG_DEFAULT_kmod-ath11k-ahb=y
+CONFIG_DEFAULT_kmod-ath11k-pci=y
 CONFIG_DEFAULT_kmod-gpio-button-hotplug=y
 CONFIG_DEFAULT_kmod-ipt-raw=y
 CONFIG_DEFAULT_kmod-leds-gpio=y
@@ -2810,7 +2813,7 @@ CONFIG_PACKAGE_nginx-util=m
 # CONFIG_PACKAGE_amd64-microcode is not set
 # CONFIG_PACKAGE_amdgpu-firmware is not set
 # CONFIG_PACKAGE_ar3k-firmware is not set
-CONFIG_PACKAGE_ath10k-board-qca4019=y
+# CONFIG_PACKAGE_ath10k-board-qca4019 is not set
 # CONFIG_PACKAGE_ath10k-board-qca9377 is not set
 # CONFIG_PACKAGE_ath10k-board-qca9377-sdio is not set
 # CONFIG_PACKAGE_ath10k-board-qca9887 is not set
@@ -2818,10 +2821,10 @@ CONFIG_PACKAGE_ath10k-board-qca4019=y
 # CONFIG_PACKAGE_ath10k-board-qca988x is not set
 # CONFIG_PACKAGE_ath10k-board-qca9984 is not set
 # CONFIG_PACKAGE_ath10k-board-qca99x0 is not set
-CONFIG_PACKAGE_ath10k-firmware-qca4019=y
-CONFIG_PACKAGE_ath10k-firmware-qca4019-ct=m
-CONFIG_PACKAGE_ath10k-firmware-qca4019-ct-full-htt=m
-CONFIG_PACKAGE_ath10k-firmware-qca4019-ct-htt=m
+# CONFIG_PACKAGE_ath10k-firmware-qca4019 is not set
+# CONFIG_PACKAGE_ath10k-firmware-qca4019-ct is not set
+# CONFIG_PACKAGE_ath10k-firmware-qca4019-ct-full-htt is not set
+# CONFIG_PACKAGE_ath10k-firmware-qca4019-ct-htt is not set
 # CONFIG_PACKAGE_ath10k-firmware-qca6174 is not set
 # CONFIG_PACKAGE_ath10k-firmware-qca9377 is not set
 # CONFIG_PACKAGE_ath10k-firmware-qca9377-sdio is not set
@@ -2843,14 +2846,14 @@ CONFIG_PACKAGE_ath10k-firmware-qca4019-ct-htt=m
 # CONFIG_PACKAGE_ath10k-firmware-qca99x0-ct is not set
 # CONFIG_PACKAGE_ath10k-firmware-qca99x0-ct-full-htt is not set
 # CONFIG_PACKAGE_ath10k-firmware-qca99x0-ct-htt is not set
-# CONFIG_PACKAGE_ath11k-firmware-ipq5018 is not set
-# CONFIG_PACKAGE_ath11k-firmware-ipq6018 is not set
-# CONFIG_PACKAGE_ath11k-firmware-ipq8074 is not set
-# CONFIG_PACKAGE_ath11k-firmware-qca6390 is not set
-# CONFIG_PACKAGE_ath11k-firmware-qcn9074 is not set
-# CONFIG_PACKAGE_ath11k-firmware-wcn6750 is not set
-# CONFIG_PACKAGE_ath11k-firmware-wcn6855 is not set
-# CONFIG_PACKAGE_ath12k-firmware-wcn7850 is not set
+CONFIG_PACKAGE_ath11k-firmware-ipq5018=m
+CONFIG_PACKAGE_ath11k-firmware-ipq6018=m
+CONFIG_PACKAGE_ath11k-firmware-ipq8074=m
+CONFIG_PACKAGE_ath11k-firmware-qca6390=m
+CONFIG_PACKAGE_ath11k-firmware-qcn9074=m
+CONFIG_PACKAGE_ath11k-firmware-wcn6750=m
+CONFIG_PACKAGE_ath11k-firmware-wcn6855=m
+CONFIG_PACKAGE_ath12k-firmware-wcn7850=m
 # CONFIG_PACKAGE_ath6k-firmware is not set
 # CONFIG_PACKAGE_ath9k-htc-firmware is not set
 # CONFIG_PACKAGE_bnx2-firmware is not set
@@ -4062,15 +4065,9 @@ CONFIG_ATH_USER_REGD=y
 CONFIG_PACKAGE_ATH_DEBUG=y
 CONFIG_PACKAGE_ATH_DFS=y
 # CONFIG_PACKAGE_ATH_SPECTRAL is not set
-CONFIG_PACKAGE_kmod-ath10k=y
-CONFIG_ATH10K_LEDS=y
-CONFIG_ATH10K_THERMAL=y
-CONFIG_PACKAGE_kmod-ath10k-ct=m
-CONFIG_ATH10K-CT_LEDS=y
-CONFIG_PACKAGE_kmod-ath10k-ct-smallbuffers=m
-# CONFIG_PACKAGE_kmod-ath10k-pci is not set
-# CONFIG_PACKAGE_kmod-ath10k-sdio is not set
-# CONFIG_PACKAGE_kmod-ath10k-smallbuffers is not set
+# CONFIG_PACKAGE_kmod-ath10k is not set
+# CONFIG_PACKAGE_kmod-ath10k-ct is not set
+# CONFIG_PACKAGE_kmod-ath10k-ct-smallbuffers is not set
 CONFIG_PACKAGE_kmod-ath11k=y
 CONFIG_ATH11K_THERMAL=y
 CONFIG_PACKAGE_kmod-ath11k-ahb=y
@@ -6140,7 +6137,7 @@ CONFIG_PACKAGE_libreadline=y
 # CONFIG_PACKAGE_libroxml is not set
 CONFIG_PACKAGE_librrd1=y
 # CONFIG_PACKAGE_librtlsdr is not set
-#CONFIG_PACKAGE_libruby=m
+# CONFIG_PACKAGE_libruby is not set
 # CONFIG_PACKAGE_libsamplerate is not set
 # CONFIG_PACKAGE_libsane is not set
 CONFIG_PACKAGE_libsasl2=m
