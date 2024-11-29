@@ -21,8 +21,8 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
- #schedule:
-  #   - cron: 00 20 * * *
+ schedule:
+     - cron: 45 15 * * *
   #release:
    # types: [published]
  watch:
