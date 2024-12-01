@@ -40,6 +40,7 @@ CONFIG_TARGET_ramips=y
 # CONFIG_TARGET_ipq806x is not set
 # CONFIG_TARGET_realtek is not set
 # CONFIG_TARGET_rockchip is not set
+# CONFIG_TARGET_stm32 is not set
 # CONFIG_TARGET_sifiveu is not set
 # CONFIG_TARGET_siflower is not set
 # CONFIG_TARGET_starfive is not set
@@ -471,6 +472,7 @@ CONFIG_KERNEL_DEBUG_FS=y
 # CONFIG_KERNEL_UBSAN is not set
 # CONFIG_KERNEL_KCOV is not set
 # CONFIG_KERNEL_TASKSTATS is not set
+# CONFIG_KERNEL_PSI is not set
 CONFIG_KERNEL_KALLSYMS=y
 # CONFIG_KERNEL_FTRACE is not set
 CONFIG_KERNEL_DEBUG_KERNEL=y
@@ -614,7 +616,7 @@ CONFIG_PKG_FORTIFY_SOURCE_1=y
 # CONFIG_PKG_RELRO_PARTIAL is not set
 CONFIG_PKG_RELRO_FULL=y
 # CONFIG_SELINUX is not set
-CONFIG_SECCOMP=y
+CONFIG_USE_SECCOMP=y
 # end of Global build settings
 
 CONFIG_DEVEL=y
@@ -3092,6 +3094,7 @@ CONFIG_PACKAGE_libiwinfo-data=y
 # CONFIG_PACKAGE_iwlwifi-firmware-ax200 is not set
 # CONFIG_PACKAGE_iwlwifi-firmware-ax201 is not set
 # CONFIG_PACKAGE_iwlwifi-firmware-ax210 is not set
+# CONFIG_PACKAGE_iwlwifi-firmware-ax411 is not set
 # CONFIG_PACKAGE_iwlwifi-firmware-be200 is not set
 # CONFIG_PACKAGE_iwlwifi-firmware-iwl100 is not set
 # CONFIG_PACKAGE_iwlwifi-firmware-iwl1000 is not set
@@ -3131,6 +3134,8 @@ CONFIG_PACKAGE_libiwinfo-data=y
 # CONFIG_PACKAGE_mt7986-wo-firmware is not set
 # CONFIG_PACKAGE_mt7988-2p5g-phy-firmware is not set
 # CONFIG_PACKAGE_mt7988-wo-firmware is not set
+# CONFIG_PACKAGE_murata-firmware-43430-sdio is not set
+# CONFIG_PACKAGE_murata-nvram-43430-sdio is not set
 # CONFIG_PACKAGE_mwifiex-pcie-firmware is not set
 # CONFIG_PACKAGE_mwifiex-sdio-firmware is not set
 # CONFIG_PACKAGE_mwl8k-firmware is not set
@@ -3161,6 +3166,8 @@ CONFIG_PACKAGE_rt2800-usb-firmware=m
 # CONFIG_PACKAGE_rtl8761a-firmware is not set
 # CONFIG_PACKAGE_rtl8761b-firmware is not set
 # CONFIG_PACKAGE_rtl8761bu-firmware is not set
+# CONFIG_PACKAGE_rtl8812a-firmware is not set
+# CONFIG_PACKAGE_rtl8821a-firmware is not set
 # CONFIG_PACKAGE_rtl8821ae-firmware is not set
 CONFIG_PACKAGE_rtl8821ce-firmware=m
 # CONFIG_PACKAGE_rtl8822be-firmware is not set
@@ -3277,6 +3284,7 @@ CONFIG_PACKAGE_kmod-crypto-des=y
 CONFIG_PACKAGE_kmod-crypto-ecb=y
 # CONFIG_PACKAGE_kmod-crypto-ecdh is not set
 # CONFIG_PACKAGE_kmod-crypto-echainiv is not set
+# CONFIG_PACKAGE_kmod-crypto-engine is not set
 # CONFIG_PACKAGE_kmod-crypto-essiv is not set
 # CONFIG_PACKAGE_kmod-crypto-fcrypt is not set
 CONFIG_PACKAGE_kmod-crypto-gcm=y
@@ -3469,6 +3477,8 @@ CONFIG_PACKAGE_kmod-i2c-core=y
 # CONFIG_PACKAGE_kmod-iio-st_accel-i2c is not set
 # CONFIG_PACKAGE_kmod-iio-st_accel-spi is not set
 # CONFIG_PACKAGE_kmod-iio-tsl4531 is not set
+# CONFIG_PACKAGE_kmod-industrialio-buffer-cb is not set
+# CONFIG_PACKAGE_kmod-industrialio-hw-consumer is not set
 # CONFIG_PACKAGE_kmod-industrialio-triggered-buffer is not set
 # end of Industrial I/O Modules
 
@@ -3494,6 +3504,7 @@ CONFIG_PACKAGE_kmod-input-evdev=m
 #
 # CONFIG_PACKAGE_kmod-input-leds is not set
 CONFIG_PACKAGE_kmod-leds-gpio=y
+# CONFIG_PACKAGE_kmod-leds-ktd202x is not set
 # CONFIG_PACKAGE_kmod-leds-lp5562 is not set
 # CONFIG_PACKAGE_kmod-leds-lp55xx-common is not set
 # CONFIG_PACKAGE_kmod-leds-pca955x is not set
@@ -3794,6 +3805,7 @@ CONFIG_PACKAGE_kmod-phylink=m
 # Network Support
 #
 # CONFIG_PACKAGE_kmod-9pnet is not set
+# CONFIG_PACKAGE_kmod-appletalk is not set
 # CONFIG_PACKAGE_kmod-atm is not set
 # CONFIG_PACKAGE_kmod-ax25 is not set
 CONFIG_PACKAGE_kmod-batman-adv=m
@@ -3999,6 +4011,7 @@ CONFIG_PACKAGE_kmod-sound-core=m
 # CONFIG_PACKAGE_kmod-sound-seq is not set
 # CONFIG_PACKAGE_kmod-sound-soc-ac97 is not set
 # CONFIG_PACKAGE_kmod-sound-soc-core is not set
+# CONFIG_PACKAGE_kmod-sound-soc-dmic is not set
 # CONFIG_PACKAGE_kmod-sound-soc-spdif is not set
 # CONFIG_PACKAGE_kmod-sound-soc-wm8960 is not set
 # CONFIG_PACKAGE_kmod-sound-via82xx is not set
@@ -4099,6 +4112,7 @@ CONFIG_PACKAGE_kmod-usb3=y
 #
 # Video Support
 #
+# CONFIG_PACKAGE_kmod-media-controller is not set
 # CONFIG_PACKAGE_kmod-video-core is not set
 # CONFIG_PACKAGE_kmod-v4l2loopback is not set
 # end of Video Support
@@ -4237,6 +4251,8 @@ CONFIG_PACKAGE_RTW88_DEBUGFS=y
 # CONFIG_PACKAGE_kmod-rtw88-8723de is not set
 # CONFIG_PACKAGE_kmod-rtw88-8723ds is not set
 # CONFIG_PACKAGE_kmod-rtw88-8723du is not set
+# CONFIG_PACKAGE_kmod-rtw88-8812au is not set
+# CONFIG_PACKAGE_kmod-rtw88-8821au is not set
 CONFIG_PACKAGE_kmod-rtw88-8821c=m
 # CONFIG_PACKAGE_kmod-rtw88-8821ce is not set
 CONFIG_PACKAGE_kmod-rtw88-8821cu=m
@@ -5782,6 +5798,16 @@ CONFIG_PACKAGE_alsa-ucm-conf=m
 # end of Telephony
 
 #
+# Video
+#
+# CONFIG_PACKAGE_libdrm is not set
+# CONFIG_PACKAGE_libdrm-amdgpu is not set
+# CONFIG_PACKAGE_libdrm-etnaviv is not set
+# CONFIG_PACKAGE_libdrm-nouveau is not set
+# CONFIG_PACKAGE_libdrm-radeon is not set
+# end of Video
+
+#
 # libimobiledevice
 #
 # CONFIG_PACKAGE_libideviceactivation is not set
@@ -5984,7 +6010,6 @@ CONFIG_PACKAGE_libdevmapper=m
 # CONFIG_PACKAGE_libdht is not set
 # CONFIG_PACKAGE_libdmapsharing is not set
 # CONFIG_PACKAGE_libdnet is not set
-# CONFIG_PACKAGE_libdrm is not set
 CONFIG_PACKAGE_libdvbcsa=m
 
 #
@@ -6337,6 +6362,7 @@ CONFIG_PACKAGE_libv4l=m
 CONFIG_PACKAGE_libvorbis=m
 # CONFIG_PACKAGE_libvorbisidec is not set
 CONFIG_PACKAGE_libvpx=m
+# CONFIG_PACKAGE_libwacom is not set
 CONFIG_PACKAGE_libwebp=y
 CONFIG_PACKAGE_libwebsockets-full=y
 # CONFIG_PACKAGE_libwebsockets-mbedtls is not set
@@ -6536,6 +6562,7 @@ CONFIG_PACKAGE_luci-app-dawn=m
 CONFIG_PACKAGE_luci-app-ddns=y
 CONFIG_PACKAGE_luci-app-ddns-go=m
 CONFIG_PACKAGE_luci-app-ddnsto=m
+# CONFIG_PACKAGE_luci-app-design-config is not set
 CONFIG_PACKAGE_luci-app-dnsfilter=m
 # CONFIG_PACKAGE_luci-app-dump1090 is not set
 # CONFIG_PACKAGE_luci-app-dynapoint is not set
@@ -8129,6 +8156,7 @@ CONFIG_ARIA2_WEBSOCKET=y
 # CONFIG_PACKAGE_croc is not set
 CONFIG_PACKAGE_curl=y
 CONFIG_PACKAGE_lftp=y
+# CONFIG_PACKAGE_onionshare-cli is not set
 # CONFIG_PACKAGE_ps3netsrv is not set
 # CONFIG_PACKAGE_rclone is not set
 # CONFIG_PACKAGE_rclone-config is not set
@@ -8150,6 +8178,7 @@ CONFIG_PACKAGE_wget-ssl=y
 #
 # Filesystem
 #
+CONFIG_PACKAGE_cifsmount=m
 # CONFIG_PACKAGE_davfs2 is not set
 # CONFIG_PACKAGE_kafs-client is not set
 # CONFIG_PACKAGE_ksmbd-avahi-service is not set
@@ -8330,12 +8359,15 @@ CONFIG_PACKAGE_dnscrypt-proxy=m
 # end of Configuration
 
 CONFIG_PACKAGE_dnscrypt-proxy-resolvers=m
+# CONFIG_PACKAGE_dnscrypt-proxy2 is not set
 # CONFIG_PACKAGE_dnsdist is not set
 # CONFIG_PACKAGE_dnsdist-full is not set
 # CONFIG_PACKAGE_dnslookup is not set
 CONFIG_PACKAGE_dnsproxy=m
 # CONFIG_PACKAGE_drill is not set
+# CONFIG_PACKAGE_family-dns is not set
 # CONFIG_PACKAGE_hostip is not set
+CONFIG_PACKAGE_https-dns-proxy=m
 # CONFIG_PACKAGE_idn is not set
 # CONFIG_PACKAGE_idn2 is not set
 # CONFIG_PACKAGE_inadyn is not set
@@ -8375,10 +8407,12 @@ CONFIG_PACKAGE_dnsproxy=m
 # CONFIG_PACKAGE_knot-tests is not set
 # CONFIG_PACKAGE_knot-zonecheck is not set
 # CONFIG_PACKAGE_ldns-examples is not set
+# CONFIG_PACKAGE_mdns-repeater is not set
 # CONFIG_PACKAGE_mdns-utils is not set
 # CONFIG_PACKAGE_mdnsd is not set
 # CONFIG_PACKAGE_mdnsresponder is not set
 # CONFIG_PACKAGE_mosdns is not set
+CONFIG_PACKAGE_nextdns=m
 # CONFIG_PACKAGE_nsd is not set
 # CONFIG_PACKAGE_nsd-control is not set
 # CONFIG_PACKAGE_nsd-control-setup is not set
@@ -8390,6 +8424,7 @@ CONFIG_PACKAGE_dnsproxy=m
 # CONFIG_PACKAGE_pdns-recursor is not set
 # CONFIG_PACKAGE_pdns-tools is not set
 CONFIG_PACKAGE_pdnsd-alt=m
+CONFIG_PACKAGE_smartdns=m
 # CONFIG_PACKAGE_stubby is not set
 # CONFIG_PACKAGE_tor-hs is not set
 # CONFIG_PACKAGE_torsocks is not set
@@ -8762,6 +8797,7 @@ CONFIG_PACKAGE_sstp-client=m
 # CONFIG_PACKAGE_git is not set
 # CONFIG_PACKAGE_git-gitweb is not set
 # CONFIG_PACKAGE_git-http is not set
+# CONFIG_PACKAGE_git-lfs is not set
 # CONFIG_PACKAGE_gitolite is not set
 # CONFIG_PACKAGE_subversion-client is not set
 # CONFIG_PACKAGE_subversion-libs is not set
@@ -8795,6 +8831,7 @@ CONFIG_PACKAGE_ddnsto=m
 # CONFIG_PACKAGE_frps is not set
 # CONFIG_PACKAGE_gateway-go is not set
 # CONFIG_PACKAGE_gatling is not set
+# CONFIG_PACKAGE_geoview is not set
 # CONFIG_PACKAGE_haproxy is not set
 # CONFIG_PACKAGE_haproxy-nossl is not set
 CONFIG_PACKAGE_kcptun-client=m
@@ -8963,6 +9000,7 @@ CONFIG_PACKAGE_uwsgi-syslog-plugin=m
 #
 # CONFIG_PACKAGE_aircrack-ng is not set
 # CONFIG_PACKAGE_airmon-ng is not set
+CONFIG_PACKAGE_dawn=m
 # CONFIG_PACKAGE_dynapoint is not set
 # CONFIG_PACKAGE_hcxdumptool is not set
 # CONFIG_PACKAGE_hcxtools is not set
@@ -9079,7 +9117,6 @@ CONFIG_PACKAGE_batctl-default=m
 # CONFIG_PACKAGE_bwm-ng is not set
 # CONFIG_PACKAGE_bwping is not set
 # CONFIG_PACKAGE_chat is not set
-CONFIG_PACKAGE_cifsmount=m
 # CONFIG_PACKAGE_cni-route-override is not set
 # CONFIG_PACKAGE_coap-server is not set
 # CONFIG_PACKAGE_conserver is not set
@@ -9087,10 +9124,8 @@ CONFIG_PACKAGE_cifsmount=m
 # CONFIG_PACKAGE_crowdsec-firewall-bouncer is not set
 # CONFIG_PACKAGE_cshark is not set
 # CONFIG_PACKAGE_darkstat is not set
-CONFIG_PACKAGE_dawn=m
 CONFIG_PACKAGE_dhcpcd=m
 # CONFIG_PACKAGE_dmapd is not set
-# CONFIG_PACKAGE_dnscrypt-proxy2 is not set
 # CONFIG_PACKAGE_dnsforwarder is not set
 # CONFIG_PACKAGE_dnstap is not set
 # CONFIG_PACKAGE_dnstop is not set
@@ -9107,7 +9142,6 @@ CONFIG_PACKAGE_ethtool=y
 # CONFIG_PACKAGE_fail2ban is not set
 # CONFIG_PACKAGE_fakeidentd is not set
 # CONFIG_PACKAGE_fakepop is not set
-# CONFIG_PACKAGE_family-dns is not set
 # CONFIG_PACKAGE_flent is not set
 # CONFIG_PACKAGE_foolsm is not set
 # CONFIG_PACKAGE_fping is not set
@@ -9116,7 +9150,6 @@ CONFIG_PACKAGE_ethtool=y
 # CONFIG_PACKAGE_geoip-shell is not set
 # CONFIG_PACKAGE_geoip-shell-iptables is not set
 # CONFIG_PACKAGE_geoipupdate is not set
-# CONFIG_PACKAGE_git-lfs is not set
 # CONFIG_PACKAGE_gnunet is not set
 # CONFIG_PACKAGE_gost is not set
 # CONFIG_PACKAGE_gping is not set
@@ -9133,7 +9166,6 @@ CONFIG_PACKAGE_ethtool=y
 # CONFIG_PACKAGE_hping3 is not set
 # CONFIG_PACKAGE_httping is not set
 # CONFIG_PACKAGE_httping-nossl is not set
-CONFIG_PACKAGE_https-dns-proxy=m
 # CONFIG_PACKAGE_httptunnel is not set
 # CONFIG_PACKAGE_hysteria is not set
 # CONFIG_PACKAGE_i2pd is not set
@@ -9207,7 +9239,6 @@ CONFIG_PACKAGE_libipset=y
 # CONFIG_PACKAGE_map is not set
 # CONFIG_PACKAGE_mausezahn is not set
 # CONFIG_PACKAGE_mbusd is not set
-# CONFIG_PACKAGE_mdns-repeater is not set
 # CONFIG_PACKAGE_memcached is not set
 # CONFIG_PACKAGE_mihomo is not set
 # CONFIG_PACKAGE_mii-tool is not set
@@ -9242,7 +9273,6 @@ CONFIG_PACKAGE_libipset=y
 # CONFIG_PACKAGE_netperf is not set
 # CONFIG_PACKAGE_netsniff-ng is not set
 # CONFIG_PACKAGE_netstinky is not set
-CONFIG_PACKAGE_nextdns=m
 # CONFIG_PACKAGE_nfdump is not set
 CONFIG_PACKAGE_nlbwmon=m
 # CONFIG_PACKAGE_noping is not set
@@ -9262,7 +9292,6 @@ CONFIG_PACKAGE_odhcpd_ipv6only_ext_cer_id=0
 
 # CONFIG_PACKAGE_ola is not set
 # CONFIG_PACKAGE_omcproxy is not set
-# CONFIG_PACKAGE_onionshare-cli is not set
 # CONFIG_PACKAGE_oor is not set
 # CONFIG_PACKAGE_open-iscsi is not set
 # CONFIG_PACKAGE_openelp is not set
@@ -9325,7 +9354,6 @@ CONFIG_PACKAGE_shellinabox=m
 CONFIG_PACKAGE_simple-obfs-server=m
 # CONFIG_PACKAGE_sing-box is not set
 # CONFIG_PACKAGE_slirp4netns is not set
-CONFIG_PACKAGE_smartdns=m
 # CONFIG_PACKAGE_smbinfo is not set
 # CONFIG_PACKAGE_snmp-mibs is not set
 # CONFIG_PACKAGE_snmp-utils is not set
@@ -9766,6 +9794,12 @@ CONFIG_PACKAGE_zoneinfo-core=y
 # Userspace GPIO Drivers
 #
 # end of Userspace GPIO Drivers
+
+#
+# Utilities
+#
+# CONFIG_PACKAGE_sunwait is not set
+# end of Utilities
 
 #
 # Virtualization
@@ -10621,4 +10655,4 @@ CONFIG_PACKAGE_urllogger=m
 # end of Font-Utils
 # end of Xorg
 
-CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng ddns-go ddnsto dns2socks dns2tcp gn gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argone-config luci-app-bypass luci-app-clash luci-app-ddns-go luci-app-ddnsto luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-gost luci-app-homeproxy luci-app-ikoolproxy luci-app-istorex luci-app-lucky luci-app-mihomo luci-app-mosdns luci-app-openclash luci-app-partexp luci-app-passwall luci-app-passwall2 luci-app-quickstart luci-app-shadowsocks-libev luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-unblockneteasemusic luci-lib-taskd luci-lib-xterm luci-theme-alpha luci-theme-argon luci-theme-argone luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mihomo mosdns naiveproxy pdnsd-alt quickstart redsocks2 shadow-tls shadowsocks-rust shadowsocksr-libev simple-obfs sing-box smartdns ssocks taskd tcping trojan trojan-go trojan-plus tuic-client ucl upx v2dat v2ray-core v2ray-geodata v2ray-plugin v2raya xray-core xray-plugin"
+CONFIG_OVERRIDE_PKGS="UnblockNeteaseMusic adguardhome alist aliyundrive-webdav brook chinadns-ng ddns-go ddnsto dns2socks dns2tcp gn gost hysteria ipt2socks koolproxy lua-maxminddb lua-neturl luci-app-adguardhome luci-app-advanced luci-app-aliddns luci-app-alist luci-app-aliyundrive-webdav luci-app-amlogic luci-app-argon-config luci-app-argone-config luci-app-bypass luci-app-clash luci-app-ddns-go luci-app-ddnsto luci-app-design-config luci-app-dnsfilter luci-app-dockerman luci-app-easymesh luci-app-eqos luci-app-fileassistant luci-app-gost luci-app-homeproxy luci-app-ikoolproxy luci-app-istorex luci-app-lucky luci-app-mihomo luci-app-mosdns luci-app-openclash luci-app-partexp luci-app-passwall luci-app-passwall2 luci-app-quickstart luci-app-shadowsocks-libev luci-app-smartdns luci-app-ssr-plus luci-app-store luci-app-unblockneteasemusic luci-lib-taskd luci-lib-xterm luci-theme-alpha luci-theme-argon luci-theme-argone luci-theme-atmaterial_new luci-theme-design luci-theme-ifit luci-theme-opentopd luci-theme-tomato lucky mentohust microsocks mihomo mosdns naiveproxy pdnsd-alt quickstart redsocks2 shadow-tls shadowsocks-rust shadowsocksr-libev simple-obfs sing-box smartdns ssocks taskd tcping trojan trojan-go trojan-plus tuic-client ucl upx v2dat v2ray-core v2ray-geodata v2ray-geoview v2ray-plugin v2raya xray-core xray-plugin"
