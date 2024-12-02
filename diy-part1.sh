@@ -1,6 +1,5 @@
 git clone https://github.com/x-wrt/x-wrt
-
-
+#####
 git clone https://github.com/coolsnowwolf/lede lede
 lede/scripts/feeds update -a
 
