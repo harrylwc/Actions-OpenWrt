@@ -1,12 +1,12 @@
 git clone https://github.com/x-wrt/x-wrt
-#####
+
 git clone https://github.com/coolsnowwolf/lede lede
 lede/scripts/feeds update -a
 
 sudo cp copy_file.sh /usr/bin
 cp copy_file.sh x-wrt/
 cd x-wrt
-
+#####
 
 echo "Job name is $GITHUB_JOB"
 #git checkout 610ea1b9994 #x-wrt
