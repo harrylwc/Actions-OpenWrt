@@ -231,10 +231,11 @@ jobs:
            
       - name: Compile firmware
         run: |
+          cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config 
           cd x-wrt
-          sed -i 's/CONFIG_PACKAGE_node=m/#CONFIG_PACKAGE_node=m/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
-          sed -i 's/CONFIG_NODEJS_ICU_SMALL=y/#CONFIG_NODEJS_ICU_SMALL=y/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
-          sed -i 's/CONFIG_PACKAGE_node-npm=m/#CONFIG_PACKAGE_node-npm=m/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
+          #sed -i 's/CONFIG_PACKAGE_node=m/#CONFIG_PACKAGE_node=m/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
+          #sed -i 's/CONFIG_NODEJS_ICU_SMALL=y/#CONFIG_NODEJS_ICU_SMALL=y/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
+          #sed -i 's/CONFIG_PACKAGE_node-npm=m/#CONFIG_PACKAGE_node-npm=m/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
  
           [ -d "build_dir" ] && sudo mv build_dir /mnt/ || ( mkdir build_dir;sudo mv build_dir /mnt/ )
           ln -s /mnt/build_dir .
@@ -242,11 +243,9 @@ jobs:
           ln -s /mnt/dl .
           [ -d "bin" ] && sudo mv bin /mnt/ || ( mkdir bin;sudo mv bin /mnt/ )
           ln -s /mnt/bin .
-          
-          #cp config.wrt1200ac.0 .config
           #echo cpu core=$(nproc)
           
-          #make -j$(nproc) || make -j1 V=s
+          make -j$(nproc) || make -j1 V=s
           #[ $? != 0 ] && make V=s || echo "build success"
           
           
