@@ -94,6 +94,9 @@ jobs:
           sed -i 's/github.com\/x-wrt\/x-wrt/git.openwrt.org\/openwrt\/openwrt.git x-wrt/g' $GITHUB_WORKSPACE/$DIY_P1_SH
           sed -i 's/#####/git checkout 060aa0021f688d455767b553cfe95e29b6559b7a/g' $GITHUB_WORKSPACE/$DIY_P1_SH  
           $GITHUB_WORKSPACE/$DIY_P1_SH
+          rm $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/10*
+          sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Config.in.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
+          sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Makefile.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sudo timedatectl set-timezone "$TZ"
@@ -234,10 +237,7 @@ jobs:
         run: |
           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config 
           cd x-wrt
-          rm $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/10*
-          sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Config.in.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
-          sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Makefile.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
- 
+          
           rm package/firmware/wireless-regdb/patches/*
           #sed -i 's/CONFIG_PACKAGE_node=m/#CONFIG_PACKAGE_node=m/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
           #sed -i 's/CONFIG_NODEJS_ICU_SMALL=y/#CONFIG_NODEJS_ICU_SMALL=y/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
