@@ -39,7 +39,7 @@ env:
   CONFIG_FILENAME_FOR_2ND_COMPILE: config.aarch64.0
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
-  #KERNEL_CONFIG: 'myconfig/kernel_config.aarch64'
+  KERNEL_CONFIG: 'myconfig/kernel_config.aarch64'
   #KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq4x00
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
@@ -279,10 +279,7 @@ jobs:
            
   
            cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
-           #cp $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch  $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/ 
-           #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
-           #cp -f $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/usr/bin/apr-1-config $GITHUB_WORKSPACE/x-wrt/staging_dir/target-*/ 
-          
+           
            mkdir -p $DRIVERS_DIR
            #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
            #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
