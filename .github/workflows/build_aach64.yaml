@@ -398,13 +398,3 @@ jobs:
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
-      - name: Send repository_dispatch
-        env:
-         PAT: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-         curl \
-         -X POST \
-         -H "Authorization: token $PAT" \
-         -H "Accept: application/vnd.github.v3+json" \
-         https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
-         -d '{"event_type":"mvebu_openwrt_completed"}'
