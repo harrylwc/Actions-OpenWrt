@@ -36,17 +36,17 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: aarch64
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.aarch64.0
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.aarch64.3
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.aarch64'
   #KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq4x00
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
-  KERNEL_CONFIG_DIR: x-wrt/target/linux/mvebu/cortexa53
+  KERNEL_CONFIG_DIR: x-wrt/target/linux/mvebu
   #KERNEL_CONFIG_DIR: x-wrt/target/linux/mvebu  
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: true
+  KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
   KERNEL_VERSION: '5.4'
