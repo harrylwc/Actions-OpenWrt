@@ -101,6 +101,8 @@ jobs:
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sudo timedatectl set-timezone "$TZ"
           rm $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/10*
+          rm $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/030-*
+          rm $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/060-*
       - name: Generate cache mixkey
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
