@@ -240,7 +240,7 @@ jobs:
           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config 
           cp patches/kernel_ver.patch x-wrt/ 
           cd x-wrt
-          echo 5.4.218-1-d8c87a951ef424a3555e6d1396aa5ba6>./vermagic
+          echo d8c87a951ef424a3555e6d1396aa5ba6>./vermagic
           git apply --ignore-space-change --ignore-whitespace kernel_ver.patch
           rm package/firmware/wireless-regdb/patches/*
           #sed -i 's/CONFIG_PACKAGE_node=m/#CONFIG_PACKAGE_node=m/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
