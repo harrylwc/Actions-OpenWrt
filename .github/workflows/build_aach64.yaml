@@ -329,7 +329,7 @@ jobs:
           cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko|grep -v oot` $DRIVERS_DIR
           cp -f `find x-wrt/bin/ -name kmod*.ipk` $KMOD_DIR 
           cp -f `find x-wrt/bin/ -name tvheadend*.ipk` $DRIVERS_DIR
-          cp -f `find x-wrt/bin/ -name *libdvbcsa*.ipk` $IVERS_DIR
+          cp -f `find x-wrt/bin/ -name *libdvbcsa*.ipk` $DRIVERS_DIR
           cp -f `find x-wrt/bin/ -name *curl*.ipk` $DRIVERS_DIR
           cp -f `find x-wrt/bin/ -name *ffmpeg*.ipk` $DRIVERS_DIR
           #cp -f x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
