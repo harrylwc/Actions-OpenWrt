@@ -39,6 +39,7 @@ env:
   CONFIG_FILENAME_FOR_2ND_COMPILE: config.aarch64.3
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
+  KMOD_DIR: x-wrt/bin/targets/mvebu/kmod 
   KERNEL_CONFIG: 'myconfig/kernel_config.aarch64'
   #KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq4x00
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
@@ -283,7 +284,7 @@ jobs:
            
   
            cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
-           
+           mkdir -p $KMOD_DIR 
            mkdir -p $DRIVERS_DIR
            #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
            #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
@@ -326,6 +327,11 @@ jobs:
           #mkdir -p ./artifact/buildinfo
           #mkdir -p $DRIVERS_DIR
           cp -f `find x-wrt/build_dir/target*/linux*/linux-*/ -name *.ko|grep -v oot` $DRIVERS_DIR
+          cp -f `find x-wrt/bin/ -name kmod*.ipk` $KMOD_DIR 
+          cp -f `find x-wrt/bin/ -name tvheadend*.ipk` $DRIVERS_DIR
+          cp -f `find x-wrt/bin/ -name *libdvbcsa*.ipk` $IVERS_DIR
+          cp -f `find x-wrt/bin/ -name *curl*.ipk` $DRIVERS_DIR
+          cp -f `find x-wrt/bin/ -name *ffmpeg*.ipk` $DRIVERS_DIR
           #cp -f x-wrt/build_dir/target*/linux*/rtl8821cu*/rtl8821cu.ko $DRIVERS_DIR        
           #cp -f .config bin/
           #cp -f myconfig/config.$ROUTER_MODEL.? bin/
