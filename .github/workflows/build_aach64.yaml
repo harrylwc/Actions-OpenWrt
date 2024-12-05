@@ -93,7 +93,9 @@ jobs:
           #cat /proc/cpuinfo|grep proce
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
           sed -i 's/github.com\/x-wrt\/x-wrt/git.openwrt.org\/openwrt\/openwrt.git x-wrt/g' $GITHUB_WORKSPACE/$DIY_P1_SH
-          sed -i 's/#####/git checkout 060aa0021f688d455767b553cfe95e29b6559b7a/g' $GITHUB_WORKSPACE/$DIY_P1_SH  
+          sed -i 's/#####/git checkout 57a6d97ddf8f6541a52e0f8fad8c6f47685a1bc3/g' $GITHUB_WORKSPACE/$DIY_P1_SH  
+        
+          #sed -i 's/#####/git checkout 060aa0021f688d455767b553cfe95e29b6559b7a/g' $GITHUB_WORKSPACE/$DIY_P1_SH  
           $GITHUB_WORKSPACE/$DIY_P1_SH
           
           sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Config.in.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
