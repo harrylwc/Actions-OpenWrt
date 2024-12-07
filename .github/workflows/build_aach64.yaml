@@ -240,6 +240,8 @@ jobs:
         run: |
           mkdir -p $KMOD_DIR
           mkdir -p $DRIVERS_DIR
+          cp patches/Makefile.golang x-wrt/feeds/packages/lang/golang/golang/Makefile
+          rm x-wrt/feeds/packages/lang/golang/golang/patches/001* 
           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
  
