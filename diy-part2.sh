@@ -121,6 +121,8 @@ mv /tmp/*.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 mv $GITHUB_WORKSPACE/patches/400-custom_hk-change-txpower-and-dfs.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 
 cd $GITHUB_WORKSPACE/x-wrt/
+wget https://github.com/openwrt/packages/commit/99e70c829e1903944d497e64f7caebe8962a32e8.patch -O feeds/packages/wayland.patch  
+
 git apply -R --ignore-space-change --ignore-whitespace revert_set_default_root.patch 
 #git apply -R --ignore-space-change --ignore-whitespace mtk_eth_soc1.patch
 #git apply -R --ignore-space-change --ignore-whitespace mtk_eth_soc.patch
@@ -132,6 +134,9 @@ git apply --ignore-space-change --ignore-whitespace r619ac.patch
 cp reset_user_to_root.patch feeds/luci/
 cd feeds/luci
 git apply -R --ignore-space-change --ignore-whitespace reset_user_to_root.patch 
+cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/
+git apply -R --ignore-space-change --ignore-whitespace wayland.patch
 cd ../../
+
 exit 0
 
