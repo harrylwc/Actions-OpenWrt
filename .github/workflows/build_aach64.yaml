@@ -36,8 +36,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: aarch64
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.aarch64.3.kernel6.6
-  #config.aarch64.3
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.aarch64.3
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
   KMOD_DIR: x-wrt/bin/targets/mvebu/kmod 
@@ -51,7 +50,7 @@ env:
   KERNEL_MENUCONFIG: false
   CPU_MULTI_CORE: true
   #5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4
-  KERNEL_VERSION: '6.6'
+  KERNEL_VERSION: '5.4'
   #KERNEL_VERSION: '5.15'                                                                            
   UPDATE_MULTI_CORE_FILE1: myconfig/sys.lua
   UPDATE_MULTI_CORE_FILE2: myconfig/processes.js
@@ -94,17 +93,17 @@ jobs:
           #cat /proc/cpuinfo|grep proce
           chmod +x $GITHUB_WORKSPACE/$DIY_P1_SH
           sed -i 's/github.com\/x-wrt\/x-wrt/git.openwrt.org\/openwrt\/openwrt.git x-wrt/g' $GITHUB_WORKSPACE/$DIY_P1_SH
-          #sed -i 's/#####/git checkout 060aa0021f688d455767b553cfe95e29b6559b7a/g' $GITHUB_WORKSPACE/$DIY_P1_SH  
+          sed -i 's/#####/git checkout 060aa0021f688d455767b553cfe95e29b6559b7a/g' $GITHUB_WORKSPACE/$DIY_P1_SH  
           $GITHUB_WORKSPACE/$DIY_P1_SH
           
-          #sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Config.in.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
-          #sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Makefile.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
+          sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Config.in.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
+          sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Makefile.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sudo timedatectl set-timezone "$TZ"
-          #rm $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/10*
-          #rm -rf $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/030-*
-          #rm -rf $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/060-*
+          rm $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/10*
+          rm -rf $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/030-*
+          rm -rf $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/060-*
       - name: Generate cache mixkey
         id: gen_cache_mixkey
         working-directory: ${{ env.WORKING_DIR }}
@@ -247,11 +246,11 @@ jobs:
           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
  
           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config 
-          #cp patches/kernel_ver.patch x-wrt/ 
+          cp patches/kernel_ver.patch x-wrt/ 
           
           cd x-wrt
-          #echo d8c87a951ef424a3555e6d1396aa5ba6>./vermagic
-          #git apply --ignore-space-change --ignore-whitespace kernel_ver.patch
+          echo d8c87a951ef424a3555e6d1396aa5ba6>./vermagic
+          git apply --ignore-space-change --ignore-whitespace kernel_ver.patch
           rm package/firmware/wireless-regdb/patches/*
           #sed -i 's/CONFIG_PACKAGE_node=m/#CONFIG_PACKAGE_node=m/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
           #sed -i 's/CONFIG_NODEJS_ICU_SMALL=y/#CONFIG_NODEJS_ICU_SMALL=y/g' $GITHUB_WORKSPACE/myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
