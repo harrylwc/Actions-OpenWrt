@@ -2,11 +2,12 @@ git clone https://github.com/x-wrt/x-wrt
 
 git clone https://github.com/coolsnowwolf/lede lede
 lede/scripts/feeds update -a
-cp patches/feeds.conf.default x-wrt/
 sudo cp copy_file.sh /usr/bin
 cp copy_file.sh x-wrt/
 cd x-wrt
 #####
+
+cp $GITHUB_WORKSPACE/patches/feeds.conf.default $GITHUB_WORKSPACE/x-wrt/
 
 echo "Job name is $GITHUB_JOB"
 #git checkout 610ea1b9994 #x-wrt
