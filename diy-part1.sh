@@ -7,7 +7,8 @@ cp copy_file.sh x-wrt/
 cd x-wrt
 #####
 
-cp $GITHUB_WORKSPACE/patches/feeds.conf.default $GITHUB_WORKSPACE/x-wrt/
+wget https://github.com/openwrt/openwrt/commit/b4cc5743d90103a0536b07c618f21bfd5685fbe2.patch -O feeds.patch
+git apply -R --ignore-space-change --ignore-whitespace feeds.patch
 
 echo "Job name is $GITHUB_JOB"
 #git checkout 610ea1b9994 #x-wrt
