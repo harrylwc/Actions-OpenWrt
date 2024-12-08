@@ -40,7 +40,7 @@ env:
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
   KMOD_DIR: x-wrt/bin/targets/mvebu/kmod 
-  KERNEL_CONFIG: 'myconfig/kernel_config.aarch64'
+  KERNEL_CONFIG: 'myconfig/kernel_config.aarch64.6.6'
   #KERNEL_CONFIG_DIR: x-wrt/target/linux/ipq4x00
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7620
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
