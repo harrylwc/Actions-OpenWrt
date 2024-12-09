@@ -7,8 +7,10 @@ cp copy_file.sh x-wrt/
 cd x-wrt
 #####
 
-wget https://github.com/openwrt/openwrt/commit/b4cc5743d90103a0536b07c618f21bfd5685fbe2.patch -O feeds.patch
-git apply -R --ignore-space-change --ignore-whitespace feeds.patch
+#wget https://github.com/openwrt/openwrt/commit/b4cc5743d90103a0536b07c618f21bfd5685fbe2.patch -O feeds.patch
+#git apply -R --ignore-space-change --ignore-whitespace feeds.patch
+sed -i 's/src-git-full video/#src-git-full video/g' feeds.conf.default
+sed -i 's/src-git video/#src-git video/g' feeds.conf.default
 
 echo "Job name is $GITHUB_JOB"
 #git checkout 610ea1b9994 #x-wrt
