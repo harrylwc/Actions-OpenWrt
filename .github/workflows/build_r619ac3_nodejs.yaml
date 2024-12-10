@@ -10,8 +10,8 @@
 name: Compile R619AC3 TVH x-wrt nodejs Images  
 
 on:
- repository_dispatch:
-    types: [ipq40xx_completed]
+ #repository_dispatch:
+    #types: [ipq40xx_completed]
  workflow_dispatch:    
     inputs:
       ssh:
@@ -21,8 +21,8 @@ on:
   #push:
    #branches: 
     #- master
- #schedule:
-    #- cron: "45 15 * * *"
+ schedule:
+    - cron: "45 15 * * *"
   #release:
    # types: [published]
   #watch:
@@ -34,7 +34,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: r619ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.3
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.0
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
@@ -409,3 +409,13 @@ jobs:
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
+      - name: Send repository_dispatch
+        env:
+         PAT: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+         curl \
+         -X POST \
+         -H "Authorization: token $PAT" \
+         -H "Accept: application/vnd.github.v3+json" \
+         https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
+         -d '{"event_type":"ipq40xx_completed"}'
