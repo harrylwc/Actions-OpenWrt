@@ -1,2 +1,7 @@
-#curl -i -X POST be6500.ubddns.org:8080/store.json --data-binary "@"$1
-curl -X POST http://be6500.ubddns.org:8080/upload -F 'files=@'$1
+for var in "$@"
+do
+    x=$x" -F files=@$var"
+done
+#curl -X POST http://127.0.0.1:8000/upload -F 'files=@multiple-example-1.txt' -F 'files=@multiple-example-2.txt'
+curl -X POST http://be6500.ubddns.org:8080/upload $x
+~
