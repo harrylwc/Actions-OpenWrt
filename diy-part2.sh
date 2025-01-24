@@ -121,6 +121,9 @@ mv /tmp/*.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 mv $GITHUB_WORKSPACE/patches/400-custom_hk-change-txpower-and-dfs.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 
 cd $GITHUB_WORKSPACE/x-wrt/
+cd dl
+wget http://weike-iot.com:2211/rockchip/bsp/rk3568_OpenWRT/downloads/ddnsto-binary-3.0.4.tar.gz
+cd ..
 mv package/feeds/video/wayland /tmp/
 
 git apply -R --ignore-space-change --ignore-whitespace revert_set_default_root.patch 
