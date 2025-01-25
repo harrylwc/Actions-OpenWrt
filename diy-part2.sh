@@ -53,7 +53,7 @@ git clone https://github.com/tty228/luci-app-wechatpush /home/runner/work/Action
 #sed -i 's/zh_Hans/zh_Hant/g' /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
 sed -i 's/llvm=true/llvm=false/g' $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/rust/Makefile
 sed -i 's/10d7c8083482800c816d2a781bfc5b3fe5343d88c1eec2b635c64a9996310c06/7fd5a503ffaa679e35118b6b578d1d31c9529e483939015426d40073adf6e594/g' $GITHUB_WORKSPACE/x-wrt/feeds/feeds/small/shadowsocks-rust/Makefile
-cd $GITHUB_WORKSPACE/feeds/small/v2ray-plugin/
+cd $GITHUB_WORKSPACE/x-wrt/feeds/small/v2ray-plugin/
 rm Makefile
 wget https://raw.githubusercontent.com/kenzok8/small/82eac7940f75b6ed59523c728adca179ab001aaf/v2ray-plugin/Makefile
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
