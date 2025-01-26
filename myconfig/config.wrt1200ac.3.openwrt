@@ -10930,7 +10930,7 @@ CONFIG_PACKAGE_openssl-util=y
 # CONFIG_PACKAGE_policycoreutils is not set
 # CONFIG_PACKAGE_powertop is not set
 # CONFIG_PACKAGE_pps-tools is not set
-# CONFIG_PACKAGE_prlimit is not set
+CONFIG_PACKAGE_prlimit=m
 # CONFIG_PACKAGE_procps-ng is not set
 # CONFIG_PACKAGE_procps-ng3 is not set
 # CONFIG_PACKAGE_procs is not set
