@@ -57,7 +57,7 @@ env:
   KERNEL_MODULE: myconfig/kernel_aarch64
   FEEDS_CONF: feeds.conf.default
   DIY_P1_SH: diy-part1.sh
-  DIY_P2_SH: diy-part2.sh
+  DIY_P2_SH: diy-part22.sh
   SSH_ACTIONS: true
   UPLOAD_FIRMWARE: true
   UPLOAD_WETRANSFER: false
