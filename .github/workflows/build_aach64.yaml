@@ -36,7 +36,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: aarch64
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.aarch64.3
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.aarch64.4
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
   KMOD_DIR: x-wrt/bin/targets/mvebu/kmod 
