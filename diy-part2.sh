@@ -29,7 +29,7 @@ cp $GITHUB_WORKSPACE/patches/030-h264-mips.patch $GITHUB_WORKSPACE/x-wrt/feeds/p
 #/usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-cn/nlbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw/nlbwmon.po 
 
 
-#cp $GITHUB_WORKSPACE/patches/Makefile.coreutils $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/coreutils/Makefile
+cp $GITHUB_WORKSPACE/patches/Makefile.coreutils $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/coreutils/Makefile
 cp $GITHUB_WORKSPACE/patches/10?-* $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches
 cp $GITHUB_WORKSPACE/patches/Config.in.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Config.in
 cp $GITHUB_WORKSPACE/patches/Makefile.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Makefile                                                                                                                                                                      
