@@ -96,12 +96,12 @@ jobs:
           sed -i 's/#####/git checkout 060aa0021f688d455767b553cfe95e29b6559b7a/g' $GITHUB_WORKSPACE/$DIY_P1_SH  
           $GITHUB_WORKSPACE/$DIY_P1_SH
           
-          sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Config.in.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
-          sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Makefile.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
+          #sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Config.in.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
+          #sed -i 's/cp $GITHUB_WORKSPACE\/patches\/Makefile.mbedtls/\#cp/g' $GITHUB_WORKSPACE/diy-part2.sh
           chmod +x $GITHUB_WORKSPACE/$DIY_P2_SH
           $GITHUB_WORKSPACE/$DIY_P2_SH
           sudo timedatectl set-timezone "$TZ"
-          rm $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/10*
+          #rm $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches/10*
           rm -rf $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/030-*
           rm -rf $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/060-*
       - name: Generate cache mixkey
