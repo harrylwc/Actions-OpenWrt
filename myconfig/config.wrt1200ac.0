@@ -3302,7 +3302,7 @@ CONFIG_PACKAGE_kmod-gpio-button-hotplug=y
 #
 # CONFIG_PACKAGE_kmod-hid is not set
 # CONFIG_PACKAGE_kmod-hid-generic is not set
-# CONFIG_PACKAGE_kmod-input-core is not set
+CONFIG_PACKAGE_kmod-input-core=m
 # CONFIG_PACKAGE_kmod-input-evdev is not set
 # CONFIG_PACKAGE_kmod-input-gpio-encoder is not set
 # CONFIG_PACKAGE_kmod-input-gpio-keys is not set
@@ -3804,7 +3804,21 @@ CONFIG_PACKAGE_kmod-slhc=y
 #
 # Sound Support
 #
-# CONFIG_PACKAGE_kmod-sound-core is not set
+CONFIG_PACKAGE_kmod-sound-core=m
+# CONFIG_PACKAGE_kmod-ac97 is not set
+# CONFIG_PACKAGE_kmod-sound-dummy is not set
+# CONFIG_PACKAGE_kmod-sound-ens1371 is not set
+# CONFIG_PACKAGE_kmod-sound-hda-core is not set
+# CONFIG_PACKAGE_kmod-sound-i8x0 is not set
+# CONFIG_PACKAGE_kmod-sound-mpu401 is not set
+# CONFIG_PACKAGE_kmod-sound-seq is not set
+# CONFIG_PACKAGE_kmod-sound-soc-ac97 is not set
+# CONFIG_PACKAGE_kmod-sound-soc-core is not set
+# CONFIG_PACKAGE_kmod-sound-soc-dmic is not set
+# CONFIG_PACKAGE_kmod-sound-soc-spdif is not set
+# CONFIG_PACKAGE_kmod-sound-soc-wm8960 is not set
+# CONFIG_PACKAGE_kmod-sound-via82xx is not set
+# CONFIG_PACKAGE_kmod-usb-audio is not set
 # end of Sound Support
 
 #
@@ -4195,7 +4209,61 @@ CONFIG_PACKAGE_luci-lib-fs=m
 #
 # PHP8
 #
-# CONFIG_PACKAGE_php8 is not set
+CONFIG_PACKAGE_php8=m
+# CONFIG_PACKAGE_php8-cgi is not set
+# CONFIG_PACKAGE_php8-cli is not set
+# CONFIG_PACKAGE_php8-fastcgi is not set
+# CONFIG_PACKAGE_php8-fpm is not set
+# CONFIG_PACKAGE_php8-mod-bcmath is not set
+# CONFIG_PACKAGE_php8-mod-calendar is not set
+# CONFIG_PACKAGE_php8-mod-ctype is not set
+# CONFIG_PACKAGE_php8-mod-curl is not set
+# CONFIG_PACKAGE_php8-mod-dom is not set
+# CONFIG_PACKAGE_php8-mod-exif is not set
+# CONFIG_PACKAGE_php8-mod-fileinfo is not set
+# CONFIG_PACKAGE_php8-mod-filter is not set
+# CONFIG_PACKAGE_php8-mod-ftp is not set
+# CONFIG_PACKAGE_php8-mod-gd is not set
+# CONFIG_PACKAGE_php8-mod-gettext is not set
+# CONFIG_PACKAGE_php8-mod-gmp is not set
+# CONFIG_PACKAGE_php8-mod-iconv is not set
+# CONFIG_PACKAGE_php8-mod-intl is not set
+# CONFIG_PACKAGE_php8-mod-ldap is not set
+# CONFIG_PACKAGE_php8-mod-mbstring is not set
+# CONFIG_PACKAGE_php8-mod-mysqli is not set
+# CONFIG_PACKAGE_php8-mod-mysqlnd is not set
+# CONFIG_PACKAGE_php8-mod-opcache is not set
+# CONFIG_PACKAGE_php8-mod-openssl is not set
+# CONFIG_PACKAGE_php8-mod-pcntl is not set
+# CONFIG_PACKAGE_php8-mod-pdo is not set
+# CONFIG_PACKAGE_php8-mod-pdo-mysql is not set
+# CONFIG_PACKAGE_php8-mod-pdo-pgsql is not set
+# CONFIG_PACKAGE_php8-mod-pdo-sqlite is not set
+# CONFIG_PACKAGE_php8-mod-pgsql is not set
+# CONFIG_PACKAGE_php8-mod-phar is not set
+# CONFIG_PACKAGE_php8-mod-session is not set
+# CONFIG_PACKAGE_php8-mod-shmop is not set
+# CONFIG_PACKAGE_php8-mod-simplexml is not set
+# CONFIG_PACKAGE_php8-mod-snmp is not set
+# CONFIG_PACKAGE_php8-mod-soap is not set
+# CONFIG_PACKAGE_php8-mod-sockets is not set
+# CONFIG_PACKAGE_php8-mod-sodium is not set
+# CONFIG_PACKAGE_php8-mod-sqlite3 is not set
+# CONFIG_PACKAGE_php8-mod-sysvmsg is not set
+# CONFIG_PACKAGE_php8-mod-sysvsem is not set
+# CONFIG_PACKAGE_php8-mod-sysvshm is not set
+# CONFIG_PACKAGE_php8-mod-tokenizer is not set
+# CONFIG_PACKAGE_php8-mod-xml is not set
+# CONFIG_PACKAGE_php8-mod-xmlreader is not set
+# CONFIG_PACKAGE_php8-mod-xmlwriter is not set
+# CONFIG_PACKAGE_php8-mod-zip is not set
+# CONFIG_PACKAGE_php8-pecl-dio is not set
+# CONFIG_PACKAGE_php8-pecl-http is not set
+# CONFIG_PACKAGE_php8-pecl-imagick is not set
+# CONFIG_PACKAGE_php8-pecl-krb5 is not set
+# CONFIG_PACKAGE_php8-pecl-raphf is not set
+# CONFIG_PACKAGE_php8-pecl-redis is not set
+# CONFIG_PACKAGE_php8-pecl-xdebug is not set
 # end of PHP8
 
 #
@@ -4500,7 +4568,7 @@ CONFIG_PACKAGE_python3-xml=m
 #
 # Rust
 #
-# CONFIG_PACKAGE_rust is not set
+CONFIG_PACKAGE_rust=m
 
 #
 # Configuration options (for developers)
@@ -5096,7 +5164,24 @@ CONFIG_PACKAGE_libxtables=y
 #
 # SSL
 #
-# CONFIG_PACKAGE_libgnutls is not set
+CONFIG_PACKAGE_libgnutls=m
+
+#
+# Configuration
+#
+CONFIG_GNUTLS_DTLS_SRTP=y
+CONFIG_GNUTLS_ALPN=y
+CONFIG_GNUTLS_OCSP=y
+# CONFIG_GNUTLS_CRYPTODEV is not set
+CONFIG_GNUTLS_HEARTBEAT=y
+# CONFIG_GNUTLS_SRP is not set
+CONFIG_GNUTLS_PSK=y
+CONFIG_GNUTLS_ANON=y
+# CONFIG_GNUTLS_TPM is not set
+# CONFIG_GNUTLS_PKCS11 is not set
+# CONFIG_GNUTLS_EXT_LIBTASN1 is not set
+# end of Configuration
+
 # CONFIG_PACKAGE_libgnutls-dane is not set
 CONFIG_PACKAGE_libmbedtls=y
 
@@ -5319,7 +5404,7 @@ CONFIG_WOLFSSL_HAS_NO_HW=y
 
 # CONFIG_PACKAGE_abseil-cpp is not set
 # CONFIG_PACKAGE_acsccid is not set
-# CONFIG_PACKAGE_alsa-lib is not set
+CONFIG_PACKAGE_alsa-lib=m
 # CONFIG_PACKAGE_argp-standalone is not set
 # CONFIG_PACKAGE_bind-libs is not set
 # CONFIG_PACKAGE_bluez-libs is not set
@@ -5374,8 +5459,8 @@ CONFIG_PACKAGE_libaprutil=m
 # CONFIG_PACKAGE_libatasmart is not set
 # CONFIG_PACKAGE_libaudit is not set
 # CONFIG_PACKAGE_libauparse is not set
-# CONFIG_PACKAGE_libavahi-client is not set
-# CONFIG_PACKAGE_libavahi-dbus-support is not set
+CONFIG_PACKAGE_libavahi-client=m
+CONFIG_PACKAGE_libavahi-dbus-support=m
 # CONFIG_PACKAGE_libavahi-nodbus-support is not set
 # CONFIG_PACKAGE_libbase16384 is not set
 # CONFIG_PACKAGE_libbfd is not set
@@ -5443,19 +5528,27 @@ CONFIG_LIBCURL_UNIX_SOCKETS=y
 # CONFIG_LIBCURL_VERBOSE is not set
 # CONFIG_LIBCURL_HTTP_AUTH is not set
 # CONFIG_PACKAGE_libcurl-gnutls is not set
-# CONFIG_PACKAGE_libdaemon is not set
+CONFIG_PACKAGE_libdaemon=m
 # CONFIG_PACKAGE_libdaq3 is not set
 # CONFIG_PACKAGE_libdb47 is not set
 # CONFIG_PACKAGE_libdb47xx is not set
 # CONFIG_PACKAGE_libdbi is not set
-# CONFIG_PACKAGE_libdbus is not set
+CONFIG_PACKAGE_libdbus=m
 # CONFIG_PACKAGE_libdeflate is not set
 # CONFIG_PACKAGE_libdevmapper is not set
 # CONFIG_PACKAGE_libdevmapper-selinux is not set
 # CONFIG_PACKAGE_libdht is not set
 # CONFIG_PACKAGE_libdmapsharing is not set
 # CONFIG_PACKAGE_libdnet is not set
-# CONFIG_PACKAGE_libdvbcsa is not set
+CONFIG_PACKAGE_libdvbcsa=m
+
+#
+# Configuration
+#
+# CONFIG_LIBDVBCSA_DEBUG is not set
+# CONFIG_LIBDVBCSA_NEON is not set
+# end of Configuration
+
 # CONFIG_PACKAGE_libdw is not set
 # CONFIG_PACKAGE_libe2p is not set
 # CONFIG_PACKAGE_libecdsautil is not set
@@ -5484,7 +5577,7 @@ CONFIG_PACKAGE_libexpat=m
 CONFIG_PACKAGE_libffi=m
 # CONFIG_PACKAGE_libffmpeg-audio-dec is not set
 # CONFIG_PACKAGE_libffmpeg-custom is not set
-# CONFIG_PACKAGE_libffmpeg-full is not set
+CONFIG_PACKAGE_libffmpeg-full=m
 # CONFIG_PACKAGE_libffmpeg-mini is not set
 # CONFIG_PACKAGE_libfido2 is not set
 # CONFIG_PACKAGE_libflac is not set
@@ -5504,7 +5597,7 @@ CONFIG_PACKAGE_libgdbm=m
 # CONFIG_PACKAGE_libgio-environmentproxy is not set
 # CONFIG_PACKAGE_libgio-gnutls is not set
 # CONFIG_PACKAGE_libgio-openssl is not set
-# CONFIG_PACKAGE_libgmp is not set
+CONFIG_PACKAGE_libgmp=m
 # CONFIG_PACKAGE_libgpg-error is not set
 # CONFIG_PACKAGE_libgpgme is not set
 # CONFIG_PACKAGE_libgpgmepp is not set
@@ -5587,7 +5680,14 @@ CONFIG_PACKAGE_libncurses=m
 # CONFIG_PACKAGE_libnetfilter-log is not set
 # CONFIG_PACKAGE_libnetfilter-queue is not set
 # CONFIG_PACKAGE_libnetsnmp is not set
-# CONFIG_PACKAGE_libnettle is not set
+CONFIG_PACKAGE_libnettle=m
+
+#
+# Configuration
+#
+# CONFIG_LIBNETTLE_MINI is not set
+# end of Configuration
+
 # CONFIG_PACKAGE_libnewt is not set
 # CONFIG_PACKAGE_libnfnetlink is not set
 CONFIG_PACKAGE_libnftnl=y
@@ -5606,7 +5706,7 @@ CONFIG_PACKAGE_libnl-tiny=y
 # CONFIG_PACKAGE_libnpupnp is not set
 # CONFIG_PACKAGE_libnvme is not set
 # CONFIG_PACKAGE_liboath is not set
-# CONFIG_PACKAGE_libogg is not set
+CONFIG_PACKAGE_libogg=m
 # CONFIG_PACKAGE_liboil is not set
 # CONFIG_PACKAGE_libopcodes is not set
 # CONFIG_PACKAGE_libopen62541 is not set
@@ -5616,8 +5716,8 @@ CONFIG_PACKAGE_libnl-tiny=y
 # CONFIG_PACKAGE_libopensc is not set
 # CONFIG_PACKAGE_libopenzwave is not set
 # CONFIG_PACKAGE_liboping is not set
-# CONFIG_PACKAGE_libopus is not set
-# CONFIG_PACKAGE_libopusenc is not set
+CONFIG_PACKAGE_libopus=m
+CONFIG_PACKAGE_libopusenc=m
 # CONFIG_PACKAGE_libopusfile is not set
 # CONFIG_PACKAGE_liborcania is not set
 # CONFIG_PACKAGE_libout123 is not set
@@ -5704,7 +5804,7 @@ CONFIG_LIBSSH2_OPENSSL=y
 # CONFIG_PACKAGE_libsysrepo is not set
 # CONFIG_PACKAGE_libtalloc is not set
 # CONFIG_PACKAGE_libtasn1 is not set
-# CONFIG_PACKAGE_libtheora is not set
+CONFIG_PACKAGE_libtheora=m
 # CONFIG_PACKAGE_libtiff is not set
 # CONFIG_PACKAGE_libtins is not set
 # CONFIG_PACKAGE_libtirpc is not set
@@ -5744,16 +5844,16 @@ CONFIG_PACKAGE_libuuid=m
 CONFIG_PACKAGE_libuv=y
 # CONFIG_PACKAGE_libuwifi is not set
 # CONFIG_PACKAGE_libv4l is not set
-# CONFIG_PACKAGE_libvorbis is not set
+CONFIG_PACKAGE_libvorbis=m
 # CONFIG_PACKAGE_libvorbisidec is not set
-# CONFIG_PACKAGE_libvpx is not set
+CONFIG_PACKAGE_libvpx=m
 # CONFIG_PACKAGE_libwacom is not set
 # CONFIG_PACKAGE_libwebp is not set
 CONFIG_PACKAGE_libwebsockets-full=y
 # CONFIG_PACKAGE_libwebsockets-mbedtls is not set
 # CONFIG_PACKAGE_libwebsockets-openssl is not set
 # CONFIG_PACKAGE_libwrap is not set
-# CONFIG_PACKAGE_libx264 is not set
+CONFIG_PACKAGE_libx264=m
 # CONFIG_PACKAGE_libxerces-c is not set
 # CONFIG_PACKAGE_libxerces-c-samples is not set
 CONFIG_PACKAGE_libxml2=m
@@ -6002,6 +6102,7 @@ CONFIG_PACKAGE_luci-app-firewall=y
 CONFIG_PACKAGE_luci-app-netspeedtest=m
 CONFIG_PACKAGE_luci-app-nextdns=m
 CONFIG_PACKAGE_luci-app-nft-qos=m
+# CONFIG_PACKAGE_luci-app-nikki is not set
 # CONFIG_PACKAGE_luci-app-nlbwmon is not set
 # CONFIG_PACKAGE_luci-app-nut is not set
 # CONFIG_PACKAGE_luci-app-ocserv is not set
@@ -6796,7 +6897,7 @@ CONFIG_PACKAGE_luci-i18n-wrtbwmon-zh-tw=m
 
 # CONFIG_PACKAGE_UnblockNeteaseMusic is not set
 # CONFIG_PACKAGE_aliyundrive-webdav is not set
-# CONFIG_PACKAGE_ffmpeg is not set
+CONFIG_PACKAGE_ffmpeg=m
 # CONFIG_PACKAGE_ffprobe is not set
 # CONFIG_PACKAGE_fswebcam is not set
 # CONFIG_PACKAGE_go2rtc is not set
@@ -6820,7 +6921,22 @@ CONFIG_PACKAGE_luci-i18n-wrtbwmon-zh-tw=m
 # CONFIG_PACKAGE_mjpg-streamer is not set
 # CONFIG_PACKAGE_motion-ffmpeg is not set
 # CONFIG_PACKAGE_motion-noffmpeg is not set
-# CONFIG_PACKAGE_tvheadend is not set
+CONFIG_PACKAGE_tvheadend=m
+
+#
+# Configuration
+#
+CONFIG_TVHEADEND_CWC_SUPPORT=y
+CONFIG_TVHEADEND_V4L_SUPPORT=y
+CONFIG_TVHEADEND_LINUXDVB_SUPPORT=y
+CONFIG_TVHEADEND_DVBSCAN_SUPPORT=y
+CONFIG_TVHEADEND_AVAHI_SUPPORT=y
+CONFIG_TVHEADEND_DVBCSA_SUPPORT=y
+# CONFIG_DISABLE_TVHCSA_DVBCSA_SUPPORT is not set
+# CONFIG_DISABLE_TVHEADEND_FULL_SUPPORT is not set
+CONFIG_TVHEADEND_ENABLE_BUNDLE=y
+# end of Configuration
+
 # CONFIG_PACKAGE_v4l2camera is not set
 # CONFIG_PACKAGE_v4l2rtspserver is not set
 # CONFIG_PACKAGE_v4l2tools is not set
@@ -7063,7 +7179,7 @@ CONFIG_PACKAGE_xtables-nft=y
 # CONFIG_PACKAGE_avahi-autoipd is not set
 # CONFIG_PACKAGE_avahi-daemon-service-http is not set
 # CONFIG_PACKAGE_avahi-daemon-service-ssh is not set
-# CONFIG_PACKAGE_avahi-dbus-daemon is not set
+CONFIG_PACKAGE_avahi-dbus-daemon=m
 # CONFIG_PACKAGE_avahi-dnsconfd is not set
 # CONFIG_PACKAGE_avahi-nodbus-daemon is not set
 # CONFIG_PACKAGE_avahi-utils is not set
@@ -7575,6 +7691,7 @@ CONFIG_PACKAGE_apache=m
 # CONFIG_PACKAGE_apache-mod-ldap is not set
 # CONFIG_PACKAGE_apache-mod-lua is not set
 # CONFIG_PACKAGE_apache-mod-md is not set
+# CONFIG_PACKAGE_apache-mod-php8 is not set
 # CONFIG_PACKAGE_apache-mod-proxy is not set
 # CONFIG_PACKAGE_apache-mod-proxy-html is not set
 # CONFIG_PACKAGE_apache-mod-session-crypto is not set
@@ -7970,6 +8087,7 @@ CONFIG_PACKAGE_iw=y
 # CONFIG_PACKAGE_netsniff-ng is not set
 # CONFIG_PACKAGE_netstinky is not set
 # CONFIG_PACKAGE_nfdump is not set
+# CONFIG_PACKAGE_nikki is not set
 # CONFIG_PACKAGE_nlbwmon is not set
 # CONFIG_PACKAGE_noping is not set
 # CONFIG_PACKAGE_nqptp is not set
@@ -8128,10 +8246,24 @@ CONFIG_PACKAGE_uclient-fetch=y
 # CONFIG_PACKAGE_aserver is not set
 # CONFIG_PACKAGE_espeak is not set
 # CONFIG_PACKAGE_faad2 is not set
-# CONFIG_PACKAGE_fdk-aac is not set
+CONFIG_PACKAGE_fdk-aac=m
+
+#
+# Configuration
+#
+# CONFIG_FDK-AAC_OPTIMIZE_SPEED is not set
+# end of Configuration
+
 # CONFIG_PACKAGE_ices is not set
 # CONFIG_PACKAGE_lame is not set
-# CONFIG_PACKAGE_lame-lib is not set
+CONFIG_PACKAGE_lame-lib=m
+
+#
+# Configuration
+#
+# CONFIG_LAME-LIB_OPTIMIZE_SPEED is not set
+# end of Configuration
+
 # CONFIG_PACKAGE_libfluidsynth is not set
 # CONFIG_PACKAGE_liblo-utils is not set
 # CONFIG_PACKAGE_libwavpack is not set
@@ -8681,7 +8813,8 @@ CONFIG_PACKAGE_coreutils-stty=m
 # CONFIG_PACKAGE_csstidy is not set
 # CONFIG_PACKAGE_ct-bugcheck is not set
 # CONFIG_PACKAGE_ctop is not set
-# CONFIG_PACKAGE_dbus is not set
+CONFIG_PACKAGE_dbus=m
+# CONFIG_DBUS_VERBOSE is not set
 # CONFIG_PACKAGE_dbus-utils is not set
 # CONFIG_PACKAGE_device-observatory is not set
 # CONFIG_PACKAGE_dfu-util is not set
