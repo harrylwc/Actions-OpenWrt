@@ -215,11 +215,11 @@ jobs:
          
       - name: Compile firmware
         run: |
-          cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
+          cp myconfig/config.newifi-d2.0 x-wrt/.config
           cd x-wrt
           ls -alt $GITHUB_WORKSPACE/x-wrt/.config
           echo cpu core=$(nproc)
-          #make -j$(nproc) || make -j1 V=s
+          make -j$(nproc) 
           #[ $? != 0 ] && make V=s || echo "build success"
           
           #     echo "======================="
