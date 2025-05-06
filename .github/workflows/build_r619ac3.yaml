@@ -313,7 +313,8 @@ jobs:
            sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y/g' x-wrt/.config
            sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y/g' x-wrt/.config                    
            cd x-wrt 
-           make -j$(nproc) #|| make -j1 V=s                                                                                   
+           make -j8 
+           #|| make -j1 V=s                                                                                   
            cd ../ 
            cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR 
            chmod 755 $DRIVERS_DIR/busybox 
@@ -333,8 +334,8 @@ jobs:
            #make kernel_menuconfig -j4
            echo cpu core=$(nproc)
            #ln -s /usr/bin/ccache /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/staging_dir/host/bin/ccache 
-           make -j$(nproc)
-           #|| make -j1 V=s
+           make -j8
+           #|| make -j1 
            #[ $? != 0 ] && make V=s || echo "build success" 
            cp -f bin/targets/ipq40xx/generic/openwrt-ipq40xx-generic-p2w_r619ac-128m-squashfs-sysupgrade.bin bin/targets/ipq40xx/drivers/  
            df -kh
