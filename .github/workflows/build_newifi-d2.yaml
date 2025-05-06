@@ -14,15 +14,15 @@ on:
    # branches: 
     #  - master
  repository_dispatch:
-    types: [mvebu_ipq40xx_ramips_completed]
+    types: [ramips_completed]
  workflow_dispatch:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
- schedule:
-     - cron: 45 15 * * *
+ #schedule:
+     #- cron: 45 15 * * *
  watch:
      types: started
 
@@ -436,5 +436,5 @@ jobs:
          -H "Authorization: token $PAT" \
          -H "Accept: application/vnd.github.v3+json" \
          https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
-         -d '{"event_type":"ramips_completed"}' 
+         -d '{"event_type":"ramips1_completed"}' 
      
