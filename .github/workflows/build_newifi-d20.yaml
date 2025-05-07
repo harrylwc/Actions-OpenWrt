@@ -7,7 +7,7 @@
 # <https://github.com/KFERMercer/OpenWrt-CI>
 #
 ####@
-name: Compile newifi-d2 kernel TVH OpenWrt Images  
+name: Compile newifi-d20 kernel TVH OpenWrt Images  
 
 on:
   #push:
@@ -21,8 +21,8 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
- #schedule:
-     #- cron: 45 15 * * *
+ schedule:
+     - cron: 45 15 * * *
  watch:
      types: started
 
