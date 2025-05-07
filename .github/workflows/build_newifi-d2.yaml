@@ -277,7 +277,7 @@ jobs:
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
            
-           cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config         
+           cp myconfig/config.$ROUTER_MODEL.0 x-wrt/.config         
            mkdir -p $DRIVERS_DIR
            #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
            #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
