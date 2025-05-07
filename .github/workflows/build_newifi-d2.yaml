@@ -239,7 +239,7 @@ jobs:
           #cd ../
           #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
           #[ $? != 0 ] && make V=s || echo "zteq7 build success"
-          #cp config.$ROUTER_MODEL.0 .config
+          #cp config.$ROUTER_MODEL.2 .config
           #echo cpu core=$(nproc)
           #make -j$(nproc) || make -j1 V=s
           #[ $? != 0 ] && make V=s || echo "zteq7 build success"
@@ -277,7 +277,7 @@ jobs:
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
            
-           cp myconfig/config.$ROUTER_MODEL.0 x-wrt/.config         
+           cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config         
            mkdir -p $DRIVERS_DIR
            #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
            #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
@@ -419,14 +419,14 @@ jobs:
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
-      - name: Send repository_dispatch
-        env:
-         PAT: ${{ secrets.GITHUB_TOKEN }} 
-        run: |
-         curl \
-         -X POST \
-         -H "Authorization: token $PAT" \
-         -H "Accept: application/vnd.github.v3+json" \
-         https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
-         -d '{"event_type":"ramips1_completed"}' 
+      #- name: Send repository_dispatch
+       # env:
+        # PAT: ${{ secrets.GITHUB_TOKEN }} 
+        #run: |
+         #curl \
+         #-X POST \
+         #-H "Authorization: token $PAT" \
+         #-H "Accept: application/vnd.github.v3+json" \
+         #https://api.github.com/repos/harrylwc/Actions-OpenWrt/dispatches \
+         #-d '{"event_type":"ramips1_completed"}' 
      
