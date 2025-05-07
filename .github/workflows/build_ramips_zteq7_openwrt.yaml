@@ -15,7 +15,7 @@ on:
     #  - master
 
   repository_dispatch:
-    types: [ramips1_completed]
+    types: [ramips_completed]
   workflow_dispatch:    
     inputs:
       ssh:
