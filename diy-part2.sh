@@ -20,7 +20,7 @@ cp $GITHUB_WORKSPACE/patches/swconfig* $GITHUB_WORKSPACE/x-wrt/target/linux/gene
 
 cp $GITHUB_WORKSPACE/patches/0003-mutils_time.patch $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/mailsend/patches/
 cp $GITHUB_WORKSPACE/patches/060-binutils.patch $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/
-#cp $GITHUB_WORKSPACE/patches/030-h264-mips.patch $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/
+cp $GITHUB_WORKSPACE/patches/030-h264-mips.patch $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/
 
 #mkdir ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/feeds/kenzo/luci-app-easymesh/po/zh_Hant
 #/usr/bin/opencc -i ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/feeds/kenzo/luci-app-easymesh/po/zh-cn/easymesh.po -o ~/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/feeds/kenzo/luci-app-easymesh/po/zh_Hant/easymesh.po

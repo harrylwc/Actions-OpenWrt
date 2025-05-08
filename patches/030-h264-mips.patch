@@ -1,0 +1,11 @@
+--- a/libavcodec/mips/cabac.h
++++ b/libavcodec/mips/cabac.h
+@@ -30,7 +30,7 @@
+ #include "libavutil/mips/mmiutils.h"
+ #include "config.h"
+ 
+-#if !HAVE_MIPS32R6 && !HAVE_MIPS64R6
++#ifndef __mips16
+ #define get_cabac_inline get_cabac_inline_mips
+ static av_always_inline int get_cabac_inline_mips(CABACContext *c,
+                                                   uint8_t * const state){
