@@ -277,17 +277,24 @@ jobs:
         if: env.BUILD_KERNEL_MODULES == 'true'
         run: |
            
-           cp myconfig/config.$ROUTER_MODEL.0 x-wrt/.config         
+           cp myconfig/config.$ROUTER_MODEL.0 x-wrt/.config  
+           #cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
+           [ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
            mkdir -p $DRIVERS_DIR
-           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
-           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
-           #sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y/g' x-wrt/.config
-           #sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y/g' x-wrt/.config
-           cd x-wrt  
-           mv feeds/packages/utils/dockerd /tmp/ 
-           rm -rf /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/build_dir/target-mipsel_24kc_musl/root-ramips/lib/libustream-ssl.so
-        
-           make -j$(nproc)
+           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y/g' x-wrt/.config
+           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y/g' x-wrt/.config                    
+           cd x-wrt 
+           sudo rm -rf /usr/share/dotnet
+           sudo rm -rf /opt/ghc
+           sudo rm -rf "/usr/local/share/boost"
+           sudo rm -rf "$AGENT_TOOLSDIRECTORY" 
+           
+           make -j$(nproc) || make -j1 V=s                                                                                   
+           cd ../ 
+           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR/busybox.$ROUTER_MODEL 
+           copy_file.sh $DRIVERS_DIR/busybox.$ROUTER_MODEL
+           
+           
 
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
