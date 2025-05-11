@@ -30,6 +30,7 @@ on:
     
 env:
   #####change model here ####@# 
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.newifi-d2
   ROUTER_MODEL: newifi-d2
   TVH: true
   BUILD_KERNEL_MODULES: true
@@ -135,6 +136,16 @@ jobs:
           echo $cacheKey
           echo "Done"
           fi
+          x=`du x-wrt/staging_dir/|tail -1|awk '{print $1}'`
+          if [ $x  -ge 100000 ] 
+          then
+          config_file="x-wrt/config.newifi-d2.2"
+          echo cache restored,using config file $config_file
+          else
+          config_file="x-wrt/config.newifi-d2.0"
+          echo cache not found,using config file $config_file
+          fi
+          cp $config_file x-wrt/config.newifi-d2
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
@@ -287,7 +298,7 @@ jobs:
            #make -j8 
            #|| make -j1 V=s                                                                                   
            cd ../ 
-           cp myconfig/config.$ROUTER_MODEL.2 x-wrt/.config         
+           cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config
                                                                                
            #cat myconfig/config.tvh.ffmpeg >> x-wrt/.config
            
