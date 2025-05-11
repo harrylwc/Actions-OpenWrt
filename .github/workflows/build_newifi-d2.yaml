@@ -290,10 +290,16 @@ jobs:
            
            
            mkdir -p $DRIVERS_DIR
-           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y>>x-wrt/.config
-           #echo CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y>>x-wrt/.config
-           #sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y/g' x-wrt/.config
-           #sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y/g' x-wrt/.config                    
+           if [ "$CACHE_RESTORED" = "TRUE" ]
+           then
+           echo cache restored
+           sed -i 's/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU is not set/g' x-wrt/.config
+           sed -i 's/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS is not set/g' x-wrt/.config
+           else
+           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y/g' x-wrt/.config
+           sed -i 's/# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS is not set/CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y/g' x-wrt/.config                    
+           fi
+    
            cd x-wrt 
            #make -j8 
            #|| make -j1 V=s                                                                                   
@@ -317,6 +323,12 @@ jobs:
            #ln -s /usr/bin/ccache /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/staging_dir/host/bin/ccache 
            make -j$(nproc) || make -j1 V=s
            #[ $? != 0 ] && make V=s || echo "build success" 
+           if [ "$CACHE_RESTORED" = "TRUE" ]
+           then
+           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox.$ROUTER_MODEL $DRIVERS_DIR
+           chmod 755 $DRIVERS_DIR/busybox.$ROUTER_MODEL  
+           copy_file $DRIVERS_DIR/busybox.$ROUTER_MODEL  
+           fi      
            
            df -kh
            [ $? != 0 ] && make V=s || echo "build success" 
