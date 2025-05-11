@@ -140,16 +140,16 @@ jobs:
           echo $cacheKey
           echo "Done"
           fi
-          x=`du x-wrt/staging_dir/|tail -1|awk '{print $1}'`
-          if [ $x  -ge 100000 ] 
-          then
-          config_file="x-wrt/config.wrt1200ac.3.openwrt"
-          echo cache restored,using config file $config_file
+          size=`du x-wrt/staging_dir/|tail -1|awk '{print $1}'`
+          if [ $size -ge 100000 ] 
+          then 
+            config_file="x-wrt/config.$ROUTER_MODEL.3"
+            echo caches restored using config file $config_file
           else
-          config_file="x-wrt/config.wrt1200ac.0.openwrt"
-          echo cache not found,using config file $config_file
+            config_file="x-wrt/config.$ROUTER_MODEL.0
+            echo caches not found,using config file $config_file
           fi
-          cp $config_file x-wrt/config.wrt1200ac.openwrt
+          cp $config_file x-wrt/$CONFIG_FILENAME_FOR_2ND_COMPILE
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
