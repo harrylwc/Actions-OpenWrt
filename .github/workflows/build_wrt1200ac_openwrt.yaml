@@ -149,7 +149,7 @@ jobs:
             config_file="x-wrt/config.$ROUTER_MODEL.0.openwrt"
             echo caches not found,using config file $config_file
           fi
-          cp $config_file x-wrt/$CONFIG_FILENAME_FOR_2ND_COMPILE
+          cp $config_file myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
@@ -252,7 +252,6 @@ jobs:
           [ -d "bin" ] && sudo mv bin /mnt/ || ( mkdir bin;sudo mv bin /mnt/ )
           ln -s /mnt/bin .
           
-          #cp config.wrt1200ac.0 .config
           #echo cpu core=$(nproc)
           
           #make -j$(nproc) || make -j1 V=s

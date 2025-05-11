@@ -144,7 +144,7 @@ jobs:
             config_file="x-wrt/config.$ROUTER_MODEL.0"
             echo caches not found,using config file $config_file
           fi
-          cp $config_file x-wrt/$CONFIG_FILENAME_FOR_2ND_COMPILE                
+          cp $config_file myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE                
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -269,7 +269,6 @@ jobs:
           #wget https://oss.oetiker.ch/rrdtool/pub/archive/rrdtool-1.0.x/rrdtool-1.0.50.tar.gz
           #wget https://lftp.yar.ru/ftp/lftp-4.9.2.tar.xz
           #cd ../
-          #cp $GITHUB_WORKSPACE/myconfig/config.r619ac.0 .config
           #echo cpu core=$(nproc)
           #make -j$(nproc) || make -j1 V=s
           #[ $? != 0 ] && make V=s || echo "build success"
