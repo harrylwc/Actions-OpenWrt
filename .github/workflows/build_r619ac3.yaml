@@ -34,7 +34,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: r619ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.3
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
@@ -135,6 +135,16 @@ jobs:
           echo $cacheKey
           echo "Done"
           fi
+          x=`du x-wrt/staging_dir/|tail -1|awk '{print $1}'`
+          if [ $x  -ge 100000 ] 
+          then
+          config_file="x-wrt/config.r619ac.3"
+          echo cache restored,using config file $config_file
+          else
+          config_file="x-wrt/config.r619ac.0"
+          echo cache not found,using config file $config_file
+          fi
+          cp $config_file x-wrt/config.r619ac
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
