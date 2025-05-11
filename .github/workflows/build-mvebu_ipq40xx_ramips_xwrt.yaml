@@ -182,7 +182,13 @@ jobs:
       id: compile
 
       run: |
-        
+        cd x-wrt
+        [ -d "build_dir" ] && sudo mv build_dir /mnt/ || ( mkdir build_dir;sudo mv build_dir /mnt/ )
+        ln -s /mnt/build_dir .
+        sudo mv dl /mnt/
+        ln -s /mnt/dl .
+        [ -d "bin" ] && sudo mv bin /mnt/ || ( mkdir bin;sudo mv bin /mnt/ )
+        ln -s /mnt/bin .        
         mkdir -p $DRIVERS_DIR1
         mkdir -p $DRIVERS_DIR2
         mkdir -p $DRIVERS_DIR3
@@ -190,35 +196,26 @@ jobs:
         sudo mv dl /mnt/
         ln -s /mnt/dl
         
-        
-        cp config.r619ac.0 .config
-        #cat config.tvh.ffmpeg >> .config
-        make -j$(nproc) 
-        #|| make V=s -j1 
-        echo "build config.r619ac.0 success"
-        cp -f build_dir/target-*a7*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR2
-        df -kh
-        sudo mv build_dir /mnt/
-        ln -s /mnt/build_dir
-        #cp $CONFIG_FILE .config
         cp config.newifi-d2.0 .config
-        #cat config.tvh.ffmpeg >> .config
-        make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "build config.newifi-d2.0 success"
-        cp -f build_dir/target-*mipsel*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR3
-        df -kh
-        #make clean         
-        
-        
-        cp config.wrt1200ac.0 .config
-        
-        #cat config.tvh.ffmpeg >> .config
-        #cat config.tvh.ffmpeg >>.config
-        echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "build config.wrt1200ac.0 success"
-        cp -f build_dir/target-*a9*/busybox-*/busybox-*/ipkg-install/bin/busybox ../$DRIVERS_DIR1
+        make tools/compile -j$(nproc) 
+        make toolchain/compile -j$(nproc) 
+        make target/compile -j$(nproc) 
+        make target/linux/compile -j$(nproc)
+        df -kh 
 
+        cp config.wrt1200ac.0 .config
+        make tools/compile -j$(nproc) 
+        make toolchain/compile -j$(nproc) 
+        make target/compile -j$(nproc) 
+        make target/linux/compile -j$(nproc)
+        df -kh 
+       
+        cp config.r619ac.1 .config
+        make -j$(nproc) || make -j1 || make -j1 V=s
+        df -kh 
+ 
+   
+        
 
     - name: SSH connection for failure Debug
       if: ${{ failure() }}
