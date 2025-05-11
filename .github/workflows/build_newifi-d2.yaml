@@ -114,7 +114,7 @@ jobs:
           #skip_saving: 'true'
          
 
-      - name: Clear Cache 
+      - name: Clear Cache
         if: env.CLEARCACHE == 'true'
         run: |
           echo cache not found,using config file x-wrt/config.$ROUTER_MODEL.0 
@@ -122,7 +122,7 @@ jobs:
           gh extension install actions/gh-actions-cache
           REPO=${{ github.repository }}
           BRANCH="master"
-          #target_device_arch_1="ipq40xx"
+          #target_device_arch_1="ipq40xx" 
           #echo "Fetching list of cache key"
           list_of_caches=$(gh actions-cache  --sort created-at list -R $REPO -B $BRANCH -L 100| cut -f 1)
           echo $list_of_caches
@@ -138,14 +138,9 @@ jobs:
           echo $cacheKey
           echo "Done"
           fi
-          
+      
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Cache restored
-        if: env.CLEARCACHE == 'false'
-        run: |
-          echo cache restored,using config file x-wrt/config.$ROUTER_MODEL.2
-          cp x-wrt/config.$ROUTER_MODEL.2 x-wrt/$CONFIG_FILENAME_FOR_2ND_COMPILE
       - name: Space cleanup
         env:
           SSH_ACTIONS: true
