@@ -21,8 +21,8 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
- schedule:
-     - cron: 45 15 * * *
+ #schedule:
+  #   - cron: 45 15 * * *
  watch:
      types: started
 
