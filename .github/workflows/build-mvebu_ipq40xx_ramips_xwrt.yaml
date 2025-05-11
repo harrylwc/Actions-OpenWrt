@@ -189,7 +189,8 @@ jobs:
         sudo mv dl /mnt/
         ln -s /mnt/dl .
         [ -d "bin" ] && sudo mv bin /mnt/ || ( mkdir bin;sudo mv bin /mnt/ )
-        ln -s /mnt/bin .        
+        ln -s /mnt/bin .    
+        cd ../
         mkdir -p $DRIVERS_DIR1
         mkdir -p $DRIVERS_DIR2
         mkdir -p $DRIVERS_DIR3
