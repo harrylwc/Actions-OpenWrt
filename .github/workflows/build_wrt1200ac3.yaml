@@ -323,13 +323,13 @@ jobs:
            #|| make -j1 
            #[ $? != 0 ] && make V=s || echo "build success" 
            cp -f bin/targets/mvebu/cortexa9/openwrt-mvebu-cortexa9-linksys_wrt1200ac-squashfs-sysupgrade.bin bin/targets/mvebu/drivers/  
-           if [ "$CACHE_RESTORED" = "TRUE" ]
+           if [ "$CACHE_RESTORED" = "FALSE" ]
            then
            cd ../
-           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox.$ROUTER_MODEL $DRIVERS_DIR
+           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR/busybox.$ROUTER_MODEL
            chmod 755 $DRIVERS_DIR/busybox.$ROUTER_MODEL  
            copy_file $DRIVERS_DIR/busybox.$ROUTER_MODEL  
-           fi           
+           fi              
            
            df -kh
       - name: SSH connection for failure Debug
