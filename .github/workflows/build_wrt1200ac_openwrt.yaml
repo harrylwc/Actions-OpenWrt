@@ -140,7 +140,7 @@ jobs:
           echo $cacheKey
           echo "Done"
           fi
-          
+          du x-wrt/staging_dir/|tail -1
 
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
