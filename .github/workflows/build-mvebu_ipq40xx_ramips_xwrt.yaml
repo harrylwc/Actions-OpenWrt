@@ -195,8 +195,7 @@ jobs:
         mkdir -p $DRIVERS_DIR2
         mkdir -p $DRIVERS_DIR3
         cd x-wrt
-        sudo mv dl /mnt/
-        ln -s /mnt/dl
+   
         
         cp config.newifi-d2.0 .config
         make tools/compile -j$(nproc) 
