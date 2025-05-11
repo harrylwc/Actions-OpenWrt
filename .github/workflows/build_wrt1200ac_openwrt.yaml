@@ -36,7 +36,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: wrt1200ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.0.openwrt
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.wrt1200ac.openwrt
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/mvebu/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.wrt1200ac'
@@ -140,8 +140,16 @@ jobs:
           echo $cacheKey
           echo "Done"
           fi
-          du x-wrt/staging_dir/|tail -1
-
+          x=`du x-wrt/staging_dir/|tail -1|awk '{print $1}'`
+          if [ $x  -ge 100000 ] 
+          then
+          config_file="x-wrt/config.wrt1200ac.3.openwrt"
+          echo cache restored,using config file $config_file
+          else
+          config_file="x-wrt/config.wrt1200ac.0.openwrt"
+          echo cache not found,using config file $config_file
+          fi
+          cp $config_file x-wrt/config.wrt1200ac.openwrt
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
