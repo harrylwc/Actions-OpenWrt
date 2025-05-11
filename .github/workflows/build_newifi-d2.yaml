@@ -55,7 +55,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_WETRANSFER: false
   TZ: Asia/Shanghai
-  
+  CLEARCACHE: true
 jobs:
 
   build_openwrt:
@@ -117,8 +117,7 @@ jobs:
       - name: Clear Cache
         if: env.CLEARCACHE == 'true'
         run: |
-          echo cache not found,using config file x-wrt/config.$ROUTER_MODEL.0 
-          cp x-wrt/config.$ROUTER_MODEL.0 x-wrt/$CONFIG_FILENAME_FOR_2ND_COMPILE
+
           gh extension install actions/gh-actions-cache
           REPO=${{ github.repository }}
           BRANCH="master"
@@ -138,7 +137,16 @@ jobs:
           echo $cacheKey
           echo "Done"
           fi
-      
+          size=`du x-wrt/staging_dir/|tail -1|awk '{print $1}'`
+          if [ $size -ge 100000 ] 
+          then 
+            config_file="x-wrt/config.$ROUTER_MODEL.2"
+            echo caches restored using config file $config_file
+          else
+            config_file="x-wrt/config.$ROUTER_MODEL.0
+            echo caches not found,using config file $config_file
+          fi
+          cp $config_file x-wrt/$CONFIG_FILENAME_FOR_2ND_COMPILE
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Space cleanup
