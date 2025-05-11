@@ -64,7 +64,7 @@ env:
   DIY_P2_SH: diy-part2.sh
   SSH_ACTIONS: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_WETRANSFER: false
+  UPLOAD_ROUTER: true
   TZ: Asia/Shanghai
   target_device_arch_1: ramips
   CLEARCACHE: true
@@ -300,6 +300,7 @@ jobs:
           find x-wrt/bin/targets |grep kmod|tail -1|cut -d _ -f2|cut -d - -f1 > KERNEL_VER 
           #strings $DRIVERS_DIR/usbcore.ko| grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
           [ -s KERNEL_VER ] && echo "KERNEL_VER=_$(cat KERNEL_VER)" >> $GITHUB_ENV
+          
 
       - name: Upload bin directory
         uses: actions/upload-artifact@master
@@ -369,6 +370,18 @@ jobs:
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
+      - name: 整理编译好的固件
+        id: organize
+        if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
+        run: |
+          cd x-wrt/bin/
+          echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+          echo "status=success" >> $GITHUB_OUTPUT
+      - name: 上传固件到Router
+        id: trf_to_router
+        if: steps.organize.outputs.status == 'success' && env.UPLOAD_ROUTER== 'true' && !cancelled()
+        run: |   
+          copy_file.sh ${FIRMWARE}
       #- name: Send repository_dispatch
        # env:
         #  PAT: ${{ secrets.GITHUB_TOKEN }} 
