@@ -325,16 +325,18 @@ jobs:
            #ln -s /usr/bin/ccache /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/staging_dir/host/bin/ccache 
            make -j$(nproc) || make -j1 V=s
            #[ $? != 0 ] && make V=s || echo "build success" 
-           if [ "$CACHE_RESTORED" = "TRUE" ]
-           then
-           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox.$ROUTER_MODEL $DRIVERS_DIR
-           chmod 755 $DRIVERS_DIR/busybox.$ROUTER_MODEL  
-           copy_file $DRIVERS_DIR/busybox.$ROUTER_MODEL  
-           fi      
+
            
            df -kh
            [ $? != 0 ] && make V=s || echo "build success" 
            cp -f bin/targets/ramips/mt7621/openwrt-ramips-mt7621-d-team_newifi-d2-squashfs-sysupgrade.bin bin/targets/ramips/drivers/ 
+           if [ "$CACHE_RESTORED" = "TRUE" ]
+           then
+           cd ../
+           cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox.$ROUTER_MODEL $DRIVERS_DIR
+           chmod 755 $DRIVERS_DIR/busybox.$ROUTER_MODEL  
+           copy_file $DRIVERS_DIR/busybox.$ROUTER_MODEL  
+           fi           
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         #uses: lhotari/action-upterm@v1
