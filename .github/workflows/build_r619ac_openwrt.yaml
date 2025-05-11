@@ -10,8 +10,8 @@
 name: Compile R619AC openwrt offical TVH  Images  
 
 on:
- repository_dispatch:
-    types: [ipq40xx_openwrt_completed]
+ #repository_dispatch:
+    #types: [ipq40xx_openwrt_completed]
  workflow_dispatch:    
     inputs:
       ssh:
@@ -21,8 +21,8 @@ on:
   #push:
    #branches: 
     #- master
- #schedule:
-  #  - cron: "30 16 * * *"
+ schedule:
+    - cron: "45 15 * * *"
   #release:
    # types: [published]
   #watch:
@@ -34,7 +34,7 @@ env:
   #####change model here ####@# 
   ROUTER_MODEL: r619ac
   TVH: true
-  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.3.openwrt
+  CONFIG_FILENAME_FOR_2ND_COMPILE: config.r619ac.openwrt
   BUILD_KERNEL_MODULES: true
   DRIVERS_DIR: x-wrt/bin/targets/ipq40xx/drivers
   KERNEL_CONFIG: 'myconfig/kernel_config.r619ac'
@@ -135,6 +135,17 @@ jobs:
           echo $cacheKey
           echo "Done"
           fi
+          size=`du x-wrt/staging_dir/|tail -1|awk '{print $1}'`
+          if [ $size -ge 100000 ] 
+          then 
+            config_file="x-wrt/config.$ROUTER_MODEL.3.openwrt"
+            echo caches restored using config file $config_file
+          else
+            config_file="x-wrt/config.$ROUTER_MODEL.0.openwrt"
+            echo caches not found,using config file $config_file
+          fi
+          cp $config_file x-wrt/$CONFIG_FILENAME_FOR_2ND_COMPILE          
+          
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
  
