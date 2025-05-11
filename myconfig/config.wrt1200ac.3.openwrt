@@ -2456,9 +2456,9 @@ CONFIG_BUSYBOX_CONFIG_TOP=y
 # CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_INTERACTIVE is not set
 CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_CPU_USAGE_PERCENTAGE=y
 CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_CPU_GLOBAL_PERCENTS=y
-# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU is not set
+CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_CPU=y
 # CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_DECIMALS is not set
-# CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS is not set
+CONFIG_BUSYBOX_CONFIG_FEATURE_TOP_SMP_PROCESS=y
 # CONFIG_BUSYBOX_CONFIG_FEATURE_TOPMEM is not set
 CONFIG_BUSYBOX_CONFIG_UPTIME=y
 # CONFIG_BUSYBOX_CONFIG_WATCH is not set
@@ -3167,11 +3167,11 @@ CONFIG_PACKAGE_kmod-fs-ext4=y
 CONFIG_PACKAGE_kmod-fs-msdos=y
 CONFIG_PACKAGE_kmod-fs-netfs=m
 # CONFIG_PACKAGE_kmod-fs-nfs is not set
-CONFIG_PACKAGE_kmod-fs-nfs-common=m
-CONFIG_PACKAGE_kmod-fs-nfs-common-rpcsec=m
+# CONFIG_PACKAGE_kmod-fs-nfs-common is not set
+# CONFIG_PACKAGE_kmod-fs-nfs-common-rpcsec is not set
 # CONFIG_PACKAGE_kmod-fs-nfs-v3 is not set
 # CONFIG_PACKAGE_kmod-fs-nfs-v4 is not set
-CONFIG_PACKAGE_kmod-fs-nfsd=m
+# CONFIG_PACKAGE_kmod-fs-nfsd is not set
 CONFIG_PACKAGE_kmod-fs-ntfs=y
 CONFIG_PACKAGE_kmod-fs-ntfs3=y
 # CONFIG_PACKAGE_kmod-fs-reiserfs is not set
@@ -6206,7 +6206,6 @@ CONFIG_PACKAGE_luci-app-netdata=m
 CONFIG_PACKAGE_luci-app-netspeedtest=m
 # CONFIG_PACKAGE_luci-app-nextdns is not set
 CONFIG_PACKAGE_luci-app-nft-qos=m
-# CONFIG_PACKAGE_luci-app-nikki is not set
 CONFIG_PACKAGE_luci-app-nlbwmon=m
 # CONFIG_PACKAGE_luci-app-nut is not set
 # CONFIG_PACKAGE_luci-app-ocserv is not set
@@ -8665,7 +8664,6 @@ CONFIG_PACKAGE_libipset=m
 # CONFIG_PACKAGE_netsniff-ng is not set
 # CONFIG_PACKAGE_netstinky is not set
 # CONFIG_PACKAGE_nfdump is not set
-# CONFIG_PACKAGE_nikki is not set
 CONFIG_PACKAGE_nlbwmon=m
 # CONFIG_PACKAGE_noping is not set
 CONFIG_PACKAGE_nqptp=m
@@ -9075,8 +9073,8 @@ CONFIG_PACKAGE_fuse3-utils=m
 # CONFIG_PACKAGE_mkf2fs-selinux is not set
 # CONFIG_PACKAGE_mkhfs is not set
 # CONFIG_PACKAGE_ncdu is not set
-CONFIG_PACKAGE_nfs-utils=m
-CONFIG_PACKAGE_nfs-utils-libs=m
+# CONFIG_PACKAGE_nfs-utils is not set
+# CONFIG_PACKAGE_nfs-utils-libs is not set
 CONFIG_PACKAGE_ntfs-3g=y
 # CONFIG_PACKAGE_NTFS-3G_USE_LIBFUSE is not set
 CONFIG_PACKAGE_NTFS-3G_HAS_PROBE=y
