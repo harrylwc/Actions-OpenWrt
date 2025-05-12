@@ -362,6 +362,7 @@ jobs:
           #strings $DRIVERS_DIR/usbhid.ko |grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
           #strings $DRIVERS_DIR/rtl8821cu.ko |grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
           [ -s KERNEL_VER ] && echo "KERNEL_VER=_$(cat KERNEL_VER)" >> $GITHUB_ENV
+          cd x-wrt
           zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
       - name: 上传固件到Router
         id: trf_to_router
