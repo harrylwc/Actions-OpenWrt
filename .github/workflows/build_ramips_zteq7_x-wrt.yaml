@@ -377,8 +377,8 @@ jobs:
         if: env.UPLOAD_ROUTER== 'true' && !cancelled()
         run: | 
           cd x-wrt
-          tar -zcvf OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}gz.gz bin
-          copy_file.sh OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}gz.gz
+          zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}1.zip bin
+          copy_file.sh OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}1.zip
       #- name: Send repository_dispatch
        # env:
         #  PAT: ${{ secrets.GITHUB_TOKEN }} 
