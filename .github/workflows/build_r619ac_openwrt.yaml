@@ -56,7 +56,7 @@ env:
   DIY_P2_SH: diy-part2.sh
   SSH_ACTIONS: true
   UPLOAD_FIRMWARE: true
-  UPLOAD_WETRANSFER: false
+  UPLOAD_ROUTER: true
   TZ: Asia/Shanghai
   CLEARCACHE: true
   
@@ -375,12 +375,20 @@ jobs:
           ##strings $DRIVERS_DIR/rtl8821cu.ko |grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
           find x-wrt/bin/targets |grep kmod|tail -1|cut -d _ -f2|cut -d - -f1 > KERNEL_VER 
           [ -s KERNEL_VER ] && echo "KERNEL_VER=_$(cat KERNEL_VER)" >> $GITHUB_ENV
+          zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
+      - name: 上传固件到Router
+        id: trf_to_router
+        if: env.UPLOAD_ROUTER== 'true' &&  env.CACHE_RESTORED == 'TRUE' && !cancelled()
+        run: | 
+          cd x-wrt
+          #zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
+          copy_file.sh OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip
       - name: Upload bin directory
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
            #OpenWrt_bin_${{ env.ROUTER_MODEL }}
-          path: x-wrt/bin
+          path: x-wrt/OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip     
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         uses: P3TERX/ssh2actions@main
