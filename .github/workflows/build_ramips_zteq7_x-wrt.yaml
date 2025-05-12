@@ -52,7 +52,7 @@ env:
   #KERNEL_CONFIG_DIR: target/linux/ramips/mt7621
   #KERNEL_CONFIG_DIR: target/linux/mvebu
   MAKEMENU_CONFIG: false
-  KERNEL_MENUCONFIG: false
+  KERNEL_MENUCONFIG: true
   CPU_MULTI_CORE: false
   
   KERNEL_VERSION: '6.6'
@@ -262,14 +262,7 @@ jobs:
            #[ $? != 0 ] && make V=s || echo "build success"
            
            cp -f bin/targets/ramips/mt7620/openwrt-ramips-mt7620*sysupgrade.bin bin/targets/ramips/drivers/
-      - name: SSH connection for KERNEL MENU CONFIG
-        if: env.KERNEL_MENUCONFIG == 'true'
-          # uses: lhotari/action-upterm@v1
-        uses: P3TERX/ssh2actions@main
-        env:
-         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
-         TELEGRAM_CHAT_ID: 1373335316
-         
+      
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         uses: P3TERX/ssh2actions@main
@@ -377,6 +370,14 @@ jobs:
           cd x-wrt/bin/
           echo "FIRMWARE=$PWD" >> $GITHUB_ENV
           echo "status=success" >> $GITHUB_OUTPUT
+      - name: SSH connection for KERNEL MENU CONFIG
+        if: env.KERNEL_MENUCONFIG == 'true'
+          # uses: lhotari/action-upterm@v1
+        uses: P3TERX/ssh2actions@main
+        env:
+         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+         TELEGRAM_CHAT_ID: 1373335316
+            
       - name: 上传固件到Router
         id: trf_to_router
         if: steps.organize.outputs.status == 'success' && env.UPLOAD_ROUTER== 'true' && !cancelled()
