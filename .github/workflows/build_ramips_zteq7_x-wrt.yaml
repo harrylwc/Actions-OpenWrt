@@ -235,7 +235,13 @@ jobs:
          env:
           TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
           TELEGRAM_CHAT_ID: 1373335316
- 
+      - name: SSH connection for KERNEL MENU CONFIG
+        if: env.KERNEL_MENUCONFIG == 'true'
+          # uses: lhotari/action-upterm@v1
+        uses: P3TERX/ssh2actions@main
+        env:
+         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
+         TELEGRAM_CHAT_ID: 1373335316     
 
       - name: Compile again after .config updated or add kernel modules
         if: env.BUILD_KERNEL_MODULES == 'true'
@@ -363,26 +369,16 @@ jobs:
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
-      - name: 整理编译好的固件
-        id: organize
-        if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
-        run: |
-          cd x-wrt/bin/
-          echo "FIRMWARE=$PWD" >> $GITHUB_ENV
-          echo "status=success" >> $GITHUB_OUTPUT
-      - name: SSH connection for KERNEL MENU CONFIG
-        if: env.KERNEL_MENUCONFIG == 'true'
-          # uses: lhotari/action-upterm@v1
-        uses: P3TERX/ssh2actions@main
-        env:
-         TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
-         TELEGRAM_CHAT_ID: 1373335316
+
+
             
       - name: 上传固件到Router
         id: trf_to_router
-        if: steps.organize.outputs.status == 'success' && env.UPLOAD_ROUTER== 'true' && !cancelled()
-        run: |   
-          copy_file.sh ${FIRMWARE}
+        if: env.UPLOAD_ROUTER== 'true' && !cancelled()
+        run: | 
+          cd x-wrt
+          tar -zcvf OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}gz.gz bin
+          copy_file.sh OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}gz.gz
       #- name: Send repository_dispatch
        # env:
         #  PAT: ${{ secrets.GITHUB_TOKEN }} 
