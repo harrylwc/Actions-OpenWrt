@@ -299,13 +299,20 @@ jobs:
           find x-wrt/bin/targets |grep kmod|tail -1|cut -d _ -f2|cut -d - -f1 > KERNEL_VER 
           #strings $DRIVERS_DIR/usbcore.ko| grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
           [ -s KERNEL_VER ] && echo "KERNEL_VER=_$(cat KERNEL_VER)" >> $GITHUB_ENV
-          
+      - name: 上传固件到Router
+        id: trf_to_router
+        if: env.UPLOAD_ROUTER== 'true' && !cancelled()
+        run: | 
+          cd x-wrt
+          zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
+          copy_file.sh OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip     
 
       - name: Upload bin directory
-        uses: actions/upload-artifact@master
+      - uses: actions/upload-artifact@v4
         with:
           name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
-          path: ${{ github.workspace }}/x-wrt/bin
+          path: ${{ github.workspace }}/x-wrt/OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip
+          
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         uses: P3TERX/ssh2actions@main
@@ -369,16 +376,8 @@ jobs:
           file: ./artifact/firmware/*
           tag: ${{ github.ref }}
           file_glob: true
-
-
             
-      - name: 上传固件到Router
-        id: trf_to_router
-        if: env.UPLOAD_ROUTER== 'true' && !cancelled()
-        run: | 
-          cd x-wrt
-          zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}1.zip bin
-          copy_file.sh OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}1.zip
+      
       #- name: Send repository_dispatch
        # env:
         #  PAT: ${{ secrets.GITHUB_TOKEN }} 
