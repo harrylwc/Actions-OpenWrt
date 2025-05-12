@@ -328,7 +328,7 @@ jobs:
            cd ../
            cp -f x-wrt/build_dir/target-*/busybox-*/busybox-*/ipkg-install/bin/busybox $DRIVERS_DIR/busybox.$ROUTER_MODEL
            chmod 755 $DRIVERS_DIR/busybox.$ROUTER_MODEL  
-           copy_file $DRIVERS_DIR/busybox.$ROUTER_MODEL  
+           copy_file.sh $DRIVERS_DIR/busybox.$ROUTER_MODEL  
            fi              
            
            df -kh
