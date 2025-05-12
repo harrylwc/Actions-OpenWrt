@@ -308,7 +308,7 @@ jobs:
           copy_file.sh OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip     
 
       - name: Upload bin directory
-      - uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4
         with:
           name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
           path: ${{ github.workspace }}/x-wrt/OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip
@@ -340,7 +340,7 @@ jobs:
         #path: ./bin/targets/
 
       - name: Upload bin directory if failure
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v4
         if:  failure() 
         with:
           name: OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
@@ -369,7 +369,7 @@ jobs:
 
       - name: Upload release asset
         if: github.event == 'release'
-        uses: svenstaro/upload-release-action@v2
+        uses: svenstaro/upload-release-action@v4
     
         with:
           repo_token: ${{ secrets.YOURTOKEN }}
