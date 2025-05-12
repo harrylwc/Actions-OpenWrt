@@ -237,6 +237,7 @@ jobs:
         run: |
           #[ -e $KERNEL_CONFIG ] && cp -f $KERNEL_CONFIG $KERNEL_CONFIG_DIR/config-$KERNEL_VERSION
           cd x-wrt
+          rm -r feeds/packages/utils/dockerd
           [ -d "build_dir" ] && sudo mv build_dir /mnt/ || ( mkdir build_dir;sudo mv build_dir /mnt/ )
           ln -s /mnt/build_dir .
           sudo mv dl /mnt/
