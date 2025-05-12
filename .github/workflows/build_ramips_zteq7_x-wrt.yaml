@@ -369,7 +369,7 @@ jobs:
 
       - name: Upload release asset
         if: github.event == 'release'
-        uses: svenstaro/upload-release-action@v4
+        uses: svenstaro/upload-release-action@master
     
         with:
           repo_token: ${{ secrets.YOURTOKEN }}
