@@ -462,6 +462,7 @@ jobs:
           tag: ${{ github.ref }}
           file_glob: true
       - name: Send repository_dispatch
+        if: env.CACHE_RESTORED == 'FALSE' 
         env:
          PAT: ${{ secrets.GITHUB_TOKEN }} 
         run: |
