@@ -117,7 +117,6 @@ jobs:
       - name: Clear Cache
         if: env.CLEARCACHE == 'true'
         run: |
-
           gh extension install actions/gh-actions-cache
           REPO=${{ github.repository }}
           BRANCH="master"
