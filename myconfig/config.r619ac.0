@@ -6258,12 +6258,12 @@ CONFIG_PACKAGE_luci-mod-system=y
 #
 # CONFIG_PACKAGE_luci-app-3ginfo-lite is not set
 # CONFIG_PACKAGE_luci-app-acl is not set
-CONFIG_PACKAGE_luci-app-acme=m
+# CONFIG_PACKAGE_luci-app-acme is not set
 # CONFIG_PACKAGE_luci-app-adblock is not set
 # CONFIG_PACKAGE_luci-app-adblock-fast is not set
 # CONFIG_PACKAGE_luci-app-adguardhome is not set
 # CONFIG_PACKAGE_luci-app-adguardhome_INCLUDE_binary is not set
-CONFIG_PACKAGE_luci-app-advanced=m
+# CONFIG_PACKAGE_luci-app-advanced is not set
 # CONFIG_PACKAGE_luci-app-advanced-reboot is not set
 CONFIG_PACKAGE_luci-app-aliddns=m
 CONFIG_PACKAGE_luci-app-alist=m
@@ -6273,10 +6273,10 @@ CONFIG_PACKAGE_luci-app-aliyundrive-webdav=m
 # CONFIG_PACKAGE_luci-app-apinger is not set
 # CONFIG_PACKAGE_luci-app-argon-config is not set
 # CONFIG_PACKAGE_luci-app-argone-config is not set
-CONFIG_PACKAGE_luci-app-aria2=m
+# CONFIG_PACKAGE_luci-app-aria2 is not set
 CONFIG_PACKAGE_luci-app-attendedsysupgrade=m
 # CONFIG_PACKAGE_luci-app-babeld is not set
-CONFIG_PACKAGE_luci-app-banip=m
+# CONFIG_PACKAGE_luci-app-banip is not set
 # CONFIG_PACKAGE_luci-app-bcp38 is not set
 # CONFIG_PACKAGE_luci-app-bmx7 is not set
 # CONFIG_PACKAGE_luci-app-bypass is not set
@@ -6312,10 +6312,10 @@ CONFIG_PACKAGE_luci-app-dnsfilter=m
 # CONFIG_PACKAGE_luci-app-dockerman is not set
 # CONFIG_PACKAGE_luci-app-dump1090 is not set
 # CONFIG_PACKAGE_luci-app-dynapoint is not set
-CONFIG_PACKAGE_luci-app-easymesh=m
+# CONFIG_PACKAGE_luci-app-easymesh is not set
 # CONFIG_PACKAGE_luci-app-email is not set
 # CONFIG_PACKAGE_luci-app-eoip is not set
-CONFIG_PACKAGE_luci-app-eqos=m
+# CONFIG_PACKAGE_luci-app-eqos is not set
 # CONFIG_PACKAGE_luci-app-example is not set
 # CONFIG_PACKAGE_luci-app-fchomo is not set
 CONFIG_PACKAGE_luci-app-fileassistant=y
@@ -6384,14 +6384,14 @@ CONFIG_PACKAGE_luci-app-package-manager=y
 
 # CONFIG_PACKAGE_luci-app-pbr is not set
 # CONFIG_PACKAGE_luci-app-privoxy is not set
-CONFIG_PACKAGE_luci-app-qos=m
+# CONFIG_PACKAGE_luci-app-qos is not set
 # CONFIG_PACKAGE_luci-app-quickstart is not set
 # CONFIG_PACKAGE_luci-app-radicale is not set
 # CONFIG_PACKAGE_luci-app-radicale2 is not set
 # CONFIG_PACKAGE_luci-app-rp-pppoe-server is not set
 CONFIG_PACKAGE_luci-app-samba4=y
 # CONFIG_PACKAGE_luci-app-ser2net is not set
-CONFIG_PACKAGE_luci-app-shadowsocks-libev=m
+# CONFIG_PACKAGE_luci-app-shadowsocks-libev is not set
 # CONFIG_PACKAGE_luci-app-siitwizard is not set
 # CONFIG_PACKAGE_luci-app-smartdns is not set
 # CONFIG_PACKAGE_luci-app-sms-tool is not set
@@ -6444,13 +6444,10 @@ CONFIG_PACKAGE_luci-app-ttyd=m
 # CONFIG_PACKAGE_luci-app-v2raya is not set
 # CONFIG_PACKAGE_luci-app-vnstat2 is not set
 # CONFIG_PACKAGE_luci-app-watchcat is not set
-CONFIG_PACKAGE_luci-app-wechatpush=m
-# CONFIG_PACKAGE_luci-app-wechatpush_Enable_Traffic_Monitoring is not set
-# CONFIG_PACKAGE_luci-app-wechatpush_Local_Disk_Information_Detection is not set
-# CONFIG_PACKAGE_luci-app-wechatpush_Host_Information_Detection is not set
+# CONFIG_PACKAGE_luci-app-wechatpush is not set
 # CONFIG_PACKAGE_luci-app-wifischedule is not set
 CONFIG_PACKAGE_luci-app-wol=m
-CONFIG_PACKAGE_luci-app-wrtbwmon=m
+# CONFIG_PACKAGE_luci-app-wrtbwmon is not set
 # CONFIG_PACKAGE_luci-app-xfrpc is not set
 # CONFIG_PACKAGE_luci-app-xinetd is not set
 # end of 3. Applications
@@ -6527,41 +6524,6 @@ CONFIG_PACKAGE_luci-lib-nixio=y
 # end of 9. Themes
 
 # CONFIG_PACKAGE_default-settings is not set
-# CONFIG_PACKAGE_luci-i18n-acme-ar is not set
-# CONFIG_PACKAGE_luci-i18n-acme-bg is not set
-# CONFIG_PACKAGE_luci-i18n-acme-bn is not set
-# CONFIG_PACKAGE_luci-i18n-acme-ca is not set
-# CONFIG_PACKAGE_luci-i18n-acme-cs is not set
-# CONFIG_PACKAGE_luci-i18n-acme-da is not set
-# CONFIG_PACKAGE_luci-i18n-acme-de is not set
-# CONFIG_PACKAGE_luci-i18n-acme-el is not set
-# CONFIG_PACKAGE_luci-i18n-acme-es is not set
-# CONFIG_PACKAGE_luci-i18n-acme-fa is not set
-# CONFIG_PACKAGE_luci-i18n-acme-fi is not set
-# CONFIG_PACKAGE_luci-i18n-acme-fr is not set
-# CONFIG_PACKAGE_luci-i18n-acme-he is not set
-# CONFIG_PACKAGE_luci-i18n-acme-hi is not set
-# CONFIG_PACKAGE_luci-i18n-acme-hu is not set
-# CONFIG_PACKAGE_luci-i18n-acme-it is not set
-# CONFIG_PACKAGE_luci-i18n-acme-ja is not set
-# CONFIG_PACKAGE_luci-i18n-acme-ko is not set
-# CONFIG_PACKAGE_luci-i18n-acme-lt is not set
-# CONFIG_PACKAGE_luci-i18n-acme-mr is not set
-# CONFIG_PACKAGE_luci-i18n-acme-ms is not set
-# CONFIG_PACKAGE_luci-i18n-acme-nl is not set
-# CONFIG_PACKAGE_luci-i18n-acme-no is not set
-# CONFIG_PACKAGE_luci-i18n-acme-pl is not set
-# CONFIG_PACKAGE_luci-i18n-acme-pt is not set
-# CONFIG_PACKAGE_luci-i18n-acme-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-acme-ro is not set
-# CONFIG_PACKAGE_luci-i18n-acme-ru is not set
-# CONFIG_PACKAGE_luci-i18n-acme-sk is not set
-# CONFIG_PACKAGE_luci-i18n-acme-sv is not set
-# CONFIG_PACKAGE_luci-i18n-acme-tr is not set
-# CONFIG_PACKAGE_luci-i18n-acme-uk is not set
-# CONFIG_PACKAGE_luci-i18n-acme-vi is not set
-CONFIG_PACKAGE_luci-i18n-acme-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-acme-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-alist-ar is not set
 # CONFIG_PACKAGE_luci-i18n-alist-bg is not set
 # CONFIG_PACKAGE_luci-i18n-alist-bn is not set
@@ -6598,42 +6560,6 @@ CONFIG_PACKAGE_luci-i18n-acme-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-alist-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-alist-zh-tw=m
 CONFIG_PACKAGE_luci-i18n-aliyundrive-webdav-zh-cn=m
-# CONFIG_PACKAGE_luci-i18n-aria2-ar is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-bg is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-bn is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-ca is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-cs is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-da is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-de is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-el is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-es is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-fa is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-fi is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-fr is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-he is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-hi is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-hu is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-it is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-ja is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-ko is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-lt is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-mr is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-ms is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-nl is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-no is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-pl is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-pt is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-ro is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-ru is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-sk is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-sv is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-tr is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-uk is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-vi is not set
-# CONFIG_PACKAGE_luci-i18n-aria2-yua is not set
-CONFIG_PACKAGE_luci-i18n-aria2-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-aria2-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-attendedsysupgrade-ar is not set
 # CONFIG_PACKAGE_luci-i18n-attendedsysupgrade-bg is not set
 # CONFIG_PACKAGE_luci-i18n-attendedsysupgrade-bn is not set
@@ -6669,42 +6595,6 @@ CONFIG_PACKAGE_luci-i18n-aria2-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-attendedsysupgrade-vi is not set
 CONFIG_PACKAGE_luci-i18n-attendedsysupgrade-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-attendedsysupgrade-zh-tw=m
-# CONFIG_PACKAGE_luci-i18n-banip-ar is not set
-# CONFIG_PACKAGE_luci-i18n-banip-bg is not set
-# CONFIG_PACKAGE_luci-i18n-banip-bn is not set
-# CONFIG_PACKAGE_luci-i18n-banip-ca is not set
-# CONFIG_PACKAGE_luci-i18n-banip-cs is not set
-# CONFIG_PACKAGE_luci-i18n-banip-da is not set
-# CONFIG_PACKAGE_luci-i18n-banip-de is not set
-# CONFIG_PACKAGE_luci-i18n-banip-el is not set
-# CONFIG_PACKAGE_luci-i18n-banip-es is not set
-# CONFIG_PACKAGE_luci-i18n-banip-fa is not set
-# CONFIG_PACKAGE_luci-i18n-banip-fi is not set
-# CONFIG_PACKAGE_luci-i18n-banip-fr is not set
-# CONFIG_PACKAGE_luci-i18n-banip-he is not set
-# CONFIG_PACKAGE_luci-i18n-banip-hi is not set
-# CONFIG_PACKAGE_luci-i18n-banip-hu is not set
-# CONFIG_PACKAGE_luci-i18n-banip-it is not set
-# CONFIG_PACKAGE_luci-i18n-banip-ja is not set
-# CONFIG_PACKAGE_luci-i18n-banip-ko is not set
-# CONFIG_PACKAGE_luci-i18n-banip-lt is not set
-# CONFIG_PACKAGE_luci-i18n-banip-mr is not set
-# CONFIG_PACKAGE_luci-i18n-banip-ms is not set
-# CONFIG_PACKAGE_luci-i18n-banip-nl is not set
-# CONFIG_PACKAGE_luci-i18n-banip-no is not set
-# CONFIG_PACKAGE_luci-i18n-banip-pl is not set
-# CONFIG_PACKAGE_luci-i18n-banip-pt is not set
-# CONFIG_PACKAGE_luci-i18n-banip-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-banip-ro is not set
-# CONFIG_PACKAGE_luci-i18n-banip-ru is not set
-# CONFIG_PACKAGE_luci-i18n-banip-sk is not set
-# CONFIG_PACKAGE_luci-i18n-banip-sv is not set
-# CONFIG_PACKAGE_luci-i18n-banip-tr is not set
-# CONFIG_PACKAGE_luci-i18n-banip-uk is not set
-# CONFIG_PACKAGE_luci-i18n-banip-vi is not set
-# CONFIG_PACKAGE_luci-i18n-banip-yua is not set
-CONFIG_PACKAGE_luci-i18n-banip-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-banip-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-base-ar is not set
 # CONFIG_PACKAGE_luci-i18n-base-bg is not set
 # CONFIG_PACKAGE_luci-i18n-base-bn is not set
@@ -6844,8 +6734,6 @@ CONFIG_PACKAGE_luci-i18n-ddns-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-ddns-zh-tw=y
 CONFIG_PACKAGE_luci-i18n-ddnsto-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-dnsfilter-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-easymesh-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-eqos-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-filetransfer-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-firewall-ar is not set
@@ -7028,42 +6916,6 @@ CONFIG_PACKAGE_luci-i18n-mwan3-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-package-manager-yua is not set
 CONFIG_PACKAGE_luci-i18n-package-manager-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-package-manager-zh-tw=y
-# CONFIG_PACKAGE_luci-i18n-qos-ar is not set
-# CONFIG_PACKAGE_luci-i18n-qos-bg is not set
-# CONFIG_PACKAGE_luci-i18n-qos-bn is not set
-# CONFIG_PACKAGE_luci-i18n-qos-ca is not set
-# CONFIG_PACKAGE_luci-i18n-qos-cs is not set
-# CONFIG_PACKAGE_luci-i18n-qos-da is not set
-# CONFIG_PACKAGE_luci-i18n-qos-de is not set
-# CONFIG_PACKAGE_luci-i18n-qos-el is not set
-# CONFIG_PACKAGE_luci-i18n-qos-es is not set
-# CONFIG_PACKAGE_luci-i18n-qos-fa is not set
-# CONFIG_PACKAGE_luci-i18n-qos-fi is not set
-# CONFIG_PACKAGE_luci-i18n-qos-fr is not set
-# CONFIG_PACKAGE_luci-i18n-qos-he is not set
-# CONFIG_PACKAGE_luci-i18n-qos-hi is not set
-# CONFIG_PACKAGE_luci-i18n-qos-hu is not set
-# CONFIG_PACKAGE_luci-i18n-qos-it is not set
-# CONFIG_PACKAGE_luci-i18n-qos-ja is not set
-# CONFIG_PACKAGE_luci-i18n-qos-ko is not set
-# CONFIG_PACKAGE_luci-i18n-qos-lt is not set
-# CONFIG_PACKAGE_luci-i18n-qos-mr is not set
-# CONFIG_PACKAGE_luci-i18n-qos-ms is not set
-# CONFIG_PACKAGE_luci-i18n-qos-nl is not set
-# CONFIG_PACKAGE_luci-i18n-qos-no is not set
-# CONFIG_PACKAGE_luci-i18n-qos-pl is not set
-# CONFIG_PACKAGE_luci-i18n-qos-pt is not set
-# CONFIG_PACKAGE_luci-i18n-qos-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-qos-ro is not set
-# CONFIG_PACKAGE_luci-i18n-qos-ru is not set
-# CONFIG_PACKAGE_luci-i18n-qos-sk is not set
-# CONFIG_PACKAGE_luci-i18n-qos-sv is not set
-# CONFIG_PACKAGE_luci-i18n-qos-tr is not set
-# CONFIG_PACKAGE_luci-i18n-qos-uk is not set
-# CONFIG_PACKAGE_luci-i18n-qos-vi is not set
-# CONFIG_PACKAGE_luci-i18n-qos-yua is not set
-CONFIG_PACKAGE_luci-i18n-qos-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-qos-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-samba4-ar is not set
 # CONFIG_PACKAGE_luci-i18n-samba4-bg is not set
 # CONFIG_PACKAGE_luci-i18n-samba4-bn is not set
@@ -7100,40 +6952,6 @@ CONFIG_PACKAGE_luci-i18n-qos-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-samba4-yua is not set
 CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-samba4-zh-tw=y
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ar is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-bg is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-bn is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ca is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-cs is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-da is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-de is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-el is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-es is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-fi is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-fr is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-he is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-hi is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-hu is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-it is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ja is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ko is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-lt is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-mr is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ms is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-nl is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-no is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-pl is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-pt is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-pt-br is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ro is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-ru is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-sk is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-sv is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-tr is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-uk is not set
-# CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-vi is not set
-CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-ttyd-ar is not set
 # CONFIG_PACKAGE_luci-i18n-ttyd-bg is not set
 # CONFIG_PACKAGE_luci-i18n-ttyd-bn is not set
@@ -7168,8 +6986,6 @@ CONFIG_PACKAGE_luci-i18n-shadowsocks-libev-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-ttyd-vi is not set
 CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-ttyd-zh-tw=m
-CONFIG_PACKAGE_luci-i18n-wechatpush-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-wechatpush-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-wol-ar is not set
 # CONFIG_PACKAGE_luci-i18n-wol-bg is not set
 # CONFIG_PACKAGE_luci-i18n-wol-bn is not set
@@ -7206,8 +7022,6 @@ CONFIG_PACKAGE_luci-i18n-wechatpush-zh-tw=m
 # CONFIG_PACKAGE_luci-i18n-wol-yua is not set
 CONFIG_PACKAGE_luci-i18n-wol-zh-cn=m
 CONFIG_PACKAGE_luci-i18n-wol-zh-tw=m
-CONFIG_PACKAGE_luci-i18n-wrtbwmon-zh-cn=m
-CONFIG_PACKAGE_luci-i18n-wrtbwmon-zh-tw=m
 # end of LuCI
 
 #
@@ -7281,16 +7095,7 @@ CONFIG_PACKAGE_imagemagick=m
 # CONFIG_PACKAGE_lcdgrilo is not set
 # CONFIG_PACKAGE_minidlna is not set
 # CONFIG_PACKAGE_minisatip is not set
-CONFIG_PACKAGE_mjpg-streamer=m
-# CONFIG_PACKAGE_mjpg-streamer-input-file is not set
-# CONFIG_PACKAGE_mjpg-streamer-input-http is not set
-# CONFIG_PACKAGE_mjpg-streamer-input-uvc is not set
-# CONFIG_PACKAGE_mjpg-streamer-output-file is not set
-# CONFIG_PACKAGE_mjpg-streamer-output-http is not set
-# CONFIG_PACKAGE_mjpg-streamer-output-rtsp is not set
-# CONFIG_PACKAGE_mjpg-streamer-output-zmq is not set
-# CONFIG_PACKAGE_mjpg-streamer-www is not set
-# CONFIG_PACKAGE_mjpg-streamer-www-simple is not set
+# CONFIG_PACKAGE_mjpg-streamer is not set
 # CONFIG_PACKAGE_motion-ffmpeg is not set
 # CONFIG_PACKAGE_motion-noffmpeg is not set
 # CONFIG_PACKAGE_tvheadend is not set
@@ -7353,51 +7158,28 @@ CONFIG_PACKAGE_rclone-webui-react=m
 #
 # Download Manager
 #
-CONFIG_PACKAGE_ariang=m
-CONFIG_PACKAGE_ariang-nginx=m
+# CONFIG_PACKAGE_ariang is not set
+# CONFIG_PACKAGE_ariang-nginx is not set
 # CONFIG_PACKAGE_leech is not set
-CONFIG_PACKAGE_webui-aria2=m
+# CONFIG_PACKAGE_webui-aria2 is not set
 # end of Download Manager
 
 #
 # File Transfer
 #
-CONFIG_PACKAGE_aria2=m
-
-#
-# Aria2 Configuration
-#
-CONFIG_ARIA2_OPENSSL=y
-# CONFIG_ARIA2_GNUTLS is not set
-# CONFIG_ARIA2_NOSSL is not set
-# CONFIG_ARIA2_LIBXML2 is not set
-# CONFIG_ARIA2_EXPAT is not set
-CONFIG_ARIA2_NOXML=y
-CONFIG_ARIA2_BITTORRENT=y
-# CONFIG_ARIA2_SFTP is not set
-# CONFIG_ARIA2_ASYNC_DNS is not set
-# CONFIG_ARIA2_COOKIE is not set
-CONFIG_ARIA2_WEBSOCKET=y
-# end of Aria2 Configuration
-
-CONFIG_PACKAGE_aria2-openssl=m
+# CONFIG_PACKAGE_aria2 is not set
 # CONFIG_PACKAGE_atftp is not set
 # CONFIG_PACKAGE_atftpd is not set
 # CONFIG_PACKAGE_croc is not set
 CONFIG_PACKAGE_curl=y
-CONFIG_PACKAGE_lftp=m
+# CONFIG_PACKAGE_lftp is not set
 # CONFIG_PACKAGE_onionshare-cli is not set
 # CONFIG_PACKAGE_ps3netsrv is not set
 CONFIG_PACKAGE_rclone=m
 CONFIG_PACKAGE_rclone-config=m
-CONFIG_PACKAGE_rsync=y
-CONFIG_RSYNC_xattr=y
-CONFIG_RSYNC_acl=y
-CONFIG_RSYNC_zstd=y
-CONFIG_RSYNC_lz4=y
-CONFIG_RSYNC_xxhash=y
+# CONFIG_PACKAGE_rsync is not set
 # CONFIG_PACKAGE_rsyncd is not set
-CONFIG_PACKAGE_vsftpd=m
+# CONFIG_PACKAGE_vsftpd is not set
 # CONFIG_PACKAGE_vsftpd-alt is not set
 # CONFIG_PACKAGE_vsftpd-tls is not set
 # CONFIG_PACKAGE_wget-nossl is not set
@@ -8189,22 +7971,22 @@ CONFIG_PACKAGE_nginx-ssl-util-nopcre=m
 # CONFIG_PACKAGE_radicale2-examples is not set
 # CONFIG_PACKAGE_redsocks2 is not set
 # CONFIG_PACKAGE_shadow-tls is not set
-CONFIG_PACKAGE_shadowsocks-libev-config=m
-CONFIG_PACKAGE_shadowsocks-libev-ss-local=m
-CONFIG_PACKAGE_shadowsocks-libev-ss-redir=m
-CONFIG_PACKAGE_shadowsocks-libev-ss-rules=m
-CONFIG_PACKAGE_shadowsocks-libev-ss-server=m
-CONFIG_PACKAGE_shadowsocks-libev-ss-tunnel=m
-CONFIG_PACKAGE_shadowsocks-rust-sslocal=m
-CONFIG_PACKAGE_shadowsocks-rust-ssmanager=m
-CONFIG_PACKAGE_shadowsocks-rust-ssserver=m
-CONFIG_PACKAGE_shadowsocks-rust-ssservice=m
-CONFIG_PACKAGE_shadowsocks-rust-ssurl=m
-CONFIG_PACKAGE_shadowsocksr-libev-ssr-check=m
-CONFIG_PACKAGE_shadowsocksr-libev-ssr-local=m
-CONFIG_PACKAGE_shadowsocksr-libev-ssr-nat=m
-CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir=m
-CONFIG_PACKAGE_shadowsocksr-libev-ssr-server=m
+# CONFIG_PACKAGE_shadowsocks-libev-config is not set
+# CONFIG_PACKAGE_shadowsocks-libev-ss-local is not set
+# CONFIG_PACKAGE_shadowsocks-libev-ss-redir is not set
+# CONFIG_PACKAGE_shadowsocks-libev-ss-rules is not set
+# CONFIG_PACKAGE_shadowsocks-libev-ss-server is not set
+# CONFIG_PACKAGE_shadowsocks-libev-ss-tunnel is not set
+# CONFIG_PACKAGE_shadowsocks-rust-sslocal is not set
+# CONFIG_PACKAGE_shadowsocks-rust-ssmanager is not set
+# CONFIG_PACKAGE_shadowsocks-rust-ssserver is not set
+# CONFIG_PACKAGE_shadowsocks-rust-ssservice is not set
+# CONFIG_PACKAGE_shadowsocks-rust-ssurl is not set
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-check is not set
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-local is not set
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-nat is not set
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-redir is not set
+# CONFIG_PACKAGE_shadowsocksr-libev-ssr-server is not set
 # CONFIG_PACKAGE_sockd is not set
 # CONFIG_PACKAGE_socksify is not set
 # CONFIG_PACKAGE_spawn-fcgi is not set
@@ -8224,7 +8006,7 @@ CONFIG_PACKAGE_uwsgi-cgi-plugin=m
 CONFIG_PACKAGE_uwsgi-luci-support=m
 # CONFIG_PACKAGE_uwsgi-python3-plugin is not set
 CONFIG_PACKAGE_uwsgi-syslog-plugin=m
-CONFIG_PACKAGE_v2ray-plugin=m
+# CONFIG_PACKAGE_v2ray-plugin is not set
 # CONFIG_PACKAGE_v2raya is not set
 # CONFIG_PACKAGE_xfrpc is not set
 # CONFIG_PACKAGE_xray-plugin is not set
@@ -8315,10 +8097,10 @@ CONFIG_PACKAGE_wpad-openssl=y
 # CONFIG_PACKAGE_6to4 is not set
 # CONFIG_PACKAGE_UDPspeeder is not set
 # CONFIG_PACKAGE_aardvark-dns is not set
-CONFIG_PACKAGE_acme=m
-CONFIG_PACKAGE_acme-acmesh=m
+# CONFIG_PACKAGE_acme is not set
+# CONFIG_PACKAGE_acme-acmesh is not set
 # CONFIG_PACKAGE_acme-acmesh-dnsapi is not set
-CONFIG_PACKAGE_acme-common=m
+# CONFIG_PACKAGE_acme-common is not set
 # CONFIG_PACKAGE_adblock is not set
 # CONFIG_PACKAGE_adblock-fast is not set
 # CONFIG_PACKAGE_adbyby is not set
@@ -8338,7 +8120,7 @@ CONFIG_PACKAGE_alist=m
 # CONFIG_PACKAGE_atlas-probe is not set
 # CONFIG_PACKAGE_atlas-sw-probe is not set
 # CONFIG_PACKAGE_atlas-sw-probe-rpc is not set
-CONFIG_PACKAGE_banip=m
+# CONFIG_PACKAGE_banip is not set
 CONFIG_PACKAGE_batctl-default=m
 # CONFIG_PACKAGE_batctl-full is not set
 # CONFIG_PACKAGE_batctl-tiny is not set
