@@ -146,11 +146,13 @@ jobs:
             config_file="x-wrt/config.$ROUTER_MODEL.3.openwrt"
             echo caches restored using config file $config_file
             echo "CACHE_RESTORED=TRUE" >> $GITHUB_ENV
-          else
+            echo "bin=bin2" >> $GITHUB_ENV 
+	  else
             config_file="x-wrt/config.$ROUTER_MODEL.0.openwrt"
             echo caches not found,using config file $config_file
             echo "CACHE_RESTORED=FALSE" >> $GITHUB_ENV
-          fi
+            echo "bin=bin1" >> $GITHUB_ENV 
+	  fi
           cp $config_file myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -345,25 +347,25 @@ jobs:
           #strings $DRIVERS_DIR/rtl8821cu.ko |grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
           [ -s KERNEL_VER ] && echo "KERNEL_VER=_$(cat KERNEL_VER)" >> $GITHUB_ENV
           #cd x-wrt
-          #zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
+          #zip -r OpenWrt_${{bin}}_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
       - name: zip bin directory
         run: |
           cd x-wrt
-          zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
+          zip -r OpenWrt_${{bin}}_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
       - name: 上传固件到Router
         id: trf_to_router
         if: env.UPLOAD_ROUTER== 'true' &&  env.CACHE_RESTORED == 'TRUE' && !cancelled()
         run: | 
           cd x-wrt
-          #zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
-          copy_file.sh OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip     
+          #zip -r OpenWrt_${{bin}}_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
+          copy_file.sh OpenWrt_${{bin}}_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip     
 
       - name: Upload bin directory
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt_snapshots_bin${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
-           #OpenWrt_bin_${{ env.ROUTER_MODEL }}
-          path: x-wrt/OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip     
+           #OpenWrt_${{bin}}_${{ env.ROUTER_MODEL }}
+          path: x-wrt/OpenWrt_${{bin}}_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip     
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         uses: P3TERX/ssh2actions@main
@@ -376,8 +378,8 @@ jobs:
         uses: actions/upload-artifact@master
         if:  failure() 
         with:
-          name: OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
-           #OpenWrt_bin_${{ env.ROUTER_MODEL }}_failure
+          name: OpenWrt_${{bin}}_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
+           #OpenWrt_${{bin}}_${{ env.ROUTER_MODEL }}_failure
           path: x-wrt/bin
 
 
