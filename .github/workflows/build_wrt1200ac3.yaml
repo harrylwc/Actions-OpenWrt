@@ -144,16 +144,16 @@ jobs:
           size=`du x-wrt/staging_dir/|tail -1|awk '{print $1}'`
           if [ $size -ge 100000 ] 
           then 
-            config_file="x-wrt/config.$ROUTER_MODEL.3"
+            config_file="x-wrt/config.$ROUTER_MODEL.3.openwrt"
             echo caches restored using config file $config_file
             echo "CACHE_RESTORED=TRUE" >> $GITHUB_ENV
-            echo "bin=bin2" >> $GITHUB_ENV
+            echo "bin=bin2" >> $GITHUB_ENV 
           else
-            config_file="x-wrt/config.$ROUTER_MODEL.0"
+            config_file="x-wrt/config.$ROUTER_MODEL.0.openwrt"
             echo caches not found,using config file $config_file
             echo "CACHE_RESTORED=FALSE" >> $GITHUB_ENV
             echo "bin=bin1" >> $GITHUB_ENV 
- 	  fi
+          fi
           cp $config_file myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE                
           
         env:
