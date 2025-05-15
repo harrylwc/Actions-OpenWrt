@@ -12,11 +12,11 @@ git clone https://github.com/tvheadend/tvheadend.git
 cp -r $GITHUB_WORKSPACE/x-wrt/tvheadend/.git $GITHUB_WORKSPACE/x-wrt/package/tvheadend/files/
 rm -r feeds/packages/multimedia/tvheadend
 ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/luci/applications/luci-app-nlbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/
-rm $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/rust/patches/0003-bump-libc-deps-to-0.2.146.patch
+#rm $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/rust/patches/0003-bump-libc-deps-to-0.2.146.patch
 cp $GITHUB_WORKSPACE/patches/swconfig* $GITHUB_WORKSPACE/x-wrt/target/linux/generic/files/drivers/net/phy/
-cp $GITHUB_WORKSPACE/patches/Makefile.rust  $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/rust/Makefile
-cp $GITHUB_WORKSPACE/patches/Makefile.ruby  $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/ruby/Makefile
-cp $GITHUB_WORKSPACE/patches/422.patch $GITHUB_WORKSPACE/patches/x-wrt/package/kernel/mwlwifi/patches/
+#cp $GITHUB_WORKSPACE/patches/Makefile.rust  $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/rust/Makefile
+#cp $GITHUB_WORKSPACE/patches/Makefile.ruby  $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/ruby/Makefile
+#cp $GITHUB_WORKSPACE/patches/422.patch $GITHUB_WORKSPACE/patches/x-wrt/package/kernel/mwlwifi/patches/
 
 cp $GITHUB_WORKSPACE/patches/0003-mutils_time.patch $GITHUB_WORKSPACE/x-wrt/package/feeds/packages/mailsend/patches/
 cp $GITHUB_WORKSPACE/patches/060-binutils.patch $GITHUB_WORKSPACE/x-wrt/feeds/packages/multimedia/ffmpeg/patches/
@@ -29,7 +29,7 @@ cp $GITHUB_WORKSPACE/patches/030-h264-mips.patch $GITHUB_WORKSPACE/x-wrt/feeds/p
 #/usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-cn/nlbwmon.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-nlbwmon/po/zh-tw/nlbwmon.po 
 
 
-
+#cp $GITHUB_WORKSPACE/patches/Makefile.coreutils $GITHUB_WORKSPACE/x-wrt/feeds/packages/utils/coreutils/Makefile
 #cp $GITHUB_WORKSPACE/patches/10?-* $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/patches
 #cp $GITHUB_WORKSPACE/patches/Config.in.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Config.in
 #cp $GITHUB_WORKSPACE/patches/Makefile.mbedtls $GITHUB_WORKSPACE/x-wrt/package/libs/mbedtls/Makefile                                                                                                                                                                      
@@ -45,6 +45,7 @@ ln -s /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/lede/feeds/packages/net/
 git clone https://github.com/brvphoenix/wrtbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/wrtbwmon
 git clone https://github.com/muink/luci-app-netdata /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-netdata
 cp $GITHUB_WORKSPACE/patches/Makefile.netdata /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-netdata/Makefile
+#cp $GITHUB_WORKSPACE/patches/Makefile.aria2 /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/feeds/packages/net/aria2/Makefile
 git clone https://github.com/brvphoenix/luci-app-wrtbwmon /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wrtbwmon
 git clone https://github.com/tty228/luci-app-wechatpush /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package//luci-app-wechatpush
 
@@ -52,6 +53,10 @@ git clone https://github.com/tty228/luci-app-wechatpush /home/runner/work/Action
 #/usr/bin/opencc -i /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hans/wechatpush.po -o /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
 #sed -i 's/zh_Hans/zh_Hant/g' /home/runner/work/Actions-OpenWrt/Actions-OpenWrt/x-wrt/package/luci-app-wechatpush/po/zh_Hant/wechatpush.po
 sed -i 's/llvm=true/llvm=false/g' $GITHUB_WORKSPACE/x-wrt/feeds/packages/lang/rust/Makefile
+sed -i 's/10d7c8083482800c816d2a781bfc5b3fe5343d88c1eec2b635c64a9996310c06/7fd5a503ffaa679e35118b6b578d1d31c9529e483939015426d40073adf6e594/g' $GITHUB_WORKSPACE/x-wrt/feeds/small/shadowsocks-rust/Makefile
+cd $GITHUB_WORKSPACE/x-wrt/feeds/small/v2ray-plugin/
+rm Makefile
+wget https://raw.githubusercontent.com/kenzok8/small/82eac7940f75b6ed59523c728adca179ab001aaf/v2ray-plugin/Makefile
 cp -r $GITHUB_WORKSPACE/lede/feeds/packages/net/vlmcsd/ $GITHUB_WORKSPACE/x-wrt/package/
 cp $GITHUB_WORKSPACE/patches/Makefile.vlmcsd $GITHUB_WORKSPACE/x-wrt/package/vlmcsd/Makefile
 cd $GITHUB_WORKSPACE/ 
@@ -115,25 +120,35 @@ do
 done
 
 cd /tmp/                                                                                                                                            
-#wget https://raw.githubusercontent.com/x-wrt/x-wrt/refs/heads/master/package/firmware/wireless-regdb/patches/600-custom-change-txpower-and-dfs.patch
-rm -rf $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/600-*.patch
-
-#cp $GITHUB_WORKSPACE/patches/600-custom-change-txpower-and-dfs.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/ 
-#wget https://raw.githubusercontent.com/x-wrt/x-wrt/refs/heads/master/package/firmware/wireless-regdb/patches/500-world-regd-5GHz.patch
-#mv /tmp/*.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/       
+wget https://raw.githubusercontent.com/x-wrt/x-wrt/refs/heads/master/package/firmware/wireless-regdb/patches/600-custom-change-txpower-and-dfs.patch
+wget https://raw.githubusercontent.com/x-wrt/x-wrt/refs/heads/master/package/firmware/wireless-regdb/patches/500-world-regd-5GHz.patch
+mv /tmp/*.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/       
+mv $GITHUB_WORKSPACE/patches/400-custom_hk-change-txpower-and-dfs.patch $GITHUB_WORKSPACE/x-wrt/package/firmware/wireless-regdb/patches/
 
 cd $GITHUB_WORKSPACE/x-wrt/
+mkdir dl
+cd dl
+wget http://weike-iot.com:2211/rockchip/bsp/rk3568_OpenWRT/downloads/ddnsto-binary-3.0.4.tar.gz
+ls -alt ddnsto*
+cd ..
+#mv package/feeds/video/wayland /tmp/
+
 git apply -R --ignore-space-change --ignore-whitespace revert_set_default_root.patch 
 #git apply -R --ignore-space-change --ignore-whitespace mtk_eth_soc1.patch
 #git apply -R --ignore-space-change --ignore-whitespace mtk_eth_soc.patch
 #git apply --ignore-space-change --ignore-whitespace netdata.patch                                                                                                                                                
-git apply --ignore-space-change --ignore-whitespace ramips5.15.patch
+git apply --ignore-space-change --ignore-whitespace ramips.patch
 git apply --ignore-space-change --ignore-whitespace common.patch
 #git apply --ignore-space-change --ignore-whitespace revert_set_default_root.patch
 git apply --ignore-space-change --ignore-whitespace r619ac.patch
 cp reset_user_to_root.patch feeds/luci/
 cd feeds/luci
 git apply -R --ignore-space-change --ignore-whitespace reset_user_to_root.patch 
+cd $GITHUB_WORKSPACE/x-wrt/feeds/packages/
 cd ../../
+
+if [ -e $GITHUB_WORKSPACE/patches/999-Z-0036-dsa-drop-more-bridge-offload.patch ]; then
+cp $GITHUB_WORKSPACE/patches/999-Z-0036-dsa-drop-more-bridge-offload.patch $GITHUB_WORKSPACE/x-wrt/target/linux/generic/hack-6.6/
+fi
 exit 0
 
