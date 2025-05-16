@@ -285,6 +285,10 @@ jobs:
           #find x-wrt/bin/targets/|grep kmod|grep usb-core|cut -d _ -f2>KERNEL_VER
           #strings $DRIVERS_DIR/rtl8821cu.ko| grep linux-|tail -1|tail -c15|cut -d - -f2 > KERNEL_VER
           [ -s KERNEL_VER ] && echo "KERNEL_VER=_$(cat KERNEL_VER)" >> $GITHUB_ENV
+         # cd x-wrt
+         # zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
+      - name: zip bin directory
+        run: |
           cd x-wrt
           zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
       - name: 上传固件到Router
@@ -293,8 +297,7 @@ jobs:
         run: | 
           cd x-wrt
           #zip -r OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip bin
-          copy_file.sh OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip     
-
+          copy_file.sh OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip  
 
       - name: Upload bin directory
         uses: actions/upload-artifact@master
@@ -309,24 +312,6 @@ jobs:
          TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
          TELEGRAM_CHAT_ID: 1373335316
         
-            #- name: Deliver buildinfo
-            #uses: actions/upload-artifact@v2
-            #with:
-            #name: OpenWrt_buildinfo
-            #path: ./artifact/buildinfo/
-
-            
-            #- name: Deliver package
-            #uses: actions/upload-artifact@v2
-            #with:
-            #name: OpenWrt_package
-            #path: ./artifact/package/
-
-            #- name: Deliver firmware
-            #uses: actions/upload-artifact@v2
-        #with:
-        #name: OpenWrt_firmware
-        #path: ./bin/targets/
 
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
@@ -345,24 +330,6 @@ jobs:
           path: x-wrt/bin
 
 
-            #- name: Deliver buildinfo
-            #uses: actions/upload-artifact@v2
-            #with:
-            #name: OpenWrt_buildinfo
-            #path: ./artifact/buildinfo/
-
-            
-            #- name: Deliver package
-            #uses: actions/upload-artifact@v2
-            #with:
-            #name: OpenWrt_package
-            #path: ./artifact/package/
-
-            #- name: Deliver firmware
-            #uses: actions/upload-artifact@v2
-        #with:
-        #name: OpenWrt_firmware
-        #path: ./bin/targets/
 
       - name: Upload release asset
         if: github.event == 'release'
