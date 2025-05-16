@@ -316,7 +316,7 @@ jobs:
           copy_file.sh OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip  
 
       - name: Upload bin directory
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@master
         with:
           name: OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
           path: x-wrt/OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip
@@ -327,50 +327,20 @@ jobs:
         env:
          TELEGRAM_BOT_TOKEN: '5352319218:AAGkspTTlIjIRyfYlI7Egz4NciZ78bT3NF4'
          TELEGRAM_CHAT_ID: 1373335316
-        
-            #- name: Deliver buildinfo
-            #uses: actions/upload-artifact@v2
-            #with:
-            #name: OpenWrt_buildinfo
-            #path: ./artifact/buildinfo/
+      
 
-            
-            #- name: Deliver package
-            #uses: actions/upload-artifact@v2
-            #with:
-            #name: OpenWrt_package
-            #path: ./artifact/package/
-
-            #- name: Deliver firmware
-            #uses: actions/upload-artifact@v2
         #with:
         #name: OpenWrt_firmware
         #path: ./bin/targets/
 
       - name: Upload bin directory if failure
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@master
         if:  failure() 
         with:
           name: OpenWrt_bin_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
            #OpenWrt_bin_${{ env.ROUTER_MODEL }}_failure
           path: x-wrt/bin
 
-
-            #- name: Deliver buildinfo
-            #uses: actions/upload-artifact@v2
-            #with:
-            #name: OpenWrt_buildinfo
-            #path: ./artifact/buildinfo/
-
-            
-            #- name: Deliver package
-            #uses: actions/upload-artifact@v2
-            #with:
-            #name: OpenWrt_package
-            #path: ./artifact/package/
-
-            #- name: Deliver firmware
-            #uses: actions/upload-artifact@v2
         #with:
         #name: OpenWrt_firmware
         #path: ./bin/targets/
