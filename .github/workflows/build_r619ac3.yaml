@@ -323,7 +323,7 @@ jobs:
            
            cp myconfig/$CONFIG_FILENAME_FOR_2ND_COMPILE x-wrt/.config   
 
-           cp x-wrt/config.r619ac.3 x-wrt/.config
+           #cp x-wrt/config.r619ac.3 x-wrt/.config
            if [ "$CACHE_RESTORED" = "TRUE" ]
            then
            echo cache restored
