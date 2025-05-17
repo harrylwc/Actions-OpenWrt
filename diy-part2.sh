@@ -128,7 +128,8 @@ mv $GITHUB_WORKSPACE/patches/400-custom_hk-change-txpower-and-dfs.patch $GITHUB_
 cd $GITHUB_WORKSPACE/x-wrt/
 mkdir dl
 cd dl
-wget http://weike-iot.com:2211/rockchip/bsp/rk3568_OpenWRT/downloads/ddnsto-binary-3.0.4.tar.gz
+wget https://fw0.koolcenter.com/binary/ddnsto/ddnsto-binary-3.0.4.tar.gz
+#wget http://weike-iot.com:2211/rockchip/bsp/rk3568_OpenWRT/downloads/ddnsto-binary-3.0.4.tar.gz
 ls -alt ddnsto*
 cd ..
 #mv package/feeds/video/wayland /tmp/
