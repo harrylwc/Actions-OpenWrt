@@ -389,7 +389,7 @@ jobs:
         with:
           name: OpenWrt_${{env.bin}}${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}
            #OpenWrt_${{env.bin}}_${{ env.ROUTER_MODEL }}
-          path: x-wrt/OpenWrt_${{env.bin}}_${{ env.DEVICE_NAME }}${{ env.BUILD_VERSION }}${{ env.FILE_DATE }}${{ env.KERNEL_VER}}.zip
+          path: x-wrt/bin
       - name: SSH connection for failure Debug
         if: ${{ failure() }}
         uses: P3TERX/ssh2actions@main
